@@ -4,6 +4,7 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '4.0.4'
     id 'application'
     id 'jacoco'
+    id 'info.solidsoft.pitest' version '1.5.2'
 }
 
 mainClassName = 'seedu.address.Main'
@@ -38,6 +39,12 @@ task coverage(type: JacocoReport) {
         html.enabled = true
         xml.enabled = true
     }
+}
+
+pitest {
+    targetClasses = ['seedu.address.*']
+    junit5PluginVersion = '0.12'
+    threads = 4
 }
 
 dependencies {
