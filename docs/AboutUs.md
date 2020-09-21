@@ -19,15 +19,15 @@ You can reach us at the email <ay2021s1-cs2103t-w16-3@googlegroups.com>
 * Role: Team Co-Lead
 * Responsibilities: Testing
 
-### Jane Doe
+### Tan Wei Liang
 
-<img src="images/johndoe.png" width="200px">
+<img src="images/wltan.png" width="200px">
 
-[[github](http://github.com/johndoe)]
-[[portfolio](team/johndoe.md)]
+[[github](http://github.com/wltan)]
+[[portfolio](team/wltan.md)]
 
-* Role: Team Lead
-* Responsibilities: UI
+* Role: Team Co-Lead
+* Responsibilities: Git/CI Expert, Integration
 
 ### Johnny Doe
 
