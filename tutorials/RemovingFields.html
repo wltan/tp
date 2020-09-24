@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/tp/assets/css/style.css">
+<title>Tutorial: Removing Fields</title>
+
+</head>
+<body>
+<header class="site-header">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/tp/">Fine$$e</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/tp/Minutes.html">Meeting Minutes</a><a class="page-link" href="/tp/UserGuide.html">User Guide</a><a class="page-link" href="/tp/DeveloperGuide.html">Developer Guide</a><a class="page-link" href="/tp/AboutUs.html">About Us</a><a class="page-link no-hover" href="https://github.com/AY2021S1-CS2103T-W16-3/tp">
+            <img src="/tp/images/github-icon.png" class="icon" alt="View on GitHub">
+          </a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Tutorial: Removing Fields</h1>
+  </header>
+
+  <div class="post-content">
+    <blockquote>
+  <p>Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.</p>
+
+  <p>—  Antoine de Saint-Exupery</p>
+</blockquote>
+
+<p>When working on AddressBook, you will most likely find that some features and fields that are no longer necessary. In scenarios like this, you can consider refactoring the existing <code class="highlighter-rouge">Person</code> model to suit your use case.</p>
+
+<p>In this tutorial, we’ll do exactly just that and remove the <code class="highlighter-rouge">address</code> field from <code class="highlighter-rouge">Person</code>.</p>
+
+<ul id="markdown-toc">
+  <li>
+<a href="#safely-deleting-address" id="markdown-toc-safely-deleting-address">Safely deleting <code class="highlighter-rouge">Address</code></a>    <ul>
+      <li><a href="#assisted-refactoring" id="markdown-toc-assisted-refactoring">Assisted refactoring</a></li>
+      <li><a href="#manual-refactoring" id="markdown-toc-manual-refactoring">Manual refactoring</a></li>
+    </ul>
+  </li>
+  <li><a href="#tidying-up" id="markdown-toc-tidying-up">Tidying up</a></li>
+</ul>
+
+<h2 id="safely-deleting-address">Safely deleting <code class="highlighter-rouge">Address</code>
+</h2>
+
+<p>Fortunately, IntelliJ IDEA provides a robust refactoring tool that can identify <em>most</em> usages. Let’s try to use it as much as we can.</p>
+
+<h3 id="assisted-refactoring">Assisted refactoring</h3>
+
+<p>The <code class="highlighter-rouge">address</code> field in <code class="highlighter-rouge">Person</code> is actually an instance of the <code class="highlighter-rouge">seedu.address.model.person.Address</code> class. Since removing the <code class="highlighter-rouge">Address</code> class will break the application, we start by identifying <code class="highlighter-rouge">Address</code>’s usages. This allows us to see code that depends on <code class="highlighter-rouge">Address</code> to function properly and edit them on a case-by-case basis. Right-click the <code class="highlighter-rouge">Address</code> class and select <code class="highlighter-rouge">Refactor</code> &gt; <code class="highlighter-rouge">Safe Delete</code> through the menu.</p>
+
+<p><img src="/tp/images/remove/UnsafeDelete.png" alt="Usages detected"></p>
+
+<p>Choose to <code class="highlighter-rouge">View Usages</code> and you should be presented with a list of <code class="highlighter-rouge">Safe Delete Conflicts</code>. These conflicts describe locations in which the <code class="highlighter-rouge">Address</code> class is used.</p>
+
+<p><img src="/tp/images/remove/SafeDeleteConflicts.png" alt="List of conflicts"></p>
+
+<p>Remove usages of <code class="highlighter-rouge">Address</code> by performing <code class="highlighter-rouge">Safe Delete</code>s on each entry. You will need to exercise discretion when removing usages of <code class="highlighter-rouge">Address</code>. Functions like <code class="highlighter-rouge">ParserUtil#parseAddress()</code> can be safely removed but its usages must be removed as well. Other usages like in <code class="highlighter-rouge">EditPersonDescriptor</code> may require more careful inspection.</p>
+
+<p>Let’s try removing references to <code class="highlighter-rouge">Address</code> in <code class="highlighter-rouge">EditPersonDescriptor</code>.</p>
+
+<ol>
+  <li>
+    <p>Safe delete the field <code class="highlighter-rouge">address</code> in <code class="highlighter-rouge">EditPersonDescriptor</code>.</p>
+  </li>
+  <li>
+    <p>Select <code class="highlighter-rouge">Yes</code> when prompted to remove getters and setters.</p>
+  </li>
+  <li>
+    <p>Select <code class="highlighter-rouge">View Usages</code> again.<br>
+<img src="/tp/images/remove/UnsafeDeleteOnField.png" alt="UnsafeDeleteOnField"></p>
+  </li>
+  <li>
+    <p>Remove the usages of <code class="highlighter-rouge">address</code> and select <code class="highlighter-rouge">Do refactor</code> when you are done.</p>
+
+    <div class="alert alert-primary">
+<img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Tip:</strong> Removing usages may result in errors. Exercise discretion and fix them. For example, removing the <code class="highlighter-rouge">address</code> field from the <code class="highlighter-rouge">Person</code> class will require you to modify its constructor.
+</div>
+  </li>
+  <li>
+    <p>Repeat the steps for the remaining usages of <code class="highlighter-rouge">Address</code></p>
+  </li>
+</ol>
+
+<p>After you are done, verify that the application still works by compiling and running it again.</p>
+
+<h3 id="manual-refactoring">Manual refactoring</h3>
+
+<p>Unfortunately, there are usages of <code class="highlighter-rouge">Address</code> that IntelliJ IDEA cannot identify. You can find them by searching for instances of the word <code class="highlighter-rouge">address</code> in your code (<code class="highlighter-rouge">Edit</code> &gt; <code class="highlighter-rouge">Find</code> &gt; <code class="highlighter-rouge">Find in path</code>).</p>
+
+<p>Places of interest to look out for would be resources used by the application. <code class="highlighter-rouge">main/resources</code> contains images and <code class="highlighter-rouge">fxml</code> files used by the application and <code class="highlighter-rouge">test/resources</code> contains test data. For example, there is a <code class="highlighter-rouge">$address</code> in each <code class="highlighter-rouge">PersonCard</code> that has not been removed nor identified.</p>
+
+<p><img src="/tp/images/remove/%24address.png" alt="$address"></p>
+
+<p>A quick look at the <code class="highlighter-rouge">PersonCard</code> class and its <code class="highlighter-rouge">fxml</code> file quickly reveals why it slipped past the automated refactoring.</p>
+
+<p><strong><code class="highlighter-rouge">PersonCard.java</code></strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">...</span>
+<span class="nd">@FXML</span>
+<span class="kd">private</span> <span class="nc">Label</span> <span class="n">address</span><span class="o">;</span>
+<span class="o">...</span>
+</code></pre></div></div>
+
+<p><strong><code class="highlighter-rouge">PersonCard.fxml</code></strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code>...
+<span class="nt">&lt;Label</span> <span class="na">fx:id=</span><span class="s">"phone"</span> <span class="na">styleClass=</span><span class="s">"cell_small_label"</span> <span class="na">text=</span><span class="s">"\$phone"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Label</span> <span class="na">fx:id=</span><span class="s">"address"</span> <span class="na">styleClass=</span><span class="s">"cell_small_label"</span> <span class="na">text=</span><span class="s">"\$address"</span> <span class="nt">/&gt;</span>
+<span class="nt">&lt;Label</span> <span class="na">fx:id=</span><span class="s">"email"</span> <span class="na">styleClass=</span><span class="s">"cell_small_label"</span> <span class="na">text=</span><span class="s">"\$email"</span> <span class="nt">/&gt;</span>
+...
+</code></pre></div></div>
+
+<p>After removing the <code class="highlighter-rouge">Label</code>, we can proceed to formally test our code. If everything went well, you should have most of your tests pass. Fix any remaining errors until the tests all pass.</p>
+
+<h2 id="tidying-up">Tidying up</h2>
+
+<p>At this point, your application is working as intended and all your tests are passing. What’s left to do is to clean up references to <code class="highlighter-rouge">Address</code> in test data and documentation.</p>
+
+<p>In <code class="highlighter-rouge">src/test/data/</code>, data meant for testing purposes are stored. While keeping the <code class="highlighter-rouge">address</code> field in the json files does not cause the tests to fail, it is not good practice to let cruft from old features accumulate.</p>
+
+<p><strong><code class="highlighter-rouge">invalidPersonAddressBook.json</code>:</strong></p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"persons"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Person with invalid name field: Ha!ns Mu@ster"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9482424"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"hans@example.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nl">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4th street"</span><span class="w">
+  </span><span class="p">}</span><span class="w"> </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>You can go through each individual <code class="highlighter-rouge">json</code> file and manually remove the <code class="highlighter-rouge">address</code> field.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>

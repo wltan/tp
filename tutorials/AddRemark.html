@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/tp/assets/css/style.css">
+<title>Tutorial: Adding a command</title>
+
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/tp/">Fine$$e</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/tp/Minutes.html">Meeting Minutes</a><a class="page-link" href="/tp/UserGuide.html">User Guide</a><a class="page-link" href="/tp/DeveloperGuide.html">Developer Guide</a><a class="page-link" href="/tp/AboutUs.html">About Us</a><a class="page-link no-hover" href="https://github.com/AY2021S1-CS2103T-W16-3/tp">
+            <img src="/tp/images/github-icon.png" class="icon" alt="View on GitHub">
+          </a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Tutorial: Adding a command</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Let’s walk you through the implementation of a new command — <code class="highlighter-rouge">remark</code>.</p>
+
+<p>This command allows users of the AddressBook application to add optional remarks to people in their address book and edit it if required. The command should have the following format:</p>
+
+<p><code class="highlighter-rouge">remark INDEX r/REMARK</code> (e.g., <code class="highlighter-rouge">remark 2 r/Likes baseball</code>)</p>
+
+<p>We’ll assume that you have already set up the development environment as outlined in the Developer’s Guide.</p>
+
+<h2 id="create-a-new-remark-command">Create a new <code class="highlighter-rouge">remark</code> command</h2>
+
+<p>Looking in the <code class="highlighter-rouge">logic.command</code> package, you will notice that each existing command have their own class. All the commands inherit from the abstract class <code class="highlighter-rouge">Command</code> which means that they must override <code class="highlighter-rouge">execute()</code>. Each <code class="highlighter-rouge">Command</code> returns an instance of <code class="highlighter-rouge">CommandResult</code> upon success and <code class="highlighter-rouge">CommandResult#feedbackToUser</code> is printed to the <code class="highlighter-rouge">ResultDisplay</code>.</p>
+
+<p>Let’s start by creating a new <code class="highlighter-rouge">RemarkCommand</code> class in the <code class="highlighter-rouge">src/main/java/seedu/address/logic/command</code> directory.</p>
+
+<p>For now, let’s keep <code class="highlighter-rouge">RemarkCommand</code> as simple as possible and print some output. We accomplish that by returning a <code class="highlighter-rouge">CommandResult</code> with an accompanying message.</p>
+
+<p><strong><code class="highlighter-rouge">RemarkCommand.java</code>:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">package</span> <span class="n">seedu</span><span class="o">.</span><span class="na">address</span><span class="o">.</span><span class="na">logic</span><span class="o">.</span><span class="na">commands</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">seedu.address.model.Model</span><span class="o">;</span>
+
+<span class="cm">/**
+ * Changes the remark of an existing person in the address book.
+ */</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RemarkCommand</span> <span class="kd">extends</span> <span class="nc">Command</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">COMMAND_WORD</span> <span class="o">=</span> <span class="s">"remark"</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">CommandResult</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">CommandResult</span><span class="o">(</span><span class="s">"Hello from remark"</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<h3 id="hook-remarkcommand-into-the-application">Hook <code class="highlighter-rouge">RemarkCommand</code> into the application</h3>
+
+<p>Now that we have our <code class="highlighter-rouge">RemarkCommand</code> ready to be executed, we need to update <code class="highlighter-rouge">AddressBookParser#parseCommand()</code> to recognize the <code class="highlighter-rouge">remark</code> keyword. Add the new command to the <code class="highlighter-rouge">switch</code> block by creating a new <code class="highlighter-rouge">case</code> that returns a new instance of <code class="highlighter-rouge">RemarkCommand</code>.</p>
+
+<p>You can refer to the changes in this <a href="https://github.com/se-edu/addressbook-level3/commit/35eb7286f18a029d39cb7a29df8f172a001e4fd8#diff-34ace715a8a8d2e5a66e71289f017b47">diff</a>.</p>
+
+<h3 id="run-the-application">Run the application</h3>
+
+<p>Run <code class="highlighter-rouge">Main#main</code> and try out your new <code class="highlighter-rouge">RemarkCommand</code>. If everything went well, you should see something like this:</p>
+
+<p><img src="/tp/images/add-remark/RemarkHello.png" alt="Output displayed"></p>
+
+<h2 id="change-remarkcommand-to-throw-an-exception">Change <code class="highlighter-rouge">RemarkCommand</code> to throw an exception</h2>
+
+<p>While we have successfully printed a message to <code class="highlighter-rouge">ResultDisplay</code>, the command does not do what it is supposed to do. Let’s change the command to throw an <code class="highlighter-rouge">CommandException</code> to accurately reflect that our command is still a work in progress.</p>
+
+<p><img src="/tp/images/add-remark/CommandInterface.png" alt="The relationship between RemarkCommand and Command"></p>
+
+<p>Following the convention in other commands, we add relevant messages as constants and use them.</p>
+
+<p><strong><code class="highlighter-rouge">RemarkCommand.java</code>:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">MESSAGE_USAGE</span> <span class="o">=</span> <span class="no">COMMAND_WORD</span> <span class="o">+</span> <span class="s">": Edits the remark of the person identified "</span>
+            <span class="o">+</span> <span class="s">"by the index number used in the last person listing. "</span>
+            <span class="o">+</span> <span class="s">"Existing remark will be overwritten by the input.\n"</span>
+            <span class="o">+</span> <span class="s">"Parameters: INDEX (must be a positive integer) "</span>
+            <span class="o">+</span> <span class="s">"r/ [REMARK]\n"</span>
+            <span class="o">+</span> <span class="s">"Example: "</span> <span class="o">+</span> <span class="no">COMMAND_WORD</span> <span class="o">+</span> <span class="s">" 1 "</span>
+            <span class="o">+</span> <span class="s">"r/ Likes to swim."</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">MESSAGE_NOT_IMPLEMENTED_YET</span> <span class="o">=</span> <span class="s">"Remark command not implemented yet"</span><span class="o">;</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">CommandResult</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">CommandException</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">CommandException</span><span class="o">(</span><span class="no">MESSAGE_NOT_IMPLEMENTED_YET</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<h2 id="enhancing-remarkcommand">Enhancing <code class="highlighter-rouge">RemarkCommand</code>
+</h2>
+
+<p>Let’s change <code class="highlighter-rouge">RemarkCommand</code> to parse input from the user.</p>
+
+<h3 id="make-the-command-accept-parameters">Make the command accept parameters</h3>
+
+<p>We start by modifying the constructor of <code class="highlighter-rouge">RemarkCommand</code> to accept an <code class="highlighter-rouge">Index</code> and a <code class="highlighter-rouge">String</code>. While we are at it, let’s change the error message to echo the values. While this is not a replacement for tests, it is an obvious way to tell if our code is functioning as intended.</p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">static</span> <span class="n">seedu</span><span class="o">.</span><span class="na">address</span><span class="o">.</span><span class="na">commons</span><span class="o">.</span><span class="na">util</span><span class="o">.</span><span class="na">CollectionUtil</span><span class="o">.</span><span class="na">requireAllNonNull</span><span class="o">;</span>
+<span class="c1">//...</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">RemarkCommand</span> <span class="kd">extends</span> <span class="nc">Command</span> <span class="o">{</span>
+    <span class="c1">//...</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">MESSAGE_ARGUMENTS</span> <span class="o">=</span> <span class="s">"Index: %1$d, Remark: %2$s"</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">Index</span> <span class="n">index</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">remark</span><span class="o">;</span>
+
+    <span class="cm">/**
+     * @param index of the person in the filtered person list to edit the remark
+     * @param remark of the person to be updated to
+     */</span>
+    <span class="kd">public</span> <span class="nf">RemarkCommand</span><span class="o">(</span><span class="nc">Index</span> <span class="n">index</span><span class="o">,</span> <span class="nc">String</span> <span class="n">remark</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">requireAllNonNull</span><span class="o">(</span><span class="n">index</span><span class="o">,</span> <span class="n">remark</span><span class="o">);</span>
+
+        <span class="k">this</span><span class="o">.</span><span class="na">index</span> <span class="o">=</span> <span class="n">index</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">remark</span> <span class="o">=</span> <span class="n">remark</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">CommandResult</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">CommandException</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">CommandException</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="no">MESSAGE_ARGUMENTS</span><span class="o">,</span> <span class="n">index</span><span class="o">.</span><span class="na">getOneBased</span><span class="o">(),</span> <span class="n">remark</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">equals</span><span class="o">(</span><span class="nc">Object</span> <span class="n">other</span><span class="o">)</span> <span class="o">{</span>
+        <span class="c1">// short circuit if same object</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">other</span> <span class="o">==</span> <span class="k">this</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// instanceof handles nulls</span>
+        <span class="k">if</span> <span class="o">(!(</span><span class="n">other</span> <span class="k">instanceof</span> <span class="nc">RemarkCommand</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="c1">// state check</span>
+        <span class="nc">RemarkCommand</span> <span class="n">e</span> <span class="o">=</span> <span class="o">(</span><span class="nc">RemarkCommand</span><span class="o">)</span> <span class="n">other</span><span class="o">;</span>
+        <span class="k">return</span> <span class="n">index</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">index</span><span class="o">)</span>
+                <span class="o">&amp;&amp;</span> <span class="n">remark</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="n">e</span><span class="o">.</span><span class="na">remark</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>Your code should look something like <a href="https://github.com/se-edu/addressbook-level3/commit/35eb7286f18a029d39cb7a29df8f172a001e4fd8#diff-34ace715a8a8d2e5a66e71289f017b47">this</a> after you are done.</p>
+
+<h3 id="parse-user-input">Parse user input</h3>
+
+<p>Now let’s move on to writing a parser that will extract the index and remark from the input provided by the user.</p>
+
+<p>Create a <code class="highlighter-rouge">RemarkCommandParser</code> class in the <code class="highlighter-rouge">seedu.address.logic.parser</code> package. The class must extend the <code class="highlighter-rouge">Parser</code> interface.</p>
+
+<p><img src="/tp/images/add-remark/ParserInterface.png" alt="The relationship between Parser and RemarkCommandParser"></p>
+
+<p>Thankfully, <code class="highlighter-rouge">ArgumentTokenizer#tokenize()</code> makes it trivial to parse user input. Let’s take a look at the JavaDoc provided for the function to understand what it does.</p>
+
+<p><strong><code class="highlighter-rouge">ArgumentTokenizer.java</code>:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Tokenizes an arguments string and returns an {@code ArgumentMultimap}
+ * object that maps prefixes to their respective argument values. Only the
+ * given prefixes will be recognized in the arguments string.
+ *
+ * @param argsString Arguments string of the form:
+ * {@code preamble &lt;prefix&gt;value &lt;prefix&gt;value ...}
+ * @param prefixes   Prefixes to tokenize the arguments string with
+ * @return           ArgumentMultimap object that maps prefixes to their
+ * arguments
+ */</span>
+</code></pre></div></div>
+
+<p>We can tell <code class="highlighter-rouge">ArgumentTokenizer#tokenize()</code> to look out for our new prefix <code class="highlighter-rouge">r/</code> and it will return us an instance of <code class="highlighter-rouge">ArgumentMultimap</code>. Now let’s find out what we need to do in order to obtain the Index and String that we need. Let’s look through <code class="highlighter-rouge">ArgumentMultimap</code> :</p>
+
+<p><strong><code class="highlighter-rouge">ArgumentMultimap.java</code>:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cm">/**
+ * Returns the last value of {@code prefix}.
+ */</span>
+<span class="kd">public</span> <span class="nc">Optional</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">getValue</span><span class="o">(</span><span class="nc">Prefix</span> <span class="n">prefix</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">List</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">values</span> <span class="o">=</span> <span class="n">getAllValues</span><span class="o">(</span><span class="n">prefix</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">values</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="nc">Optional</span><span class="o">.</span><span class="na">empty</span><span class="o">()</span> <span class="o">:</span>
+        <span class="nc">Optional</span><span class="o">.</span><span class="na">of</span><span class="o">(</span><span class="n">values</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">values</span><span class="o">.</span><span class="na">size</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">));</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>This appears to be what we need to get a String of the remark. But what about the Index? Let’s take a quick peek at existing <code class="highlighter-rouge">Command</code> that uses an index to see how it is done.</p>
+
+<p><strong><code class="highlighter-rouge">DeleteCommandParser.java</code>:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nc">Index</span> <span class="n">index</span> <span class="o">=</span> <span class="nc">ParserUtil</span><span class="o">.</span><span class="na">parseIndex</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
+<span class="k">return</span> <span class="k">new</span> <span class="nf">DeleteCommand</span><span class="o">(</span><span class="n">index</span><span class="o">);</span>
+</code></pre></div></div>
+
+<p>There appears to be another utility class that obtains an <code class="highlighter-rouge">Index</code> from the input provided by the user.</p>
+
+<p>Now that we have the know-how to extract the data that we need from the user’s input, we can parse the user command and create a new instance of <code class="highlighter-rouge">RemarkCommand</code>, as given below.</p>
+
+<p><strong><code class="highlighter-rouge">RemarkCommandParser.java</code>:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nc">RemarkCommand</span> <span class="nf">parse</span><span class="o">(</span><span class="nc">String</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">ParseException</span> <span class="o">{</span>
+    <span class="n">requireNonNull</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
+    <span class="nc">ArgumentMultimap</span> <span class="n">argMultimap</span> <span class="o">=</span> <span class="nc">ArgumentTokenizer</span><span class="o">.</span><span class="na">tokenize</span><span class="o">(</span><span class="n">args</span><span class="o">,</span>
+        <span class="no">PREFIX_REMARK</span><span class="o">);</span>
+
+    <span class="nc">Index</span> <span class="n">index</span><span class="o">;</span>
+    <span class="k">try</span> <span class="o">{</span>
+        <span class="n">index</span> <span class="o">=</span> <span class="nc">ParserUtil</span><span class="o">.</span><span class="na">parseIndex</span><span class="o">(</span><span class="n">argMultimap</span><span class="o">.</span><span class="na">getPreamble</span><span class="o">());</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">IllegalValueException</span> <span class="n">ive</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">ParseException</span><span class="o">(</span><span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="no">MESSAGE_INVALID_COMMAND_FORMAT</span><span class="o">,</span>
+            <span class="nc">RemarkCommand</span><span class="o">.</span><span class="na">MESSAGE_USAGE</span><span class="o">),</span> <span class="n">ive</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nc">String</span> <span class="n">remark</span> <span class="o">=</span> <span class="n">argMultimap</span><span class="o">.</span><span class="na">getValue</span><span class="o">(</span><span class="no">PREFIX_REMARK</span><span class="o">).</span><span class="na">orElse</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">RemarkCommand</span><span class="o">(</span><span class="n">index</span><span class="o">,</span> <span class="n">remark</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<div class="alert alert-primary">
+<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">Don’t forget to update <code class="highlighter-rouge">AddressBookParser</code> to use our new <code class="highlighter-rouge">RemarkCommandParser</code>!
+
+</div>
+
+<p>If you are stuck, check out the sample
+<a href="https://github.com/se-edu/addressbook-level3/commit/dc6d5139d08f6403da0ec624ea32bd79a2ae0cbf#diff-fc19ecee89c3732a62fbc8c840250508">here</a>.</p>
+
+<h2 id="add-remark-to-the-model">Add <code class="highlighter-rouge">Remark</code> to the model</h2>
+
+<p>Now that we have all the information that we need, let’s lay the groundwork for propagating the remarks added into the in-memory storage of person data. We achieve that by working with the <code class="highlighter-rouge">Person</code> model. Each field in a Person is implemented as a separate class (e.g. a <code class="highlighter-rouge">Name</code> object represents the person’s name). That means we should add a <code class="highlighter-rouge">Remark</code> class so that we can use a <code class="highlighter-rouge">Remark</code> object to represent a remark given to a person.</p>
+
+<h3 id="add-a-new-remark-class">Add a new <code class="highlighter-rouge">Remark</code> class</h3>
+
+<p>Create a new <code class="highlighter-rouge">Remark</code> in <code class="highlighter-rouge">seedu.address.model.person</code>. Since a <code class="highlighter-rouge">Remark</code> is a field that is similar to <code class="highlighter-rouge">Address</code>, we can reuse a significant bit of code.</p>
+
+<p>A copy-paste and search-replace later, you should have something like <a href="https://github.com/se-edu/addressbook-level3/commit/4516e099699baa9e2d51801bd26f016d812dedcc#diff-af2f075d24dfcd333876f0fbce321f25">this</a>. Note how <code class="highlighter-rouge">Remark</code> has no constrains and thus does not require input
+validation.</p>
+
+<h3 id="make-use-of-remark">Make use of <code class="highlighter-rouge">Remark</code>
+</h3>
+
+<p>Let’s change <code class="highlighter-rouge">RemarkCommand</code> and <code class="highlighter-rouge">RemarkCommandParser</code> to use the new <code class="highlighter-rouge">Remark</code> class instead of plain <code class="highlighter-rouge">String</code>. These should be relatively simple changes.</p>
+
+<h2 id="add-a-placeholder-element-for-remark-to-the-ui">Add a placeholder element for remark to the UI</h2>
+
+<p>Without getting too deep into <code class="highlighter-rouge">fxml</code>, let’s go on a 5 minute adventure to get some placeholder text to show up for each person.</p>
+
+<p>Simply add the following to <a href="https://github.com/se-edu/addressbook-level3/commit/850b78879582f38accb05dd20c245963c65ea599#diff-0c6b6abcfac8c205e075294f25e851fe"><code class="highlighter-rouge">seedu.address.ui.PersonCard</code></a>.</p>
+
+<p><strong><code class="highlighter-rouge">PersonCard.java</code>:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nd">@FXML</span>
+<span class="kd">private</span> <span class="nc">Label</span> <span class="n">remark</span><span class="o">;</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">@FXML</code> is an annotation that marks a private or protected field and makes it accessible to FXML. It might sound like Greek to you right now, don’t worry — we will get back to it later.</p>
+
+<p>Then insert the following into <a href="https://github.com/se-edu/addressbook-level3/commit/850b78879582f38accb05dd20c245963c65ea599#diff-12580431f55d7880578aa4c16f249e71"><code class="highlighter-rouge">main/resources/view/PersonListCard.fxml</code></a>.</p>
+
+<p><strong><code class="highlighter-rouge">PersonListCard.fxml</code>:</strong></p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;Label</span> <span class="na">fx:id=</span><span class="s">"remark"</span> <span class="na">styleClass=</span><span class="s">"cell_small_label"</span> <span class="na">text=</span><span class="s">"\$remark"</span> <span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>That’s it! Fire up the application again and you should see something like this:</p>
+
+<p><img src="/tp/images/add-remark/%24Remark.png" alt="$remark shows up in each entry"></p>
+
+<h2 id="modify-person-to-support-a-remark-field">Modify <code class="highlighter-rouge">Person</code> to support a <code class="highlighter-rouge">Remark</code> field</h2>
+
+<p>Since <code class="highlighter-rouge">PersonCard</code> displays data from a <code class="highlighter-rouge">Person</code>, we need to update <code class="highlighter-rouge">Person</code> to get our <code class="highlighter-rouge">Remark</code> displayed!</p>
+
+<h3 id="modify-person">Modify <code class="highlighter-rouge">Person</code>
+</h3>
+
+<p>We change the constructor of <code class="highlighter-rouge">Person</code> to take a <code class="highlighter-rouge">Remark</code>. We will also need to define new fields and accessors accordingly to store our new addition.</p>
+
+<h3 id="update-other-usages-of-person">Update other usages of <code class="highlighter-rouge">Person</code>
+</h3>
+
+<p>Unfortunately, a change to <code class="highlighter-rouge">Person</code> will cause other commands to break, you will have to modify these commands to use the updated <code class="highlighter-rouge">Person</code>!</p>
+
+<div class="alert alert-primary">
+<img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">Use the <code class="highlighter-rouge">Find Usages</code> feature in IntelliJ IDEA on the <code class="highlighter-rouge">Person</code> class to find these commands.
+
+</div>
+
+<p>Refer to <a href="https://github.com/se-edu/addressbook-level3/commit/ce998c37e65b92d35c91d28c7822cd139c2c0a5c">this commit</a> and check that you have got everything in order!</p>
+
+<h2 id="updating-storage">Updating Storage</h2>
+
+<p>AddressBook stores data by serializing <code class="highlighter-rouge">JsonAdaptedPerson</code> into <code class="highlighter-rouge">json</code> with the help of an external library — Jackson. Let’s update <code class="highlighter-rouge">JsonAdaptedPerson</code> to work with our new <code class="highlighter-rouge">Person</code>!</p>
+
+<p>While the changes to code may be minimal, the test data will have to be updated as well.</p>
+
+<div class="alert alert-warning">
+<img class="emoji" title=":exclamation:" alt=":exclamation:" raw="❗️" src="https://github.githubassets.com/images/icons/emoji/unicode/2757.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">You must delete AddressBook’s storage file located at <code class="highlighter-rouge">/data/addressbook.json</code> before running it! Not doing so will cause AddressBook to default to an empty address book!
+
+</div>
+
+<p>Check out <a href="https://github.com/se-edu/addressbook-level3/commit/556cbd0e03ff224d7a68afba171ad2eb0ce56bbf">this commit</a>
+to see what the changes entail.</p>
+
+<h2 id="finalizing-the-ui">Finalizing the UI</h2>
+
+<p>Now that we have finalized the <code class="highlighter-rouge">Person</code> class and its dependencies, we can now bind the <code class="highlighter-rouge">Remark</code> field to the UI.</p>
+
+<p>Just add <a href="https://github.com/se-edu/addressbook-level3/commit/5b98fee11b6b3f5749b6b943c4f3bd3aa049b692">this one line of code!</a></p>
+
+<p><strong><code class="highlighter-rouge">PersonCard.java</code>:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">public</span> <span class="nf">PersonCard</span><span class="o">(</span><span class="nc">Person</span> <span class="n">person</span><span class="o">,</span> <span class="kt">int</span> <span class="n">displayedIndex</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">//...</span>
+    <span class="n">remark</span><span class="o">.</span><span class="na">setText</span><span class="o">(</span><span class="n">person</span><span class="o">.</span><span class="na">getRemark</span><span class="o">().</span><span class="na">value</span><span class="o">);</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/tp/images/add-remark/RemarkBound.png" alt="The remark label is bound properly!"></p>
+
+<h2 id="putting-everything-together">Putting everything together</h2>
+
+<p>After the previous step, we notice a peculiar regression — we went from displaying something to nothing at all. However, this is expected behavior as we are yet to update the <code class="highlighter-rouge">RemarkCommand</code> to make use of the code we’ve been adding in the last few steps.</p>
+
+<h3 id="update-remarkcommand-and-remarkcommandparser">Update <code class="highlighter-rouge">RemarkCommand</code> and <code class="highlighter-rouge">RemarkCommandParser</code>
+</h3>
+
+<p>In this last step, we modify <code class="highlighter-rouge">RemarkCommand#execute()</code> to change the <code class="highlighter-rouge">Remark</code> of a <code class="highlighter-rouge">Person</code>. Since all fields in a <code class="highlighter-rouge">Person</code> are immutable, we create a new instance of a <code class="highlighter-rouge">Person</code> with the values that we want and
+save it with <code class="highlighter-rouge">Model#setPerson()</code>.</p>
+
+<p><strong><code class="highlighter-rouge">RemarkCommand.java</code>:</strong></p>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//...</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">MESSAGE_ADD_REMARK_SUCCESS</span> <span class="o">=</span> <span class="s">"Added remark to Person: %1$s"</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">String</span> <span class="no">MESSAGE_DELETE_REMARK_SUCCESS</span> <span class="o">=</span> <span class="s">"Removed remark from Person: %1$s"</span><span class="o">;</span>
+<span class="c1">//...</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="nc">CommandResult</span> <span class="nf">execute</span><span class="o">(</span><span class="nc">Model</span> <span class="n">model</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">CommandException</span> <span class="o">{</span>
+        <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Person</span><span class="o">&gt;</span> <span class="n">lastShownList</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="na">getFilteredPersonList</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">index</span><span class="o">.</span><span class="na">getZeroBased</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="n">lastShownList</span><span class="o">.</span><span class="na">size</span><span class="o">())</span> <span class="o">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nf">CommandException</span><span class="o">(</span><span class="nc">Messages</span><span class="o">.</span><span class="na">MESSAGE_INVALID_PERSON_DISPLAYED_INDEX</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="nc">Person</span> <span class="n">personToEdit</span> <span class="o">=</span> <span class="n">lastShownList</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">index</span><span class="o">.</span><span class="na">getZeroBased</span><span class="o">());</span>
+        <span class="nc">Person</span> <span class="n">editedPerson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Person</span><span class="o">(</span><span class="n">personToEdit</span><span class="o">.</span><span class="na">getName</span><span class="o">(),</span> <span class="n">personToEdit</span><span class="o">.</span><span class="na">getPhone</span><span class="o">(),</span> <span class="n">personToEdit</span><span class="o">.</span><span class="na">getEmail</span><span class="o">(),</span>
+                <span class="n">personToEdit</span><span class="o">.</span><span class="na">getAddress</span><span class="o">(),</span> <span class="n">remark</span><span class="o">,</span> <span class="n">personToEdit</span><span class="o">.</span><span class="na">getTags</span><span class="o">());</span>
+
+        <span class="n">model</span><span class="o">.</span><span class="na">setPerson</span><span class="o">(</span><span class="n">personToEdit</span><span class="o">,</span> <span class="n">editedPerson</span><span class="o">);</span>
+        <span class="n">model</span><span class="o">.</span><span class="na">updateFilteredPersonList</span><span class="o">(</span><span class="no">PREDICATE_SHOW_ALL_PERSONS</span><span class="o">);</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">CommandResult</span><span class="o">(</span><span class="n">generateSuccessMessage</span><span class="o">(</span><span class="n">editedPerson</span><span class="o">));</span>
+    <span class="o">}</span>
+
+    <span class="cm">/**
+     * Generates a command execution success message based on whether the remark is added to or removed from
+     * {@code personToEdit}.
+     */</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="nf">generateSuccessMessage</span><span class="o">(</span><span class="nc">Person</span> <span class="n">personToEdit</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">message</span> <span class="o">=</span> <span class="o">!</span><span class="n">remark</span><span class="o">.</span><span class="na">value</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">()</span> <span class="o">?</span> <span class="no">MESSAGE_ADD_REMARK_SUCCESS</span> <span class="o">:</span> <span class="no">MESSAGE_DELETE_REMARK_SUCCESS</span><span class="o">;</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="n">message</span><span class="o">,</span> <span class="n">personToEdit</span><span class="o">);</span>
+    <span class="o">}</span>
+</code></pre></div></div>
+
+<p><img src="/tp/images/add-remark/RemarkComplete.png" alt="Congratulations!"></p>
+
+<h2 id="writing-tests">Writing tests</h2>
+
+<p>Tests are crucial to ensuring that bugs don’t slip into the codebase unnoticed. This is especially true for large code bases where a change might lead to unintended behavior.</p>
+
+<p>Let’s verify the correctness of our code by writing some tests!</p>
+
+<h3 id="automatically-generating-tests">Automatically generating tests</h3>
+
+<p>The goal is to write effective and efficient tests to ensure that <code class="highlighter-rouge">RemarkCommand#execute()</code> behaves as expected.</p>
+
+<p>The convention for test names is <code class="highlighter-rouge">methodName_testScenario_expectedResult</code>. An example would be
+<code class="highlighter-rouge">execute_filteredList_success</code>.</p>
+
+<p>Let’s create a test for <code class="highlighter-rouge">RemarkCommand#execute()</code> to test that adding a remark works. On <code class="highlighter-rouge">IntelliJ IDEA</code> you can bring up the context menu and choose to <code class="highlighter-rouge">Go To</code> &gt; <code class="highlighter-rouge">Test</code> or use the appropriate keyboard shortcut.</p>
+
+<p><img src="/tp/images/add-remark/ContextMenu.png" alt="Using the context menu to jump to tests"></p>
+
+<p>Then, create a test for the <code class="highlighter-rouge">execute</code> method.</p>
+
+<p><img src="/tp/images/add-remark/CreateTest.png" alt="Creating a test for `execute`."></p>
+
+<p>Following convention, let’s change the name of the generated method to <code class="highlighter-rouge">execute_addRemarkUnfilteredList_success</code>.</p>
+
+<p>Let’s use the utility functions provided in <code class="highlighter-rouge">CommandTestUtil</code>. The functions ensure that commands produce the expected <code class="highlighter-rouge">CommandResult</code> and output the correct message. In this case, <code class="highlighter-rouge">CommandTestUtil#assertCommandSuccess</code> is the best fit as we are testing that a <code class="highlighter-rouge">RemarkCommand</code> will successfully add a <code class="highlighter-rouge">Remark</code>.</p>
+
+<p>You should end up with a test that looks something like <a href="https://github.com/se-edu/addressbook-level3/commit/fac8f3fd855d55831ca0cc73313b5943d49d4d6e#diff-d749de38392f7ea504da7824641ba8d9">this</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>This concludes the tutorial for adding a new <code class="highlighter-rouge">Command</code> to AddressBook.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>

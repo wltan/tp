@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/tp/assets/css/style.css">
+<title>User Guide</title>
+
+<script>MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]]},"svg":{"fontCache":"global"}}</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<header class="site-header">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/tp/">Fine$$e</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/tp/Minutes.html">Meeting Minutes</a><a class="page-link" href="/tp/UserGuide.html">User Guide</a><a class="page-link" href="/tp/DeveloperGuide.html">Developer Guide</a><a class="page-link" href="/tp/AboutUs.html">About Us</a><a class="page-link no-hover" href="https://github.com/AY2021S1-CS2103T-W16-3/tp">
+            <img src="/tp/images/github-icon.png" class="icon" alt="View on GitHub">
+          </a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">User Guide</h1>
+  </header>
+
+  <div class="post-content">
+    <p>Fine$$e is a <strong>desktop app for managing finances, optimized for use via a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Fine$$e can track and help you cultivate good financial habits faster than traditional GUI apps.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#quick-start" id="markdown-toc-quick-start">Quick start</a></li>
+  <li>
+<a href="#features" id="markdown-toc-features">Features</a>    <ul>
+      <li>
+<a href="#1-expenses" id="markdown-toc-1-expenses">1. Expenses</a>        <ul>
+          <li><a href="#add-expense-add-expense--adde" id="markdown-toc-add-expense-add-expense--adde">Add expense: <code class="highlighter-rouge">add-expense</code> / <code class="highlighter-rouge">adde</code></a></li>
+          <li><a href="#list-all-expenses-ls-expense--lse" id="markdown-toc-list-all-expenses-ls-expense--lse">List all expenses: <code class="highlighter-rouge">ls-expense</code> / <code class="highlighter-rouge">lse</code></a></li>
+          <li><a href="#delete-an-expense-rm-expense--rme" id="markdown-toc-delete-an-expense-rm-expense--rme">Delete an expense: <code class="highlighter-rouge">rm-expense</code> / <code class="highlighter-rouge">rme</code></a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#2-income" id="markdown-toc-2-income">2. Income</a>        <ul>
+          <li><a href="#add-income-add-income--addi" id="markdown-toc-add-income-add-income--addi">Add income: <code class="highlighter-rouge">add-income</code> / <code class="highlighter-rouge">addi</code></a></li>
+          <li><a href="#list-all-income-ls-income--lsi" id="markdown-toc-list-all-income-ls-income--lsi">List all income: <code class="highlighter-rouge">ls-income</code> / <code class="highlighter-rouge">lsi</code></a></li>
+          <li><a href="#delete-income-rm-income--rmi" id="markdown-toc-delete-income-rm-income--rmi">Delete income: <code class="highlighter-rouge">rm-income</code> / <code class="highlighter-rouge">rmi</code></a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#3-savings" id="markdown-toc-3-savings">3. Savings</a>        <ul>
+          <li><a href="#show-savings-savings--sav" id="markdown-toc-show-savings-savings--sav">Show savings: <code class="highlighter-rouge">savings</code> / <code class="highlighter-rouge">sav</code></a></li>
+        </ul>
+      </li>
+      <li><a href="#viewing-help-help" id="markdown-toc-viewing-help-help">Viewing help: <code class="highlighter-rouge">help</code></a></li>
+      <li><a href="#exiting-the-program-exit" id="markdown-toc-exiting-the-program-exit">Exiting the program: <code class="highlighter-rouge">exit</code></a></li>
+    </ul>
+  </li>
+  <li><a href="#command-summary" id="markdown-toc-command-summary">Command Summary</a></li>
+</ul>
+
+<hr>
+
+<h2 id="quick-start">Quick start</h2>
+
+<ol>
+  <li>
+    <p>Ensure you have Java <code class="highlighter-rouge">11</code> or above installed in your Computer.</p>
+  </li>
+  <li>
+    <p>Download the latest <code class="highlighter-rouge">finesse.jar</code> from <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">here</a>.</p>
+  </li>
+  <li>
+    <p>Copy the file to the folder you want to use as the <em>home folder</em> for Fine$$e.</p>
+  </li>
+  <li>
+    <p>Double-click the file to start the app.</p>
+  </li>
+  <li>
+    <p>Type the command in the command box and press Enter to execute it. e.g. typing <code class="highlighter-rouge">help</code> and pressing Enter will open the help window.</p>
+  </li>
+</ol>
+
+<hr>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="features">Features</h2>
+
+<h3 id="1-expenses">1. Expenses</h3>
+
+<h4 id="add-expense-add-expense--adde">Add expense: <code class="highlighter-rouge">add-expense</code> / <code class="highlighter-rouge">adde</code>
+</h4>
+<p>Adds a new expense to the tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">add-expense d/DESCRIPTION a/AMOUNT</code></p>
+
+<p>Examples:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">add-expense d/Lunch a/3.2</code> will add an expense with description “Lunch” and amount $3.20.</li>
+  <li>
+<code class="highlighter-rouge">adde d/Bubble Tea a/4.5</code> will add an expense with description “Bubble Tea” and amount $4.50.</li>
+</ul>
+
+<h4 id="list-all-expenses-ls-expense--lse">List all expenses: <code class="highlighter-rouge">ls-expense</code> / <code class="highlighter-rouge">lse</code>
+</h4>
+
+<p>Shows a list of all expenses in the finance tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">ls-expense</code> / <code class="highlighter-rouge">lse</code></p>
+
+<h4 id="delete-an-expense-rm-expense--rme">Delete an expense: <code class="highlighter-rouge">rm-expense</code> / <code class="highlighter-rouge">rme</code>
+</h4>
+
+<p>Deletes a specified expense from the finance tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">rm-expense INDEX</code> / <code class="highlighter-rouge">rme INDEX</code></p>
+
+<ul>
+  <li>Deletes a specified expense at the specified <code class="highlighter-rouge">INDEX</code> in the finance tracker.</li>
+  <li>The index refers to the index number shown in the displayed expense list.</li>
+  <li>The index <strong>must be a positive integer</strong> 1, 2, 3, …</li>
+</ul>
+
+<p>Examples:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">rm-expense 3</code> will delete the 3rd expense stored in the finance tracker.</li>
+  <li>
+<code class="highlighter-rouge">rme 2</code> will delete the 2nd expense stored in the finance tracker.</li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h3 id="2-income">2. Income</h3>
+
+<h4 id="add-income-add-income--addi">Add income: <code class="highlighter-rouge">add-income</code> / <code class="highlighter-rouge">addi</code>
+</h4>
+<p>Adds a new income to the tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">add-income d/DESCRIPTION a/AMOUNT</code></p>
+
+<p>Examples:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">add-income d/Internship a/1200</code> will add a new income with description “Internship” and amount $1200.00.</li>
+  <li>
+<code class="highlighter-rouge">addi d/Random Angpao a/10</code> will add a new income with description “Random Angpao” and amount $10.00.</li>
+</ul>
+
+<h4 id="list-all-income-ls-income--lsi">List all income: <code class="highlighter-rouge">ls-income</code> / <code class="highlighter-rouge">lsi</code>
+</h4>
+
+<p>Shows a list of all income in the finance tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">ls-income</code> / <code class="highlighter-rouge">lsi</code></p>
+
+<h4 id="delete-income-rm-income--rmi">Delete income: <code class="highlighter-rouge">rm-income</code> / <code class="highlighter-rouge">rmi</code>
+</h4>
+
+<p>Deletes a specified income in the finance tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">rm-income INDEX</code> / <code class="highlighter-rouge">rmi INDEX</code></p>
+
+<ul>
+  <li>Deletes the specified income entry from the finance tracker.</li>
+  <li>The index refers to the index number shown in the displayed income list.</li>
+  <li>The index <strong>must be a positive integer</strong> 1, 2, 3, …</li>
+</ul>
+
+<p>Examples:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">rm-income 2</code> removes the 2nd income entry stored in the finance tracker.</li>
+  <li>
+<code class="highlighter-rouge">rmi 3</code> removes the 3rd income entry stored in the finance tracker.</li>
+</ul>
+
+<div style="page-break-after: always;"></div>
+
+<h3 id="3-savings">3. Savings</h3>
+
+<h4 id="show-savings-savings--sav">Show savings: <code class="highlighter-rouge">savings</code> / <code class="highlighter-rouge">sav</code>
+</h4>
+<p>Shows the amount of money saved for the month.</p>
+
+<p>Format: <code class="highlighter-rouge">savings</code> / <code class="highlighter-rouge">sav</code></p>
+
+<h3 id="viewing-help-help">Viewing help: <code class="highlighter-rouge">help</code>
+</h3>
+<p>Shows a message explaining how to access the help page.</p>
+
+<p>Format: <code class="highlighter-rouge">help</code></p>
+
+<h3 id="exiting-the-program-exit">Exiting the program: <code class="highlighter-rouge">exit</code>
+</h3>
+<p>Exits the program.</p>
+
+<p>Format: <code class="highlighter-rouge">exit</code></p>
+
+<hr>
+
+<div style="page-break-after: always;"></div>
+
+<h2 id="command-summary">Command Summary</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Format</th>
+      <th>Examples</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Add Expense</td>
+      <td>
+<code class="highlighter-rouge">add-expense d/DESCRIPTION a/AMOUNT</code> <br> <code class="highlighter-rouge">adde d/DESCRIPTION a/AMOUNT</code>
+</td>
+      <td>
+<code class="highlighter-rouge">add-expense d/Lunch a/3.2</code><br><code class="highlighter-rouge">adde d/BubbleTea a/6</code>
+</td>
+    </tr>
+    <tr>
+      <td>List Expenses</td>
+      <td>
+<code class="highlighter-rouge">ls-expense</code> <br> <code class="highlighter-rouge">lse</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Delete Expense</td>
+      <td>
+<code class="highlighter-rouge">rm-expense INDEX</code> <br> <code class="highlighter-rouge">rme INDEX</code>
+</td>
+      <td>
+<code class="highlighter-rouge">rm-expense 3</code><br><code class="highlighter-rouge">rme 2</code>
+</td>
+    </tr>
+    <tr>
+      <td>Add Income</td>
+      <td>
+<code class="highlighter-rouge">add-income d/DESCRIPTION a/AMOUNT</code> <br> <code class="highlighter-rouge">addi d/DESCRIPTION a/AMOUNT</code>
+</td>
+      <td>
+<code class="highlighter-rouge">add-income d/Internship a/1000</code><br><code class="highlighter-rouge">addi d/Random Angpao a/10</code>
+</td>
+    </tr>
+    <tr>
+      <td>List Incomes</td>
+      <td>
+<code class="highlighter-rouge">ls-income</code> <br> <code class="highlighter-rouge">lsi</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Delete Income</td>
+      <td>
+<code class="highlighter-rouge">rm-income INDEX</code> <br> <code class="highlighter-rouge">rm INDEX</code>
+</td>
+      <td>
+<code class="highlighter-rouge">rm-income 2</code><br><code class="highlighter-rouge">rmi 3</code>
+</td>
+    </tr>
+    <tr>
+      <td>Check Savings</td>
+      <td>
+<code class="highlighter-rouge">savings</code> <br> <code class="highlighter-rouge">sav</code>
+</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Help</td>
+      <td><code class="highlighter-rouge">help</code></td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>Exit</td>
+      <td><code class="highlighter-rouge">exit</code></td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>
