@@ -81,7 +81,7 @@
   <li>
 <a href="#appendix-instructions-for-manual-testing" id="markdown-toc-appendix-instructions-for-manual-testing"><strong>Appendix: Instructions for manual testing</strong></a>    <ul>
       <li><a href="#launch-and-shutdown" id="markdown-toc-launch-and-shutdown">Launch and shutdown</a></li>
-      <li><a href="#deleting-a-person" id="markdown-toc-deleting-a-person">Deleting a person</a></li>
+      <li><a href="#deleting-a-transaction" id="markdown-toc-deleting-a-transaction">Deleting a transaction</a></li>
       <li><a href="#saving-data" id="markdown-toc-saving-data">Saving data</a></li>
     </ul>
   </li>
@@ -155,7 +155,7 @@
 <p><strong>API</strong> :
 <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"><code class="highlighter-rouge">Ui.java</code></a></p>
 
-<p>The UI consists of a <code class="highlighter-rouge">MainWindow</code> that is made up of parts e.g.<code class="highlighter-rouge">CommandBox</code>, <code class="highlighter-rouge">ResultDisplay</code>, <code class="highlighter-rouge">PersonListPanel</code>, <code class="highlighter-rouge">StatusBarFooter</code> etc. All these, including the <code class="highlighter-rouge">MainWindow</code>, inherit from the abstract <code class="highlighter-rouge">UiPart</code> class.</p>
+<p>The UI consists of a <code class="highlighter-rouge">MainWindow</code> that is made up of parts e.g.<code class="highlighter-rouge">CommandBox</code>, <code class="highlighter-rouge">ResultDisplay</code>, <code class="highlighter-rouge">TransactionListPanel</code>, <code class="highlighter-rouge">StatusBarFooter</code> etc. All these, including the <code class="highlighter-rouge">MainWindow</code>, inherit from the abstract <code class="highlighter-rouge">UiPart</code> class.</p>
 
 <p>The <code class="highlighter-rouge">UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code class="highlighter-rouge">.fxml</code> files that are in the <code class="highlighter-rouge">src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code class="highlighter-rouge">MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"><code class="highlighter-rouge">MainWindow.fxml</code></a></p>
 
@@ -177,7 +177,7 @@
   <li>
 <code class="highlighter-rouge">Logic</code> uses the <code class="highlighter-rouge">AddressBookParser</code> class to parse the user command.</li>
   <li>This results in a <code class="highlighter-rouge">Command</code> object which is executed by the <code class="highlighter-rouge">LogicManager</code>.</li>
-  <li>The command execution can affect the <code class="highlighter-rouge">Model</code> (e.g. adding a person).</li>
+  <li>The command execution can affect the <code class="highlighter-rouge">Model</code> (e.g. adding a transaction).</li>
   <li>The result of the command execution is encapsulated as a <code class="highlighter-rouge">CommandResult</code> object which is passed back to the <code class="highlighter-rouge">Ui</code>.</li>
   <li>In addition, the <code class="highlighter-rouge">CommandResult</code> object can also instruct the <code class="highlighter-rouge">Ui</code> to perform certain actions, such as displaying help to the user.</li>
 </ol>
@@ -201,12 +201,12 @@
 <ul>
   <li>stores a <code class="highlighter-rouge">UserPref</code> object that represents the user’s preferences.</li>
   <li>stores the address book data.</li>
-  <li>exposes an unmodifiable <code class="highlighter-rouge">ObservableList&lt;Person&gt;</code> that can be ‘observed’ e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</li>
+  <li>exposes an unmodifiable <code class="highlighter-rouge">ObservableList&lt;Transaction&gt;</code> that can be ‘observed’ e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</li>
   <li>does not depend on any of the other three components.</li>
 </ul>
 
 <div class="alert alert-info">
-<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> An alternative (arguably, a more OOP) model is given below. It has a <code class="highlighter-rouge">Tag</code> list in the <code class="highlighter-rouge">AddressBook</code>, which <code class="highlighter-rouge">Person</code> references. This allows <code class="highlighter-rouge">AddressBook</code> to only require one <code class="highlighter-rouge">Tag</code> object per unique <code class="highlighter-rouge">Tag</code>, instead of each <code class="highlighter-rouge">Person</code> needing their own <code class="highlighter-rouge">Tag</code> object.<br>
+<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> An alternative (arguably, a more OOP) model is given below. It has a <code class="highlighter-rouge">Category</code> list in the <code class="highlighter-rouge">AddressBook</code>, which <code class="highlighter-rouge">Transaction</code> references. This allows <code class="highlighter-rouge">AddressBook</code> to only require one <code class="highlighter-rouge">Category</code> object per unique <code class="highlighter-rouge">Category</code>, instead of each <code class="highlighter-rouge">Transaction</code> needing their own <code class="highlighter-rouge">Category</code> object.<br>
 <img src="/tp/images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram">
 
 </div>
@@ -256,11 +256,11 @@
 
 <p><img src="/tp/images/UndoRedoState0.png" alt="UndoRedoState0"></p>
 
-<p>Step 2. The user executes <code class="highlighter-rouge">delete 5</code> command to delete the 5th person in the address book. The <code class="highlighter-rouge">delete</code> command calls <code class="highlighter-rouge">Model#commitAddressBook()</code>, causing the modified state of the address book after the <code class="highlighter-rouge">delete 5</code> command executes to be saved in the <code class="highlighter-rouge">addressBookStateList</code>, and the <code class="highlighter-rouge">currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p>Step 2. The user executes <code class="highlighter-rouge">delete 5</code> command to delete the 5th transaction in the address book. The <code class="highlighter-rouge">delete</code> command calls <code class="highlighter-rouge">Model#commitAddressBook()</code>, causing the modified state of the address book after the <code class="highlighter-rouge">delete 5</code> command executes to be saved in the <code class="highlighter-rouge">addressBookStateList</code>, and the <code class="highlighter-rouge">currentStatePointer</code> is shifted to the newly inserted address book state.</p>
 
 <p><img src="/tp/images/UndoRedoState1.png" alt="UndoRedoState1"></p>
 
-<p>Step 3. The user executes <code class="highlighter-rouge">add n/David …​</code> to add a new person. The <code class="highlighter-rouge">add</code> command also calls <code class="highlighter-rouge">Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code class="highlighter-rouge">addressBookStateList</code>.</p>
+<p>Step 3. The user executes <code class="highlighter-rouge">add n/David …​</code> to add a new transaction. The <code class="highlighter-rouge">add</code> command also calls <code class="highlighter-rouge">Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code class="highlighter-rouge">addressBookStateList</code>.</p>
 
 <p><img src="/tp/images/UndoRedoState2.png" alt="UndoRedoState2"></p>
 
@@ -269,7 +269,7 @@
 
 </div>
 
-<p>Step 4. The user now decides that adding the person was a mistake, and decides to undo that action by executing the <code class="highlighter-rouge">undo</code> command. The <code class="highlighter-rouge">undo</code> command will call <code class="highlighter-rouge">Model#undoAddressBook()</code>, which will shift the <code class="highlighter-rouge">currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
+<p>Step 4. The user now decides that adding the transaction was a mistake, and decides to undo that action by executing the <code class="highlighter-rouge">undo</code> command. The <code class="highlighter-rouge">undo</code> command will call <code class="highlighter-rouge">Model#undoAddressBook()</code>, which will shift the <code class="highlighter-rouge">currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
 
 <p><img src="/tp/images/UndoRedoState3.png" alt="UndoRedoState3"></p>
 
@@ -323,7 +323,7 @@ than attempting to perform the undo.
 <strong>Alternative 2:</strong> Individual command knows how to undo/redo by
 itself.
     <ul>
-      <li>Pros: Will use less memory (e.g. for <code class="highlighter-rouge">delete</code>, just save the person being deleted).</li>
+      <li>Pros: Will use less memory (e.g. for <code class="highlighter-rouge">delete</code>, just save the transaction being deleted).</li>
       <li>Cons: We must ensure that the implementation of each individual command are correct.</li>
     </ul>
   </li>
@@ -570,23 +570,23 @@ testers are expected to do more <em>exploratory</em> testing.
   </li>
 </ol>
 
-<h3 id="deleting-a-person">Deleting a person</h3>
+<h3 id="deleting-a-transaction">Deleting a transaction</h3>
 
 <ol>
   <li>
-    <p>Deleting a person while all persons are being shown</p>
+    <p>Deleting a transaction while all transactions are being shown</p>
 
     <ol>
       <li>
-        <p>Prerequisites: List all persons using the <code class="highlighter-rouge">list</code> command. Multiple persons in the list.</p>
+        <p>Prerequisites: List all transactions using the <code class="highlighter-rouge">list</code> command. Multiple transactions in the list.</p>
       </li>
       <li>
         <p>Test case: <code class="highlighter-rouge">delete 1</code><br>
-Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.</p>
+Expected: First transaction is deleted from the list. Details of the deleted transaction shown in the status message. Timestamp in the status bar is updated.</p>
       </li>
       <li>
         <p>Test case: <code class="highlighter-rouge">delete 0</code><br>
-Expected: No person is deleted. Error details shown in the status message. Status bar remains the same.</p>
+Expected: No transaction is deleted. Error details shown in the status message. Status bar remains the same.</p>
       </li>
       <li>
         <p>Other incorrect delete commands to try: <code class="highlighter-rouge">delete</code>, <code class="highlighter-rouge">delete x</code>, <code class="highlighter-rouge">...</code> (where x is larger than the list size)<br>
