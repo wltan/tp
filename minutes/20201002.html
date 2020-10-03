@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/tp/assets/css/style.css">
+<title>Standards for Issues and PRs</title>
+
+</head>
+<body>
+<header class="site-header">
+
+  <div class="wrapper">
+<a class="site-title" rel="author" href="/tp/">Fine$$e</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger">
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewbox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"></path>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+<a class="page-link" href="/tp/Minutes.html">Meeting Minutes</a><a class="page-link" href="/tp/UserGuide.html">User Guide</a><a class="page-link" href="/tp/DeveloperGuide.html">Developer Guide</a><a class="page-link" href="/tp/AboutUs.html">About Us</a><a class="page-link no-hover" href="https://github.com/AY2021S1-CS2103T-W16-3/tp">
+            <img src="/tp/images/github-icon.png" class="icon" alt="View on GitHub">
+          </a>
+</div>
+      </nav>
+</div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Minutes for 2 October 2020</h1>
+  </header>
+
+  <div class="post-content">
+    <h3 id="standards-for-issues-and-prs">Standards for Issues and PRs</h3>
+
+<p>Issues from user stories:</p>
+<ul>
+  <li>Refer to user story issue in body</li>
+  <li>Create at the start of each iteration, or at the end of each team meeting</li>
+</ul>
+
+<p>Issues from PRs or follow-up from other issues:</p>
+<ul>
+  <li>If you see a possible enhancement or problem while fixing your issue,
+    <ul>
+      <li>If it is dependent on your issue in some way, document it under your issue</li>
+      <li>If it is not dependent on your issue, create a new issue. Refer to the original issue if you want.</li>
+    </ul>
+  </li>
+  <li>If you want to add extensions to the issue in the same PR:
+    <ul>
+      <li>Create a new issue
+        <ul>
+          <li>Rationale: So that others are aware you are working on this extension and will avoid unnecessary double work</li>
+        </ul>
+      </li>
+      <li>Add a new commit for the extension
+        <ul>
+          <li>Rationale: So it is captured in commit message when squashed</li>
+        </ul>
+      </li>
+      <li>Refer to it in the PR</li>
+    </ul>
+  </li>
+  <li>Definition of extension:
+    <ul>
+      <li>An enhancement that is not required to meet the specifications of the issue, that modifies the behavior of the program</li>
+      <li>Rationale:
+        <ul>
+          <li>Behavior changes must be closely monitored to prevent regressions from slipping past reviewers</li>
+          <li>Try to keep independent behavior changes apart from each other</li>
+        </ul>
+      </li>
+      <li>Definition of behavior:
+        <ul>
+          <li>CLI input or outputs change</li>
+          <li>GUI input or outputs change</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>Changes not requiring issues:</p>
+<ul>
+  <li>Can be put under another PR or be a standalone PR without reference to issues
+    <ul>
+      <li>If put under another PR, put in a separate commit (so that it is captured in commit message when squashed)</li>
+    </ul>
+  </li>
+  <li>Examples:
+    <ul>
+      <li>Typos</li>
+      <li>Formatting / style changes</li>
+      <li>Anything under 10 lines not affecting behavior</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="tasks-for-v12-11th-october">Tasks for v1.2 (11th October)</h3>
+<p><em>updated</em></p>
+<ul>
+  <li>
+<del><em>Renaming (Yong Ping)</em></del>
+    <ul>
+      <li>
+<del><em>Person → Transaction</em></del>
+        <ul>
+          <li><del><em>Name → Name</em></del></li>
+          <li><del><em>Phone → Amount</em></del></li>
+          <li><del><em>Tags → Category</em></del></li>
+          <li><del><em>Email → Date</em></del></li>
+        </ul>
+      </li>
+      <li><del><em>Delete Address (Ian)</em></del></li>
+    </ul>
+  </li>
+  <li>Slowly fix tests
+    <ul>
+      <li>Test data for Description/Amount/Category</li>
+    </ul>
+  </li>
+  <li>UI
+    <ul>
+      <li>Make it look like the mock-up (Siddarth)</li>
+    </ul>
+  </li>
+  <li>
+<del><em>Models</em></del>
+    <ul>
+      <li><del><em>Set up expenses, income, etc, once transaction is up (Jingjing)</em></del></li>
+    </ul>
+  </li>
+  <li>Commands
+    <ul>
+      <li>Expenses (Ian)
+        <ul>
+          <li>Adding expense: <code class="highlighter-rouge">add-expense</code> / <code class="highlighter-rouge">adde</code>
+</li>
+          <li>List expense: <code class="highlighter-rouge">ls-expense</code> / <code class="highlighter-rouge">lse</code>
+</li>
+          <li>Delete expense: <code class="highlighter-rouge">rm-expense</code> / <code class="highlighter-rouge">rme</code>
+</li>
+        </ul>
+      </li>
+      <li>Income (Wei Liang)
+        <ul>
+          <li>Adding income: <code class="highlighter-rouge">add-income</code> / <code class="highlighter-rouge">addi</code>
+</li>
+          <li>List income: <code class="highlighter-rouge">ls-income</code> / <code class="highlighter-rouge">lsi</code>
+</li>
+          <li>Delete income: <code class="highlighter-rouge">rm-income</code> / <code class="highlighter-rouge">rmi</code>
+</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>To be delegated at a later date:
+    <ul>
+      <li>Savings
+        <ul>
+          <li>Check savings: <code class="highlighter-rouge">savings</code>
+</li>
+        </ul>
+      </li>
+      <li>Exiting the program: <code class="highlighter-rouge">exit</code>
+</li>
+      <li>Viewing help: <code class="highlighter-rouge">help</code>
+</li>
+      <li>Delete unused commands</li>
+      <li><em>Modify AddressBook to accommodate two lists (expenses and income)</em></li>
+    </ul>
+  </li>
+  <li>Integration
+    <ul>
+      <li>OTOT pull from other teammates' branches to test integration</li>
+    </ul>
+  </li>
+  <li>Documentation
+    <ul>
+      <li>UG at the end of v1.2</li>
+      <li>DG at the end of v1.2</li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Next meeting on Tuesday (6 Oct)</strong></p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main>
+
+  </body>
+
+</html>
