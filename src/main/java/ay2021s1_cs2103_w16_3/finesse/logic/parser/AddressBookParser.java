@@ -16,6 +16,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.ExitCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.FindCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.HelpCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
 
 /**
@@ -66,6 +67,10 @@ public class AddressBookParser {
 
         case ListCommand.COMMAND_WORD:
             return new ListCommand();
+
+        case ListIncomeCommand.COMMAND_WORD:
+        case ListIncomeCommand.COMMAND_ALIAS:
+            return new ListIncomeCommand();
 
         case ExitCommand.COMMAND_WORD:
             return new ExitCommand();
