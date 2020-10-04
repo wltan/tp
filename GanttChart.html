@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="/tp/assets/css/style.css">
 
-    <title>Logging guide</title>
+    <title>Gantt Chart</title>
   
 
 </head>
@@ -34,32 +34,25 @@
       </nav>
 </div>
 </header>
-<main class="page-content" aria-label="Content">
-      <div class="wrapper">
-        <article class="post">
+<main class="page-content" style="display: flex;" aria-label="Content">
+  <div class="wide-wrapper" style="display: flex;">
+    <div class="post" style="display: flex; flex-direction: column; flex-grow: 1;">
 
-  <header class="post-header">
-    <h1 class="post-title">Logging guide</h1>
+  <header>
+    <h1 class="post-title">Gantt Chart</h1>
   </header>
 
-  <div class="post-content">
-    <ul>
-  <li>We are using <code class="highlighter-rouge">java.util.logging</code> package for logging.</li>
-  <li>The <code class="highlighter-rouge">LogsCenter</code> class is used to manage the logging levels and logging destinations.</li>
-  <li>The <code class="highlighter-rouge">Logger</code> for a class can be obtained using <code class="highlighter-rouge">LogsCenter.getLogger(Class)</code> which will log messages according to the specified logging level.</li>
-  <li>Log messages are output through the console and to a <code class="highlighter-rouge">.log</code> file.</li>
-  <li>The output logging level can be controlled using the <code class="highlighter-rouge">logLevel</code> setting in the configuration file (See the <a href="/tp/Configuration.html">Configuration guide</a> section).</li>
-  <li>
-<strong>When choosing a level for a log message</strong>, follow the conventions given in <a href="https://se-education.org/guides/conventions/java/logging.html"><em>[se-edu/guides] Java: Logging conventions</em></a>.</li>
-</ul>
+  <div style="flex-grow: 1;">
+    <iframe width="100%" height="100%" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSWRaI0RizOyd4Yjczyw5PS12NU_FQCdQlKZGF53YUTF0mFkON8Hb2fwCTOybv4XLUIkU6fawsl74iR/pubhtml?gid=0&single=true&widget=true&headers=false">
+</iframe>
 
   </div>
 
-</article>
+</div>
 
-      </div>
-    </main>
+  </div>
+</main>
 
-  </body>
+</body>
 
 </html>
