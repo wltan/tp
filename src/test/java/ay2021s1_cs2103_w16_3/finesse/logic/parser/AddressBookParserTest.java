@@ -14,6 +14,7 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ClearCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.DeleteCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.EditCommand;
@@ -21,7 +22,9 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.ExitCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.FindCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.HelpCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.NameContainsKeywordsPredicate;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 import ay2021s1_cs2103_w16_3.finesse.testutil.EditTransactionDescriptorBuilder;
@@ -37,6 +40,13 @@ public class AddressBookParserTest {
         Transaction transaction = new TransactionBuilder().build();
         AddCommand command = (AddCommand) parser.parseCommand(TransactionUtil.getAddCommand(transaction));
         assertEquals(new AddCommand(transaction), command);
+    }
+
+    @Test
+    public void parseCommand_addIncome() throws Exception {
+        Income income = new TransactionBuilder().buildIncome();
+        AddIncomeCommand command = (AddIncomeCommand) parser.parseCommand(TransactionUtil.getAddIncomeCommand(income));
+        assertEquals(new AddIncomeCommand(income), command);
     }
 
     @Test
@@ -86,6 +96,12 @@ public class AddressBookParserTest {
     public void parseCommand_list() throws Exception {
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD) instanceof ListCommand);
         assertTrue(parser.parseCommand(ListCommand.COMMAND_WORD + " 3") instanceof ListCommand);
+    }
+
+    @Test
+    public void parseCommand_listIncome() throws Exception {
+        assertTrue(parser.parseCommand(ListIncomeCommand.COMMAND_WORD) instanceof ListIncomeCommand);
+        assertTrue(parser.parseCommand(ListIncomeCommand.COMMAND_WORD + " 3") instanceof ListIncomeCommand);
     }
 
     @Test

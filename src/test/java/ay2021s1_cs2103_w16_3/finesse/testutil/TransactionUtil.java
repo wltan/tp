@@ -8,8 +8,10 @@ import static ay2021s1_cs2103_w16_3.finesse.logic.parser.CliSyntax.PREFIX_NAME;
 import java.util.Set;
 
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.EditCommand;
 import ay2021s1_cs2103_w16_3.finesse.model.category.Category;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 
 /**
@@ -22,6 +24,13 @@ public class TransactionUtil {
      */
     public static String getAddCommand(Transaction transaction) {
         return AddCommand.COMMAND_WORD + " " + getTransactionDetails(transaction);
+    }
+
+    /**
+     * Returns an add income command string for adding the {@code transaction}.
+     */
+    public static String getAddIncomeCommand(Income income) {
+        return AddIncomeCommand.COMMAND_WORD + " " + getTransactionDetails(income);
     }
 
     /**
