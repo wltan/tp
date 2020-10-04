@@ -11,7 +11,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 
 /**
- * Adds a transaction to the address book.
+ * Adds an income to the finance tracker.
  */
 public class AddIncomeCommand extends Command {
 
