@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="/tp/assets/css/style.css">
 
-    <title>Meeting Minutes</title>
+    <title>Minutes for 10 October 2020</title>
   
 
 </head>
@@ -39,108 +39,64 @@
         <article class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Meeting Minutes</h1>
+    <h1 class="post-title">Minutes for 10 October 2020</h1>
   </header>
 
   <div class="post-content">
+    <p><em>*Foreword: In lieu of CS2100 midterm assessment, the meeting was postponed to 10 October 2020.</em></p>
+
+<h3 id="updated-architecture">Updated Architecture</h3>
+
+<p>Issue: Need to support UI-dependent behaviour for commands.</p>
+
+<p>Solution: Pass the UI state to the command parser.</p>
+
+<h3 id="actionables">Actionables</h3>
+
+<p>Wei Liang:</p>
+<ul>
+  <li>Create {Add, Delete} × {Expense, Income} Command
     <ul>
-  
-  
-    
-      <li>
-        <a href="/tp/minutes/20201010.html">Minutes for 10 October 2020</a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="/tp/minutes/20201006.html">Minutes for 6 October 2020</a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="/tp/minutes/20201002.html">Minutes for 2 October 2020</a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="/tp/minutes/20200925.html">Minutes for 25 September 2020</a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="/tp/minutes/20200919.html">Minutes for 19 September 2020</a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="/tp/minutes/20200912.html">Minutes for 12 September 2020</a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="/tp/minutes/20200905.html">Minutes for 5 September 2020</a>
-      </li>
-    
-  
-    
-      <li>
-        <a href="/tp/minutes/20200829.html">Minutes for 29 August 2020</a>
-      </li>
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
-    
-  
+      <li>Generic <code class="highlighter-rouge">AddCommand</code> that works based on the current <code class="highlighter-rouge">UiState</code>
+</li>
+    </ul>
+  </li>
 </ul>
+
+<p>Ian:</p>
+<ul>
+  <li>Add UiState (Partially done)</li>
+  <li>Create {Edit, List} × {Expense, Income} Command
+    <ul>
+      <li>Generic <code class="highlighter-rouge">ListCommand</code> that works based on the current <code class="highlighter-rouge">UiState</code>
+</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Yong Ping:</p>
+<ul>
+  <li>Edit <code class="highlighter-rouge">ModelManager.getFilteredTransactionList</code>
+</li>
+  <li>Remove <code class="highlighter-rouge">TransactionList</code>
+</li>
+</ul>
+
+<p>Jingjing:</p>
+<ul>
+  <li>Make <code class="highlighter-rouge">Transaction</code> abstract</li>
+  <li>Generic <code class="highlighter-rouge">FindCommand</code> that works based on the current <code class="highlighter-rouge">UiState</code>
+</li>
+</ul>
+
+<p>Siddarth:</p>
+<ul>
+  <li>Adding left side panel in the main window</li>
+  <li>Change menu tabs to tab panel</li>
+  <li>Center categories</li>
+  <li>Show expense list and income lists in the respective panels (hook logic to UI)</li>
+</ul>
+
 
   </div>
 
