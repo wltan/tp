@@ -11,14 +11,20 @@ import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 
 /**
- * Deletes a transaction identified using its displayed index from the finance tracker.
+ * Deletes a transaction identified using its displayed index from the finance tracker
+ * depending on the tab the user is on.
+ *
+ * Base class for DeleteExpenseCommand and DeleteIncomeCommand.
  */
 public class DeleteCommand extends Command {
 
     public static final String COMMAND_WORD = "delete";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the transaction identified by the index number used in the displayed transaction list.\n"
+            + ": Deletes the transaction identified by the index number used in "
+            + "the displayed transaction list on the current tab.\n"
+            + "When on Income tab: Deletes from the currently displayed income list.\n"
+            + "When on Expenses tab: Deletes from the currently displayed expenses list.\n"
             + "Parameters: INDEX (must be a positive integer)\n"
             + "Example: " + COMMAND_WORD + " 1";
 

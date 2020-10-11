@@ -14,13 +14,6 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
  */
 public class DeleteIncomeCommand extends DeleteCommand {
 
-    public static final String COMMAND_WORD = "delete";
-
-    public static final String MESSAGE_USAGE = COMMAND_WORD
-            + ": Deletes the income identified by the index number used in the displayed income list.\n"
-            + "Parameters: INDEX (must be a positive integer)\n"
-            + "Example: " + COMMAND_WORD + " 1";
-
     public static final String MESSAGE_DELETE_TRANSACTION_SUCCESS = "Deleted Income: %1$s";
 
     public DeleteIncomeCommand(DeleteCommand superCommand) {
