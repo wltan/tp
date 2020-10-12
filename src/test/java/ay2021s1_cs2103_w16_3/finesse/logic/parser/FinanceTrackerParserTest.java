@@ -176,7 +176,7 @@ public class FinanceTrackerParserTest {
     }
 
     @Test
-    public void parseCommand_deleteWhenOverviewTab() throws Exception {
+    public void parseCommand_deleteWhenOverviewTab() {
         assertThrows(ParseException.class, () -> parser.parseCommand(
                 DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_TRANSACTION.getOneBased(), overviewUiStateStub));
     }
@@ -196,7 +196,7 @@ public class FinanceTrackerParserTest {
     }
 
     @Test
-    public void parseCommand_deleteWhenAnalyticsTab() throws Exception {
+    public void parseCommand_deleteWhenAnalyticsTab() {
         assertThrows(ParseException.class, () -> parser.parseCommand(
                 DeleteCommand.COMMAND_WORD + " " + INDEX_FIRST_TRANSACTION.getOneBased(), analyticsUiStateStub));
     }
