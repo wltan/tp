@@ -30,6 +30,9 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListTransactionCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.TabCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiState.Tab;
 
@@ -62,7 +65,27 @@ public class FinanceTrackerParser {
         switch (commandWord) {
 
         case AddCommand.COMMAND_WORD:
-            return new AddCommandParser().parse(arguments);
+            final AddCommand baseAddCommand = new AddCommandParser().parse(arguments);
+            final Transaction addCommandToAdd = baseAddCommand.getToAdd();
+            switch (uiState.getCurrentTab()) {
+            case EXPENSES:
+                return new AddExpenseCommand(new Expense(
+                        addCommandToAdd.getTitle(),
+                        addCommandToAdd.getAmount(),
+                        addCommandToAdd.getDate(),
+                        addCommandToAdd.getCategories()
+                ));
+            case INCOME:
+                return new AddIncomeCommand(new Income(
+                        addCommandToAdd.getTitle(),
+                        addCommandToAdd.getAmount(),
+                        addCommandToAdd.getDate(),
+                        addCommandToAdd.getCategories()
+                ));
+            default:
+                throw new ParseException(commandInvalidTabMessage(commandWord,
+                        Tab.EXPENSES, Tab.INCOME));
+            }
 
         case AddExpenseCommand.COMMAND_WORD:
         case AddExpenseCommand.COMMAND_ALIAS:

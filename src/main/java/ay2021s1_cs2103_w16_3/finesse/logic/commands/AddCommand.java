@@ -11,23 +11,26 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 
 /**
  * Adds a transaction to the finance tracker.
+ * Depending on the current tab, either an Expense or an Income will be created.
  */
 public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to the finance tracker. "
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to the finance tracker, "
+            + " based on the current tab."
+            + "When on Income tab: Adds an income.\n"
+            + "When on Expenses tab: Adds an expense.\n"
             + "Parameters: "
             + PREFIX_TITLE + "TITLE "
             + PREFIX_AMOUNT + "AMOUNT "
             + PREFIX_DATE + "DATE "
             + "[" + PREFIX_CATEGORY + "CATEGORY]...\n"
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_TITLE + "John Doe "
-            + PREFIX_AMOUNT + "98765432 "
-            + PREFIX_DATE + "johnd@example.com "
-            + PREFIX_CATEGORY + "friends "
-            + PREFIX_CATEGORY + "owesMoney";
+            + PREFIX_TITLE + "Lunch "
+            + PREFIX_AMOUNT + "$5 "
+            + PREFIX_DATE + "13/10/2020 "
+            + PREFIX_CATEGORY + "Food & Beverage";
 
     public static final String MESSAGE_SUCCESS = "New transaction added: %1$s";
 
@@ -39,6 +42,10 @@ public class AddCommand extends Command {
     public AddCommand(Transaction transaction) {
         requireNonNull(transaction);
         toAdd = transaction;
+    }
+
+    public Transaction getToAdd() {
+        return toAdd;
     }
 
     @Override

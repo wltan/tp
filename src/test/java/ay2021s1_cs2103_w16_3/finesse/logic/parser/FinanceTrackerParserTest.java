@@ -14,7 +14,6 @@ import java.util.stream.Collectors;
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ClearCommand;
@@ -47,35 +46,33 @@ public class FinanceTrackerParserTest {
     private final AnalyticsUiStateStub analyticsUiStateStub = new AnalyticsUiStateStub();
 
     @Test
-    public void parseCommand_addWhenOverviewTab() throws Exception {
+    public void parseCommand_addWhenOverviewTab() {
         Transaction transaction = new TransactionBuilder().build();
-        AddCommand command =
-                (AddCommand) parser.parseCommand(TransactionUtil.getAddCommand(transaction), overviewUiStateStub);
-        assertEquals(new AddCommand(transaction), command);
+        assertThrows(ParseException.class, () -> parser.parseCommand(
+                TransactionUtil.getAddCommand(transaction), overviewUiStateStub));
     }
 
     @Test
     public void parseCommand_addWhenIncomeTab() throws Exception {
-        Transaction transaction = new TransactionBuilder().build();
-        AddCommand command =
-                (AddCommand) parser.parseCommand(TransactionUtil.getAddCommand(transaction), incomeUiStateStub);
-        assertEquals(new AddCommand(transaction), command);
+        Income income = new TransactionBuilder().buildIncome();
+        AddIncomeCommand command =
+                (AddIncomeCommand) parser.parseCommand(TransactionUtil.getAddCommand(income), incomeUiStateStub);
+        assertEquals(new AddIncomeCommand(income), command);
     }
 
     @Test
     public void parseCommand_addWhenExpensesTab() throws Exception {
-        Transaction transaction = new TransactionBuilder().build();
-        AddCommand command =
-                (AddCommand) parser.parseCommand(TransactionUtil.getAddCommand(transaction), expensesUiStateStub);
-        assertEquals(new AddCommand(transaction), command);
+        Expense expense = new TransactionBuilder().buildExpense();
+        AddExpenseCommand command =
+                (AddExpenseCommand) parser.parseCommand(TransactionUtil.getAddCommand(expense), expensesUiStateStub);
+        assertEquals(new AddExpenseCommand(expense), command);
     }
 
     @Test
-    public void parseCommand_addWhenAnalyticsTab() throws Exception {
+    public void parseCommand_addWhenAnalyticsTab() {
         Transaction transaction = new TransactionBuilder().build();
-        AddCommand command =
-                (AddCommand) parser.parseCommand(TransactionUtil.getAddCommand(transaction), analyticsUiStateStub);
-        assertEquals(new AddCommand(transaction), command);
+        assertThrows(ParseException.class, () -> parser.parseCommand(
+                TransactionUtil.getAddCommand(transaction), analyticsUiStateStub));
     }
 
     @Test

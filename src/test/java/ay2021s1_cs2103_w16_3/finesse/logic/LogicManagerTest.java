@@ -26,7 +26,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.model.ModelManager;
 import ay2021s1_cs2103_w16_3.finesse.model.ReadOnlyFinanceTracker;
 import ay2021s1_cs2103_w16_3.finesse.model.UserPrefs;
-import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.storage.JsonFinanceTrackerStorage;
 import ay2021s1_cs2103_w16_3.finesse.storage.JsonUserPrefsStorage;
 import ay2021s1_cs2103_w16_3.finesse.storage.StorageManager;
@@ -80,11 +80,11 @@ public class LogicManagerTest {
         StorageManager storage = new StorageManager(financeTrackerStorage, userPrefsStorage);
         logic = new LogicManager(model, storage);
 
-        // Execute add command
+        // Execute add command - adds an Expense as assertCommandFailure uses the expensesUiStateStub
         String addCommand = AddCommand.COMMAND_WORD + TITLE_DESC_AMY + AMOUNT_DESC_AMY + DATE_DESC_AMY;
-        Transaction expectedTransaction = new TransactionBuilder(AMY).withCategories().build();
+        Expense expectedExpense = new TransactionBuilder(AMY).withCategories().buildExpense();
         ModelManager expectedModel = new ModelManager();
-        expectedModel.addTransaction(expectedTransaction);
+        expectedModel.addExpense(expectedExpense);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }
