@@ -17,8 +17,8 @@ public class AddCommand extends Command {
 
     public static final String COMMAND_WORD = "add";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to the finance tracker, "
-            + " based on the current tab."
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a transaction to the finance tracker "
+            + "based on the current tab.\n"
             + "When on Income tab: Adds an income.\n"
             + "When on Expenses tab: Adds an expense.\n"
             + "Parameters: "
