@@ -17,6 +17,7 @@ public class AmountTest {
     public void constructor_invalidAmount_throwsIllegalArgumentException() {
         String invalidAmount = "";
         assertThrows(IllegalArgumentException.class, () -> new Amount(invalidAmount));
+        assertThrows(IllegalArgumentException.class, () -> new Amount("40.404"));
     }
 
     @Test

@@ -50,7 +50,7 @@ public class TransactionCard extends UiPart<Region> {
         cardPane.setPrefHeight(PREFFERED_CARD_HEIGHT);
         id.setText(displayedIndex + ". ");
         title.setText(transaction.getTitle().fullTitle);
-        amount.setText(transaction.getAmount().value);
+        amount.setText(transaction.getAmount().toString());
         transaction.getCategories().stream()
                 .sorted(Comparator.comparing(category -> category.categoryName))
                 .forEach(category -> {

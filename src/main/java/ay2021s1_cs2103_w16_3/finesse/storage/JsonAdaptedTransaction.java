@@ -48,7 +48,7 @@ class JsonAdaptedTransaction {
      */
     public JsonAdaptedTransaction(Transaction source) {
         title = source.getTitle().fullTitle;
-        amount = source.getAmount().value;
+        amount = source.getAmount().toString();
         date = source.getDate().toString();
         categories.addAll(source.getCategories().stream()
                 .map(JsonAdaptedCategory::new)
