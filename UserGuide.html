@@ -44,35 +44,25 @@
   </header>
 
   <div class="post-content">
-    <p>Fine$$e is a <strong>desktop app for managing finances, optimized for use via a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Fine$$e can track and help you cultivate good financial habits faster than traditional GUI apps.</p>
+    <p>Fine$$e is a <strong>desktop finance tracker optimized for use via a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Fine$$e can help you track your transactions (expenses/incomes) and cultivate good financial habits faster than traditional GUI apps.</p>
 
 <ul id="markdown-toc">
   <li><a href="#quick-start" id="markdown-toc-quick-start">Quick start</a></li>
   <li>
 <a href="#features" id="markdown-toc-features">Features</a>    <ul>
-      <li>
-<a href="#1-expenses" id="markdown-toc-1-expenses">1. Expenses</a>        <ul>
-          <li><a href="#add-expense-add-expense--adde" id="markdown-toc-add-expense-add-expense--adde">Add expense: <code class="highlighter-rouge">add-expense</code> / <code class="highlighter-rouge">adde</code></a></li>
-          <li><a href="#list-all-expenses-ls-expense--lse" id="markdown-toc-list-all-expenses-ls-expense--lse">List all expenses: <code class="highlighter-rouge">ls-expense</code> / <code class="highlighter-rouge">lse</code></a></li>
-          <li><a href="#delete-an-expense-rm-expense--rme" id="markdown-toc-delete-an-expense-rm-expense--rme">Delete an expense: <code class="highlighter-rouge">rm-expense</code> / <code class="highlighter-rouge">rme</code></a></li>
-        </ul>
-      </li>
-      <li>
-<a href="#2-income" id="markdown-toc-2-income">2. Income</a>        <ul>
-          <li><a href="#add-income-add-income--addi" id="markdown-toc-add-income-add-income--addi">Add income: <code class="highlighter-rouge">add-income</code> / <code class="highlighter-rouge">addi</code></a></li>
-          <li><a href="#list-all-income-ls-income--lsi" id="markdown-toc-list-all-income-ls-income--lsi">List all income: <code class="highlighter-rouge">ls-income</code> / <code class="highlighter-rouge">lsi</code></a></li>
-          <li><a href="#delete-income-rm-income--rmi" id="markdown-toc-delete-income-rm-income--rmi">Delete income: <code class="highlighter-rouge">rm-income</code> / <code class="highlighter-rouge">rmi</code></a></li>
-        </ul>
-      </li>
-      <li>
-<a href="#3-savings" id="markdown-toc-3-savings">3. Savings</a>        <ul>
-          <li><a href="#show-savings-savings--sav" id="markdown-toc-show-savings-savings--sav">Show savings: <code class="highlighter-rouge">savings</code> / <code class="highlighter-rouge">sav</code></a></li>
-        </ul>
-      </li>
       <li><a href="#viewing-help-help" id="markdown-toc-viewing-help-help">Viewing help: <code class="highlighter-rouge">help</code></a></li>
-      <li><a href="#exiting-the-program-exit" id="markdown-toc-exiting-the-program-exit">Exiting the program: <code class="highlighter-rouge">exit</code></a></li>
+      <li><a href="#add-an-expense-add-expense--adde--on-expense-tab-add" id="markdown-toc-add-an-expense-add-expense--adde--on-expense-tab-add">Add an expense: <code class="highlighter-rouge">add-expense</code> / <code class="highlighter-rouge">adde</code> / (on Expense tab) <code class="highlighter-rouge">add</code></a></li>
+      <li><a href="#add-an-income-add-income--addi--on-income-tab-add" id="markdown-toc-add-an-income-add-income--addi--on-income-tab-add">Add an income: <code class="highlighter-rouge">add-income</code> / <code class="highlighter-rouge">addi</code> / (on Income tab) <code class="highlighter-rouge">add</code></a></li>
+      <li><a href="#list-transactions-list" id="markdown-toc-list-transactions-list">List transactions: <code class="highlighter-rouge">list</code></a></li>
+      <li><a href="#finding-transactions-by-keyword-find" id="markdown-toc-finding-transactions-by-keyword-find">Finding transactions by keyword: <code class="highlighter-rouge">find</code></a></li>
+      <li><a href="#edit-a-transaction-edit" id="markdown-toc-edit-a-transaction-edit">Edit a transaction: <code class="highlighter-rouge">edit</code></a></li>
+      <li><a href="#delete-a-transaction-delete" id="markdown-toc-delete-a-transaction-delete">Delete a transaction: <code class="highlighter-rouge">delete</code></a></li>
+      <li><a href="#switch-tab-tab" id="markdown-toc-switch-tab-tab">Switch tab: <code class="highlighter-rouge">tab</code></a></li>
+      <li><a href="#exiting-the-app-exit" id="markdown-toc-exiting-the-app-exit">Exiting the app: <code class="highlighter-rouge">exit</code></a></li>
+      <li><a href="#saving-the-data" id="markdown-toc-saving-the-data">Saving the data</a></li>
     </ul>
   </li>
+  <li><a href="#faq" id="markdown-toc-faq">FAQ</a></li>
   <li><a href="#command-summary" id="markdown-toc-command-summary">Command Summary</a></li>
 </ul>
 
@@ -85,140 +75,249 @@
     <p>Ensure you have Java <code class="highlighter-rouge">11</code> or above installed in your Computer.</p>
   </li>
   <li>
-    <p>Download the latest <code class="highlighter-rouge">finesse.jar</code> from <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">here</a>.</p>
+    <p>Download the latest <code class="highlighter-rouge">fine$$e.jar</code> from <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/releases">here</a>.</p>
   </li>
   <li>
     <p>Copy the file to the folder you want to use as the <em>home folder</em> for Fine$$e.</p>
   </li>
   <li>
-    <p>Double-click the file to start the app.</p>
+    <p>Double-click the file to start the app. The GUI similar to the below should appear in a few seconds, but without any sample data.<br>
+<img src="/tp/images/Ui.png" alt="Ui"></p>
   </li>
   <li>
-    <p>Type the command in the command box and press Enter to execute it. e.g. typing <code class="highlighter-rouge">help</code> and pressing Enter will open the help window.</p>
+    <p>Type a command in the command box and press Enter to execute it. e.g. typing <code class="highlighter-rouge">help</code> and pressing Enter will bring up the help message.<br>
+Some example commands you can try:</p>
+
+    <ul>
+      <li>
+        <p><code class="highlighter-rouge">list</code>: Lists all transactions on the current list.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage</code>: Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>, amount <code class="highlighter-rouge">5</code>, date <code class="highlighter-rouge">03/10/2020</code> and category <code class="highlighter-rouge">Food &amp; Beverage</code> to the finance tracker.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">delete 3</code>: Deletes the 3rd transaction shown in the current list.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">exit</code>: Exits the app.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Refer to the <a href="#features">Features</a> below for the details of each command.</p>
   </li>
 </ol>
 
 <hr>
 
-<div style="page-break-after: always;"></div>
-
 <h2 id="features">Features</h2>
 
-<h3 id="1-expenses">1. Expenses</h3>
+<div class="alert alert-info">
 
-<h4 id="add-expense-add-expense--adde">Add expense: <code class="highlighter-rouge">add-expense</code> / <code class="highlighter-rouge">adde</code>
-</h4>
-<p>Adds a new expense to the tracker.</p>
+  <p><strong><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">Notes about the command format:</strong><br></p>
 
-<p>Format: <code class="highlighter-rouge">add-expense d/DESCRIPTION a/AMOUNT</code></p>
+  <ul>
+    <li>
+      <p>Words in <code class="highlighter-rouge">UPPER_CASE</code> are the parameters to be supplied by the user.<br>
+e.g. in <code class="highlighter-rouge">add-expense t/TITLE</code>, <code class="highlighter-rouge">TITLE</code> is a parameter which can be used as <code class="highlighter-rouge">add t/Bubble Tea</code>.</p>
+    </li>
+    <li>
+      <p>Items in square brackets are optional.<br>
+e.g <code class="highlighter-rouge">t/TITLE [c/CATEGORY]</code> can be used as <code class="highlighter-rouge">t/Bubble Tea c/Food &amp; Beverage</code> or as <code class="highlighter-rouge">t/Bubble Tea</code>.</p>
+    </li>
+    <li>
+      <p>Items with <code class="highlighter-rouge">…</code>​ after them can be used multiple times including zero times.<br>
+e.g. <code class="highlighter-rouge">[c/CATEGORY]…​</code> can be used as `  ` (i.e. 0 times), <code class="highlighter-rouge">c/Food &amp; Beverage</code>, <code class="highlighter-rouge">c/Food &amp; Beverage c/Tea</code> etc.</p>
+    </li>
+    <li>
+      <p>Parameters can be in any order.<br>
+e.g. if the command specifies <code class="highlighter-rouge">t/TITLE a/AMOUNT</code>, <code class="highlighter-rouge">a/AMOUNT t/TITLE</code> is also acceptable.</p>
+    </li>
+  </ul>
 
-<p>Examples:</p>
-<ul>
-  <li>
-<code class="highlighter-rouge">add-expense d/Lunch a/3.2</code> will add an expense with description “Lunch” and amount $3.20.</li>
-  <li>
-<code class="highlighter-rouge">adde d/Bubble Tea a/4.5</code> will add an expense with description “Bubble Tea” and amount $4.50.</li>
-</ul>
-
-<h4 id="list-all-expenses-ls-expense--lse">List all expenses: <code class="highlighter-rouge">ls-expense</code> / <code class="highlighter-rouge">lse</code>
-</h4>
-
-<p>Shows a list of all expenses in the finance tracker.</p>
-
-<p>Format: <code class="highlighter-rouge">ls-expense</code> / <code class="highlighter-rouge">lse</code></p>
-
-<h4 id="delete-an-expense-rm-expense--rme">Delete an expense: <code class="highlighter-rouge">rm-expense</code> / <code class="highlighter-rouge">rme</code>
-</h4>
-
-<p>Deletes a specified expense from the finance tracker.</p>
-
-<p>Format: <code class="highlighter-rouge">rm-expense INDEX</code> / <code class="highlighter-rouge">rme INDEX</code></p>
-
-<ul>
-  <li>Deletes a specified expense at the specified <code class="highlighter-rouge">INDEX</code> in the finance tracker.</li>
-  <li>The index refers to the index number shown in the displayed expense list.</li>
-  <li>The index <strong>must be a positive integer</strong> 1, 2, 3, …</li>
-</ul>
-
-<p>Examples:</p>
-<ul>
-  <li>
-<code class="highlighter-rouge">rm-expense 3</code> will delete the 3rd expense stored in the finance tracker.</li>
-  <li>
-<code class="highlighter-rouge">rme 2</code> will delete the 2nd expense stored in the finance tracker.</li>
-</ul>
-
-<div style="page-break-after: always;"></div>
-
-<h3 id="2-income">2. Income</h3>
-
-<h4 id="add-income-add-income--addi">Add income: <code class="highlighter-rouge">add-income</code> / <code class="highlighter-rouge">addi</code>
-</h4>
-<p>Adds a new income to the tracker.</p>
-
-<p>Format: <code class="highlighter-rouge">add-income d/DESCRIPTION a/AMOUNT</code></p>
-
-<p>Examples:</p>
-<ul>
-  <li>
-<code class="highlighter-rouge">add-income d/Internship a/1200</code> will add a new income with description “Internship” and amount $1200.00.</li>
-  <li>
-<code class="highlighter-rouge">addi d/Random Angpao a/10</code> will add a new income with description “Random Angpao” and amount $10.00.</li>
-</ul>
-
-<h4 id="list-all-income-ls-income--lsi">List all income: <code class="highlighter-rouge">ls-income</code> / <code class="highlighter-rouge">lsi</code>
-</h4>
-
-<p>Shows a list of all income in the finance tracker.</p>
-
-<p>Format: <code class="highlighter-rouge">ls-income</code> / <code class="highlighter-rouge">lsi</code></p>
-
-<h4 id="delete-income-rm-income--rmi">Delete income: <code class="highlighter-rouge">rm-income</code> / <code class="highlighter-rouge">rmi</code>
-</h4>
-
-<p>Deletes a specified income in the finance tracker.</p>
-
-<p>Format: <code class="highlighter-rouge">rm-income INDEX</code> / <code class="highlighter-rouge">rmi INDEX</code></p>
-
-<ul>
-  <li>Deletes the specified income entry from the finance tracker.</li>
-  <li>The index refers to the index number shown in the displayed income list.</li>
-  <li>The index <strong>must be a positive integer</strong> 1, 2, 3, …</li>
-</ul>
-
-<p>Examples:</p>
-<ul>
-  <li>
-<code class="highlighter-rouge">rm-income 2</code> removes the 2nd income entry stored in the finance tracker.</li>
-  <li>
-<code class="highlighter-rouge">rmi 3</code> removes the 3rd income entry stored in the finance tracker.</li>
-</ul>
-
-<div style="page-break-after: always;"></div>
-
-<h3 id="3-savings">3. Savings</h3>
-
-<h4 id="show-savings-savings--sav">Show savings: <code class="highlighter-rouge">savings</code> / <code class="highlighter-rouge">sav</code>
-</h4>
-<p>Shows the amount of money saved for the month.</p>
-
-<p>Format: <code class="highlighter-rouge">savings</code> / <code class="highlighter-rouge">sav</code></p>
+</div>
 
 <h3 id="viewing-help-help">Viewing help: <code class="highlighter-rouge">help</code>
 </h3>
-<p>Shows a message explaining how to access the help page.</p>
+<p>Shows a message with instructions on how to access the user guide.</p>
 
 <p>Format: <code class="highlighter-rouge">help</code></p>
 
-<h3 id="exiting-the-program-exit">Exiting the program: <code class="highlighter-rouge">exit</code>
+<h3 id="add-an-expense-add-expense--adde--on-expense-tab-add">Add an expense: <code class="highlighter-rouge">add-expense</code> / <code class="highlighter-rouge">adde</code> / (on Expense tab) <code class="highlighter-rouge">add</code>
 </h3>
-<p>Exits the program.</p>
+<p>Adds an expense to the finance tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">add-expense t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code></p>
+
+<ul>
+  <li>
+<code class="highlighter-rouge">AMOUNT</code> should be a number with 0 or 2 decimal places, with an optional <code class="highlighter-rouge">$</code> in front.</li>
+  <li>
+<code class="highlighter-rouge">DATE</code> should be in <code class="highlighter-rouge">dd/mm/yyyy</code> format.</li>
+</ul>
+
+<p>Examples:</p>
+<ul>
+  <li><code class="highlighter-rouge">add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage</code></li>
+  <li><code class="highlighter-rouge">adde t/Taxi Home from School a/$13.50 d/10/10/2020 c/Transport c/School</code></li>
+</ul>
+
+<h3 id="add-an-income-add-income--addi--on-income-tab-add">Add an income: <code class="highlighter-rouge">add-income</code> / <code class="highlighter-rouge">addi</code> / (on Income tab) <code class="highlighter-rouge">add</code>
+</h3>
+<p>Adds an income to the finance tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">add-income t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code></p>
+
+<ul>
+  <li>
+<code class="highlighter-rouge">AMOUNT</code> should be a number with 0 or 2 decimal places, with an optional <code class="highlighter-rouge">$</code> in front.</li>
+  <li>
+<code class="highlighter-rouge">DATE</code> should be in <code class="highlighter-rouge">dd/mm/yyyy</code> format.</li>
+</ul>
+
+<p>Examples:</p>
+<ul>
+  <li><code class="highlighter-rouge">add-income t/Internship a/560 d/03/10/2020 c/Work</code></li>
+  <li><code class="highlighter-rouge">addi t/Angpao money a/$20 d/25/01/2020 c/CNY c/Gift</code></li>
+</ul>
+
+<h3 id="list-transactions-list">List transactions: <code class="highlighter-rouge">list</code>
+</h3>
+
+<p>Shows a list of all transactions on the current tab.</p>
+<ul>
+  <li>On Overview tab: lists all transactions (expenses/incomes).</li>
+  <li>On Expenses tab: lists all expenses.</li>
+  <li>On Income tab: lists all incomes.</li>
+</ul>
+
+<p>Format: <code class="highlighter-rouge">list</code></p>
+
+<h3 id="finding-transactions-by-keyword-find">Finding transactions by keyword: <code class="highlighter-rouge">find</code>
+</h3>
+
+<p>Finds transactions with titles that contain any of the given keywords on the current tab.</p>
+<ul>
+  <li>On Overview tab: searches all transactions (expenses/incomes).</li>
+  <li>On Expenses tab: searches all expenses.</li>
+  <li>On Income tab: searches all incomes.</li>
+</ul>
+
+<p>Format: <code class="highlighter-rouge">find KEYWORD [MORE_KEYWORDS]</code></p>
+
+<ul>
+  <li>The search is case-insensitive. e.g <code class="highlighter-rouge">taxi</code> will match <code class="highlighter-rouge">Taxi</code>
+</li>
+  <li>The order of the keywords does not matter. e.g. <code class="highlighter-rouge">Bus Train</code> will match <code class="highlighter-rouge">Train Bus</code>
+</li>
+  <li>Only the title is searched.</li>
+  <li>Only full words will be matched. e.g. <code class="highlighter-rouge">Snack</code> will not match <code class="highlighter-rouge">Snacks</code>
+</li>
+  <li>Titles matching at least one keyword will be returned (i.e. <code class="highlighter-rouge">OR</code> search).
+e.g. <code class="highlighter-rouge">Tea Coffee</code> will return <code class="highlighter-rouge">Bubble Tea</code>, <code class="highlighter-rouge">Starbucks Coffee</code>
+</li>
+</ul>
+
+<p>Examples:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">find milk</code> returns <code class="highlighter-rouge">strawberry milk</code> and <code class="highlighter-rouge">Chocolate Milk</code>
+</li>
+  <li>
+<code class="highlighter-rouge">find tea coffee</code> returns <code class="highlighter-rouge">Bubble Tea</code> and <code class="highlighter-rouge">Starbucks Coffee</code>
+</li>
+</ul>
+
+<h3 id="edit-a-transaction-edit">Edit a transaction: <code class="highlighter-rouge">edit</code>
+</h3>
+
+<p>Edits an existing transaction in the finance tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">edit INDEX [t/TITLE] [a/AMOUNT] [d/DATE] [c/CATEGORY]…​</code></p>
+
+<ul>
+  <li>Edits the transaction at the specified <code class="highlighter-rouge">INDEX</code> on the current list.
+The index refers to the index number shown on the current displayed list.
+The index <strong>must be a positive integer</strong> 1, 2, 3, …​
+    <ul>
+      <li>On Overview tab: edits the transaction at the specified <code class="highlighter-rouge">INDEX</code> on the current transaction list.</li>
+      <li>On Expenses tab: edits the expense at the specified <code class="highlighter-rouge">INDEX</code> on the current expenses list.</li>
+      <li>On Income tab: edits the income at the specified <code class="highlighter-rouge">INDEX</code> on the current incomes list.</li>
+    </ul>
+  </li>
+  <li>At least one of the optional fields must be provided.</li>
+  <li>Existing values will be updated to the input values.</li>
+  <li>When editing category, the existing categories for that transaction will be removed i.e adding of categories is not cumulative.</li>
+  <li>You can remove all the transaction’s categories by typing <code class="highlighter-rouge">c/</code> without specifying any categories after it.</li>
+</ul>
+
+<p>Examples:</p>
+<ul>
+  <li>(On Expenses tab) <code class="highlighter-rouge">list</code> followed by <code class="highlighter-rouge">edit 1 t/Brunch d/22/09/2020</code> edits the title and date of the 1st expense in the expenses list to be <code class="highlighter-rouge">Brunch</code> and <code class="highlighter-rouge">22/09/2020</code> respectively.</li>
+  <li>(On Income tab) <code class="highlighter-rouge">find prize</code> followed by <code class="highlighter-rouge">edit 2 a/500 c/</code> edits the amount of the 2nd income in the resulting incomes list of the <code class="highlighter-rouge">find</code> command to be <code class="highlighter-rouge">500</code> and clears all existing categories.</li>
+</ul>
+
+<h3 id="delete-a-transaction-delete">Delete a transaction: <code class="highlighter-rouge">delete</code>
+</h3>
+
+<p>Deletes a specified transaction from the finance tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">delete INDEX</code></p>
+
+<ul>
+  <li>Deletes a specified transaction at the specified <code class="highlighter-rouge">INDEX</code> on the current list.
+The index refers to the index number shown on the current displayed list.
+The index <strong>must be a positive integer</strong> 1, 2, 3, …​
+    <ul>
+      <li>On Overview tab: deletes the transaction at the specified <code class="highlighter-rouge">INDEX</code> on the current transaction list.</li>
+      <li>On Expenses tab: deletes the expense at the specified <code class="highlighter-rouge">INDEX</code> on the current expenses list.</li>
+      <li>On Income tab: deletes the income at the specified <code class="highlighter-rouge">INDEX</code> on the current incomes list.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Examples:</p>
+<ul>
+  <li>(On Expenses tab) <code class="highlighter-rouge">list</code> followed by <code class="highlighter-rouge">delete 3</code> deletes the 3rd expense in the expenses list from the finance tracker.</li>
+  <li>(On Income tab) <code class="highlighter-rouge">find allowance</code> followed by <code class="highlighter-rouge">delete 2</code> deletes the 2nd income in the resulting incomes list of the <code class="highlighter-rouge">find</code> command from the finance tracker.</li>
+</ul>
+
+<h3 id="switch-tab-tab">Switch tab: <code class="highlighter-rouge">tab</code>
+</h3>
+
+<p>Switches the current tab on the finance tracker.</p>
+
+<p>Format: <code class="highlighter-rouge">delete INDEX</code></p>
+
+<ul>
+  <li>Switches to the tab corresponding to the specified <code class="highlighter-rouge">INDEX</code>. The index <strong>must be 1, 2, 3, or 4</strong>.
+    <ol>
+      <li>Switches to the Overview tab.</li>
+      <li>Switches to the Expenses tab.</li>
+      <li>Switches to the Income tab.</li>
+      <li>Switches to the Analytics tab.</li>
+    </ol>
+  </li>
+</ul>
+
+<h3 id="exiting-the-app-exit">Exiting the app: <code class="highlighter-rouge">exit</code>
+</h3>
+<p>Exits the app.</p>
 
 <p>Format: <code class="highlighter-rouge">exit</code></p>
 
+<h3 id="saving-the-data">Saving the data</h3>
+
+<p>Fine$$e data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.</p>
+
 <hr>
 
-<div style="page-break-after: always;"></div>
+<h2 id="faq">FAQ</h2>
+
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Fine$$e finance tracker in the home folder.</p>
+
+<hr>
 
 <h2 id="command-summary">Command Summary</h2>
 
@@ -234,59 +333,49 @@
     <tr>
       <td>Add Expense</td>
       <td>
-<code class="highlighter-rouge">add-expense d/DESCRIPTION a/AMOUNT</code> <br> <code class="highlighter-rouge">adde d/DESCRIPTION a/AMOUNT</code>
+<code class="highlighter-rouge">add-expense t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code> <br> <code class="highlighter-rouge">adde t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code> <br> (On Expenses tab) <code class="highlighter-rouge">add t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code>
 </td>
       <td>
-<code class="highlighter-rouge">add-expense d/Lunch a/3.2</code><br><code class="highlighter-rouge">adde d/BubbleTea a/6</code>
-</td>
-    </tr>
-    <tr>
-      <td>List Expenses</td>
-      <td>
-<code class="highlighter-rouge">ls-expense</code> <br> <code class="highlighter-rouge">lse</code>
-</td>
-      <td> </td>
-    </tr>
-    <tr>
-      <td>Delete Expense</td>
-      <td>
-<code class="highlighter-rouge">rm-expense INDEX</code> <br> <code class="highlighter-rouge">rme INDEX</code>
-</td>
-      <td>
-<code class="highlighter-rouge">rm-expense 3</code><br><code class="highlighter-rouge">rme 2</code>
+<code class="highlighter-rouge">add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage</code> <br> <code class="highlighter-rouge">adde t/Taxi Home from School a/$13.50 d/10/10/2020 c/Transport c/School</code>
 </td>
     </tr>
     <tr>
       <td>Add Income</td>
       <td>
-<code class="highlighter-rouge">add-income d/DESCRIPTION a/AMOUNT</code> <br> <code class="highlighter-rouge">addi d/DESCRIPTION a/AMOUNT</code>
+<code class="highlighter-rouge">add-income t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code> <br> <code class="highlighter-rouge">addi t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code> <br> (On Income tab) <code class="highlighter-rouge">add t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code>
 </td>
       <td>
-<code class="highlighter-rouge">add-income d/Internship a/1000</code><br><code class="highlighter-rouge">addi d/Random Angpao a/10</code>
+<code class="highlighter-rouge">add-income t/Internship a/560 d/03/10/2020 c/Work</code> <br> <code class="highlighter-rouge">addi t/Angpao money a/$20 d/10/10/2020 c/CNY c/Gift</code>
 </td>
     </tr>
     <tr>
-      <td>List Incomes</td>
-      <td>
-<code class="highlighter-rouge">ls-income</code> <br> <code class="highlighter-rouge">lsi</code>
-</td>
+      <td>List</td>
+      <td><code class="highlighter-rouge">list</code></td>
       <td> </td>
     </tr>
     <tr>
-      <td>Delete Income</td>
+      <td>Find</td>
+      <td><code class="highlighter-rouge">find KEYWORD [MORE_KEYWORDS]</code></td>
       <td>
-<code class="highlighter-rouge">rm-income INDEX</code> <br> <code class="highlighter-rouge">rm INDEX</code>
-</td>
-      <td>
-<code class="highlighter-rouge">rm-income 2</code><br><code class="highlighter-rouge">rmi 3</code>
+<code class="highlighter-rouge">find milk</code> <br> <code class="highlighter-rouge">find tea coffee</code>
 </td>
     </tr>
     <tr>
-      <td>Check Savings</td>
+      <td>Edit</td>
+      <td><code class="highlighter-rouge">edit INDEX [t/TITLE] [a/AMOUNT] [d/DATE] [c/CATEGORY]…​</code></td>
       <td>
-<code class="highlighter-rouge">savings</code> <br> <code class="highlighter-rouge">sav</code>
+<code class="highlighter-rouge">edit 1 t/Brunch d/22/09/2020</code> <br> <code class="highlighter-rouge">edit 2 a/500 c/</code>
 </td>
-      <td> </td>
+    </tr>
+    <tr>
+      <td>Delete</td>
+      <td><code class="highlighter-rouge">delete INDEX</code></td>
+      <td><code class="highlighter-rouge">delete 1</code></td>
+    </tr>
+    <tr>
+      <td>Tab</td>
+      <td><code class="highlighter-rouge">tab INDEX</code></td>
+      <td><code class="highlighter-rouge">tab 2</code></td>
     </tr>
     <tr>
       <td>Help</td>
