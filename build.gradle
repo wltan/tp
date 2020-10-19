@@ -83,7 +83,7 @@ dependencies {
 }
 
 shadowJar {
-    archiveFileName = 'fine$$e.jar'
+    archiveFileName = 'finesse.jar'
 }
 
 run {
