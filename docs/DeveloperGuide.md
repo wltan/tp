@@ -96,10 +96,37 @@ Below is the Sequence Diagram for interactions within the `Logic` component for 
 The `Model`:
 
 * stores a `UserPref` object that represents the user’s preferences.
-* stores the finance tracker data.
+* stores the finance tracker data in a `TransactionList` containing `Transaction`s.
 * exposes `MonthlySavings` and `MonthlyBudget`, which can be 'observed' e.g. the UI can be bound to the values in these classes so that the UI automatically updates when the values in the classes change.
 * exposes an unmodifiable `ObservableList<Transaction>` which can be 'observed' e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list changes.
-* does not depend on any of the other three components.
+* does not depend on any of the other three components (`UI`, `Logic`, `Storage`).
+
+A `Transaction`:
+* represents a unit of user data within the finance tracker.
+* is either an `Expense` or an `Income`.
+* is composed of a `Title`, an `Amount`, a `Date`, and any number of `Category`s. These are known as *data fields*.
+
+The *data fields* `Title`, `Amount`, `Date`, and `Category` are encapsulations of an underlying Java data type.
+
+| Data Field  | Underlying Java Data Type   |
+| ----------- | -------------------------   |
+| `Title`     | `java.lang.String`          |
+| `Amount`    | `java.math.BigDecimal`      |
+| `Date`      | `java.time.LocalDate`       |
+| `Category`  | `java.lang.String`          |
+
+The underlying Java data types allow more operations to be done on `Transaction` objects, such as filtering transactions by date, or aggregating the amounts of expenses and incomes.
+
+<div markdown="span" class="alert alert-info">:information_source:
+**Note:** All data fields take in a `String` in their constructor, regardless of the underlying Java data type.
+Within the constructor, data validation takes place to ensure that the `String` correctly represents a valid data field.
+If the `String` given is not valid, an `IllegalArgumentException` will be thrown.
+Otherwise, the `String` is parsed into the underlying Java data type.<br><br>
+The reason for this is that when a data field object needs to be created, it is generally from a `String`
+(such as when a user command parsed from the `Logic` component, or when a transaction is loaded from the `Storage` component).
+This abstraction is maintained so that the implementation of other components (`Logic` and `Storage`) is independent of
+the underlying Java data type choices in the `Model` component.
+</div>
 
 ### Storage component
 
