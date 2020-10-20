@@ -19,8 +19,8 @@ Given below are how to use Gradle for some important project tasks.
 * **`clean`**: Deletes the files created during the previous build tasks (e.g. files in the `build` folder).<br>
   e.g. `./gradlew clean`
 
-* **`shadowJar`**: Uses the ShadowJar plugin to creat a fat JAR file in the `build/lib` folder, *if the current file is outdated*.<br>
-  e.g. `./gradlew shadowJar`.
+* **`shadowJar`**: Uses the ShadowJar plugin to create a fat JAR file in the `build/lib` folder, *if the current file is outdated*.<br>
+  e.g. `./gradlew shadowJar`
 
 * **`run`**: Builds and runs the application.<br>
   **`runShadow`**: Builds the application as a fat JAR, and then runs it.
@@ -31,6 +31,9 @@ Given below are how to use Gradle for some important project tasks.
 * **`test`**: Runs all tests.<
   * `./gradlew test` — Runs all tests
   * `./gradlew clean test` — Cleans the project and runs tests
+
+* **`pitest`**: Generates a [pitest](http://pitest.org/) mutation coverage report inside `build/reports`.<br>
+  e.g. `./gradlew clean pitest`
 
 --------------------------------------------------------------------------------------------------------------------
 
