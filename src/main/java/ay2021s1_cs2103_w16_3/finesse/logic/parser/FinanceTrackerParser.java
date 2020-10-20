@@ -4,11 +4,13 @@ import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALI
 import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_INVALID_TAB_FORMAT;
 import static ay2021s1_cs2103_w16_3.finesse.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import ay2021s1_cs2103_w16_3.finesse.commons.core.LogsCenter;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.AddIncomeCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.ClearCommand;
@@ -50,6 +52,8 @@ public class FinanceTrackerParser {
      */
     private static final Pattern BASIC_COMMAND_FORMAT = Pattern.compile("(?<commandWord>\\S+)(?<arguments>.*)");
 
+    private final Logger logger = LogsCenter.getLogger(FinanceTrackerParser.class);
+
     /**
      * Parses user input into command for execution.
      *
@@ -64,12 +68,15 @@ public class FinanceTrackerParser {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
         }
 
+        final Tab uiCurrentTab = uiState.getCurrentTab();
+        logger.info("----------------[CURRENT TAB][" + uiCurrentTab.toString() + "]");
+
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
         switch (commandWord) {
 
         case ADD_COMMAND_COMMAND_WORD:
-            switch (uiState.getCurrentTab()) {
+            switch (uiCurrentTab) {
             case EXPENSES:
                 return new AddExpenseCommandParser().parse(arguments);
             case INCOME:
@@ -89,7 +96,7 @@ public class FinanceTrackerParser {
 
         case EditCommand.COMMAND_WORD:
             final EditCommand baseEditCommand = new EditCommandParser().parse(arguments);
-            switch (uiState.getCurrentTab()) {
+            switch (uiCurrentTab) {
             case EXPENSES:
                 return new EditExpenseCommand(baseEditCommand);
             case INCOME:
@@ -101,7 +108,7 @@ public class FinanceTrackerParser {
 
         case DeleteCommand.COMMAND_WORD:
             final DeleteCommand baseDeleteCommand = new DeleteCommandParser().parse(arguments);
-            switch (uiState.getCurrentTab()) {
+            switch (uiCurrentTab) {
             case EXPENSES:
                 return new DeleteExpenseCommand(baseDeleteCommand);
             case INCOME:
@@ -116,7 +123,7 @@ public class FinanceTrackerParser {
 
         case FindCommand.COMMAND_WORD:
             final FindCommand baseFindCommand = new FindCommandParser().parse(arguments);
-            switch (uiState.getCurrentTab()) {
+            switch (uiCurrentTab) {
             case OVERVIEW:
                 return new FindTransactionCommand(baseFindCommand);
             case EXPENSES:
@@ -129,7 +136,7 @@ public class FinanceTrackerParser {
             }
 
         case ListCommand.COMMAND_WORD:
-            switch (uiState.getCurrentTab()) {
+            switch (uiCurrentTab) {
             case OVERVIEW:
                 return new ListTransactionCommand();
             case EXPENSES:

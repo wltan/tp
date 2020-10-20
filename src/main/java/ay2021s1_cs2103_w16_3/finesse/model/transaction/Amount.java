@@ -26,6 +26,7 @@ public class Amount {
         requireNonNull(amount);
         checkArgument(isValidAmount(amount), MESSAGE_CONSTRAINTS);
         value = new BigDecimal(amount.replaceFirst("^\\$", ""));
+        assert value.compareTo(BigDecimal.ZERO) >= 0; // amount should be non-negative
     }
 
     /**
