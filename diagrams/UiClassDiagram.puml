@@ -9,12 +9,21 @@ Interface Ui <<Interface>>
 Class "{abstract}\nUiPart" as UiPart
 Class UiManager
 Class MainWindow
-Class HelpWindow
 Class ResultDisplay
-Class PersonListPanel
-Class PersonCard
+Class TransactionListPanel
+Class TransactionCard
 Class StatusBarFooter
 Class CommandBox
+Class SavingsGoalPanel
+Class UiState
+
+package Expense {
+Class ExpensePanel
+}
+package Income {
+Class IncomePanel
+}
+
 }
 
 package Model <<Rectangle>> {
@@ -30,31 +39,37 @@ HiddenOutside ..> Ui
 
 UiManager .left.|> Ui
 UiManager -down-> MainWindow
-MainWindow --> HelpWindow
+UiManager --> UiState
+MainWindow --> UiState
 MainWindow *-down-> CommandBox
 MainWindow *-down-> ResultDisplay
-MainWindow *-down-> PersonListPanel
+MainWindow *-down-> TransactionListPanel
 MainWindow *-down-> StatusBarFooter
+MainWindow *-down-> ExpensePanel
+MainWindow *-down-> IncomePanel
+MainWindow *-down-> SavingsGoalPanel
 
-PersonListPanel -down-> PersonCard
+TransactionListPanel -down-> TransactionCard
 
 MainWindow -left-|> UiPart
 
 ResultDisplay --|> UiPart
 CommandBox --|> UiPart
-PersonListPanel --|> UiPart
-PersonCard --|> UiPart
+TransactionListPanel --|> UiPart
+TransactionCard --|> UiPart
 StatusBarFooter --|> UiPart
-HelpWindow -down-|> UiPart
+ExpensePanel --|> UiPart
+IncomePanel --|> UiPart
+SavingsGoalPanel --|> UiPart
 
-PersonCard ..> Model
+TransactionCard ..> Model
 UiManager -right-> Logic
 MainWindow -left-> Logic
 
-PersonListPanel -[hidden]left- HelpWindow
-HelpWindow -[hidden]left- CommandBox
 CommandBox -[hidden]left- ResultDisplay
 ResultDisplay -[hidden]left- StatusBarFooter
+ExpensePanel -[hidden]left- TransactionListPanel
+IncomePanel -[hidden]left- SavingsGoalPanel
 
 MainWindow -[hidden]-|> UiPart
 @enduml

@@ -1,0 +1,45 @@
+@startuml
+!include style.puml
+
+actor User
+
+box Ui UI_COLOR_T1
+participant ":MainWindow" as MainWindow UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant "c:XYZCommand" as XYZCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+note right of XYZCommand : XYZCommand =\nAddExpenseCommand,\nFindCommand, etc
+
+User -> MainWindow : input command string
+activate MainWindow
+
+MainWindow -> LogicManager : execute()
+activate LogicManager
+
+ref over LogicManager, XYZCommand : Parse user input
+
+LogicManager -> XYZCommand : execute()
+activate XYZCommand
+
+create CommandResult
+XYZCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> XYZCommand : result
+deactivate CommandResult
+
+XYZCommand --> LogicManager : result
+deactivate XYZCommand
+
+LogicManager --> MainWindow : result
+deactivate LogicManager
+
+MainWindow --> User
+deactivate MainWindow
+
+@enduml

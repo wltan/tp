@@ -1,0 +1,78 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":FinanceTrackerParser" as FinanceTrackerParser LOGIC_COLOR
+participant ":FindCommandParser" as FindCommandParser LOGIC_COLOR
+participant "b:FindCommand" as FindCommand LOGIC_COLOR
+participant "f:FindTransactionCommand" as FindTransactionCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":ModelManager" as ModelManager MODEL_COLOR
+end box
+
+[-> LogicManager : execute("find tea", uiState)
+activate LogicManager
+
+LogicManager -> FinanceTrackerParser : parseCommand("find tea", uiState)
+activate FinanceTrackerParser
+
+create FindCommandParser
+FinanceTrackerParser -> FindCommandParser
+activate FindCommandParser
+
+FindCommandParser --> FinanceTrackerParser
+deactivate FindCommandParser
+
+FinanceTrackerParser -> FindCommandParser : parse("tea")
+activate FindCommandParser
+
+create FindCommand
+FindCommandParser -> FindCommand
+activate FindCommand
+
+FindCommand --> FindCommandParser : b
+deactivate FindCommand
+
+FindCommandParser --> FinanceTrackerParser : b
+
+deactivate FindCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+FindCommandParser -[hidden]-> FinanceTrackerParser
+destroy FindCommandParser
+
+create FindTransactionCommand
+FinanceTrackerParser -> FindTransactionCommand : FindTransactionCommand(b)
+activate FindTransactionCommand
+
+FindTransactionCommand --> FinanceTrackerParser : f
+deactivate FindTransactionCommand
+
+FinanceTrackerParser --> LogicManager : f
+deactivate FinanceTrackerParser
+
+LogicManager -> FindTransactionCommand : execute()
+activate FindTransactionCommand
+
+FindTransactionCommand -> ModelManager : updateFilteredTransactionList(f.getPredicate())
+activate ModelManager
+
+ModelManager --> FindTransactionCommand
+deactivate ModelManager
+
+create CommandResult
+FindTransactionCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> FindTransactionCommand
+deactivate CommandResult
+
+FindTransactionCommand --> LogicManager : result
+deactivate FindTransactionCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

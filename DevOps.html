@@ -68,8 +68,8 @@
 e.g. <code class="highlighter-rouge">./gradlew clean</code></p>
   </li>
   <li>
-    <p><strong><code class="highlighter-rouge">shadowJar</code></strong>: Uses the ShadowJar plugin to creat a fat JAR file in the <code class="highlighter-rouge">build/lib</code> folder, <em>if the current file is outdated</em>.<br>
-e.g. <code class="highlighter-rouge">./gradlew shadowJar</code>.</p>
+    <p><strong><code class="highlighter-rouge">shadowJar</code></strong>: Uses the ShadowJar plugin to create a fat JAR file in the <code class="highlighter-rouge">build/lib</code> folder, <em>if the current file is outdated</em>.<br>
+e.g. <code class="highlighter-rouge">./gradlew shadowJar</code></p>
   </li>
   <li>
     <p><strong><code class="highlighter-rouge">run</code></strong>: Builds and runs the application.<br>
@@ -80,7 +80,7 @@ e.g. <code class="highlighter-rouge">./gradlew shadowJar</code>.</p>
 <strong><code class="highlighter-rouge">checkstyleTest</code></strong>: Runs the code style check for the test code base.</p>
   </li>
   <li>
-    <p><strong><code class="highlighter-rouge">test</code></strong>: Runs all tests.&lt;</p>
+<strong><code class="highlighter-rouge">test</code></strong>: Runs all tests.&lt;
     <ul>
       <li>
 <code class="highlighter-rouge">./gradlew test</code> — Runs all tests</li>
@@ -88,6 +88,10 @@ e.g. <code class="highlighter-rouge">./gradlew shadowJar</code>.</p>
 <code class="highlighter-rouge">./gradlew clean test</code> — Cleans the project and runs tests</li>
     </ul>
   </li>
+  <li>
+<strong><code class="highlighter-rouge">pitest</code></strong>: Generates a <a href="http://pitest.org/">pitest</a> mutation coverage report inside <code class="highlighter-rouge">build/reports</code>.<br>
+e.g. <code class="highlighter-rouge">./gradlew clean pitest</code>
+</li>
 </ul>
 
 <hr>

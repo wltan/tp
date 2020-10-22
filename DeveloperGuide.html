@@ -57,17 +57,16 @@
   </li>
   <li>
 <a href="#implementation" id="markdown-toc-implementation"><strong>Implementation</strong></a>    <ul>
+      <li><a href="#find-transactions" id="markdown-toc-find-transactions">Find transactions</a></li>
+      <li><a href="#programmatically-switch-selected-tab" id="markdown-toc-programmatically-switch-selected-tab">Programmatically switch selected tab</a></li>
+      <li><a href="#set-monthly-spending-limit" id="markdown-toc-set-monthly-spending-limit">Set monthly spending limit</a></li>
+      <li><a href="#set-monthly-savings-goal" id="markdown-toc-set-monthly-savings-goal">Set monthly savings goal</a></li>
       <li>
-<a href="#proposed-undoredo-feature" id="markdown-toc-proposed-undoredo-feature">[Proposed] Undo/redo feature</a>        <ul>
+<a href="#proposed-frequent-expense-feature" id="markdown-toc-proposed-frequent-expense-feature">[Proposed] Frequent Expense Feature</a>        <ul>
           <li><a href="#proposed-implementation" id="markdown-toc-proposed-implementation">Proposed Implementation</a></li>
-          <li>
-<a href="#design-consideration" id="markdown-toc-design-consideration">Design consideration:</a>            <ul>
-              <li><a href="#aspect-how-undo--redo-executes" id="markdown-toc-aspect-how-undo--redo-executes">Aspect: How undo &amp; redo executes</a></li>
-            </ul>
-          </li>
+          <li><a href="#convert-frequent-expense-to-expense-feature" id="markdown-toc-convert-frequent-expense-to-expense-feature">Convert Frequent Expense To Expense Feature</a></li>
         </ul>
       </li>
-      <li><a href="#proposed-data-archiving" id="markdown-toc-proposed-data-archiving">[Proposed] Data archiving</a></li>
     </ul>
   </li>
   <li><a href="#documentation-logging-testing-configuration-dev-ops" id="markdown-toc-documentation-logging-testing-configuration-dev-ops"><strong>Documentation, logging, testing, configuration, dev-ops</strong></a></li>
@@ -105,15 +104,10 @@
 
 <p>The <strong><em>Architecture Diagram</em></strong> given above explains the high-level design of the App. Given below is a quick overview of each component.</p>
 
-<div class="alert alert-primary">
-<img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Tip:</strong> The <code class="highlighter-rouge">.puml</code> files used to create diagrams in this document can be found in the <a href="https://github.com/se-edu/addressbook-level3/tree/master/docs/diagrams/">diagrams</a> folder. Refer to the <a href="https://se-education.org/guides/tutorials/plantUml.html"><em>PlantUML Tutorial</em> at se-edu/guides</a> to learn how to create and edit diagrams.
-
-</div>
-
-<p><strong><code class="highlighter-rouge">Main</code></strong> has two classes called <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/Main.java"><code class="highlighter-rouge">Main</code></a> and <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/MainApp.java"><code class="highlighter-rouge">MainApp</code></a>. It is responsible for,</p>
+<p><strong><code class="highlighter-rouge">Main</code></strong> has two classes called <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/Main.java"><code class="highlighter-rouge">Main</code></a> and <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/MainApp.java"><code class="highlighter-rouge">MainApp</code></a>. It is responsible for:</p>
 <ul>
-  <li>At app launch: Initializes the components in the correct sequence, and connects them up with each other.</li>
-  <li>At shut down: Shuts down the components and invokes cleanup methods where necessary.</li>
+  <li>on app launch - initializing the components in the correct sequence, and connecting them to each other.</li>
+  <li>on shut down - shutting down the components and invoking cleanup methods where necessary.</li>
 </ul>
 
 <p><a href="#common-classes"><strong><code class="highlighter-rouge">Commons</code></strong></a> represents a collection of classes used by multiple other components.</p>
@@ -122,7 +116,7 @@
 
 <ul>
   <li>
-<a href="#ui-component"><strong><code class="highlighter-rouge">UI</code></strong></a>: The UI of the App.</li>
+<a href="#ui-component"><strong><code class="highlighter-rouge">UI</code></strong></a>: The App’s User Interface.</li>
   <li>
 <a href="#logic-component"><strong><code class="highlighter-rouge">Logic</code></strong></a>: The command executor.</li>
   <li>
@@ -131,7 +125,7 @@
 <a href="#storage-component"><strong><code class="highlighter-rouge">Storage</code></strong></a>: Reads data from, and writes data to, the hard disk.</li>
 </ul>
 
-<p>Each of the four components,</p>
+<p>Each of the four components:</p>
 
 <ul>
   <li>defines its <em>API</em> in an <code class="highlighter-rouge">interface</code> with the same name as the Component.</li>
@@ -155,17 +149,17 @@
 <p><img src="/tp/images/UiClassDiagram.png" alt="Structure of the UI Component"></p>
 
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/Ui.java"><code class="highlighter-rouge">Ui.java</code></a></p>
+<a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/ui/Ui.java"><code class="highlighter-rouge">Ui.java</code></a></p>
 
-<p>The UI consists of a <code class="highlighter-rouge">MainWindow</code> that is made up of parts e.g.<code class="highlighter-rouge">CommandBox</code>, <code class="highlighter-rouge">ResultDisplay</code>, <code class="highlighter-rouge">TransactionListPanel</code>, <code class="highlighter-rouge">StatusBarFooter</code> etc. All these, including the <code class="highlighter-rouge">MainWindow</code>, inherit from the abstract <code class="highlighter-rouge">UiPart</code> class.</p>
+<p>The UI consists of a <code class="highlighter-rouge">MainWindow</code> that is made up of parts e.g.<code class="highlighter-rouge">CommandBox</code>, <code class="highlighter-rouge">ResultDisplay</code>, <code class="highlighter-rouge">TransactionListPanel</code>, <code class="highlighter-rouge">StatusBarFooter</code> etc. All of these, including <code class="highlighter-rouge">MainWindow</code>, inherit from the abstract <code class="highlighter-rouge">UiPart</code> class.</p>
 
-<p>The <code class="highlighter-rouge">UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code class="highlighter-rouge">.fxml</code> files that are in the <code class="highlighter-rouge">src/main/resources/view</code> folder. For example, the layout of the <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/ui/MainWindow.java"><code class="highlighter-rouge">MainWindow</code></a> is specified in <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/resources/view/MainWindow.fxml"><code class="highlighter-rouge">MainWindow.fxml</code></a></p>
+<p>The <code class="highlighter-rouge">UI</code> component uses the JavaFx UI framework. The layout of these UI parts is defined in matching <code class="highlighter-rouge">.fxml</code> files that are in the <code class="highlighter-rouge">src/main/resources/view</code> folder. For example, the layout of <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/ui/MainWindow.java"><code class="highlighter-rouge">MainWindow</code></a> is specified in <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/resources/view/MainWindow.fxml"><code class="highlighter-rouge">MainWindow.fxml</code></a>.</p>
 
-<p>The <code class="highlighter-rouge">UI</code> component,</p>
+<p>The <code class="highlighter-rouge">UI</code> component:</p>
 
 <ul>
-  <li>Executes user commands using the <code class="highlighter-rouge">Logic</code> component.</li>
-  <li>Listens for changes to <code class="highlighter-rouge">Model</code> data so that the UI can be updated with the modified data.</li>
+  <li>executes user commands using the <code class="highlighter-rouge">Logic</code> component.</li>
+  <li>listens for changes to <code class="highlighter-rouge">Model</code> data so that the UI can be updated with the modified data.</li>
 </ul>
 
 <h3 id="logic-component">Logic component</h3>
@@ -173,18 +167,18 @@
 <p><img src="/tp/images/LogicClassDiagram.png" alt="Structure of the Logic Component"></p>
 
 <p><strong>API</strong> :
-<a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/logic/Logic.java"><code class="highlighter-rouge">Logic.java</code></a></p>
+<a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/logic/Logic.java"><code class="highlighter-rouge">Logic.java</code></a></p>
 
 <ol>
   <li>
-<code class="highlighter-rouge">Logic</code> uses the <code class="highlighter-rouge">AddressBookParser</code> class to parse the user command.</li>
-  <li>This results in a <code class="highlighter-rouge">Command</code> object which is executed by the <code class="highlighter-rouge">LogicManager</code>.</li>
-  <li>The command execution can affect the <code class="highlighter-rouge">Model</code> (e.g. adding a transaction).</li>
-  <li>The result of the command execution is encapsulated as a <code class="highlighter-rouge">CommandResult</code> object which is passed back to the <code class="highlighter-rouge">Ui</code>.</li>
-  <li>In addition, the <code class="highlighter-rouge">CommandResult</code> object can also instruct the <code class="highlighter-rouge">Ui</code> to perform certain actions, such as displaying help to the user.</li>
+<code class="highlighter-rouge">Logic</code> uses the <code class="highlighter-rouge">FinanceTrackerParser</code> class to parse the user command.</li>
+  <li>This results in a <code class="highlighter-rouge">Command</code> object which is executed by <code class="highlighter-rouge">LogicManager</code>.</li>
+  <li>The command execution can affect <code class="highlighter-rouge">Model</code> (e.g. adding a transaction).</li>
+  <li>The result of the command execution is encapsulated as a <code class="highlighter-rouge">CommandResult</code> object which is passed back to <code class="highlighter-rouge">Ui</code>.</li>
+  <li>In addition, the <code class="highlighter-rouge">CommandResult</code> object can also instruct <code class="highlighter-rouge">Ui</code> to perform certain actions, such as displaying the help message to the user.</li>
 </ol>
 
-<p>Given below is the Sequence Diagram for interactions within the <code class="highlighter-rouge">Logic</code> component for the <code class="highlighter-rouge">execute("delete 1")</code> API call.</p>
+<p>Below is the Sequence Diagram for interactions within the <code class="highlighter-rouge">Logic</code> component for the <code class="highlighter-rouge">execute("delete 1")</code> API call.</p>
 
 <p><img src="/tp/images/DeleteSequenceDiagram.png" alt="Interactions Inside the Logic Component for the `delete 1` Command"></p>
 
@@ -196,38 +190,108 @@
 
 <p><img src="/tp/images/ModelClassDiagram.png" alt="Structure of the Model Component"></p>
 
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/model/Model.java"><code class="highlighter-rouge">Model.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/model/Model.java"><code class="highlighter-rouge">Model.java</code></a></p>
 
-<p>The <code class="highlighter-rouge">Model</code>,</p>
+<p>The <code class="highlighter-rouge">Model</code>:</p>
 
 <ul>
   <li>stores a <code class="highlighter-rouge">UserPref</code> object that represents the user’s preferences.</li>
-  <li>stores the address book data.</li>
-  <li>exposes an unmodifiable <code class="highlighter-rouge">ObservableList&lt;Transaction&gt;</code> that can be ‘observed’ e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list change.</li>
-  <li>does not depend on any of the other three components.</li>
+  <li>stores the finance tracker data in a <code class="highlighter-rouge">TransactionList</code> containing <code class="highlighter-rouge">Transaction</code>s.</li>
+  <li>exposes <code class="highlighter-rouge">MonthlySavings</code> and <code class="highlighter-rouge">MonthlyBudget</code>, which can be ‘observed’ e.g. the UI can be bound to the values in these classes so that the UI automatically updates when the values in the classes change.</li>
+  <li>exposes an unmodifiable <code class="highlighter-rouge">ObservableList&lt;Transaction&gt;</code> which can be ‘observed’ e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list changes.</li>
+  <li>does not depend on any of the other three components (<code class="highlighter-rouge">UI</code>, <code class="highlighter-rouge">Logic</code>, <code class="highlighter-rouge">Storage</code>).</li>
 </ul>
 
-<div class="alert alert-info">
-<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> An alternative (arguably, a more OOP) model is given below. It has a <code class="highlighter-rouge">Category</code> list in the <code class="highlighter-rouge">AddressBook</code>, which <code class="highlighter-rouge">Transaction</code> references. This allows <code class="highlighter-rouge">AddressBook</code> to only require one <code class="highlighter-rouge">Category</code> object per unique <code class="highlighter-rouge">Category</code>, instead of each <code class="highlighter-rouge">Transaction</code> needing their own <code class="highlighter-rouge">Category</code> object.<br>
-<img src="/tp/images/BetterModelClassDiagram.png" alt="BetterModelClassDiagram">
+<p>A <code class="highlighter-rouge">Transaction</code>:</p>
+<ul>
+  <li>represents a unit of user data within the finance tracker.</li>
+  <li>is either an <code class="highlighter-rouge">Expense</code> or an <code class="highlighter-rouge">Income</code>.</li>
+  <li>is composed of a <code class="highlighter-rouge">Title</code>, an <code class="highlighter-rouge">Amount</code>, a <code class="highlighter-rouge">Date</code>, and any number of <code class="highlighter-rouge">Category</code>s. These are known as <em>data fields</em>.</li>
+</ul>
 
+<p>The <em>data fields</em> <code class="highlighter-rouge">Title</code>, <code class="highlighter-rouge">Amount</code>, <code class="highlighter-rouge">Date</code>, and <code class="highlighter-rouge">Category</code> are encapsulations of an underlying Java data type.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data Field</th>
+      <th>Underlying Java Data Type</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="highlighter-rouge">Title</code></td>
+      <td><code class="highlighter-rouge">java.lang.String</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Amount</code></td>
+      <td><code class="highlighter-rouge">java.math.BigDecimal</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Date</code></td>
+      <td><code class="highlighter-rouge">java.time.LocalDate</code></td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">Category</code></td>
+      <td><code class="highlighter-rouge">java.lang.String</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The underlying Java data types allow more operations to be done on <code class="highlighter-rouge">Transaction</code> objects, such as filtering <code class="highlighter-rouge">Transaction</code>s by <code class="highlighter-rouge">Date</code>, or aggregating the <code class="highlighter-rouge">Amount</code>s of <code class="highlighter-rouge">Expense</code>s and <code class="highlighter-rouge">Income</code>s.</p>
+
+<div class="alert alert-info">
+<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> All data fields take in a <code class="highlighter-rouge">String</code> in their constructor, regardless of the underlying Java data type.
+Within the constructor, data validation takes place to ensure that the <code class="highlighter-rouge">String</code> correctly represents a valid data field.
+If the <code class="highlighter-rouge">String</code> given is not valid, an <code class="highlighter-rouge">IllegalArgumentException</code> will be thrown.
+Otherwise, the <code class="highlighter-rouge">String</code> is parsed into the underlying Java data type.<br><br>
+The reason for this is that when a data field object needs to be created, it is generally from a <code class="highlighter-rouge">String</code>
+(such as when a user command parsed from the <code class="highlighter-rouge">Logic</code> component, or when a transaction is loaded from the <code class="highlighter-rouge">Storage</code> component).
+This abstraction is maintained so that the implementation of other components (<code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Storage</code>) is independent of
+the underlying Java data type choices in the <code class="highlighter-rouge">Model</code> component.
 </div>
+
+<p>The <code class="highlighter-rouge">FinanceTracker</code> has a <code class="highlighter-rouge">TransactionList</code> field which stores all <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code> objects together.</p>
+
+<p>The <code class="highlighter-rouge">ModelManager</code> has three <code class="highlighter-rouge">FilteredList</code> fields which point to the same <code class="highlighter-rouge">ObservableList</code> obtained from <code class="highlighter-rouge">FinanceTracker::getTransactionList</code>.
+The <code class="highlighter-rouge">Predicate</code> fields in the three <code class="highlighter-rouge">FilteredList</code> fields are set such that:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">filteredTransactions</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects</li>
+  <li>
+<code class="highlighter-rouge">filteredExpenses</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects of type <code class="highlighter-rouge">Expense</code>
+</li>
+  <li>
+<code class="highlighter-rouge">filteredIncomes</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects of type <code class="highlighter-rouge">Income</code>
+</li>
+</ul>
+
+<p>The motivation behind having three lists is due to the fact that there are three tabs in the user interface, each having its own list while at the same time retrieving data from the same transaction list.</p>
 
 <h3 id="storage-component">Storage component</h3>
 
 <p><img src="/tp/images/StorageClassDiagram.png" alt="Structure of the Storage Component"></p>
 
-<p><strong>API</strong> : <a href="https://github.com/se-edu/addressbook-level3/tree/master/src/main/java/seedu/address/storage/Storage.java"><code class="highlighter-rouge">Storage.java</code></a></p>
+<p><strong>API</strong> : <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/storage/Storage.java"><code class="highlighter-rouge">Storage.java</code></a></p>
 
-<p>The <code class="highlighter-rouge">Storage</code> component,</p>
+<p>The <code class="highlighter-rouge">Storage</code> component:</p>
+
 <ul>
-  <li>can save <code class="highlighter-rouge">UserPref</code> objects in json format and read it back.</li>
-  <li>can save the address book data in json format and read it back.</li>
+  <li>can save <code class="highlighter-rouge">UserPref</code> objects in <code class="highlighter-rouge">JSON</code> format and read it back.</li>
+  <li>can save the finance tracker data in <code class="highlighter-rouge">JSON</code> format and read it back.</li>
 </ul>
+
+<p><code class="highlighter-rouge">JsonAdaptedExpense</code> and <code class="highlighter-rouge">JsonAdaptedIncome</code> are <code class="highlighter-rouge">JSON</code>-friendly adaptations of <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code> respectively.
+However, unlike <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code>, all the fields in <code class="highlighter-rouge">JsonAdaptedExpense</code> and <code class="highlighter-rouge">JsonAdaptedIncome</code> are <code class="highlighter-rouge">String</code> objects.
+This is so that the fields are compatible with the <code class="highlighter-rouge">JSON</code> format.</p>
+
+<p><code class="highlighter-rouge">JsonSerializableFinanceTracker</code> contains two <code class="highlighter-rouge">List</code> fields, one containing all <code class="highlighter-rouge">JsonAdaptedExpense</code> objects and the other containing all <code class="highlighter-rouge">JsonAdaptedIncome</code> objects.
+Despite the similarities between <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code>, and despite the fact that objects of both types are put into the same list in <code class="highlighter-rouge">FinanceTracker</code>,
+the motivation behind keeping them separately is to ensure that they are separately listed in the <code class="highlighter-rouge">JSON</code> data file.</p>
 
 <h3 id="common-classes">Common classes</h3>
 
-<p>Classes used by multiple components are in the <code class="highlighter-rouge">seedu.addressbook.commons</code> package.</p>
+<p>Classes used by multiple components are in the <code class="highlighter-rouge">ay2021s1_cs2103_w16_3.finesse.commons</code> package.</p>
 
 <hr>
 
@@ -235,109 +299,114 @@
 
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 
-<h3 id="proposed-undoredo-feature">[Proposed] Undo/redo feature</h3>
+<h3 id="find-transactions">Find transactions</h3>
+
+<p>The find transactions feature is implemented via <code class="highlighter-rouge">FindCommandParser</code>, as well as the following commands:</p>
+
+<ul>
+  <li>
+<code class="highlighter-rouge">FindCommand</code>, the base command that is returned when the command is parsed</li>
+  <li>
+<code class="highlighter-rouge">FindTransactionCommand</code>, to be executed when the user inputs the command on the Overview tab</li>
+  <li>
+<code class="highlighter-rouge">FindExpenseCommand</code>, to be executed when the user inputs the command on the Expenses tab</li>
+  <li>
+<code class="highlighter-rouge">FindIncomeCommand</code>, to be executed when the user inputs the command on the Incomes tab</li>
+</ul>
+
+<p><code class="highlighter-rouge">FindCommandParser</code> takes in the command arguments and parses them to return a <code class="highlighter-rouge">FindCommand</code> containing the correct predicate for finding the transactions.
+Depending on the UI tab the user inputted the command in, a <code class="highlighter-rouge">FindXXXCommand</code> (<code class="highlighter-rouge">FindTransactionCommand</code>, <code class="highlighter-rouge">FindExpenseCommand</code> or <code class="highlighter-rouge">FindIncomeCommand</code>) will be created from the base <code class="highlighter-rouge">FindCommand</code>.
+When executed, the <code class="highlighter-rouge">FindXXXCommand</code> will set the predicate of the respective <code class="highlighter-rouge">FilteredList</code> in <code class="highlighter-rouge">ModelManager</code> so that only the transactions matching the keywords will be displayed in the list.</p>
+
+<p>Below is the Sequence Diagram for interactions within the <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Model</code> components when the user inputs the <code class="highlighter-rouge">"find tea"</code> command while on the Overview tab.</p>
+
+<p><img src="/tp/images/FindSequenceDiagram.png" alt="Interactions Inside the Logic Component for the `find tea` Command on the Overview tab"></p>
+
+<p>Alternatives considered:</p>
+
+<ul>
+  <li>Having separate command parsers for each tab in which the find command can be input, e.g. <code class="highlighter-rouge">FindTransactionCommandParser</code>, <code class="highlighter-rouge">FindExpenseCommandParser</code> and <code class="highlighter-rouge">FindIncomeCommandParser</code>.</li>
+</ul>
+
+<h3 id="programmatically-switch-selected-tab">Programmatically switch selected tab</h3>
+
+<p>Several of the expense/income-specific commands update the list of transactions displayed in a particular tab.
+Examples of these include the <code class="highlighter-rouge">add-expense</code> and <code class="highlighter-rouge">add-income</code> commands.
+As such, on the execution of such commands, the UI has to switch to the affected tab to display the result of the command execution.</p>
+
+<p>The ability to programmatically update the selected tab is implemented via <code class="highlighter-rouge">CommandResult</code>.
+Upon the successful execution of a command, a <code class="highlighter-rouge">CommandResult</code> is generated and passed back to <code class="highlighter-rouge">MainWindow</code>.
+This <code class="highlighter-rouge">CommandResult</code> contains the necessary information which the <code class="highlighter-rouge">MainWindow</code> needs to update the user interface, such as:</p>
+<ul>
+  <li>The feedback to be displayed to the user;</li>
+  <li>Whether to exit the application; and</li>
+  <li>Whether to programmatically switch to a different tab in the user interface.</li>
+</ul>
+
+<p><img src="/tp/images/CommandResultSequenceDiagram.png" alt="Interactions inside the Logic Component when executing commands"></p>
+
+<p>Alternatives considered:</p>
+
+<ul>
+  <li>Add a method in <code class="highlighter-rouge">MainWindow</code> which can be called to programmatically switch tabs in the user interface upon execution of the command.
+This was decided against as it would result in a much tighter coupling of <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">UI</code> components.</li>
+</ul>
+
+<h3 id="set-monthly-spending-limit">Set monthly spending limit</h3>
+
+<p>The monthly budgeting feature is implemented via <code class="highlighter-rouge">SetExpenseLimitCommand</code> as well as <code class="highlighter-rouge">MonthlyExpenseLimit</code>.</p>
+
+<p>[Coming soon]</p>
+
+<h3 id="set-monthly-savings-goal">Set monthly savings goal</h3>
+
+<p>The monthly budgeting feature is implemented via <code class="highlighter-rouge">SetSavingsGoalCommand</code> as well as <code class="highlighter-rouge">MonthlySavingsGoal</code>.</p>
+
+<p>[Coming soon]</p>
+
+<h3 id="proposed-frequent-expense-feature">[Proposed] Frequent Expense Feature</h3>
 
 <h4 id="proposed-implementation">Proposed Implementation</h4>
+<p>The Frequent Expense feature consists of <code class="highlighter-rouge">add-frequent-expense</code>, <code class="highlighter-rouge">edit-frequent-expense</code>, <code class="highlighter-rouge">delete-frequent-expense</code>,
+<code class="highlighter-rouge">convert-frequent-expense</code>.</p>
 
-<p>The proposed undo/redo mechanism is facilitated by <code class="highlighter-rouge">VersionedAddressBook</code>. It extends <code class="highlighter-rouge">AddressBook</code> with an undo/redo history, stored internally as an <code class="highlighter-rouge">addressBookStateList</code> and <code class="highlighter-rouge">currentStatePointer</code>. Additionally, it implements the following operations:</p>
+<p>Frequent expenses are expenses that the user have identified to be occurring regularly or with high frequency.
+Examples of such expenses can be phone bill, music subscription or buying bubble tea on a weekly basis.</p>
 
-<ul>
-  <li>
-<code class="highlighter-rouge">VersionedAddressBook#commit()</code> — Saves the current address book state in its history.</li>
-  <li>
-<code class="highlighter-rouge">VersionedAddressBook#undo()</code> — Restores the previous address book state from its history.</li>
-  <li>
-<code class="highlighter-rouge">VersionedAddressBook#redo()</code> — Restores a previously undone address book state from its history.</li>
-</ul>
+<p>This feature allows users to add frequent expenses to the finance tracker. The user can then choose to convert a
+frequent expense to an expense that the user wants to add to the transaction list in the finance tracker. This is done by
+calling <code class="highlighter-rouge">Logic#execute</code> which creates an  <code class="highlighter-rouge">AddFrequentExpenseCommand</code>. This command then calls
+<code class="highlighter-rouge">ModelManager#addFrequentExpense</code>, adding the specified frequent expense into the frequent expense list.</p>
 
-<p>These operations are exposed in the <code class="highlighter-rouge">Model</code> interface as <code class="highlighter-rouge">Model#commitAddressBook()</code>, <code class="highlighter-rouge">Model#undoAddressBook()</code> and <code class="highlighter-rouge">Model#redoAddressBook()</code> respectively.</p>
+<p>This feature also simplifies the deletion and editing of frequent expenses, and they work in a similar manner.</p>
 
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<h4 id="convert-frequent-expense-to-expense-feature">Convert Frequent Expense To Expense Feature</h4>
 
-<p>Step 1. The user launches the application for the first time. The <code class="highlighter-rouge">VersionedAddressBook</code> will be initialized with the initial address book state, and the <code class="highlighter-rouge">currentStatePointer</code> pointing to that single address book state.</p>
+<p>The purpose of this feature is to allow users to add expenses, that they add to the transaction list in the finance
+tracker on a frequent basis in a convenient manner. After adding a frequent expense into the frequent expense list in
+the finance tracker, the user can call convert-frequent-expense to the respective frequent expense to make the
+conversion.</p>
 
-<p><img src="/tp/images/UndoRedoState0.png" alt="UndoRedoState0"></p>
+<p>Given below is the proposed UML sequence diagram and explanation of an example usage scenario for
+convert-frequent-expense</p>
 
-<p>Step 2. The user executes <code class="highlighter-rouge">delete 5</code> command to delete the 5th transaction in the address book. The <code class="highlighter-rouge">delete</code> command calls <code class="highlighter-rouge">Model#commitAddressBook()</code>, causing the modified state of the address book after the <code class="highlighter-rouge">delete 5</code> command executes to be saved in the <code class="highlighter-rouge">addressBookStateList</code>, and the <code class="highlighter-rouge">currentStatePointer</code> is shifted to the newly inserted address book state.</p>
+<p><img src="/tp/images/ConvertFrequentExpenseSequenceDiagram.png" alt="Sequence Diagram of the Convert Frequent Expense To Expense Feature"></p>
 
-<p><img src="/tp/images/UndoRedoState1.png" alt="UndoRedoState1"></p>
-
-<p>Step 3. The user executes <code class="highlighter-rouge">add n/David …​</code> to add a new transaction. The <code class="highlighter-rouge">add</code> command also calls <code class="highlighter-rouge">Model#commitAddressBook()</code>, causing another modified address book state to be saved into the <code class="highlighter-rouge">addressBookStateList</code>.</p>
-
-<p><img src="/tp/images/UndoRedoState2.png" alt="UndoRedoState2"></p>
-
-<div class="alert alert-info">
-<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> If a command fails its execution, it will not call <code class="highlighter-rouge">Model#commitAddressBook()</code>, so the address book state will not be saved into the <code class="highlighter-rouge">addressBookStateList</code>.
-
-</div>
-
-<p>Step 4. The user now decides that adding the transaction was a mistake, and decides to undo that action by executing the <code class="highlighter-rouge">undo</code> command. The <code class="highlighter-rouge">undo</code> command will call <code class="highlighter-rouge">Model#undoAddressBook()</code>, which will shift the <code class="highlighter-rouge">currentStatePointer</code> once to the left, pointing it to the previous address book state, and restores the address book to that state.</p>
-
-<p><img src="/tp/images/UndoRedoState3.png" alt="UndoRedoState3"></p>
-
-<div class="alert alert-info">
-<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> If the <code class="highlighter-rouge">currentStatePointer</code> is at index 0, pointing to the initial AddressBook state, then there are no previous AddressBook states to restore. The <code class="highlighter-rouge">undo</code> command uses <code class="highlighter-rouge">Model#canUndoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather
-than attempting to perform the undo.
-
-</div>
-
-<p>The following sequence diagram shows how the undo operation works:</p>
-
-<p><img src="/tp/images/UndoSequenceDiagram.png" alt="UndoSequenceDiagram"></p>
-
-<div class="alert alert-info">
-<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> The lifeline for <code class="highlighter-rouge">UndoCommand</code> should end at the destroy marker (X) but due to a limitation of PlantUML, the lifeline reaches the end of diagram.
-
-</div>
-
-<p>The <code class="highlighter-rouge">redo</code> command does the opposite — it calls <code class="highlighter-rouge">Model#redoAddressBook()</code>, which shifts the <code class="highlighter-rouge">currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the address book to that state.</p>
-
-<div class="alert alert-info">
-<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> If the <code class="highlighter-rouge">currentStatePointer</code> is at index <code class="highlighter-rouge">addressBookStateList.size() - 1</code>, pointing to the latest address book state, then there are no undone AddressBook states to restore. The <code class="highlighter-rouge">redo</code> command uses <code class="highlighter-rouge">Model#canRedoAddressBook()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-
-</div>
-
-<p>Step 5. The user then decides to execute the command <code class="highlighter-rouge">list</code>. Commands that do not modify the address book, such as <code class="highlighter-rouge">list</code>, will usually not call <code class="highlighter-rouge">Model#commitAddressBook()</code>, <code class="highlighter-rouge">Model#undoAddressBook()</code> or <code class="highlighter-rouge">Model#redoAddressBook()</code>. Thus, the <code class="highlighter-rouge">addressBookStateList</code> remains unchanged.</p>
-
-<p><img src="/tp/images/UndoRedoState4.png" alt="UndoRedoState4"></p>
-
-<p>Step 6. The user executes <code class="highlighter-rouge">clear</code>, which calls <code class="highlighter-rouge">Model#commitAddressBook()</code>. Since the <code class="highlighter-rouge">currentStatePointer</code> is not pointing at the end of the <code class="highlighter-rouge">addressBookStateList</code>, all address book states after the <code class="highlighter-rouge">currentStatePointer</code> will be purged. Reason: It no longer makes sense to redo the <code class="highlighter-rouge">add n/David …​</code> command. This is the behavior that most modern desktop applications follow.</p>
-
-<p><img src="/tp/images/UndoRedoState5.png" alt="UndoRedoState5"></p>
-
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-
-<p><img src="/tp/images/CommitActivityDiagram.png" alt="CommitActivityDiagram"></p>
-
-<h4 id="design-consideration">Design consideration:</h4>
-
-<h5 id="aspect-how-undo--redo-executes">Aspect: How undo &amp; redo executes</h5>
-
-<ul>
-  <li>
-<strong>Alternative 1 (current choice):</strong> Saves the entire address book.
-    <ul>
-      <li>Pros: Easy to implement.</li>
-      <li>Cons: May have performance issues in terms of memory usage.</li>
-    </ul>
-  </li>
-  <li>
-<strong>Alternative 2:</strong> Individual command knows how to undo/redo by
-itself.
-    <ul>
-      <li>Pros: Will use less memory (e.g. for <code class="highlighter-rouge">delete</code>, just save the transaction being deleted).</li>
-      <li>Cons: We must ensure that the implementation of each individual command are correct.</li>
-    </ul>
-  </li>
-</ul>
-
-<p><em>{more aspects and alternatives to be added}</em></p>
-
-<h3 id="proposed-data-archiving">[Proposed] Data archiving</h3>
-
-<p><em>{Explain here how the data archiving feature will be implemented}</em></p>
-
-<hr>
+<ol>
+  <li>User enters the command <code class="highlighter-rouge">convert-frequent-expense 1 d/05/05/2020</code>, where <code class="highlighter-rouge">1</code> is the index of the respective frequent
+expense in the frequent expense list and <code class="highlighter-rouge">d/05/05/20</code> is the date on which the user wants to carry out the conversion,
+to add the selected frequent expense into the expense list. This command is executed by <code class="highlighter-rouge">LogicManager</code>, which will then
+call <code class="highlighter-rouge">FinanceTrackerParser#parseCommand(“convert-frequent-expense 1 d/05/05/2020”)</code>. This will create a
+<code class="highlighter-rouge">ConvertFrequentExpenseCommand</code> object and return it to the <code class="highlighter-rouge">LogicManager</code>.</li>
+  <li>The <code class="highlighter-rouge">LogicManager</code> will then call <code class="highlighter-rouge">ConvertFrequentExpenseCommand#execute</code>, which will call
+<code class="highlighter-rouge">Model#getFilteredFrequentExpenseList()</code> to retrieve the list of frequent expenses in the finance tracker.</li>
+  <li>The program will then retrieve the specified frequent expense from the list of frequent expenses. It will
+then call <code class="highlighter-rouge">FrequentExpense#convert</code> on the frequent expense together with the date the user has inputted and convert
+it to an <code class="highlighter-rouge">Expense</code> object.</li>
+  <li>After converting the <code class="highlighter-rouge">FrequentExpense</code> object to an <code class="highlighter-rouge">Expense</code> object, it will call <code class="highlighter-rouge">Model#addExpense</code> to add the
+<code class="highlighter-rouge">Expense</code> object to the expense list in the finance tracker.
+——————————————————————————————————————–</li>
+</ol>
 
 <h2 id="documentation-logging-testing-configuration-dev-ops"><strong>Documentation, logging, testing, configuration, dev-ops</strong></h2>
 
@@ -359,7 +428,7 @@ itself.
 
 <ul>
   <li>Tertiary student</li>
-  <li>Has a need to track everyday expenses/income</li>
+  <li>Has a need to track everyday expenses/incomes</li>
   <li>Wishes to cultivate good saving habits</li>
   <li>Prefers desktop apps</li>
   <li>Prefers typing to mouse interactions</li>
@@ -396,62 +465,56 @@ itself.
     <tr>
       <td><code class="highlighter-rouge">* * *</code></td>
       <td>user</td>
-      <td>view a list of past expenses</td>
-      <td>keep track of my past expenses</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">* * *</code></td>
-      <td>user</td>
-      <td>group expenditure by categories</td>
-      <td>keep track of what I spend my money on across categories</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">* * *</code></td>
-      <td>user</td>
-      <td>delete an expense</td>
-      <td>remove expenses that were entered wrongly</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">* * *</code></td>
-      <td>user</td>
-      <td>set a monthly spending limit</td>
-      <td>track how much I have left to spend for the month</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">* * *</code></td>
-      <td>user</td>
       <td>add an income</td>
       <td> </td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">* * *</code></td>
       <td>user</td>
-      <td>view a list of past income</td>
-      <td>keep track of my past income</td>
+      <td>view a list of past transactions</td>
+      <td>keep track of my past expenses/incomes</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">* * *</code></td>
       <td>user</td>
-      <td>delete an income</td>
-      <td>remove income that was entered wrongly</td>
+      <td>edit a transaction</td>
+      <td>update expenses/incomes that were entered wrongly</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">* * *</code></td>
       <td>user</td>
-      <td>set monthly saving goals</td>
+      <td>delete a transaction</td>
+      <td>remove expenses/incomes that were entered wrongly</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>group transactions by categories</td>
+      <td>keep track of my past expenses/incomes across various categories</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>search for transactions</td>
+      <td>easily find related expenses/incomes</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* *</code></td>
+      <td>user</td>
+      <td>set a monthly spending limit</td>
+      <td>track how much I have left to spend for the month</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* *</code></td>
+      <td>user</td>
+      <td>set a monthly saving goal</td>
       <td>cultivate good saving habits</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">* *</code></td>
       <td>user</td>
       <td>view my saving trends</td>
-      <td>better plan my future expenses</td>
-    </tr>
-    <tr>
-      <td><code class="highlighter-rouge">*</code></td>
-      <td>user</td>
-      <td>complete savings challenges</td>
-      <td>be motivated to reach my savings goals</td>
+      <td>better manage my future expenses</td>
     </tr>
   </tbody>
 </table>
