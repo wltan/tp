@@ -255,6 +255,7 @@ public class ModelManager implements Model {
      * Casts a FilteredList into a List of the filtered subtype.
      * Precondition: The given FilteredList must be either the expense list or income list.
      * This guarantees that the elements of the FilteredList can successfully be cast to the target type.
+     *
      * @param list The FilteredList to be cast.
      * @param toCast The class of the target type to be cast. Required as casting to generic types is not allowed.
      * @param <T> The type of transaction. Can be either Expense or Income, but not Transaction itself.
@@ -263,6 +264,7 @@ public class ModelManager implements Model {
     private <T extends Transaction> List<T> castFilteredList(FilteredList<Transaction> list, Class<T> toCast) {
         assert list == filteredExpenses || list == filteredIncomes
                 : "Casting can only be performed on expense or income list";
+        assert toCast != Transaction.class : "Casting can only be to Expense or Income, not Transaction";
         return list.stream().map(toCast::cast).collect(Collectors.toUnmodifiableList());
     }
 
