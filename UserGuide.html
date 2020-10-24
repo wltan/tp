@@ -44,31 +44,126 @@
   </header>
 
   <div class="post-content">
-    <p>Fine$$e is a <strong>desktop finance tracker optimized for use via a Command Line Interface</strong> (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, Fine$$e can help you track your transactions (expenses/incomes) and cultivate good financial habits faster than traditional GUI apps.</p>
-
-<ul id="markdown-toc">
-  <li><a href="#quick-start" id="markdown-toc-quick-start">Quick start</a></li>
+    <ul id="markdown-toc">
   <li>
-<a href="#features" id="markdown-toc-features">Features</a>    <ul>
-      <li><a href="#viewing-help-help" id="markdown-toc-viewing-help-help">Viewing help: <code class="highlighter-rouge">help</code></a></li>
-      <li><a href="#add-an-expense-add-expense--adde--on-expense-tab-add" id="markdown-toc-add-an-expense-add-expense--adde--on-expense-tab-add">Add an expense: <code class="highlighter-rouge">add-expense</code> / <code class="highlighter-rouge">adde</code> / (on Expense tab) <code class="highlighter-rouge">add</code></a></li>
-      <li><a href="#add-an-income-add-income--addi--on-income-tab-add" id="markdown-toc-add-an-income-add-income--addi--on-income-tab-add">Add an income: <code class="highlighter-rouge">add-income</code> / <code class="highlighter-rouge">addi</code> / (on Income tab) <code class="highlighter-rouge">add</code></a></li>
-      <li><a href="#list-transactions-list" id="markdown-toc-list-transactions-list">List transactions: <code class="highlighter-rouge">list</code></a></li>
-      <li><a href="#finding-transactions-by-keyword-find" id="markdown-toc-finding-transactions-by-keyword-find">Finding transactions by keyword: <code class="highlighter-rouge">find</code></a></li>
-      <li><a href="#edit-a-transaction-edit" id="markdown-toc-edit-a-transaction-edit">Edit a transaction: <code class="highlighter-rouge">edit</code></a></li>
-      <li><a href="#delete-a-transaction-delete" id="markdown-toc-delete-a-transaction-delete">Delete a transaction: <code class="highlighter-rouge">delete</code></a></li>
-      <li><a href="#switch-tab-tab" id="markdown-toc-switch-tab-tab">Switch tab: <code class="highlighter-rouge">tab</code></a></li>
-      <li><a href="#exiting-the-app-exit" id="markdown-toc-exiting-the-app-exit">Exiting the app: <code class="highlighter-rouge">exit</code></a></li>
-      <li><a href="#saving-the-data" id="markdown-toc-saving-the-data">Saving the data</a></li>
+<a href="#1-introduction" id="markdown-toc-1-introduction">1. Introduction</a>    <ul>
+      <li><a href="#11-about-finee" id="markdown-toc-11-about-finee">1.1 About Fine$$e</a></li>
+      <li><a href="#12-navigating-the-user-guide" id="markdown-toc-12-navigating-the-user-guide">1.2 Navigating the User Guide</a></li>
     </ul>
   </li>
-  <li><a href="#faq" id="markdown-toc-faq">FAQ</a></li>
-  <li><a href="#command-summary" id="markdown-toc-command-summary">Command Summary</a></li>
+  <li>
+<a href="#2-quick-start" id="markdown-toc-2-quick-start">2. Quick start</a>    <ul>
+      <li><a href="#21-layout-of-finees-interface" id="markdown-toc-21-layout-of-finees-interface">2.1 Layout of Fine$$e’s Interface</a></li>
+      <li><a href="#22-installation" id="markdown-toc-22-installation">2.2 Installation</a></li>
+    </ul>
+  </li>
+  <li><a href="#3-overview-of-features" id="markdown-toc-3-overview-of-features">3. Overview of Features</a></li>
+  <li>
+<a href="#4-features" id="markdown-toc-4-features">4. Features</a>    <ul>
+      <li><a href="#41-viewing-help" id="markdown-toc-41-viewing-help">4.1 Viewing Help</a></li>
+      <li>
+<a href="#42-tabs" id="markdown-toc-42-tabs">4.2 Tabs</a>        <ul>
+          <li><a href="#421-switch-tab" id="markdown-toc-421-switch-tab">4.2.1 Switch Tab</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#43-expense" id="markdown-toc-43-expense">4.3 Expense</a>        <ul>
+          <li><a href="#431-add-expense" id="markdown-toc-431-add-expense">4.3.1 Add Expense</a></li>
+          <li><a href="#432-edit-expense" id="markdown-toc-432-edit-expense">4.3.2 Edit Expense</a></li>
+          <li><a href="#433-delete-expense" id="markdown-toc-433-delete-expense">4.3.3 Delete Expense</a></li>
+          <li><a href="#434-list-expense" id="markdown-toc-434-list-expense">4.3.4 List Expense</a></li>
+          <li><a href="#435-find-expense" id="markdown-toc-435-find-expense">4.3.5 Find Expense</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#44-income" id="markdown-toc-44-income">4.4 Income</a>        <ul>
+          <li><a href="#441-add-income" id="markdown-toc-441-add-income">4.4.1 Add Income</a></li>
+          <li><a href="#442-edit-income" id="markdown-toc-442-edit-income">4.4.2 Edit Income</a></li>
+          <li><a href="#443-delete-income" id="markdown-toc-443-delete-income">4.4.3 Delete Income</a></li>
+          <li><a href="#444-list-income" id="markdown-toc-444-list-income">4.4.4 List Income</a></li>
+          <li><a href="#445-find-income" id="markdown-toc-445-find-income">4.4.5 Find Income</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#45-frequent-expense" id="markdown-toc-45-frequent-expense">4.5 Frequent Expense</a>        <ul>
+          <li><a href="#451-add-frequent-expense" id="markdown-toc-451-add-frequent-expense">4.5.1 Add Frequent Expense</a></li>
+          <li><a href="#452-edit-frequent-expense" id="markdown-toc-452-edit-frequent-expense">4.5.2 Edit Frequent Expense</a></li>
+          <li><a href="#453-delete-frequent-expense" id="markdown-toc-453-delete-frequent-expense">4.5.3 Delete Frequent Expense</a></li>
+          <li><a href="#454-convert-frequent-expense" id="markdown-toc-454-convert-frequent-expense">4.5.4 Convert Frequent Expense</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#46-frequent-income" id="markdown-toc-46-frequent-income">4.6 Frequent Income</a>        <ul>
+          <li><a href="#461-add-frequent-income" id="markdown-toc-461-add-frequent-income">4.6.1 Add Frequent Income</a></li>
+          <li><a href="#462-edit-frequent-income" id="markdown-toc-462-edit-frequent-income">4.6.2 Edit Frequent Income</a></li>
+          <li><a href="#463-delete-frequent-income" id="markdown-toc-463-delete-frequent-income">4.6.3 Delete Frequent Income</a></li>
+          <li><a href="#464-convert-frequent-income" id="markdown-toc-464-convert-frequent-income">4.6.4 Convert Frequent Income</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#47-expense-limit" id="markdown-toc-47-expense-limit">4.7 Expense Limit</a>        <ul>
+          <li><a href="#471-set-expense-limit" id="markdown-toc-471-set-expense-limit">4.7.1 Set Expense Limit</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#48-savings-goal" id="markdown-toc-48-savings-goal">4.8 Savings Goal</a>        <ul>
+          <li><a href="#481-set-savings-goal" id="markdown-toc-481-set-savings-goal">4.8.1 Set Savings Goal</a></li>
+        </ul>
+      </li>
+      <li><a href="#49-analytics" id="markdown-toc-49-analytics">4.9 Analytics</a></li>
+      <li><a href="#410-exiting-the-program" id="markdown-toc-410-exiting-the-program">4.10 Exiting the Program</a></li>
+      <li><a href="#411-saving-the-data" id="markdown-toc-411-saving-the-data">4.11 Saving the data</a></li>
+    </ul>
+  </li>
+  <li><a href="#5-command-summary" id="markdown-toc-5-command-summary">5. Command Summary</a></li>
+  <li><a href="#6-glossary" id="markdown-toc-6-glossary">6. Glossary</a></li>
+  <li><a href="#7-faq" id="markdown-toc-7-faq">7. FAQ</a></li>
 </ul>
 
 <hr>
+<h2 id="1-introduction">1. Introduction</h2>
 
-<h2 id="quick-start">Quick start</h2>
+<h3 id="11-about-finee">1.1 About Fine$$e</h3>
+<p>Welcome to Fine$$e!</p>
+
+<p>Looking for an all-in-one solution to help you develop good financial habits? Look no further!</p>
+
+<p>Fine<script type="math/tex">e is an integrated platform fully customized for tertiary and university students with the aim of helping you track your finances effectively.
+Fine</script>e allows you to keep track of your incomes, expenses and savings with a few simple commands.
+Furthermore, to help you cultivate good financial habits Fine$$e allows you to set expense limits and savings goals.</p>
+
+<p>All your important information will be displayed on our sleek Graphical User Interface (GUI).
+Fine$$e is optimized for users who are fast typists and are comfortable working on the Command Line Interface (CLI).</p>
+
+<p>If you want to better manage your finances and at the same time increase your savings by cultivating good financial habits, then look no further as Fine$$e is definitely for you.</p>
+
+<p>Explore our User Guide to find out more about Fine$$e’s amazing features.</p>
+
+<h3 id="12-navigating-the-user-guide">1.2 Navigating the User Guide</h3>
+<p>The aim of the User Guide is to provide you with all of the necessary information required for you to utilize Fine$$e.
+We understand that a Command Line Interface (CLI) might not be the easiest to use, hence we have ensured that the information provided is concise and easily readable.</p>
+
+<p>If you require help on setting up Fine$$e, you can go to the <a href="#2-quick-start">Section 2. “Quick Start”</a> section.</p>
+
+<p>If you want to find out more about the various features that Fine$$s has to offer, you can go to <a href="#4-features">Section 4. “Features”</a> section.</p>
+
+<p>If you want to have an overview of Fine$$e’s commands, you can visit the <a href="#5-command-summary">Section 5. “Command Summary”</a> section.</p>
+
+<p>Do take note of the following symbols and formatting used throughout this document:</p>
+
+<p>[Table showing the various symbol/formats that we will be using]</p>
+
+<hr>
+<h2 id="2-quick-start">2. Quick start</h2>
+<p>This section will show you the various components that make up Fine<script type="math/tex">e's user interface.
+You can also follow our step-by-step guide on how to install Fine</script>e and get it to work on your computer.
+Let’s get started!</p>
+
+<h3 id="21-layout-of-finees-interface">2.1 Layout of Fine$$e’s Interface</h3>
+
+<p>[To be added]</p>
+
+<h3 id="22-installation">2.2 Installation</h3>
 
 <ol>
   <li>
@@ -81,11 +176,12 @@
     <p>Copy the file to the folder you want to use as the <em>home folder</em> for Fine$$e.</p>
   </li>
   <li>
-    <p>Double-click the file to start the app. The GUI similar to the below should appear in a few seconds, but without any sample data.<br>
+    <p>Double-click the file to start the app.
+The GUI similar to the below should appear in a few seconds, but without any sample data.
 <img src="/tp/images/Ui.png" alt="Ui"></p>
   </li>
   <li>
-    <p>Type a command in the command box and press Enter to execute it. e.g. typing <code class="highlighter-rouge">help</code> and pressing Enter will bring up the help message.<br>
+    <p>Type a command in the command box and press Enter to execute it. e.g. typing <code class="highlighter-rouge">help</code> and pressing Enter will bring up the help message.
 Some example commands you can try:</p>
 
     <ul>
@@ -93,7 +189,8 @@ Some example commands you can try:</p>
         <p><code class="highlighter-rouge">list</code>: Lists all transactions on the current list.</p>
       </li>
       <li>
-        <p><code class="highlighter-rouge">add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage</code>: Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>, amount <code class="highlighter-rouge">5</code>, date <code class="highlighter-rouge">03/10/2020</code> and category <code class="highlighter-rouge">Food &amp; Beverage</code> to the finance tracker.</p>
+        <p><code class="highlighter-rouge">add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage</code>:
+Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>, amount <code class="highlighter-rouge">5</code>, date <code class="highlighter-rouge">03/10/2020</code> and category <code class="highlighter-rouge">Food &amp; Beverage</code> to the finance tracker.</p>
       </li>
       <li>
         <p><code class="highlighter-rouge">delete 3</code>: Deletes the 3rd transaction shown in the current list.</p>
@@ -108,9 +205,17 @@ Some example commands you can try:</p>
   </li>
 </ol>
 
-<hr>
+<blockquote>
+  <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">If you have any questions, you can check out our <a href="#7-faq">Section 7. FAQ</a>.</p>
+</blockquote>
 
-<h2 id="features">Features</h2>
+<hr>
+<h2 id="3-overview-of-features">3. Overview of Features</h2>
+<p>[To be added]</p>
+
+<hr>
+<h2 id="4-features">4. Features</h2>
+<p>This section aims to provide you with in-depth details on Fine$$e’s unique features and also give you example usages of the features.</p>
 
 <div class="alert alert-info">
 
@@ -137,14 +242,52 @@ e.g. if the command specifies <code class="highlighter-rouge">t/TITLE a/AMOUNT</
 
 </div>
 
-<h3 id="viewing-help-help">Viewing help: <code class="highlighter-rouge">help</code>
-</h3>
+<h3 id="41-viewing-help">4.1 Viewing Help</h3>
 <p>Shows a message with instructions on how to access the user guide.</p>
 
 <p>Format: <code class="highlighter-rouge">help</code></p>
 
-<h3 id="add-an-expense-add-expense--adde--on-expense-tab-add">Add an expense: <code class="highlighter-rouge">add-expense</code> / <code class="highlighter-rouge">adde</code> / (on Expense tab) <code class="highlighter-rouge">add</code>
-</h3>
+<p>Expected Outcome:</p>
+<pre><code class="language-$xslt">Refer to the user guide: https://ay2021s1-cs2103t-w16-3.github.io/tp/UserGuide.html.
+Please copy the url and paste it in your favourite browser to view all valid commands.
+</code></pre>
+<h3 id="42-tabs">4.2 Tabs</h3>
+<p>[Brief Overview of this feature]</p>
+
+<h4 id="421-switch-tab">4.2.1 Switch Tab</h4>
+<p>Switches the current tab on Fine$$e.</p>
+
+<p>Format: <code class="highlighter-rouge">tab INDEX</code></p>
+<ul>
+  <li>Switches to the tab corresponding to the specified <code class="highlighter-rouge">INDEX</code>. The index <strong>must be either 1, 2, 3 or 4</strong>.
+    <ul>
+      <li>Index 1 switches to the Overview Tab</li>
+      <li>Index 2 switches to the Incomes Tab</li>
+      <li>Index 3 switches to the Expenses Tab</li>
+      <li>Index 4 switches to the Analytics Tab</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Example:</p>
+<ul>
+  <li><code class="highlighter-rouge">tab 3</code></li>
+</ul>
+
+<p>Example Usage:</p>
+<ul>
+  <li><code class="highlighter-rouge">tag 1</code></li>
+</ul>
+
+<p>Expected Outcome:</p>
+<pre><code class="language-$xslt">Switched to overview tab.
+</code></pre>
+
+<h3 id="43-expense">4.3 Expense</h3>
+<p>[Overview of feature]</p>
+
+<h4 id="431-add-expense">4.3.1 Add Expense</h4>
+
 <p>Adds an expense to the finance tracker.</p>
 
 <p>Format: <code class="highlighter-rouge">add-expense t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code></p>
@@ -162,8 +305,76 @@ e.g. if the command specifies <code class="highlighter-rouge">t/TITLE a/AMOUNT</
   <li><code class="highlighter-rouge">adde t/Taxi Home from School a/$13.50 d/10/10/2020 c/Transport c/School</code></li>
 </ul>
 
-<h3 id="add-an-income-add-income--addi--on-income-tab-add">Add an income: <code class="highlighter-rouge">add-income</code> / <code class="highlighter-rouge">addi</code> / (on Income tab) <code class="highlighter-rouge">add</code>
-</h3>
+<h4 id="432-edit-expense">4.3.2 Edit Expense</h4>
+
+<p>Edits an expense in the finance tracker.</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h4 id="433-delete-expense">4.3.3 Delete Expense</h4>
+
+<p>Deletes the specified expense from the finance tracker.</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h4 id="434-list-expense">4.3.4 List Expense</h4>
+
+<p>Shows a list of all the expenses in the finance tracker.</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h4 id="435-find-expense">4.3.5 Find Expense</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h3 id="44-income">4.4 Income</h3>
+
+<p>[Summary of feature]</p>
+
+<h4 id="441-add-income">4.4.1 Add Income</h4>
+
 <p>Adds an income to the finance tracker.</p>
 
 <p>Format: <code class="highlighter-rouge">add-income t/TITLE a/AMOUNT d/DATE [c/CATEGORY]...</code></p>
@@ -181,145 +392,256 @@ e.g. if the command specifies <code class="highlighter-rouge">t/TITLE a/AMOUNT</
   <li><code class="highlighter-rouge">addi t/Angpao money a/$20 d/25/01/2020 c/CNY c/Gift</code></li>
 </ul>
 
-<h3 id="list-transactions-list">List transactions: <code class="highlighter-rouge">list</code>
-</h3>
+<h4 id="442-edit-income">4.4.2 Edit Income</h4>
 
-<p>Shows a list of all transactions on the current tab.</p>
-<ul>
-  <li>On Overview tab: lists all transactions (expenses/incomes).</li>
-  <li>On Expenses tab: lists all expenses.</li>
-  <li>On Income tab: lists all incomes.</li>
-</ul>
+<p>Edits an income in the finance tracker.</p>
 
-<p>Format: <code class="highlighter-rouge">list</code></p>
+<p>Format:</p>
 
-<h3 id="finding-transactions-by-keyword-find">Finding transactions by keyword: <code class="highlighter-rouge">find</code>
-</h3>
+<p>Shortcut:</p>
 
-<p>Finds transactions with titles that contain any of the given keywords on the current tab.</p>
-<ul>
-  <li>On Overview tab: searches all transactions (expenses/incomes).</li>
-  <li>On Expenses tab: searches all expenses.</li>
-  <li>On Income tab: searches all incomes.</li>
-</ul>
-
-<p>Format: <code class="highlighter-rouge">find KEYWORD [MORE_KEYWORDS]</code></p>
-
-<ul>
-  <li>The search is case-insensitive. e.g <code class="highlighter-rouge">taxi</code> will match <code class="highlighter-rouge">Taxi</code>
-</li>
-  <li>The order of the keywords does not matter. e.g. <code class="highlighter-rouge">Bus Train</code> will match <code class="highlighter-rouge">Train Bus</code>
-</li>
-  <li>Only the title is searched.</li>
-  <li>Only full words will be matched. e.g. <code class="highlighter-rouge">Snack</code> will not match <code class="highlighter-rouge">Snacks</code>
-</li>
-  <li>Titles matching at least one keyword will be returned (i.e. <code class="highlighter-rouge">OR</code> search).
-e.g. <code class="highlighter-rouge">Tea Coffee</code> will return <code class="highlighter-rouge">Bubble Tea</code>, <code class="highlighter-rouge">Starbucks Coffee</code>
-</li>
-</ul>
+<p>[Description of parameters]</p>
 
 <p>Examples:</p>
-<ul>
-  <li>
-<code class="highlighter-rouge">find milk</code> returns <code class="highlighter-rouge">strawberry milk</code> and <code class="highlighter-rouge">Chocolate Milk</code>
-</li>
-  <li>
-<code class="highlighter-rouge">find tea coffee</code> returns <code class="highlighter-rouge">Bubble Tea</code> and <code class="highlighter-rouge">Starbucks Coffee</code>
-</li>
-</ul>
 
-<h3 id="edit-a-transaction-edit">Edit a transaction: <code class="highlighter-rouge">edit</code>
-</h3>
+<p>Example Usage:</p>
 
-<p>Edits an existing transaction in the finance tracker.</p>
+<p>Expected Outcome:</p>
 
-<p>Format: <code class="highlighter-rouge">edit INDEX [t/TITLE] [a/AMOUNT] [d/DATE] [c/CATEGORY]…​</code></p>
+<h4 id="443-delete-income">4.4.3 Delete Income</h4>
 
-<ul>
-  <li>Edits the transaction at the specified <code class="highlighter-rouge">INDEX</code> on the current list.
-The index refers to the index number shown on the current displayed list.
-The index <strong>must be a positive integer</strong> 1, 2, 3, …​
-    <ul>
-      <li>On Overview tab: edits the transaction at the specified <code class="highlighter-rouge">INDEX</code> on the current transaction list.</li>
-      <li>On Expenses tab: edits the expense at the specified <code class="highlighter-rouge">INDEX</code> on the current expenses list.</li>
-      <li>On Income tab: edits the income at the specified <code class="highlighter-rouge">INDEX</code> on the current incomes list.</li>
-    </ul>
-  </li>
-  <li>At least one of the optional fields must be provided.</li>
-  <li>Existing values will be updated to the input values.</li>
-  <li>When editing category, the existing categories for that transaction will be removed i.e adding of categories is not cumulative.</li>
-  <li>You can remove all the transaction’s categories by typing <code class="highlighter-rouge">c/</code> without specifying any categories after it.</li>
-</ul>
+<p>Deletes the specified income from the finance tracker.</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<h4 id="444-list-income">4.4.4 List Income</h4>
+
+<p>Shows a list of all the incomes in the finance tracker.</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
 
 <p>Examples:</p>
-<ul>
-  <li>(On Expenses tab) <code class="highlighter-rouge">list</code> followed by <code class="highlighter-rouge">edit 1 t/Brunch d/22/09/2020</code> edits the title and date of the 1st expense in the expenses list to be <code class="highlighter-rouge">Brunch</code> and <code class="highlighter-rouge">22/09/2020</code> respectively.</li>
-  <li>(On Income tab) <code class="highlighter-rouge">find prize</code> followed by <code class="highlighter-rouge">edit 2 a/500 c/</code> edits the amount of the 2nd income in the resulting incomes list of the <code class="highlighter-rouge">find</code> command to be <code class="highlighter-rouge">500</code> and clears all existing categories.</li>
-</ul>
 
-<h3 id="delete-a-transaction-delete">Delete a transaction: <code class="highlighter-rouge">delete</code>
-</h3>
+<p>Example Usage:</p>
 
-<p>Deletes a specified transaction from the finance tracker.</p>
+<p>Expected Outcome:</p>
 
-<p>Format: <code class="highlighter-rouge">delete INDEX</code></p>
+<h4 id="445-find-income">4.4.5 Find Income</h4>
 
-<ul>
-  <li>Deletes a specified transaction at the specified <code class="highlighter-rouge">INDEX</code> on the current list.
-The index refers to the index number shown on the current displayed list.
-The index <strong>must be a positive integer</strong> 1, 2, 3, …​
-    <ul>
-      <li>On Overview tab: deletes the transaction at the specified <code class="highlighter-rouge">INDEX</code> on the current transaction list.</li>
-      <li>On Expenses tab: deletes the expense at the specified <code class="highlighter-rouge">INDEX</code> on the current expenses list.</li>
-      <li>On Income tab: deletes the income at the specified <code class="highlighter-rouge">INDEX</code> on the current incomes list.</li>
-    </ul>
-  </li>
-</ul>
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
 
 <p>Examples:</p>
-<ul>
-  <li>(On Expenses tab) <code class="highlighter-rouge">list</code> followed by <code class="highlighter-rouge">delete 3</code> deletes the 3rd expense in the expenses list from the finance tracker.</li>
-  <li>(On Income tab) <code class="highlighter-rouge">find allowance</code> followed by <code class="highlighter-rouge">delete 2</code> deletes the 2nd income in the resulting incomes list of the <code class="highlighter-rouge">find</code> command from the finance tracker.</li>
-</ul>
 
-<h3 id="switch-tab-tab">Switch tab: <code class="highlighter-rouge">tab</code>
-</h3>
+<p>Example Usage:</p>
 
-<p>Switches the current tab on the finance tracker.</p>
+<p>Expected Outcome:</p>
 
-<p>Format: <code class="highlighter-rouge">delete INDEX</code></p>
+<h3 id="45-frequent-expense">4.5 Frequent Expense</h3>
 
-<ul>
-  <li>Switches to the tab corresponding to the specified <code class="highlighter-rouge">INDEX</code>. The index <strong>must be 1, 2, 3, or 4</strong>.
-    <ol>
-      <li>Switches to the Overview tab.</li>
-      <li>Switches to the Expenses tab.</li>
-      <li>Switches to the Income tab.</li>
-      <li>Switches to the Analytics tab.</li>
-    </ol>
-  </li>
-</ul>
+<p>[Summary of feature]</p>
 
-<h3 id="exiting-the-app-exit">Exiting the app: <code class="highlighter-rouge">exit</code>
-</h3>
-<p>Exits the app.</p>
+<h4 id="451-add-frequent-expense">4.5.1 Add Frequent Expense</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h4 id="452-edit-frequent-expense">4.5.2 Edit Frequent Expense</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h4 id="453-delete-frequent-expense">4.5.3 Delete Frequent Expense</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h4 id="454-convert-frequent-expense">4.5.4 Convert Frequent Expense</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h3 id="46-frequent-income">4.6 Frequent Income</h3>
+
+<p>[Summary of feature]</p>
+
+<h4 id="461-add-frequent-income">4.6.1 Add Frequent Income</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h4 id="462-edit-frequent-income">4.6.2 Edit Frequent Income</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h4 id="463-delete-frequent-income">4.6.3 Delete Frequent Income</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h4 id="464-convert-frequent-income">4.6.4 Convert Frequent Income</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h3 id="47-expense-limit">4.7 Expense Limit</h3>
+
+<p>[Summary of feature]</p>
+
+<h4 id="471-set-expense-limit">4.7.1 Set Expense Limit</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h3 id="48-savings-goal">4.8 Savings Goal</h3>
+
+<p>[Summary of feature]</p>
+
+<h4 id="481-set-savings-goal">4.8.1 Set Savings Goal</h4>
+
+<p>[Explain what the command does]</p>
+
+<p>Format:</p>
+
+<p>Shortcut:</p>
+
+<p>[Description of parameters]</p>
+
+<p>Examples:</p>
+
+<p>Example Usage:</p>
+
+<p>Expected Outcome:</p>
+
+<h3 id="49-analytics">4.9 Analytics</h3>
+
+<p>[Summary of feature]</p>
+
+<p>[Sub section for your commands]</p>
+
+<h3 id="410-exiting-the-program">4.10 Exiting the Program</h3>
+<p>Exits the program.</p>
 
 <p>Format: <code class="highlighter-rouge">exit</code></p>
 
-<h3 id="saving-the-data">Saving the data</h3>
+<h3 id="411-saving-the-data">4.11 Saving the data</h3>
 
-<p>Fine$$e data is saved in the hard disk automatically after any command that changes the data. There is no need to save manually.</p>
-
-<hr>
-
-<h2 id="faq">FAQ</h2>
-
-<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
-<strong>A</strong>: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Fine$$e finance tracker in the home folder.</p>
+<p>Fine$$e data is saved in the hard disk automatically after any command that changes the data.
+There is no need to save manually.</p>
 
 <hr>
-
-<h2 id="command-summary">Command Summary</h2>
+<h2 id="5-command-summary">5. Command Summary</h2>
 
 <table>
   <thead>
@@ -389,6 +711,17 @@ The index <strong>must be a positive integer</strong> 1, 2, 3, …​
     </tr>
   </tbody>
 </table>
+
+<hr>
+<h2 id="6-glossary">6. Glossary</h2>
+
+<p>[To be added]</p>
+
+<hr>
+<h2 id="7-faq">7. FAQ</h2>
+
+<p><strong>Q</strong>: How do I transfer my data to another Computer?<br>
+<strong>A</strong>: Install the app on the other computer and overwrite the empty data file it creates with the file that contains the data of your previous Fine$$e finance tracker in the home folder.</p>
 
   </div>
 
