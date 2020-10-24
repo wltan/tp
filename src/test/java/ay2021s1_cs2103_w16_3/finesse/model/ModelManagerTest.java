@@ -6,6 +6,7 @@ import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.BUBBLE_
 import static ay2021s1_cs2103_w16_3.finesse.testutil.TypicalTransactions.TUITION_FEES;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.file.Path;
@@ -15,9 +16,12 @@ import java.util.Arrays;
 import org.junit.jupiter.api.Test;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.GuiSettings;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.TitleContainsKeywordsPredicate;
 import ay2021s1_cs2103_w16_3.finesse.testutil.FinanceTrackerBuilder;
 import ay2021s1_cs2103_w16_3.finesse.testutil.TransactionBuilder;
+import javafx.collections.ObservableList;
 
 public class ModelManagerTest {
 
@@ -100,6 +104,40 @@ public class ModelManagerTest {
             -> modelManager.getFilteredFrequentIncomeList().remove(0));
     }
 
+    @Test
+    public void getFilteredTransactionLists_addTransactions_updatesList() {
+        ObservableList<Expense> expenseList = modelManager.getFilteredExpenseList();
+        ObservableList<Income> incomeList = modelManager.getFilteredIncomeList();
+        modelManager.addExpense(new TransactionBuilder().buildExpense());
+        assertEquals(1, expenseList.size());
+        assertEquals(0, incomeList.size());
+        modelManager.addIncome(new TransactionBuilder().buildIncome());
+        assertEquals(1, expenseList.size());
+        assertEquals(1, incomeList.size());
+    }
+
+    @Test
+    public void getFilteredTransactionLists_deleteTransaction_updatesList() {
+        Expense e = new TransactionBuilder().buildExpense();
+        modelManager.addExpense(e);
+        ObservableList<Expense> expenseList = modelManager.getFilteredExpenseList();
+        assertEquals(1, expenseList.size());
+        modelManager.deleteTransaction(e);
+        assertEquals(0, expenseList.size());
+    }
+
+    @Test
+    public void getFilteredTransactionLists_editTransaction_updatesList() {
+        Income i = new TransactionBuilder().buildIncome();
+        Income updated = new TransactionBuilder().withTitle("foo").buildIncome();
+        assertNotEquals(i.getTitle(), updated.getTitle()); // ensure no conflict
+        modelManager.addIncome(i);
+        ObservableList<Income> incomeList = modelManager.getFilteredIncomeList();
+        assertEquals(1, incomeList.size());
+        modelManager.setTransaction(i, updated);
+        assertFalse(incomeList.contains(i));
+        assertTrue(incomeList.contains(updated));
+    }
 
     @Test
     public void equals() {
