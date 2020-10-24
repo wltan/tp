@@ -117,12 +117,11 @@ public class FinanceTrackerParser {
             return new AddFrequentIncomeCommandParser().parse(arguments);
 
         case EditCommand.COMMAND_WORD:
-            final EditCommand baseEditCommand = new EditCommandParser().parse(arguments);
             switch (uiCurrentTab) {
             case EXPENSES:
-                return new EditExpenseCommand(baseEditCommand);
+                return new EditExpenseCommand(new EditCommandParser().parse(arguments));
             case INCOME:
-                return new EditIncomeCommand(baseEditCommand);
+                return new EditIncomeCommand(new EditCommandParser().parse(arguments));
             default:
                 throw new ParseException(commandInvalidTabMessage(commandWord,
                         Tab.EXPENSES, Tab.INCOME));
@@ -132,12 +131,11 @@ public class FinanceTrackerParser {
             return new EditFrequentExpenseCommandParser().parse(arguments);
 
         case DeleteCommand.COMMAND_WORD:
-            final DeleteCommand baseDeleteCommand = new DeleteCommandParser().parse(arguments);
             switch (uiCurrentTab) {
             case EXPENSES:
-                return new DeleteExpenseCommand(baseDeleteCommand);
+                return new DeleteExpenseCommand(new DeleteCommandParser().parse(arguments));
             case INCOME:
-                return new DeleteIncomeCommand(baseDeleteCommand);
+                return new DeleteIncomeCommand(new DeleteCommandParser().parse(arguments));
             default:
                 throw new ParseException(commandInvalidTabMessage(commandWord,
                         Tab.EXPENSES, Tab.INCOME));
@@ -154,14 +152,13 @@ public class FinanceTrackerParser {
             return new ClearCommand();
 
         case FindCommand.COMMAND_WORD:
-            final FindCommand baseFindCommand = new FindCommandParser().parse(arguments);
             switch (uiCurrentTab) {
             case OVERVIEW:
-                return new FindTransactionCommand(baseFindCommand);
+                return new FindTransactionCommand(new FindCommandParser().parse(arguments));
             case EXPENSES:
-                return new FindExpenseCommand(baseFindCommand);
+                return new FindExpenseCommand(new FindCommandParser().parse(arguments));
             case INCOME:
-                return new FindIncomeCommand(baseFindCommand);
+                return new FindIncomeCommand(new FindCommandParser().parse(arguments));
             default:
                 throw new ParseException(commandInvalidTabMessage(commandWord,
                         Tab.OVERVIEW, Tab.EXPENSES, Tab.INCOME));
