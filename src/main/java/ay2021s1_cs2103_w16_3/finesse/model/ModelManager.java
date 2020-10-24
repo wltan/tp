@@ -4,8 +4,10 @@ import static ay2021s1_cs2103_w16_3.finesse.commons.util.CollectionUtil.requireA
 import static java.util.Objects.requireNonNull;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.GuiSettings;
 import ay2021s1_cs2103_w16_3.finesse.commons.core.LogsCenter;
@@ -33,6 +35,8 @@ public class ModelManager implements Model {
     private final FilteredList<Transaction> filteredIncomes;
     private final FilteredList<FrequentExpense> filteredFrequentExpenses;
     private final FilteredList<FrequentIncome> filteredFrequentIncomes;
+    private final ObservableList<Expense> castFilteredExpenses;
+    private final ObservableList<Income> castFilteredIncomes;
     private final MonthlyBudget monthlyBudget;
 
     /**
@@ -51,6 +55,8 @@ public class ModelManager implements Model {
         filteredIncomes = new FilteredList<>(this.financeTracker.getTransactionList(), PREDICATE_SHOW_ALL_INCOMES);
         filteredFrequentExpenses = new FilteredList<>(this.financeTracker.getFrequentExpenseList());
         filteredFrequentIncomes = new FilteredList<>(this.financeTracker.getFrequentIncomeList());
+        castFilteredExpenses = FXCollections.observableArrayList(castFilteredList(filteredExpenses, Expense.class));
+        castFilteredIncomes = FXCollections.observableArrayList(castFilteredList(filteredIncomes, Income.class));
         monthlyBudget = this.financeTracker.getMonthlyBudget();
     }
 
@@ -108,6 +114,7 @@ public class ModelManager implements Model {
     @Override
     public void deleteTransaction(Transaction target) {
         financeTracker.removeTransaction(target);
+        refreshTransactionLists();
     }
 
     @Override
@@ -127,6 +134,7 @@ public class ModelManager implements Model {
         requireAllNonNull(target, editedTransaction);
 
         financeTracker.setTransaction(target, editedTransaction);
+        refreshTransactionLists();
     }
 
     //=========== Frequent Transaction ================================================================================
@@ -193,9 +201,7 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Expense> getFilteredExpenseList() {
-        ObservableList<Expense> newFilteredExpenses = FXCollections.observableArrayList();
-        filteredExpenses.forEach(e -> newFilteredExpenses.add((Expense) e));
-        return FXCollections.unmodifiableObservableList(newFilteredExpenses);
+        return FXCollections.unmodifiableObservableList(castFilteredExpenses);
     }
 
     /**
@@ -204,9 +210,7 @@ public class ModelManager implements Model {
      */
     @Override
     public ObservableList<Income> getFilteredIncomeList() {
-        ObservableList<Income> newFilteredIncomes = FXCollections.observableArrayList();
-        filteredIncomes.forEach(i -> newFilteredIncomes.add((Income) i));
-        return FXCollections.unmodifiableObservableList(newFilteredIncomes);
+        return FXCollections.unmodifiableObservableList(castFilteredIncomes);
     }
 
     /**
@@ -237,12 +241,40 @@ public class ModelManager implements Model {
     public void updateFilteredExpenseList(Predicate<Transaction> predicate) {
         requireNonNull(predicate);
         filteredExpenses.setPredicate(t -> predicate.test(t) && PREDICATE_SHOW_ALL_EXPENSES.test(t));
+        refreshTransactionLists();
     }
 
     @Override
     public void updateFilteredIncomeList(Predicate<Transaction> predicate) {
         requireNonNull(predicate);
         filteredIncomes.setPredicate(t -> predicate.test(t) && PREDICATE_SHOW_ALL_INCOMES.test(t));
+        refreshTransactionLists();
+    }
+
+    /**
+     * Casts a FilteredList into a List of the filtered subtype.
+     * Precondition: The given FilteredList must be either the expense list or income list.
+     * This guarantees that the elements of the FilteredList can successfully be cast to the target type.
+     * @param list The FilteredList to be cast.
+     * @param toCast The class of the target type to be cast. Required as casting to generic types is not allowed.
+     * @param <T> The type of transaction. Can be either Expense or Income, but not Transaction itself.
+     * @return A List whose elements are equal to the current state of the FilteredList.
+     */
+    private <T extends Transaction> List<T> castFilteredList(FilteredList<Transaction> list, Class<T> toCast) {
+        assert list == filteredExpenses || list == filteredIncomes
+                : "Casting can only be performed on expense or income list";
+        return list.stream().map(toCast::cast).collect(Collectors.toUnmodifiableList());
+    }
+
+    /**
+     * Refreshes the typecasted ObservableLists used by other components.
+     * To be called anytime the expense or income list updates.
+     */
+    private void refreshTransactionLists() {
+        castFilteredExpenses.clear();
+        castFilteredExpenses.addAll(castFilteredList(filteredExpenses, Expense.class));
+        castFilteredIncomes.clear();
+        castFilteredIncomes.addAll(castFilteredList(filteredIncomes, Income.class));
     }
 
     @Override
