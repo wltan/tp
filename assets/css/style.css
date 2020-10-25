@@ -530,6 +530,12 @@ table {
 @media screen and (min-width: 800px) {
   .one-half {
     width: calc(50% - (30px / 2)); } }
+/**
+ * Table of Content without bullet points
+ */
+.toc-no-bullet-points ul, ol {
+  list-style-type: none; }
+
 h2, h3, h4, h5, h6 {
   color: #e46c0a; }
 
