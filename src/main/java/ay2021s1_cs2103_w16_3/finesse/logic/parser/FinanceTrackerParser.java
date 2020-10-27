@@ -134,10 +134,22 @@ public class FinanceTrackerParser {
             }
 
         case EditBookmarkExpenseCommand.COMMAND_WORD:
-            return new EditBookmarkExpenseCommandParser().parse(arguments);
+            switch (uiCurrentTab) {
+            case EXPENSES:
+                return new EditBookmarkExpenseCommandParser().parse(arguments);
+            default:
+                throw new ParseException(commandInvalidTabMessage(commandWord,
+                        Tab.EXPENSES));
+            }
 
         case EditBookmarkIncomeCommand.COMMAND_WORD:
-            return new EditBookmarkIncomeCommandParser().parse(arguments);
+            switch (uiCurrentTab) {
+            case INCOME:
+                return new EditBookmarkIncomeCommandParser().parse(arguments);
+            default:
+                throw new ParseException(commandInvalidTabMessage(commandWord,
+                        Tab.INCOME));
+            }
 
         case DeleteCommand.COMMAND_WORD:
             switch (uiCurrentTab) {
@@ -151,10 +163,22 @@ public class FinanceTrackerParser {
             }
 
         case DeleteBookmarkExpenseCommand.COMMAND_WORD:
-            return new DeleteBookmarkExpenseCommandParser().parse(arguments);
+            switch (uiCurrentTab) {
+            case EXPENSES:
+                return new DeleteBookmarkExpenseCommandParser().parse(arguments);
+            default:
+                throw new ParseException(commandInvalidTabMessage(commandWord,
+                        Tab.EXPENSES));
+            }
 
         case DeleteBookmarkIncomeCommand.COMMAND_WORD:
-            return new DeleteBookmarkIncomeCommandParser().parse(arguments);
+            switch (uiCurrentTab) {
+            case INCOME:
+                return new DeleteBookmarkIncomeCommandParser().parse(arguments);
+            default:
+                throw new ParseException(commandInvalidTabMessage(commandWord,
+                        Tab.INCOME));
+            }
 
         case ConvertBookmarkExpenseCommand.COMMAND_WORD:
         case ConvertBookmarkExpenseCommand.COMMAND_ALIAS:
