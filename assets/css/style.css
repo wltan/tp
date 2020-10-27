@@ -531,9 +531,9 @@ table {
   .one-half {
     width: calc(50% - (30px / 2)); } }
 /**
- * Table of Content without bullet points
+ * Table of Contents without bullet points
  */
-.toc-no-bullet-points ul, ol {
+.toc-no-bullet-points ul, .toc-no-bullet-points ol {
   list-style-type: none; }
 
 h2, h3, h4, h5, h6 {
