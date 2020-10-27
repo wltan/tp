@@ -268,7 +268,7 @@ Format: (when on the [Expenses tab](#213-expenses-tab)) `delete INDEX`
 
 * `INDEX` allows you to choose which expense to delete by specifying its position in the expenses list.
 
-Examples:
+Example:
 * `delete 3` deletes the third expense in the expenses list.
 
 Example Usage:
@@ -286,7 +286,7 @@ Deleted Expense: Bubble Tea Amount: $4.80 Date: 14/10/2020 Categories: [Food & B
 Shows a list of all the expenses in the finance tracker.
 This effectively resets any current filtering of the expense list, such as those made by `find`.
 
-Format: (when on the [Expenses tab](#)) `list`
+Format: (when on the [Expenses tab](#213-expenses-tab)) `list`
 
 Example Usage:
 ```
@@ -405,7 +405,7 @@ Format: (when on the [Incomes tab](#212-incomes-tab)) `delete INDEX`
 
 * `INDEX` allows you to choose which income to delete by specifying its position in the incomes list.
 
-Examples:
+Example:
 * `delete 3` deletes the third income in the incomes list.
 
 Example Usage:
@@ -423,7 +423,7 @@ Deleted Income: Teaching Assistant Amount: $1920.00 Date: 18/10/2020 Categories:
 Shows a list of all the incomes in the finance tracker.
 This effectively resets any current filtering of the income list, such as those made by `find`.
 
-Format: (when on the [Income tab](#)) `list`
+Format: (when on the [Incomes tab](#212-incomes-tab)) `list`
 
 Example Usage:
 ```
