@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Set;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.Command;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
@@ -24,9 +23,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
  * Edits the details of an existing bookmark expense using its displayed index from the bookmark expense list
  * in the expense tab.
  */
-public class EditBookmarkExpenseCommand extends Command {
-    public static final String COMMAND_WORD = "edit-bookmark-expense";
-
+public class EditBookmarkExpenseCommand extends EditBookmarkCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the bookmark expense identified "
             + "by the index number used in the displayed bookmark expense list on the expense tab. "
             + "Existing values will be overwritten by the input values.\n"

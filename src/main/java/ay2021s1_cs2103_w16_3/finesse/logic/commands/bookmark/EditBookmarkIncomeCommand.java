@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Set;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.Command;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
@@ -24,10 +23,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Title;
  * Edits the details of an existing bookmark income using its displayed index from the bookmark income list
  * in the income tab.
  */
-public class EditBookmarkIncomeCommand extends Command {
-
-    public static final String COMMAND_WORD = "edit-bookmark-income";
-
+public class EditBookmarkIncomeCommand extends EditBookmarkCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Edits the details of the bookmark income identified "
             + "by the index number used in the displayed bookmark income list on the income tab. "
             + "Existing values will be overwritten by the input values.\n"

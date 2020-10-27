@@ -34,12 +34,9 @@ import ay2021s1_cs2103_w16_3.finesse.logic.commands.ListTransactionCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.TabCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkExpenseCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.AddBookmarkIncomeCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkIncomeCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkIncomeCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkExpenseCommand;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkIncomeCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.ConvertBookmarkCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.DeleteBookmarkCommand;
+import ay2021s1_cs2103_w16_3.finesse.logic.commands.bookmark.EditBookmarkCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.budget.SetExpenseLimitCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.budget.SetSavingsGoalCommand;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.bookmarkparsers.AddBookmarkExpenseCommandParser;
@@ -133,22 +130,15 @@ public class FinanceTrackerParser {
                         Tab.EXPENSES, Tab.INCOME));
             }
 
-        case EditBookmarkExpenseCommand.COMMAND_WORD:
+        case EditBookmarkCommand.COMMAND_WORD:
             switch (uiCurrentTab) {
             case EXPENSES:
                 return new EditBookmarkExpenseCommandParser().parse(arguments);
-            default:
-                throw new ParseException(commandInvalidTabMessage(commandWord,
-                        Tab.EXPENSES));
-            }
-
-        case EditBookmarkIncomeCommand.COMMAND_WORD:
-            switch (uiCurrentTab) {
             case INCOME:
                 return new EditBookmarkIncomeCommandParser().parse(arguments);
             default:
                 throw new ParseException(commandInvalidTabMessage(commandWord,
-                        Tab.INCOME));
+                        Tab.EXPENSES, Tab.INCOME));
             }
 
         case DeleteCommand.COMMAND_WORD:
@@ -162,31 +152,28 @@ public class FinanceTrackerParser {
                         Tab.EXPENSES, Tab.INCOME));
             }
 
-        case DeleteBookmarkExpenseCommand.COMMAND_WORD:
+        case DeleteBookmarkCommand.COMMAND_WORD:
             switch (uiCurrentTab) {
             case EXPENSES:
                 return new DeleteBookmarkExpenseCommandParser().parse(arguments);
-            default:
-                throw new ParseException(commandInvalidTabMessage(commandWord,
-                        Tab.EXPENSES));
-            }
-
-        case DeleteBookmarkIncomeCommand.COMMAND_WORD:
-            switch (uiCurrentTab) {
             case INCOME:
                 return new DeleteBookmarkIncomeCommandParser().parse(arguments);
             default:
                 throw new ParseException(commandInvalidTabMessage(commandWord,
-                        Tab.INCOME));
+                        Tab.EXPENSES, Tab.INCOME));
             }
 
-        case ConvertBookmarkExpenseCommand.COMMAND_WORD:
-        case ConvertBookmarkExpenseCommand.COMMAND_ALIAS:
-            return new ConvertBookmarkExpenseCommandParser().parse(arguments);
-
-        case ConvertBookmarkIncomeCommand.COMMAND_WORD:
-        case ConvertBookmarkIncomeCommand.COMMAND_ALIAS:
-            return new ConvertBookmarkIncomeCommandParser().parse(arguments);
+        case ConvertBookmarkCommand.COMMAND_WORD:
+        case ConvertBookmarkCommand.COMMAND_ALIAS:
+            switch (uiCurrentTab) {
+            case EXPENSES:
+                return new ConvertBookmarkExpenseCommandParser().parse(arguments);
+            case INCOME:
+                return new ConvertBookmarkIncomeCommandParser().parse(arguments);
+            default:
+                throw new ParseException(commandInvalidTabMessage(commandWord,
+                        Tab.EXPENSES, Tab.INCOME));
+            }
 
         case ClearCommand.COMMAND_WORD:
             return new ClearCommand();

@@ -7,7 +7,6 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.Command;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
@@ -18,10 +17,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 /**
  * Converts a specified bookmark expense and adds it as an expense to the finance tracker.
  */
-public class ConvertBookmarkExpenseCommand extends Command {
-    public static final String COMMAND_WORD = "convert-bookmark-expense";
-    public static final String COMMAND_ALIAS = "convertbe";
-
+public class ConvertBookmarkExpenseCommand extends ConvertBookmarkCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Converts the specified bookmark expense and adds"
             + " it as an expense to the finance tracker.\n"
             + "Parameters: INDEX (must be a positive integer) "

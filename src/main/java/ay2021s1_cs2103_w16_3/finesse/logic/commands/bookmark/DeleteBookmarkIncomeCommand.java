@@ -6,7 +6,6 @@ import static java.util.Objects.requireNonNull;
 import java.util.List;
 
 import ay2021s1_cs2103_w16_3.finesse.commons.core.index.Index;
-import ay2021s1_cs2103_w16_3.finesse.logic.commands.Command;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.model.Model;
@@ -15,9 +14,7 @@ import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 /**
  * Deletes a bookmark income identified using its displayed index from the finance tracker.
  */
-public class DeleteBookmarkIncomeCommand extends Command {
-    public static final String COMMAND_WORD = "delete-bookmark-income";
-
+public class DeleteBookmarkIncomeCommand extends DeleteBookmarkCommand {
     public static final String MESSAGE_USAGE = COMMAND_WORD
             + ": Deletes the bookmark income identified by the index number used in the displayed "
             + "bookmark income list. \n"
