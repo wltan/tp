@@ -480,11 +480,11 @@ Shortcut: `addbe`
 
 Examples:
 - `add-bookmark-expense t/Phone Bill a/60 c/Utilities c/Personal`
-adds a bookmark expense titled `Phone Bill` with amount `$60.00` and two categories`Utilities` and `Personal`.
+adds a bookmark expense titled `Phone Bill` with amount `$60.00` and two categories `Utilities` and `Personal`.
 - `add-bookmark-expense t/Spotify Subscription a/$9 c/Others`
 adds a bookmark expense titled `Spotify Subscription` with amount `$9.00` and a single category `Others`.
-- `addbe t/Bubble Tea a/$4.50 c/Food & Drink`
-adds a bookmark expense titled `Bubble Tea` with amount `$4.50` and a single category `Food & Drink`.
+- `addbe t/Bubble Tea a/$4.50 c/Food & Beverage`
+adds a bookmark expense titled `Bubble Tea` with amount `$4.50` and a single category `Food & Beverage`.
 - `addbe t/Lunch a/$5.00`
 adds a bookmark expense titled `Lunch` with amount `$5.00` and no categories.
 
