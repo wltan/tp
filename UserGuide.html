@@ -94,18 +94,18 @@
       </li>
       <li>
 <a href="#45-bookmark-expense" id="markdown-toc-45-bookmark-expense">4.5 Bookmark Expense</a>        <ul>
-          <li><a href="#451-add-bookmark-expense-add-bookmark-expense" id="markdown-toc-451-add-bookmark-expense-add-bookmark-expense">4.5.1 Add Bookmark Expense: <code class="highlighter-rouge">add-bookmark-expense</code></a></li>
-          <li><a href="#452-edit-bookmark-expense-edit-bookmark-expense" id="markdown-toc-452-edit-bookmark-expense-edit-bookmark-expense">4.5.2 Edit Bookmark Expense: <code class="highlighter-rouge">edit-bookmark-expense</code></a></li>
-          <li><a href="#453-delete-bookmark-expense-delete-bookmark-expense" id="markdown-toc-453-delete-bookmark-expense-delete-bookmark-expense">4.5.3 Delete Bookmark Expense: <code class="highlighter-rouge">delete-bookmark-expense</code></a></li>
-          <li><a href="#454-convert-bookmark-expense-convert-bookmark-expense" id="markdown-toc-454-convert-bookmark-expense-convert-bookmark-expense">4.5.4 Convert Bookmark Expense: <code class="highlighter-rouge">convert-bookmark-expense</code></a></li>
+          <li><a href="#451-add-bookmark-expense" id="markdown-toc-451-add-bookmark-expense">4.5.1 Add Bookmark Expense</a></li>
+          <li><a href="#452-edit-bookmark-expense" id="markdown-toc-452-edit-bookmark-expense">4.5.2 Edit Bookmark Expense</a></li>
+          <li><a href="#453-delete-bookmark-expense" id="markdown-toc-453-delete-bookmark-expense">4.5.3 Delete Bookmark Expense</a></li>
+          <li><a href="#454-convert-bookmark-expense" id="markdown-toc-454-convert-bookmark-expense">4.5.4 Convert Bookmark Expense</a></li>
         </ul>
       </li>
       <li>
 <a href="#46-bookmark-income" id="markdown-toc-46-bookmark-income">4.6 Bookmark Income</a>        <ul>
-          <li><a href="#461-add-bookmark-income-add-bookmark-income" id="markdown-toc-461-add-bookmark-income-add-bookmark-income">4.6.1 Add Bookmark Income: <code class="highlighter-rouge">add-bookmark-income</code></a></li>
-          <li><a href="#462-edit-bookmark-income-edit-bookmark-income" id="markdown-toc-462-edit-bookmark-income-edit-bookmark-income">4.6.2 Edit Bookmark Income: <code class="highlighter-rouge">edit-bookmark-income</code></a></li>
-          <li><a href="#463-delete-bookmark-income-delete-bookmark-income" id="markdown-toc-463-delete-bookmark-income-delete-bookmark-income">4.6.3 Delete Bookmark Income: <code class="highlighter-rouge">delete-bookmark-income</code></a></li>
-          <li><a href="#464-convert-bookmark-income-convert-bookmark-income" id="markdown-toc-464-convert-bookmark-income-convert-bookmark-income">4.6.4 Convert Bookmark Income: <code class="highlighter-rouge">convert-bookmark-income</code></a></li>
+          <li><a href="#461-add-bookmark-income" id="markdown-toc-461-add-bookmark-income">4.6.1 Add Bookmark Income</a></li>
+          <li><a href="#462-edit-bookmark-income" id="markdown-toc-462-edit-bookmark-income">4.6.2 Edit Bookmark Income</a></li>
+          <li><a href="#463-delete-bookmark-income" id="markdown-toc-463-delete-bookmark-income">4.6.3 Delete Bookmark Income</a></li>
+          <li><a href="#464-convert-bookmark-income" id="markdown-toc-464-convert-bookmark-income">4.6.4 Convert Bookmark Income</a></li>
         </ul>
       </li>
       <li>
@@ -449,7 +449,7 @@ The rest of the expense information remains unchanged.</li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which expense to delete by specifying its position in the expenses list.</li>
 </ul>
 
-<p>Examples:</p>
+<p>Example:</p>
 <ul>
   <li>
 <code class="highlighter-rouge">delete 3</code> deletes the third expense in the expenses list.</li>
@@ -468,7 +468,7 @@ The rest of the expense information remains unchanged.</li>
 <p>Shows a list of all the expenses in the finance tracker.
 This effectively resets any current filtering of the expense list, such as those made by <code class="highlighter-rouge">find</code>.</p>
 
-<p>Format: (when on the <a href="#">Expenses tab</a>) <code class="highlighter-rouge">list</code></p>
+<p>Format: (when on the <a href="#213-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">list</code></p>
 
 <p>Example Usage:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
@@ -621,7 +621,7 @@ The rest of the income information remains unchanged.</li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which income to delete by specifying its position in the incomes list.</li>
 </ul>
 
-<p>Examples:</p>
+<p>Example:</p>
 <ul>
   <li>
 <code class="highlighter-rouge">delete 3</code> deletes the third income in the incomes list.</li>
@@ -640,7 +640,7 @@ The rest of the income information remains unchanged.</li>
 <p>Shows a list of all the incomes in the finance tracker.
 This effectively resets any current filtering of the income list, such as those made by <code class="highlighter-rouge">find</code>.</p>
 
-<p>Format: (when on the <a href="#">Income tab</a>) <code class="highlighter-rouge">list</code></p>
+<p>Format: (when on the <a href="#212-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">list</code></p>
 
 <p>Example Usage:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
@@ -687,313 +687,292 @@ e.g. <code class="highlighter-rouge">allowance prize</code> will return <code cl
 
 <h3 id="45-bookmark-expense">4.5 Bookmark Expense</h3>
 
-<p>Fine<span>$<span>$<span>e’s Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
-The user will be then be able to edit, delete and convert a bookmarked expense to conveniently add it into Fine$$e’s expense list.</span></span></span></p>
+<p>Fine\$\$e’s Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
+The user will be then be able to edit, delete and convert a bookmarked expense to conveniently add it into Fine\$\$e’s expense list.</p>
 
-<h4 id="451-add-bookmark-expense-add-bookmark-expense">4.5.1 Add Bookmark Expense: <code class="highlighter-rouge">add-bookmark-expense</code>
-</h4>
+<h4 id="451-add-bookmark-expense">4.5.1 Add Bookmark Expense</h4>
 
 <p>Adds a bookmarked expense into the bookmark expense list in Fine$$e.</p>
 
-<p><strong>Format</strong>:</p>
-<pre><code class="language-$xslt">add-bookmark-expense t/TITLE a/AMOUNT [c/CATEGORIES]...
-</code></pre>
-
-<p><strong>Shortcut</strong>:</p>
-<pre><code class="language-$xslt">addbe t/TITLE a/AMOUNT [c/CATEGORIES]...
-</code></pre>
+<p>Format: <code class="highlighter-rouge">add-bookmark-expense t/TITLE a/AMOUNT [c/CATEGORIES]...</code></p>
 
 <ul>
-  <li>Adds a new bookmark expense with the given details.</li>
-  <li>The title and the amount of the bookmark expense <strong>cannot be empty</strong>.</li>
-  <li>The title should contain only alphanumeric characters and spaces.</li>
-  <li>The amount inputted should only contain positive numbers and reflect the value in dollars.
-The inputted amount can have either 0 or 2 decimal places and also have an optional $ prefix.</li>
+  <li>The title, amount, and categories of the bookmark expense follows the same rules as the <a href="#431-add-expense">Add Expense</a> feature above.</li>
 </ul>
 
-<blockquote>
-  <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">Inputting of categories for the bookmark expense is optional and is up to the user’s discretion.</p>
-</blockquote>
+<p>Shortcut: <code class="highlighter-rouge">addbe</code></p>
 
-<p><strong>Examples</strong>:</p>
+<p>Examples:</p>
 <ul>
-  <li><code class="highlighter-rouge">add-bookmark-expense t/Phone Bill a/60 c/Utilities c/Personal</code></li>
-  <li><code class="highlighter-rouge">add-bookmark-expense t/Spotify Subscription a/$9 c/Others</code></li>
-  <li><code class="highlighter-rouge">addbe t/Bubble Tea a/$4.50 c/Food &amp; Drink</code></li>
-  <li><code class="highlighter-rouge">addbe t/Lunch a/$5.00</code></li>
+  <li>
+<code class="highlighter-rouge">add-bookmark-expense t/Phone Bill a/60 c/Utilities c/Personal</code>
+adds a bookmark expense titled <code class="highlighter-rouge">Phone Bill</code> with amount <code class="highlighter-rouge">$60.00</code> and two categories <code class="highlighter-rouge">Utilities</code> and <code class="highlighter-rouge">Personal</code>.</li>
+  <li>
+<code class="highlighter-rouge">add-bookmark-expense t/Spotify Subscription a/$9 c/Others</code>
+adds a bookmark expense titled <code class="highlighter-rouge">Spotify Subscription</code> with amount <code class="highlighter-rouge">$9.00</code> and a single category <code class="highlighter-rouge">Others</code>.</li>
+  <li>
+<code class="highlighter-rouge">addbe t/Bubble Tea a/$4.50 c/Food &amp; Beverage</code>
+adds a bookmark expense titled <code class="highlighter-rouge">Bubble Tea</code> with amount <code class="highlighter-rouge">$4.50</code> and a single category <code class="highlighter-rouge">Food &amp; Beverage</code>.</li>
+  <li>
+<code class="highlighter-rouge">addbe t/Lunch a/$5.00</code>
+adds a bookmark expense titled <code class="highlighter-rouge">Lunch</code> with amount <code class="highlighter-rouge">$5.00</code> and no categories.</li>
 </ul>
 
-<p><strong>Example Usage</strong>:</p>
-<pre><code class="language-$xslt">add-bookmark-expense t/Phone Bill a/60 c/Utilities
-</code></pre>
+<p>Example Usage:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add-bookmark-expense t/Phone Bill a/60 c/Utilities
+</code></pre></div></div>
 
-<p>Adds a bookmark expense with a title of Phone Bill into the bookmark expense list along with its amount and categories.</p>
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New bookmark expense added: Phone Bill Amount: $60.00 Categories: [Utilities]
+</code></pre></div></div>
 
-<p><strong>Expected Outcome</strong>:</p>
-<pre><code class="language-$xslt">New bookmark expense added: Phone Bill Amount: $60.00 Categories: [Utilities]
-</code></pre>
-
-<h4 id="452-edit-bookmark-expense-edit-bookmark-expense">4.5.2 Edit Bookmark Expense: <code class="highlighter-rouge">edit-bookmark-expense</code>
-</h4>
+<h4 id="452-edit-bookmark-expense">4.5.2 Edit Bookmark Expense</h4>
 
 <p>Edits the details of bookmark expenses.</p>
 
-<p><strong>Format</strong>:</p>
-<pre><code class="language-$xslt">edit-bookmark-expense INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES]
-</code></pre>
-<ul>
-  <li>Edits the bookmark expense at the specified <code class="highlighter-rouge">INDEX</code> in the bookmark expense list.</li>
-  <li>The index refers to the bookmark expense in the displayed bookmark expense list on the Expense Tab.
-The index has to be a positive integer and <strong>cannot be empty</strong>.</li>
-  <li>At least one of the optional fields has to be provided.</li>
-  <li>Existing values will be updated to the input values.</li>
-</ul>
+<p>Format: (when on the <a href="#213-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES]</code></p>
 
-<blockquote>
-  <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">You can omit [optional] parameters by leaving them empty.</p>
-</blockquote>
+<ul>
+  <li>
+<code class="highlighter-rouge">INDEX</code> allows you to choose which bookmark expense to edit by specifying its position in the bookmark expense list.</li>
+  <li>
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code>, <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark expense information.
+None of them are mandatory, but at least one must be specified.
+For parameters that have been omitted, the value will remain unchanged.
+    <ul>
+      <li>The restrictions on the input values are identical to the <a href="#431-add-expense">Add Expense</a> feature above.</li>
+    </ul>
+  </li>
+</ul>
 
 <blockquote>
   <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">To specify an edit that removes all categories, use the parameter <code class="highlighter-rouge">c/</code> with no category name.</p>
 </blockquote>
 
-<p><strong>Examples</strong>:</p>
+<p>Examples:</p>
 <ul>
-  <li><code class="highlighter-rouge">edit-bookmark-expense 1 t/Part Time a/400 c/Work</code></li>
-  <li><code class="highlighter-rouge">edit-bookmark-expense 2 a/65 c/Food &amp; Drink</code></li>
-  <li><code class="highlighter-rouge">edit-bookmark-expense 3 c/Others</code></li>
+  <li>
+<code class="highlighter-rouge">edit-bookmark 1 a/65</code>
+edits the first bookmark expense in the bookmark expense list to have an amount of <code class="highlighter-rouge">$65.00</code>.</li>
+  <li>
+<code class="highlighter-rouge">edit-bookmark 2 t/Part Time a/400 c/Work</code>
+edits the second bookmark expense in the bookmark expense list to have a title of <code class="highlighter-rouge">Part Time</code>, an amount of <code class="highlighter-rouge">$65.00</code>,
+and a single category <code class="highlighter-rouge">Work</code>.</li>
+  <li>
+<code class="highlighter-rouge">edit-bookmark 3 c/Others</code>
+edits the third bookmark expense in the bookmark expense list to have a single category <code class="highlighter-rouge">Others</code>.</li>
 </ul>
 
-<p><strong>Example Usage</strong>:</p>
-<pre><code class="language-$xslt">edit-bookmark-expense 1 a/65
-</code></pre>
+<p>Example Usage:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit-bookmark 1 a/65
+</code></pre></div></div>
 
-<p>Edits the amount of the first bookmark expense in the bookmark expense list to <code class="highlighter-rouge">65</code>.</p>
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edited Bookmark Expense: Phone Bill Amount: $65.00 Categories: [Utilities][Personal]
+</code></pre></div></div>
 
-<p><strong>Expected Outcome</strong>:</p>
-<pre><code class="language-$xslt">Edited Bookmark Expense: Phone Bill Amount: $65.00 Categories: [Utilities][Personal]
-</code></pre>
-
-<h4 id="453-delete-bookmark-expense-delete-bookmark-expense">4.5.3 Delete Bookmark Expense: <code class="highlighter-rouge">delete-bookmark-expense</code>
-</h4>
+<h4 id="453-delete-bookmark-expense">4.5.3 Delete Bookmark Expense</h4>
 
 <p>Deletes the bookmark expense and all of its information from the bookmark expense list in Fine$$e.</p>
 
-<p><strong>Format</strong>:</p>
-<pre><code class="language-$xslt">delete-bookmark-expense INDEX
-</code></pre>
+<p>Format: (when on the <a href="#213-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">delete-bookmark INDEX</code></p>
 
 <ul>
-  <li>Deletes the bookmark expense at the specified <code class="highlighter-rouge">INDEX</code>.</li>
-  <li>The index refers to the index number of the bookmark expense shown in the bookmark expense list.</li>
-  <li>The index has to be a positive integer and <strong>cannot be empty</strong>.</li>
+  <li>
+<code class="highlighter-rouge">INDEX</code> allows you to choose which bookmark expense to delete by specifying its position in the bookmark expense list.</li>
 </ul>
 
-<p><strong>Example</strong>:</p>
-<pre><code class="language-$xslt">delete-bookmark-expense 3
-</code></pre>
+<p>Example:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">delete-bookmark 3</code> deletes the bookmark expense at index 3 in the bookmark expense list.</li>
+</ul>
 
-<p>Deletes the bookmark expense at index 3 in the bookmark expense list.</p>
+<p>Example Usage:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete-bookmark 3
+</code></pre></div></div>
 
-<p><strong>Example Usage</strong></p>
-<pre><code class="language-$xslt">delete-bookmark-expense 3
-</code></pre>
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Deleted Bookmark Expense: Phone Bill Amount: $60.00 Categories: [Utilities]
+</code></pre></div></div>
 
-<p><strong>Expected Outcome</strong>:</p>
-<pre><code class="language-$xslt">Deleted Bookmark Expense: Phone Bill Amount: $60.00 Categories: [Utilities]
-</code></pre>
-
-<h4 id="454-convert-bookmark-expense-convert-bookmark-expense">4.5.4 Convert Bookmark Expense: <code class="highlighter-rouge">convert-bookmark-expense</code>
-</h4>
+<h4 id="454-convert-bookmark-expense">4.5.4 Convert Bookmark Expense</h4>
 
 <p>Converts a bookmark expense with the date it has been converted on, and adds it to the expense list in Fine$$e.</p>
 
-<p><strong>Format</strong>:</p>
-<pre><code class="language-$xslt">convert-bookmark-expense INDEX d/DATE
-</code></pre>
-
-<p><strong>Shortcut</strong>:</p>
-<pre><code class="language-$xslt">convertbe INDEX d/DATE
-</code></pre>
+<p>Format: (when on the <a href="#213-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">convert-bookmark INDEX d/DATE</code></p>
 
 <ul>
-  <li>Converts the bookmark expense at the specified <code class="highlighter-rouge">INDEX</code> into an <code class="highlighter-rouge">EXPENSE</code>, using the <code class="highlighter-rouge">DATE</code> it has been converted on, and adds it to the expense list in Fine$$e.</li>
-  <li>The <code class="highlighter-rouge">INDEX</code> and <code class="highlighter-rouge">DATE</code> <strong>cannot be empty</strong>.</li>
-  <li>The <code class="highlighter-rouge">DATE</code> should be in dd/mm/yyyy format and it cannot be later than the current date.</li>
-  <li>The <code class="highlighter-rouge">INDEX</code> refers to the index number of the bookmark expense shown in the bookmark-expense list.</li>
-  <li>The index has to be a positive integer.</li>
+  <li>The <code class="highlighter-rouge">INDEX</code> refers to the index number of the bookmark expense shown in the bookmark expense list.</li>
+  <li>The <code class="highlighter-rouge">DATE</code> should be in <code class="highlighter-rouge">dd/mm/yyyy</code> format, and cannot be later than the current date.</li>
 </ul>
 
-<p><strong>Examples</strong>:</p>
+<p>Shortcut: (when on the <a href="#213-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">convertb</code></p>
+
+<p>Examples:</p>
 <ul>
-  <li><code class="highlighter-rouge">convert-bookmark-expense 2 d/10/10/2020</code></li>
-  <li><code class="highlighter-rouge">convertbe 1 d/05/05/2020</code></li>
+  <li>
+<code class="highlighter-rouge">convert-bookmark 2 d/10/10/2020</code>
+converts the bookmark expense at index 2 in the bookmark expense list into an expense with the information of the
+specified bookmark expense and date <code class="highlighter-rouge">10/10/2020</code>.</li>
+  <li>
+<code class="highlighter-rouge">convertb 1 d/05/05/2020</code>
+converts the bookmark expense at index 1 in the bookmark expense list into an expense with the information of the
+specified bookmark expense and date <code class="highlighter-rouge">05/05/2020</code>.</li>
 </ul>
 
-<p><strong>Example Usage</strong>:</p>
-<pre><code class="language-$xslt">convert-bookmark-expense 2 d/10/10/2020
-</code></pre>
+<p>Example Usage:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert-bookmark 2 d/10/10/2020
+</code></pre></div></div>
 
-<p>Converts the bookmark expense at index 2 in the bookmark list into an expense with the information of the specified bookmark expense and the inputted date.</p>
-
-<p><strong>Expected Outcome</strong>:</p>
-<pre><code class="language-$xslt">Bookmark expense has been converted and successfully added to finance tracker: Phone Bill Amount: $65.00 Date: 10/10/2020 Categories: [Utilities][Personal]
-</code></pre>
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bookmark expense has been converted and successfully added to finance tracker: Phone Bill Amount: $65.00 Date: 10/10/2020 Categories: [Utilities][Personal]
+</code></pre></div></div>
 
 <h3 id="46-bookmark-income">4.6 Bookmark Income</h3>
 
-<p>Fine<span>$<span>$<span>e’s Bookmark Income feature is used to store frequent incomes that the user receives such as monthly salary or stipend for being a teaching assistant.
-The user will then be able to edit, delete and convert a bookmarked income to conveniently add it into Fine<span>$<span>$<span>e’s income list.</span></span></span></span></span></span></p>
+<p>Fine\$\$e’s Bookmark Income feature is used to store frequent incomes that the user receives such as monthly salary or stipend for being a teaching assistant.
+The user will then be able to edit, delete and convert a bookmarked income to conveniently add it into Fine\$\$e’s income list.</p>
 
-<h4 id="461-add-bookmark-income-add-bookmark-income">4.6.1 Add Bookmark Income: <code class="highlighter-rouge">add-bookmark-income</code>
-</h4>
+<h4 id="461-add-bookmark-income">4.6.1 Add Bookmark Income</h4>
 
 <p>Adds a bookmarked income into the bookmark income list in Fine$$e.</p>
 
-<p><strong>Format</strong>:</p>
-<pre><code class="language-$xslt">add-bookmark-income t/TITLE a/AMOUNT [c/CATEGORIES]...
-</code></pre>
-
-<p><strong>Shortcut</strong>:</p>
-<pre><code class="language-$xslt">addbi t/TITLE a/AMOUNT [c/CATEGORIES]...
-</code></pre>
+<p>Format: <code class="highlighter-rouge">add-bookmark-income t/TITLE a/AMOUNT [c/CATEGORIES]...</code></p>
 
 <ul>
-  <li>Adds a new bookmark income with the given details.</li>
-  <li>The title and amount of the bookmark income <strong>cannot be empty</strong>.</li>
-  <li>The title should only contain alphanumeric characters and spaces</li>
-  <li>The amount indicated should only contain positive numbers and reflect the value in dollars.
-The inputted amount can have either 0 or 2 decimal places and also have an optional $ prefix.</li>
+  <li>The title, amount, and categories of the bookmark income follows the same rules as the <a href="#441-add-income">Add Income</a> feature above.</li>
 </ul>
 
-<p><strong>Examples</strong>:</p>
+<p>Shortcut: <code class="highlighter-rouge">addbi</code></p>
+
+<p>Examples:</p>
 <ul>
-  <li><code class="highlighter-rouge">add-bookmark-income t/Part Time a/450 c/Work c/Startup</code></li>
-  <li><code class="highlighter-rouge">add-bookmark-income t/Internship a/$1000 c/Work</code></li>
-  <li><code class="highlighter-rouge">addbi t/Investments a/400 c/Personal c/Dividends</code></li>
-  <li><code class="highlighter-rouge">addbi t/Monthly Allowance a/300</code></li>
+  <li>
+<code class="highlighter-rouge">add-bookmark-income t/Internship a/$1000 c/Work</code>
+adds a bookmark income titled <code class="highlighter-rouge">Internship</code> with amount <code class="highlighter-rouge">$1000.00</code> and a single category <code class="highlighter-rouge">Work</code>.</li>
+  <li>
+<code class="highlighter-rouge">add-bookmark-income t/Part Time a/450 c/Work c/Startup</code>
+adds a bookmark income titled <code class="highlighter-rouge">Part Time</code> with amount <code class="highlighter-rouge">$450.00</code> and two categories <code class="highlighter-rouge">Work</code> and <code class="highlighter-rouge">Startup</code>.</li>
+  <li>
+<code class="highlighter-rouge">addbi t/Investments a/400 c/Personal c/Dividends</code>
+adds a bookmark income titled <code class="highlighter-rouge">Investments</code> with amount <code class="highlighter-rouge">$400.00</code> and two categories <code class="highlighter-rouge">Personal</code> and <code class="highlighter-rouge">Dividends</code>.</li>
+  <li>
+<code class="highlighter-rouge">addbi t/Monthly Allowance a/300</code>
+adds a bookmark income titled <code class="highlighter-rouge">Monthly Allowance</code> with amount <code class="highlighter-rouge">$300.00</code> and no categories.</li>
 </ul>
 
-<p><strong>Example Usage</strong>:</p>
-<pre><code class="language-$xslt">add-bookmark-income t/Internship a/1000 c/Work c/Summer
-</code></pre>
+<p>Example Usage:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add-bookmark-income t/Internship a/1000 c/Work
+</code></pre></div></div>
 
-<p>Adds a bookmark income with a title of Internship into the bookmark income along with its amount and categories.</p>
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New bookmark income added: Internship Amount: $1000.00 Categories: [Work]
+</code></pre></div></div>
 
-<p><strong>Expected Outcome</strong>:</p>
-<pre><code class="language-$xslt">New bookmark income added: Internship Amount: $1000.00 Categories: [Work][Summer]
-</code></pre>
-
-<h4 id="462-edit-bookmark-income-edit-bookmark-income">4.6.2 Edit Bookmark Income: <code class="highlighter-rouge">edit-bookmark-income</code>
-</h4>
+<h4 id="462-edit-bookmark-income">4.6.2 Edit Bookmark Income</h4>
 
 <p>Edits the details of bookmark incomes.</p>
 
-<p><strong>Format</strong>:</p>
+<p>Format: (when on the <a href="#212-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES]...</code></p>
+
 <ul>
   <li>
-    <p><code class="highlighter-rouge">edit-bookmark-income INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES]...</code></p>
+<code class="highlighter-rouge">INDEX</code> allows you to choose which bookmark income to edit by specifying its position in the bookmark income list.</li>
+  <li>
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code>, <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark income information.
+None of them are mandatory, but at least one must be specified.
+For parameters that have been omitted, the value will remain unchanged.
+    <ul>
+      <li>The restrictions on the input values are identical to the <a href="#441-add-income">Add Income</a> feature above.</li>
+    </ul>
   </li>
-  <li>Edits the bookmark income at the specified INDEX in the bookmark income list.</li>
-  <li>The index refers to the bookmark income in the displayed bookmark income list on the Income Tab.
-The index has to be a positive integer and <strong>cannot be empty</strong>.</li>
-  <li>At least one of the optional fields has to be provided.</li>
-  <li>Existing values will be updated to the input values.</li>
 </ul>
-
-<blockquote>
-  <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">You can omit [optional] parameters by leaving them empty.</p>
-</blockquote>
 
 <blockquote>
   <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">To specify an edit that removes all categories, use the parameter <code class="highlighter-rouge">c/</code> with no category name.</p>
 </blockquote>
 
-<p><strong>Examples</strong>:</p>
+<p>Examples:</p>
 <ul>
-  <li><code class="highlighter-rouge">edit-bookmark-income 3 t/Monthly Tuition c/Work c/Part Time</code></li>
-  <li><code class="highlighter-rouge">edit-bookmark-income 1 a/800</code></li>
-  <li><code class="highlighter-rouge">edit-bookmark-income 2 t/Investments a/$300.00</code></li>
+  <li>
+<code class="highlighter-rouge">edit-bookmark 1 t/Monthly Tuition c/Work c/Part Time</code>
+edits the first bookmark income in the bookmark income list to have a title of <code class="highlighter-rouge">Monthly Tuition</code> and
+two categories <code class="highlighter-rouge">Work</code> and <code class="highlighter-rouge">Part Time</code>.</li>
+  <li>
+<code class="highlighter-rouge">edit-bookmark 2 a/1200</code>
+edits the second bookmark income in the bookmark income list to have an amount of <code class="highlighter-rouge">$1200.00</code>.</li>
+  <li>
+<code class="highlighter-rouge">edit-bookmark 3 t/Investments a/$300.00</code>
+edits the third bookmark income in the bookmark income list to have a title of <code class="highlighter-rouge">Investments</code> and an amount of <code class="highlighter-rouge">$300.00</code>.</li>
 </ul>
 
-<p><strong>Example Usage</strong>:</p>
-<pre><code class="language-$xslt">edit-bookmark-income 2 a/1200
-</code></pre>
+<p>Example Usage:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit-bookmark 2 a/1200
+</code></pre></div></div>
 
-<p>Edits the amount of the second bookmark income in the bookmark income list to <code class="highlighter-rouge">1200</code>.</p>
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edited Bookmark Income: Internship Amount: $1200.00 Categories: [Work][Summer]
+</code></pre></div></div>
 
-<p><strong>Expected Outcome</strong>:</p>
-<pre><code class="language-$xslt">Edited Bookmark Income: Internship Amount: $1200.00 Categories: [Work][Summer]
-</code></pre>
-
-<h4 id="463-delete-bookmark-income-delete-bookmark-income">4.6.3 Delete Bookmark Income: <code class="highlighter-rouge">delete-bookmark-income</code>
-</h4>
+<h4 id="463-delete-bookmark-income">4.6.3 Delete Bookmark Income</h4>
 
 <p>Deletes the bookmark income and all of its information from the bookmark income list in Fine$$e.</p>
 
-<p><strong>Format</strong>:</p>
-<pre><code class="language-$xslt">delete-bookmark-income INDEX
-</code></pre>
+<p>Format: (when on the <a href="#212-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">delete-bookmark INDEX</code></p>
 
 <ul>
-  <li>Deletes the bookmark income at the specified INDEX in the bookmark income list.</li>
   <li>
-<code class="highlighter-rouge">INDEX</code> refers to the index number of the bookmark income shown in the bookmark income list.</li>
-  <li>The index has to be a positive integer and <strong>cannot be empty</strong>.</li>
+<code class="highlighter-rouge">INDEX</code> allows you to choose which bookmark income to delete by specifying its position in the bookmark income list.</li>
 </ul>
 
-<p><strong>Examples</strong>:</p>
+<p>Example:</p>
 <ul>
-  <li><code class="highlighter-rouge">delete-bookmark-income 2</code></li>
+  <li>
+<code class="highlighter-rouge">delete-bookmark 2</code>
+deletes the bookmark income at index 2 in the bookmark income list.</li>
 </ul>
 
-<p>Deletes the bookmark income income at index 2 in the bookmark income list.</p>
+<p>Example Usage:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete-bookmark 2
+</code></pre></div></div>
 
-<p><strong>Example Usage</strong></p>
-<pre><code class="language-$xslt">delete-bookmark-income 2`
-</code></pre>
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Deleted Bookmark Income: Internship Amount: $1200.00 Categories: [Work][Summer]
+</code></pre></div></div>
 
-<p><strong>Expected Outcome</strong>:</p>
-<pre><code class="language-$xslt">Deleted Bookmark Income: Internship Amount: $1200.00 Categories: [Work][Summer]
-</code></pre>
-
-<h4 id="464-convert-bookmark-income-convert-bookmark-income">4.6.4 Convert Bookmark Income: <code class="highlighter-rouge">convert-bookmark-income</code>
-</h4>
+<h4 id="464-convert-bookmark-income">4.6.4 Convert Bookmark Income</h4>
 
 <p>Converts a bookmark income with the date it has been converted on and adds it to the income list in Fine$$e.</p>
 
-<p><strong>Format</strong>:</p>
-<pre><code class="language-$xslt">convert-bookmark-income INDEX d/DATE
-</code></pre>
-
-<p><strong>Shortcut</strong>:</p>
-<pre><code class="language-$xslt">convertbi INDEX d/DATE
-</code></pre>
+<p>Format: (when on the <a href="#212-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">convert-bookmark INDEX d/DATE</code></p>
 
 <ul>
-  <li>Converts the bookmark income at the specified <code class="highlighter-rouge">INDEX</code> into an <code class="highlighter-rouge">INCOME</code>, using the <code class="highlighter-rouge">DATE</code> it has been converted on, and adds it to the income list in Fine$$e.</li>
-  <li>The <code class="highlighter-rouge">INDEX</code> and <code class="highlighter-rouge">d/DATE</code> <strong>cannot be empty</strong>.</li>
-  <li>The <code class="highlighter-rouge">DATE</code> should be in dd/mm/yyyy and it cannot be later than the current date.</li>
-  <li>The <code class="highlighter-rouge">INDEX</code> refers to the index number of the bookmark income shown in the bookmark income list.</li>
-  <li>The index has to be a positive integer.</li>
+  <li>The <code class="highlighter-rouge">INDEX</code> refers to the index number of the bookmark expense shown in the bookmark expense list.</li>
+  <li>The <code class="highlighter-rouge">DATE</code> should be in <code class="highlighter-rouge">dd/mm/yyyy</code> format, and cannot be later than the current date.</li>
 </ul>
 
-<p><strong>Examples</strong>:</p>
+<p>Shortcut: (when on the <a href="#212-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">convertb INDEX d/DATE</code></p>
+
+<p>Examples:</p>
 <ul>
-  <li><code class="highlighter-rouge">convert-bookmark-income 2 d/10/10/2020</code></li>
-  <li><code class="highlighter-rouge">convertbi 2 d/15/10/2020</code></li>
+  <li>
+<code class="highlighter-rouge">convert-bookmark 1 d/10/10/2020</code>
+converts the bookmark income at index 1 in the bookmark list into an income with the information of the
+specified bookmark income and date <code class="highlighter-rouge">10/10/2020</code>.</li>
+  <li>
+<code class="highlighter-rouge">convertb 2 d/15/10/2020</code>
+converts the bookmark income at index 2 in the bookmark list into an income with the information of the
+specified bookmark income and date <code class="highlighter-rouge">15/10/2020</code>.</li>
 </ul>
 
-<p><strong>Example Usage</strong>:</p>
-<ul>
-  <li><code class="highlighter-rouge">convert-bookmark-income 1 d/10/10/2020</code></li>
-</ul>
+<p>Example Usage:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert-bookmark 1 d/10/10/2020
+</code></pre></div></div>
 
-<p>Converts the bookmark income at index 1 in the bookmark list into an income with the information of the specified bookmark income and inputted date.</p>
-
-<p><strong>Expected Outcome</strong>:</p>
-<pre><code class="language-$xslt">Bookmark income has been converted and successfully added to finance tracker: Teaching Assistant Amount: $1890.00 Date: 10/10/2020 Categories: [CS1231S][CS1101S]
-</code></pre>
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bookmark income has been converted and successfully added to finance tracker: Teaching Assistant Amount: $1890.00 Date: 10/10/2020 Categories: [CS1231S][CS1101S]
+</code></pre></div></div>
 
 <h3 id="47-expense-limit">4.7 Expense Limit</h3>
 
