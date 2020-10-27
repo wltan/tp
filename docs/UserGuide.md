@@ -465,286 +465,238 @@ Expected Outcome:
 
 ### 4.5 Bookmark Expense
 
-Fine<span>$<span>$<span>e's Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
-The user will be then be able to edit, delete and convert a bookmarked expense to conveniently add it into Fine$$e's expense list.
+Fine\\$\\$e's Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
+The user will be then be able to edit, delete and convert a bookmarked expense to conveniently add it into Fine\\$\\$e's expense list.
 
-#### 4.5.1 Add Bookmark Expense: `add-bookmark-expense`
+#### 4.5.1 Add Bookmark Expense
 
 Adds a bookmarked expense into the bookmark expense list in Fine$$e.
 
-**Format**:
-```$xslt
-add-bookmark-expense t/TITLE a/AMOUNT [c/CATEGORIES]...
-```
+Format: `add-bookmark-expense t/TITLE a/AMOUNT [c/CATEGORIES]...`
 
-**Shortcut**:
-```$xslt
-addbe t/TITLE a/AMOUNT [c/CATEGORIES]...
-```
+- The title, amount, and categories of the bookmark expense follows the same rules as the [Add Expense](#431-add-expense) feature above.
 
-- Adds a new bookmark expense with the given details.
-- The title and the amount of the bookmark expense **cannot be empty**.
-- The title should contain only alphanumeric characters and spaces.
-- The amount inputted should only contain positive numbers and reflect the value in dollars.
-The inputted amount can have either 0 or 2 decimal places and also have an optional $ prefix.
+Shortcut: `addbe`
 
->  :bulb: Inputting of categories for the bookmark expense is optional and is up to the user's discretion.
-
-**Examples**:
+Examples:
 - `add-bookmark-expense t/Phone Bill a/60 c/Utilities c/Personal`
+adds a bookmark expense titled `Phone Bill` with amount `$60.00` and two categories`Utilities` and `Personal`.
 - `add-bookmark-expense t/Spotify Subscription a/$9 c/Others`
+adds a bookmark expense titled `Spotify Subscription` with amount `$9.00` and a single category `Others`.
 - `addbe t/Bubble Tea a/$4.50 c/Food & Drink`
+adds a bookmark expense titled `Bubble Tea` with amount `$4.50` and a single category `Food & Drink`.
 - `addbe t/Lunch a/$5.00`
+adds a bookmark expense titled `Lunch` with amount `$5.00` and no categories.
 
-**Example Usage**:
-```$xslt
+Example Usage:
+```
 add-bookmark-expense t/Phone Bill a/60 c/Utilities
 ```
 
-Adds a bookmark expense with a title of Phone Bill into the bookmark expense list along with its amount and categories.
-
-**Expected Outcome**:
-```$xslt
+Expected Outcome:
+```
 New bookmark expense added: Phone Bill Amount: $60.00 Categories: [Utilities]
 ```
 
-#### 4.5.2 Edit Bookmark Expense: `edit-bookmark-expense`
+#### 4.5.2 Edit Bookmark Expense
 
 Edits the details of bookmark expenses.
 
-**Format**:
-```$xslt
-edit-bookmark-expense INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES]
-```
-- Edits the bookmark expense at the specified `INDEX` in the bookmark expense list.
-- The index refers to the bookmark expense in the displayed bookmark expense list on the Expense Tab.
-The index has to be a positive integer and **cannot be empty**.
-- At least one of the optional fields has to be provided.
-- Existing values will be updated to the input values.
+Format: (when on the [Expenses tab](#213-expenses-tab)) `edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES]`
 
-> :bulb: You can omit [optional] parameters by leaving them empty.
+- `INDEX` allows you to choose which bookmark expense to edit by specifying its position in the bookmark expense list.
+- `TITLE`, `AMOUNT`, `DATE`, `CATEGORY` allow you to specify the updated bookmark expense information.
+None of them are mandatory, but at least one must be specified.
+For parameters that have been omitted, the value will remain unchanged.
+  - The restrictions on the input values are identical to the [Add Expense](#431-add-expense) feature above.
 
 > :bulb: To specify an edit that removes all categories, use the parameter `c/` with no category name.
 
-**Examples**:
-- `edit-bookmark-expense 1 t/Part Time a/400 c/Work`
-- `edit-bookmark-expense 2 a/65 c/Food & Drink`
-- `edit-bookmark-expense 3 c/Others`
+Examples:
+- `edit-bookmark 1 a/65`
+edits the first bookmark expense in the bookmark expense list to have an amount of `$65.00`.
+- `edit-bookmark 2 t/Part Time a/400 c/Work`
+edits the second bookmark expense in the bookmark expense list to have a title of `Part Time`, an amount of `$65.00`,
+and a single category `Work`.
+- `edit-bookmark 3 c/Others`
+edits the third bookmark expense in the bookmark expense list to have a single category `Others`.
 
-**Example Usage**:
-```$xslt
-edit-bookmark-expense 1 a/65
+Example Usage:
+```
+edit-bookmark 1 a/65
 ```
 
-Edits the amount of the first bookmark expense in the bookmark expense list to `65`.
-
-**Expected Outcome**:
-```$xslt
+Expected Outcome:
+```
 Edited Bookmark Expense: Phone Bill Amount: $65.00 Categories: [Utilities][Personal]
 ```
 
-#### 4.5.3 Delete Bookmark Expense: `delete-bookmark-expense`
+#### 4.5.3 Delete Bookmark Expense
 
 Deletes the bookmark expense and all of its information from the bookmark expense list in Fine$$e.
 
-**Format**:
-```$xslt
-delete-bookmark-expense INDEX
+Format: (when on the [Expenses tab](#213-expenses-tab)) `delete-bookmark INDEX`
+
+* `INDEX` allows you to choose which bookmark expense to delete by specifying its position in the bookmark expense list.
+
+Example:
+* `delete-bookmark 3` deletes the bookmark expense at index 3 in the bookmark expense list.
+
+Example Usage:
+```
+delete-bookmark 3
 ```
 
-- Deletes the bookmark expense at the specified `INDEX`.
-- The index refers to the index number of the bookmark expense shown in the bookmark expense list.
-- The index has to be a positive integer and **cannot be empty**.
-
-**Example**:
-```$xslt
-delete-bookmark-expense 3
+Expected Outcome:
 ```
-
-Deletes the bookmark expense at index 3 in the bookmark expense list.
-
-**Example Usage**
-```$xslt
-delete-bookmark-expense 3
-```
-
-**Expected Outcome**:
-```$xslt
 Deleted Bookmark Expense: Phone Bill Amount: $60.00 Categories: [Utilities]
 ```
 
-#### 4.5.4 Convert Bookmark Expense: `convert-bookmark-expense`
+#### 4.5.4 Convert Bookmark Expense
 
 Converts a bookmark expense with the date it has been converted on, and adds it to the expense list in Fine$$e.
 
-**Format**:
-```$xslt
-convert-bookmark-expense INDEX d/DATE
+Format: (when on the [Expenses tab](#213-expenses-tab)) `convert-bookmark INDEX d/DATE`
+
+- The `INDEX` refers to the index number of the bookmark expense shown in the bookmark expense list.
+- The `DATE` should be in `dd/mm/yyyy` format, and cannot be later than the current date.
+
+Shortcut: (when on the [Expenses tab](#213-expenses-tab)) `convertb`
+
+Examples:
+- `convert-bookmark 2 d/10/10/2020`
+converts the bookmark expense at index 2 in the bookmark expense list into an expense with the information of the
+specified bookmark expense and date `10/10/2020`.
+- `convertb 1 d/05/05/2020`
+converts the bookmark expense at index 1 in the bookmark expense list into an expense with the information of the
+specified bookmark expense and date `05/05/2020`.
+
+Example Usage:
+```
+convert-bookmark 2 d/10/10/2020
 ```
 
-**Shortcut**:
-```$xslt
-convertbe INDEX d/DATE
+Expected Outcome:
 ```
-
-- Converts the bookmark expense at the specified `INDEX` into an `EXPENSE`, using the `DATE` it has been converted on, and adds it to the expense list in Fine$$e.
-- The `INDEX` and `DATE` **cannot be empty**.
-- The `DATE` should be in dd/mm/yyyy format and it cannot be later than the current date.
-- The `INDEX` refers to the index number of the bookmark expense shown in the bookmark-expense list.
-- The index has to be a positive integer.
-
-**Examples**:
-- `convert-bookmark-expense 2 d/10/10/2020`
-- `convertbe 1 d/05/05/2020`
-
-**Example Usage**:
-```$xslt
-convert-bookmark-expense 2 d/10/10/2020
-```
-
-Converts the bookmark expense at index 2 in the bookmark list into an expense with the information of the specified bookmark expense and the inputted date.
-
-**Expected Outcome**:
-```$xslt
 Bookmark expense has been converted and successfully added to finance tracker: Phone Bill Amount: $65.00 Date: 10/10/2020 Categories: [Utilities][Personal]
 ```
 
 ### 4.6 Bookmark Income
 
-Fine<span>$<span>$<span>e's Bookmark Income feature is used to store frequent incomes that the user receives such as monthly salary or stipend for being a teaching assistant.
-The user will then be able to edit, delete and convert a bookmarked income to conveniently add it into Fine<span>$<span>$<span>e's income list.
+Fine\\$\\$e's Bookmark Income feature is used to store frequent incomes that the user receives such as monthly salary or stipend for being a teaching assistant.
+The user will then be able to edit, delete and convert a bookmarked income to conveniently add it into Fine\\$\\$e's income list.
 
-#### 4.6.1 Add Bookmark Income: `add-bookmark-income`
+#### 4.6.1 Add Bookmark Income
 
 Adds a bookmarked income into the bookmark income list in Fine$$e.
 
-**Format**:
-```$xslt
-add-bookmark-income t/TITLE a/AMOUNT [c/CATEGORIES]...
-```
+Format: `add-bookmark-income t/TITLE a/AMOUNT [c/CATEGORIES]...`
 
-**Shortcut**:
-```$xslt
-addbi t/TITLE a/AMOUNT [c/CATEGORIES]...
-```
+- The title, amount, and categories of the bookmark income follows the same rules as the [Add Income](#441-add-income) feature above.
 
-- Adds a new bookmark income with the given details.
-- The title and amount of the bookmark income **cannot be empty**.
-- The title should only contain alphanumeric characters and spaces
-- The amount indicated should only contain positive numbers and reflect the value in dollars.
-The inputted amount can have either 0 or 2 decimal places and also have an optional $ prefix.
+Shortcut: `addbi`
 
-**Examples**:
-- `add-bookmark-income t/Part Time a/450 c/Work c/Startup`
+Examples:
 - `add-bookmark-income t/Internship a/$1000 c/Work`
+adds a bookmark income titled `Internship` with amount `$1000.00` and a single category `Work`.
+- `add-bookmark-income t/Part Time a/450 c/Work c/Startup`
+adds a bookmark income titled `Part Time` with amount `$450.00` and two categories `Work` and `Startup`.
 - `addbi t/Investments a/400 c/Personal c/Dividends`
+adds a bookmark income titled `Investments` with amount `$400.00` and two categories `Personal` and `Dividends`.
 - `addbi t/Monthly Allowance a/300`
+adds a bookmark income titled `Monthly Allowance` with amount `$300.00` and no categories.
 
-**Example Usage**:
-```$xslt
-add-bookmark-income t/Internship a/1000 c/Work c/Summer
+Example Usage:
+```
+add-bookmark-income t/Internship a/1000 c/Work
 ```
 
-Adds a bookmark income with a title of Internship into the bookmark income along with its amount and categories.
-
-**Expected Outcome**:
-```$xslt
-New bookmark income added: Internship Amount: $1000.00 Categories: [Work][Summer]
+Expected Outcome:
+```
+New bookmark income added: Internship Amount: $1000.00 Categories: [Work]
 ```
 
-#### 4.6.2 Edit Bookmark Income: `edit-bookmark-income`
+#### 4.6.2 Edit Bookmark Income
 
 Edits the details of bookmark incomes.
 
-**Format**:
-- `edit-bookmark-income INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES]...`
+Format: (when on the [Incomes tab](#212-incomes-tab)) `edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORIES]...`
 
-- Edits the bookmark income at the specified INDEX in the bookmark income list.
-- The index refers to the bookmark income in the displayed bookmark income list on the Income Tab.
-The index has to be a positive integer and **cannot be empty**.
-- At least one of the optional fields has to be provided.
-- Existing values will be updated to the input values.
-
-> :bulb: You can omit [optional] parameters by leaving them empty.
+- `INDEX` allows you to choose which bookmark income to edit by specifying its position in the bookmark income list.
+- `TITLE`, `AMOUNT`, `DATE`, `CATEGORY` allow you to specify the updated bookmark income information.
+None of them are mandatory, but at least one must be specified.
+For parameters that have been omitted, the value will remain unchanged.
+  - The restrictions on the input values are identical to the [Add Income](#441-add-income) feature above.
 
 > :bulb: To specify an edit that removes all categories, use the parameter `c/` with no category name.
 
-**Examples**:
-- `edit-bookmark-income 3 t/Monthly Tuition c/Work c/Part Time`
-- `edit-bookmark-income 1 a/800`
-- `edit-bookmark-income 2 t/Investments a/$300.00`
+Examples:
+- `edit-bookmark 1 t/Monthly Tuition c/Work c/Part Time`
+edits the first bookmark income in the bookmark income list to have a title of `Monthly Tuition` and
+two categories `Work` and `Part Time`.
+- `edit-bookmark 2 a/1200`
+edits the second bookmark income in the bookmark income list to have an amount of `$1200.00`.
+- `edit-bookmark 3 t/Investments a/$300.00`
+edits the third bookmark income in the bookmark income list to have a title of `Investments` and an amount of `$300.00`.
 
-**Example Usage**:
-```$xslt
-edit-bookmark-income 2 a/1200
+Example Usage:
+```
+edit-bookmark 2 a/1200
 ```
 
-Edits the amount of the second bookmark income in the bookmark income list to `1200`.
-
-**Expected Outcome**:
-```$xslt
+Expected Outcome:
+```
 Edited Bookmark Income: Internship Amount: $1200.00 Categories: [Work][Summer]
 ```
 
-#### 4.6.3 Delete Bookmark Income: `delete-bookmark-income`
+#### 4.6.3 Delete Bookmark Income
 
 Deletes the bookmark income and all of its information from the bookmark income list in Fine$$e.
 
-**Format**:
-```$xslt
-delete-bookmark-income INDEX
+Format: (when on the [Incomes tab](#212-incomes-tab)) `delete-bookmark INDEX`
+
+* `INDEX` allows you to choose which bookmark income to delete by specifying its position in the bookmark income list.
+
+Example:
+- `delete-bookmark 2`
+deletes the bookmark income at index 2 in the bookmark income list.
+
+Example Usage:
+```
+delete-bookmark 2
 ```
 
-- Deletes the bookmark income at the specified INDEX in the bookmark income list.
-- `INDEX` refers to the index number of the bookmark income shown in the bookmark income list.
-- The index has to be a positive integer and **cannot be empty**.
-
-**Examples**:
-- `delete-bookmark-income 2`
-
-Deletes the bookmark income income at index 2 in the bookmark income list.
-
-**Example Usage**
-```$xslt
-delete-bookmark-income 2`
+Expected Outcome:
 ```
-
-**Expected Outcome**:
-```$xslt
 Deleted Bookmark Income: Internship Amount: $1200.00 Categories: [Work][Summer]
 ```
 
-#### 4.6.4 Convert Bookmark Income: `convert-bookmark-income`
+#### 4.6.4 Convert Bookmark Income
 
 Converts a bookmark income with the date it has been converted on and adds it to the income list in Fine$$e.
 
-**Format**:
-```$xslt
-convert-bookmark-income INDEX d/DATE
+Format: (when on the [Incomes tab](#212-incomes-tab)) `convert-bookmark INDEX d/DATE`
+
+- The `INDEX` refers to the index number of the bookmark expense shown in the bookmark expense list.
+- The `DATE` should be in `dd/mm/yyyy` format, and cannot be later than the current date.
+
+Shortcut: (when on the [Incomes tab](#212-incomes-tab)) `convertb INDEX d/DATE`
+
+Examples:
+- `convert-bookmark 1 d/10/10/2020`
+converts the bookmark income at index 1 in the bookmark list into an income with the information of the
+specified bookmark income and date `10/10/2020`.
+- `convertb 2 d/15/10/2020`
+converts the bookmark income at index 2 in the bookmark list into an income with the information of the
+specified bookmark income and date `15/10/2020`.
+
+Example Usage:
+```
+convert-bookmark 1 d/10/10/2020
 ```
 
-**Shortcut**:
-```$xslt
-convertbi INDEX d/DATE
+Expected Outcome:
 ```
-
-- Converts the bookmark income at the specified `INDEX` into an `INCOME`, using the `DATE` it has been converted on, and adds it to the income list in Fine$$e.
-- The `INDEX` and `d/DATE` **cannot be empty**.
-- The `DATE` should be in dd/mm/yyyy and it cannot be later than the current date.
-- The `INDEX` refers to the index number of the bookmark income shown in the bookmark income list.
-- The index has to be a positive integer.
-
-**Examples**:
-- `convert-bookmark-income 2 d/10/10/2020`
-- `convertbi 2 d/15/10/2020`
-
-**Example Usage**:
-- `convert-bookmark-income 1 d/10/10/2020`
-
-Converts the bookmark income at index 1 in the bookmark list into an income with the information of the specified bookmark income and inputted date.
-
-**Expected Outcome**:
-```$xslt
 Bookmark income has been converted and successfully added to finance tracker: Teaching Assistant Amount: $1890.00 Date: 10/10/2020 Categories: [CS1231S][CS1101S]
 ```
 
