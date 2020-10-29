@@ -13,7 +13,7 @@ public class Category {
             "Category names should contain at least one non-whitespace printable ASCII character.";
     public static final String VALIDATION_REGEX = "\\p{Graph}\\p{Print}*";
 
-    public final String categoryName;
+    private final String categoryName;
 
     /**
      * Constructs a {@code Category}.

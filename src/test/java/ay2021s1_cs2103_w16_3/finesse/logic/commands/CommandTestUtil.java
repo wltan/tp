@@ -162,7 +162,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredTransactionList().size());
 
         Transaction transaction = model.getFilteredTransactionList().get(targetIndex.getZeroBased());
-        final String[] splitTitle = transaction.getTitle().fullTitle.split("\\s+");
+        final String[] splitTitle = transaction.getTitle().toString().split("\\s+");
         model.updateFilteredTransactionList(t -> t == transaction);
 
         assertEquals(1, model.getFilteredTransactionList().size());
@@ -176,7 +176,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredExpenseList().size());
 
         Expense expense = model.getFilteredExpenseList().get(targetIndex.getZeroBased());
-        final String[] splitTitle = expense.getTitle().fullTitle.split("\\s+");
+        final String[] splitTitle = expense.getTitle().toString().split("\\s+");
         model.updateFilteredExpenseList(e -> e == expense);
 
         assertEquals(1, model.getFilteredExpenseList().size());
@@ -190,7 +190,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredBookmarkExpenseList().size());
 
         BookmarkExpense bookmarkExpense = model.getFilteredBookmarkExpenseList().get(targetIndex.getZeroBased());
-        final String[] splitTitle = bookmarkExpense.getTitle().fullTitle.split("\\s+");
+        final String[] splitTitle = bookmarkExpense.getTitle().toString().split("\\s+");
         model.updateFilteredBookmarkExpenseList(e -> e == bookmarkExpense);
 
         assertEquals(1, model.getFilteredBookmarkExpenseList().size());
@@ -204,7 +204,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredBookmarkIncomeList().size());
 
         BookmarkIncome bookmarkIncome = model.getFilteredBookmarkIncomeList().get(targetIndex.getZeroBased());
-        final String[] splitTitle = bookmarkIncome.getTitle().fullTitle.split("\\s+");
+        final String[] splitTitle = bookmarkIncome.getTitle().toString().split("\\s+");
         model.updateFilteredBookmarkIncomeList(e -> e == bookmarkIncome);
 
         assertEquals(1, model.getFilteredBookmarkIncomeList().size());
@@ -218,7 +218,7 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredIncomeList().size());
 
         Income income = model.getFilteredIncomeList().get(targetIndex.getZeroBased());
-        final String[] splitTitle = income.getTitle().fullTitle.split("\\s+");
+        final String[] splitTitle = income.getTitle().toString().split("\\s+");
         model.updateFilteredIncomeList(i -> i == income);
 
         assertEquals(1, model.getFilteredIncomeList().size());

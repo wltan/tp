@@ -42,7 +42,7 @@ public class JsonAdaptedBookmarkExpense {
      * Converts a given {@code BookmarkExpense} into this class for Jackson use.
      */
     public JsonAdaptedBookmarkExpense(BookmarkExpense source) {
-        title = source.getTitle().fullTitle;
+        title = source.getTitle().toString();
         amount = source.getAmount().toString();
         categories.addAll(source.getCategories().stream()
                 .map(JsonAdaptedCategory::new)

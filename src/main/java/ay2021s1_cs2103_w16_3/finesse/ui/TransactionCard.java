@@ -51,13 +51,13 @@ public class TransactionCard extends UiPart<Region> {
         this.transaction = transaction;
         cardPane.setPrefHeight(PREFERRED_CARD_HEIGHT);
         id.setText(displayedIndex + ". ");
-        title.setText(transaction.getTitle().fullTitle);
+        title.setText(transaction.getTitle().toString());
         title.setWrapText(true);
         amount.setText(transaction.getAmount().toString());
         transaction.getCategories().stream()
-                .sorted(Comparator.comparing(category -> category.categoryName))
+                .sorted(Comparator.comparing(category -> category.getCategoryName()))
                 .forEach(category -> {
-                    Label newCategory = new Label(category.categoryName);
+                    Label newCategory = new Label(category.getCategoryName());
                     newCategory.setStyle("-fx-font-family: Eczar");
                     categories.getChildren().add(newCategory);
                 });

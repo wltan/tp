@@ -42,7 +42,7 @@ public class JsonAdaptedBookmarkIncome {
      * Converts a given {@code BookmarkIncome} into this class for Jackson use.
      */
     public JsonAdaptedBookmarkIncome(BookmarkIncome source) {
-        title = source.getTitle().fullTitle;
+        title = source.getTitle().toString();
         amount = source.getAmount().toString();
         categories.addAll(source.getCategories().stream()
                 .map(JsonAdaptedCategory::new)

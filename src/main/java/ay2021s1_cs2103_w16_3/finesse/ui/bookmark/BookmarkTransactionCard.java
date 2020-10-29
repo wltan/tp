@@ -50,16 +50,16 @@ public class BookmarkTransactionCard<T extends Transaction> extends UiPart<Regio
         id.setText(displayedIndex + ". ");
         id.setStyle(String.format("-fx-font-size: %spx", fontSizeParsedToString));
 
-        title.setText(bookmarkTransaction.getTitle().fullTitle);
+        title.setText(bookmarkTransaction.getTitle().toString());
         title.setStyle(String.format("-fx-font-size: %spx", fontSizeParsedToString));
 
         amount.setText(bookmarkTransaction.getAmount().toString());
         amount.setStyle(String.format("-fx-font-size: %spx", fontSizeParsedToString));
 
         bookmarkTransaction.getCategories().stream()
-                .sorted(Comparator.comparing(category -> category.categoryName))
+                .sorted(Comparator.comparing(category -> category.getCategoryName()))
                 .forEach(category -> {
-                    Label newCategory = new Label(category.categoryName);
+                    Label newCategory = new Label(category.getCategoryName());
                     newCategory.setStyle("-fx-font-family: Eczar");
                     newCategory.setStyle(String.format("-fx-font-size: %spx", categoriesFontSizeParsedToString));
                     categories.getChildren().add(newCategory);

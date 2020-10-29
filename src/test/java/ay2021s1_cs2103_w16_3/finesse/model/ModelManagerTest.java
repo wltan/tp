@@ -167,7 +167,7 @@ public class ModelManagerTest {
         // different financeTracker -> returns false
         assertFalse(modelManager.equals(new ModelManager(differentFinanceTracker, userPrefs)));
 
-        String[] keywords = BUBBLE_TEA.getTitle().fullTitle.split("\\s+");
+        String[] keywords = BUBBLE_TEA.getTitle().toString().split("\\s+");
 
         // different filteredTransactionList -> returns false
         modelManager.updateFilteredTransactionList(new TitleContainsKeywordsPredicate(Arrays.asList(keywords)));

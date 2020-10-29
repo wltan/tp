@@ -13,7 +13,7 @@ public class Title implements Comparable<Title> {
             "Titles should contain at least one non-whitespace printable ASCII character.";
     public static final String VALIDATION_REGEX = "\\p{Graph}\\p{Print}*";
 
-    public final String fullTitle;
+    private final String fullTitle;
 
     /**
      * Constructs a {@code Title}.
@@ -33,7 +33,10 @@ public class Title implements Comparable<Title> {
         return test.matches(VALIDATION_REGEX);
     }
 
-
+    /**
+     * Returns a String representation of this Title that can be used to construct an identical Title.
+     * @return A String representation of this Title.
+     */
     @Override
     public String toString() {
         return fullTitle;
