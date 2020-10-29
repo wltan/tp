@@ -56,6 +56,7 @@ public class AnalyticsTabPane extends UiPart<Canvas> {
         expenseAnalyticsBarChart = new BarChart<>(expenseAnalyticsStringAxis, expenseAnalyticsNumberAxis);
         expenseAnalyticsBarChart.setLegendVisible(false);
         expenseAnalyticsBarChart.setVerticalGridLinesVisible(false);
+        expenseAnalyticsBarChart.setAnimated(false);
         expenseAnalyticsBarChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
         expenseAnalyticsPane.getChildren().add(expenseAnalyticsBarChart);
         expenseAnalyticsLabel.setText("EXPENSE");
@@ -65,6 +66,7 @@ public class AnalyticsTabPane extends UiPart<Canvas> {
         incomeAnalyticsBarChart = new BarChart<>(incomeAnalyticsStringAxis, incomeAnalyticsNumberAxis);
         incomeAnalyticsBarChart.setLegendVisible(false);
         incomeAnalyticsBarChart.setVerticalGridLinesVisible(false);
+        incomeAnalyticsBarChart.setAnimated(false);
         incomeAnalyticsBarChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
         incomeAnalyticsPane.getChildren().add(incomeAnalyticsBarChart);
         incomeAnalyticsLabel.setText("INCOME");
@@ -74,6 +76,7 @@ public class AnalyticsTabPane extends UiPart<Canvas> {
         savingsAnalyticsBarChart = new BarChart<>(savingsAnalyticsStringAxis, savingsAnalyticsNumberAxis);
         savingsAnalyticsBarChart.setLegendVisible(false);
         savingsAnalyticsBarChart.setVerticalGridLinesVisible(false);
+        savingsAnalyticsBarChart.setAnimated(false);
         savingsAnalyticsBarChart.lookup(".chart-plot-background").setStyle("-fx-background-color: transparent;");
         savingsAnalyticsPane.getChildren().add(savingsAnalyticsBarChart);
         savingsAnalyticsLabel.setText("SAVINGS");
