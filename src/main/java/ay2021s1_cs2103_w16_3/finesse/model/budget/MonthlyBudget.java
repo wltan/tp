@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.text.DateFormatSymbols;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
@@ -29,6 +31,13 @@ public class MonthlyBudget {
     private ObservableList<BigDecimal> monthlySavings;
     private ObservableList<String> months;
 
+    @FunctionalInterface
+    public interface ChangeListener extends Runnable {
+
+    }
+
+    private Collection<ChangeListener> listeners;
+
     /**
      * Creates a {@code MonthlyBudget} with an expense limit and savings goal of $0.
      */
@@ -41,6 +50,7 @@ public class MonthlyBudget {
         monthlyIncomes = FXCollections.observableArrayList();
         monthlySavings = FXCollections.observableArrayList();
         months = FXCollections.observableArrayList();
+        listeners = new ArrayList<>();
     }
 
     public ObservableAmount getMonthlyExpenseLimit() {
@@ -91,6 +101,14 @@ public class MonthlyBudget {
         return FXCollections.unmodifiableObservableList(months);
     }
 
+    public void addChangeListener(ChangeListener listener) {
+        listeners.add(listener);
+    }
+
+    private void callChangeListeners() {
+        listeners.forEach(ChangeListener::run);
+    }
+
     /**
      * Calculates all information related to the user's savings.
      * These are:
@@ -139,6 +157,8 @@ public class MonthlyBudget {
 
         calculateBudget();
         calculateSavings();
+
+        callChangeListeners();
     }
 
     /**
@@ -147,7 +167,7 @@ public class MonthlyBudget {
      * If the result is positive, the result is set as the remaining budget.
      * If the result is negative, the magnitude of the result is set as the budget deficit.
      */
-    public void calculateBudget() {
+    private void calculateBudget() {
         BigDecimal expenseLimit = monthlyExpenseLimit.getAmount().getValue();
         BigDecimal remainingBudget = expenseLimit.subtract(monthlyExpenses.get(monthlyExpenses.size() - 1));
         setRemainingBudget(Amount.of(remainingBudget));
@@ -159,7 +179,7 @@ public class MonthlyBudget {
      * If the result is positive, the result is set as the current savings.
      * If the result is negative, the magnitude of the result is set as the savings deficit.
      */
-    public void calculateSavings() {
+    private void calculateSavings() {
         monthlySavings.clear();
         for (int i = 0; i < monthlyIncomes.size(); i++) {
             BigDecimal savings = monthlyIncomes.get(i).subtract(monthlyExpenses.get(i));
