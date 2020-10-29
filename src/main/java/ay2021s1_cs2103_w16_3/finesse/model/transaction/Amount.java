@@ -11,8 +11,8 @@ import java.math.BigDecimal;
  */
 public class Amount implements Comparable<Amount> {
 
-    public static final String MESSAGE_CONSTRAINTS =
-            "Amounts should only contain non-negative numbers up to 8 digits, with an optional 2 decimal places or '$' prefix";
+    public static final String MESSAGE_CONSTRAINTS = "Amounts should only contain non-negative numbers up to 8 digits,"
+            + " with an optional 2 decimal places or '$' prefix";
     public static final String VALIDATION_REGEX = "^\\$?\\d{1,8}(\\.\\d{2})?$";
     private final BigDecimal value;
 
