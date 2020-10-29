@@ -104,6 +104,7 @@ public class ModelManager implements Model {
     @Override
     public void setFinanceTracker(ReadOnlyFinanceTracker financeTracker) {
         this.financeTracker.resetData(financeTracker);
+        refreshTransactionLists();
     }
 
     @Override

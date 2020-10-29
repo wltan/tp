@@ -140,6 +140,17 @@ public class ModelManagerTest {
     }
 
     @Test
+    public void getFilteredTransactionLists_clear_updatesList() {
+        ObservableList<Expense> expenseList = modelManager.getFilteredExpenseList();
+        ObservableList<Income> incomeList = modelManager.getFilteredIncomeList();
+        modelManager.addExpense(new TransactionBuilder().buildExpense());
+        modelManager.addIncome(new TransactionBuilder().buildIncome());
+        modelManager.setFinanceTracker(new FinanceTracker());
+        assertTrue(expenseList.isEmpty());
+        assertTrue(incomeList.isEmpty());
+    }
+
+    @Test
     public void equals() {
         FinanceTracker financeTracker = new FinanceTrackerBuilder()
                 .withTransaction(BUBBLE_TEA).withTransaction(TUITION_FEES)
