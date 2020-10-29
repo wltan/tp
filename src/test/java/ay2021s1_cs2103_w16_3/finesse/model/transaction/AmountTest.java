@@ -44,8 +44,11 @@ public class AmountTest {
         assertTrue(Amount.isValidAmount("$3.50")); // $ prefix, 2 decimal places
         assertTrue(Amount.isValidAmount("91")); // numbers
         assertTrue(Amount.isValidAmount("911")); // numbers
-        assertTrue(Amount.isValidAmount("93121534")); // long numbers
-        assertTrue(Amount.isValidAmount("124293842033123")); // long numbers
+
+        // length tests
+        assertTrue(Amount.isValidAmount("93121534")); // 8 digits, valid
+        assertFalse(Amount.isValidAmount("931215344")); // 9 digits, invalid
+        assertFalse(Amount.isValidAmount("124293842033123")); // 15 digits, invalid
     }
 
     @Test
