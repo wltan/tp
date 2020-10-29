@@ -8,7 +8,7 @@
 
   <link rel="stylesheet" href="/tp/assets/css/style.css">
 
-<link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="/tp/assets/favicon.png">
 
     <title>User Guide</title>
   
@@ -470,7 +470,9 @@ The rest of the expense information remains unchanged.</li>
 <p>Shows a list of all the expenses in the finance tracker.
 This effectively resets any current filtering of the expense list, such as those made by <code class="highlighter-rouge">find</code>.</p>
 
-<p>Format: (when on the <a href="#213-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">list</code></p>
+<p>Format: <code class="highlighter-rouge">ls-expense</code></p>
+
+<p>Shortcut: <code class="highlighter-rouge">lse</code>, (when on the <a href="#213-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">list</code></p>
 
 <p>Example Usage:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
@@ -642,7 +644,9 @@ The rest of the income information remains unchanged.</li>
 <p>Shows a list of all the incomes in the finance tracker.
 This effectively resets any current filtering of the income list, such as those made by <code class="highlighter-rouge">find</code>.</p>
 
-<p>Format: (when on the <a href="#212-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">list</code></p>
+<p>Format: <code class="highlighter-rouge">ls-income</code></p>
+
+<p>Shortcut: <code class="highlighter-rouge">lsi</code>, (when on the <a href="#212-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">list</code></p>
 
 <p>Example Usage:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>list
@@ -986,9 +990,9 @@ Once the expense limit is set, it will be visible on the Overview tab along with
 
 <p>Sets the monthly expense limit in the finance tracker.</p>
 
-<p>Format: <code class="highlighter-rouge">set-expense-limit AMOUNT</code></p>
+<p>Format: <code class="highlighter-rouge">set-expense-limit a/AMOUNT</code></p>
 
-<p>Shortcut: <code class="highlighter-rouge">setel AMOUNT</code></p>
+<p>Shortcut: <code class="highlighter-rouge">setel a/AMOUNT</code></p>
 
 <ul>
   <li>
@@ -998,11 +1002,11 @@ Once the expense limit is set, it will be visible on the Overview tab along with
 <p>Example:</p>
 <ul>
   <li>
-<code class="highlighter-rouge">set-expense-limit 500</code> sets the monthly expense limit in the finance tracker to be <code class="highlighter-rouge">$500.00</code>.</li>
+<code class="highlighter-rouge">set-expense-limit a/500</code> sets the monthly expense limit in the finance tracker to be <code class="highlighter-rouge">$500.00</code>.</li>
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setel $400.00
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setel a/$400.00
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
@@ -1019,9 +1023,9 @@ Once the savings goal is set, it will be visible on the Overview tab along with 
 
 <p>Sets the monthly savings goal in the finance tracker.</p>
 
-<p>Format: <code class="highlighter-rouge">set-savings-goal AMOUNT</code></p>
+<p>Format: <code class="highlighter-rouge">set-savings-goal a/AMOUNT</code></p>
 
-<p>Shortcut: <code class="highlighter-rouge">setsg AMOUNT</code></p>
+<p>Shortcut: <code class="highlighter-rouge">setsg a/AMOUNT</code></p>
 
 <ul>
   <li>
@@ -1031,11 +1035,11 @@ Once the savings goal is set, it will be visible on the Overview tab along with 
 <p>Example:</p>
 <ul>
   <li>
-<code class="highlighter-rouge">set-savings-goal 100</code> sets the monthly savings goal in the finance tracker to be <code class="highlighter-rouge">$100.00</code>.</li>
+<code class="highlighter-rouge">set-savings-goal a/100</code> sets the monthly savings goal in the finance tracker to be <code class="highlighter-rouge">$100.00</code>.</li>
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setel $50.00
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>setsg a/$50.00
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
