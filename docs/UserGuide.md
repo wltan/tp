@@ -168,7 +168,10 @@ This section aims to provide you with in-depth details on Fine\$\$e's unique fea
 The formats of the parameters used in the rest of the document are as follows:
 * `TITLE` and `CATEGORY` should consist of <abbr title="Alphanumeric characters, space, and the special characters !&quot;#$%&'()*+,-./:;&lt;=&gt;?@[\]^_`{\|}~">printable ASCII characters</abbr>, and cannot begin with a space.
 * `AMOUNT`, `AMOUNT_FROM` and `AMOUNT_TO` should be non-negative numbers up to 8 digits with 0 or 2 decimal places, with an optional `$` in front.
-* `DATE`, `DATE_FROM` and `DATE_TO` should be in `dd/mm/yyyy` format, and cannot be later than the current date.
+* `DATE`, `DATE_FROM` and `DATE_TO` should be in `dd/mm/yyyy` format, representing date, month, and year respectively.
+  * Single-digit values must be padded with leading zeroes, meaning that a value such as `5` should be written as `05` instead.
+  * Dates cannot be earlier than 1 January 1970 (`01/01/1970`).
+  * Dates cannot be later than the current date.
 * `INDEX` should be a positive integer.
 
 Unless stated otherwise, only one input per parameter is allowed for each command.
