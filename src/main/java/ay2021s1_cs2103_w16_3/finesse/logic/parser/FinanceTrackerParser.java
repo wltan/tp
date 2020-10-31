@@ -93,6 +93,12 @@ public class FinanceTrackerParser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
+
+        // a command other than 'clear' will reset the primed status
+        if (!ClearCommand.COMMAND_WORD.equals(commandWord)) {
+            ClearCommand.resetPrimed();
+        }
+
         switch (commandWord) {
 
         case ADD_COMMAND_COMMAND_WORD:
