@@ -17,7 +17,7 @@ Welcome to Fine$$e - your personal finance tracker!
 
 Looking for an all-in-one solution to help you develop good financial habits? Look no further!
 
-Fine\\$\\$e is an integrated platform fully customized for tertiary and university students with the aim of helping you to track your finances effectively.
+Fine\\$\\$e is an integrated platform fully customized for tertiary (including university) students with the aim of helping you to track your finances effectively.
 Fine\\$\\$e allows you to keep track of your incomes, expenses and savings with a few simple commands.
 Furthermore, to help you cultivate good financial habits, Fine$$e allows you to budget your finances by setting an expense limit and savings goal, as well as viewing your past spending and saving trends.
 
