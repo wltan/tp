@@ -7,6 +7,7 @@ import java.time.Clock;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 
 /**
  * Represents a Transaction's date in the finance tracker.
@@ -16,7 +17,9 @@ public class Date implements Comparable<Date> {
 
     public static final String MESSAGE_CONSTRAINTS = "Dates should be of the format dd/mm/yyyy "
             + "and cannot be later than the current date";
-    public static final DateTimeFormatter VALIDATION_FORMAT = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    public static final DateTimeFormatter VALIDATION_FORMAT = DateTimeFormatter.ofPattern("dd/MM/uuuu")
+            .withResolverStyle(ResolverStyle.STRICT);
+    private static final LocalDate EPOCH = LocalDate.parse("01/01/0001", VALIDATION_FORMAT);
 
     private final LocalDate value;
 
@@ -50,7 +53,8 @@ public class Date implements Comparable<Date> {
         try {
             LocalDate value = LocalDate.parse(test, VALIDATION_FORMAT);
             LocalDate today = LocalDate.now(currentTime);
-            return value.isEqual(today) || value.isBefore(today);
+            return (value.isBefore(today) || value.isEqual(today))
+                    && (value.isAfter(EPOCH) || value.isEqual(EPOCH));
         } catch (DateTimeParseException e) {
             return false;
         }
