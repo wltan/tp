@@ -19,7 +19,7 @@ public class Date implements Comparable<Date> {
             + "and cannot be later than the current date";
     public static final DateTimeFormatter VALIDATION_FORMAT = DateTimeFormatter.ofPattern("dd/MM/uuuu")
             .withResolverStyle(ResolverStyle.STRICT);
-    private static final LocalDate EPOCH = LocalDate.parse("01/01/0001", VALIDATION_FORMAT);
+    private static final LocalDate EPOCH = LocalDate.parse("01/01/1970", VALIDATION_FORMAT);
 
     private final LocalDate value;
 

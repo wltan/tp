@@ -49,13 +49,16 @@ public class DateTest {
         assertFalse(Date.isValidDate("03/13/2020")); // month is not valid
         assertFalse(Date.isValidDate("01/01/0000")); // year is not valid
 
+        // last invalid date
+        assertFalse(Date.isValidDate("31/12/1969"));
+
         // date from the future is not allowed
         LocalDate pastDate = LocalDate.of(2020, 10, 16);
         assertFalse(Date.isValidDate("17/10/2020", Clock.fixed(
                 pastDate.atStartOfDay(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault())));
 
         // valid date
-        assertTrue(Date.isValidDate("01/01/0001")); // earliest allowed date
+        assertTrue(Date.isValidDate("01/01/1970")); // earliest allowed date
         assertTrue(Date.isValidDate("06/10/2020")); // 6 October 2020
     }
 
