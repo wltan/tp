@@ -138,7 +138,7 @@
 
 <p>Looking for an all-in-one solution to help you develop good financial habits? Look no further!</p>
 
-<p>Fine\$\$e is an integrated platform fully customized for tertiary and university students with the aim of helping you to track your finances effectively.
+<p>Fine\$\$e is an integrated platform fully customized for tertiary (including university) students with the aim of helping you to track your finances effectively.
 Fine\$\$e allows you to keep track of your incomes, expenses and savings with a few simple commands.
 Furthermore, to help you cultivate good financial habits, Fine$$e allows you to budget your finances by setting an expense limit and savings goal, as well as viewing your past spending and saving trends.</p>
 
@@ -324,11 +324,35 @@ e.g. if the command specifies <code class="highlighter-rouge">t/TITLE a/AMOUNT</
   <p>The formats of the parameters used in the rest of the document are as follows:</p>
   <ul>
     <li>
-<code class="highlighter-rouge">TITLE</code> and <code class="highlighter-rouge">CATEGORY</code> should consist of <abbr title="Alphanumeric characters, space, and the special characters !&quot;#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{\|}~">printable ASCII characters</abbr>, and cannot begin with a space.</li>
+<code class="highlighter-rouge">TITLE</code> and <code class="highlighter-rouge">CATEGORY</code> should consist of printable ASCII characters, and cannot begin with a space.
+      <ul>
+        <li>The set of printable ASCII characters consists of alphanumeric characters, space, and several special characters.
+Below is an exhaustive list of printable ASCII characters (excluding line breaks):
+          <div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijkl
+mnopqrstuvwxyz !"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+</code></pre></div>          </div>
+        </li>
+      </ul>
+    </li>
     <li>
 <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">AMOUNT_FROM</code> and <code class="highlighter-rouge">AMOUNT_TO</code> should be non-negative numbers up to 8 digits with 0 or 2 decimal places, with an optional <code class="highlighter-rouge">$</code> in front.</li>
     <li>
-<code class="highlighter-rouge">DATE</code>, <code class="highlighter-rouge">DATE_FROM</code> and <code class="highlighter-rouge">DATE_TO</code> should be in <code class="highlighter-rouge">dd/mm/yyyy</code> format, and cannot be later than the current date.</li>
+<code class="highlighter-rouge">DATE</code>, <code class="highlighter-rouge">DATE_FROM</code> and <code class="highlighter-rouge">DATE_TO</code> should be a valid calendar date in <code class="highlighter-rouge">dd/mm/yyyy</code> format, representing day, month, and year respectively.
+      <ul>
+        <li>Valid ranges for days and months are governed by the rules of the <a href="https://en.wikipedia.org/wiki/Gregorian_calendar#Description">Gregorian Calendar</a>.
+          <ul>
+            <li>Months should only range from 1 to 12 (inclusive), representing the 12 months of a year.</li>
+            <li>Days should only range from 1 to 28, 29, 30, or 31 (all inclusive),
+depending on the number of days in the given month and whether the given year is a leap year.</li>
+          </ul>
+        </li>
+        <li>For day and month values, single-digit values must be padded with leading zeroes, meaning that a value of 5 should be written as <code class="highlighter-rouge">05</code> instead of <code class="highlighter-rouge">5</code>.</li>
+        <li>For year values, it must be written in the standard 4-digit format, so 2019 should be written as <code class="highlighter-rouge">2019</code> and not just <code class="highlighter-rouge">19</code>.</li>
+        <li>Dates cannot be earlier than 1 January 1970 (<code class="highlighter-rouge">01/01/1970</code>).</li>
+        <li>Dates cannot be later than the current date.</li>
+      </ul>
+    </li>
     <li>
 <code class="highlighter-rouge">INDEX</code> should be a positive integer.</li>
   </ul>
@@ -793,7 +817,7 @@ e.g. <code class="highlighter-rouge">allowance prize</code> will return <code cl
 
 <h3 id="45-bookmark-expense">4.5 Bookmark Expense</h3>
 
-<p>Fine$$e’s Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
+<p>Fine\$\$e’s Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
 The user will be then be able to edit, delete and convert a bookmarked expense to conveniently add it into Fine<span>$</span><span>$</span>e’s expense list.</p>
 
 <p><img src="/tp/images/userguide/bookmark/AnnotatedBookmarkExpenseOverview.png" alt="Bookmark Expense Overview"></p>
@@ -813,6 +837,14 @@ The user will be then be able to edit, delete and convert a bookmarked expense t
   <li>
 <code class="highlighter-rouge">CATEGORY</code> is optional. Multiple <code class="highlighter-rouge">c/</code> prefixes can be used to specify multiple categories.</li>
 </ul>
+
+<blockquote>
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Adding of duplicate bookmark expenses is not allowed.
+Bookmark expenses with the same title are considered to be duplicates of each other.
+Contiguous whitespace characters between words in the title will be treated as a single whitespace character.</p>
+
+  <p>For example: <code class="highlighter-rouge">Phone Bill</code> and <code class="highlighter-rouge">Phone  Bill</code> are considered to be the same title while <code class="highlighter-rouge">Phone Bill</code> and <code class="highlighter-rouge">PhoneBill</code> are not considered to be the same title.</p>
+</blockquote>
 
 <p>Examples:</p>
 <ul>
@@ -947,8 +979,8 @@ specified bookmark expense and date <code class="highlighter-rouge">10/08/2020</
 
 <h3 id="46-bookmark-income">4.6 Bookmark Income</h3>
 
-<p>Fine<span>$</span><span>$</span>e’s Bookmark Income feature is used to store incomes that the user receives frequently, such as monthly salary or stipend for being a teaching assistant.
-The user will then be able to edit, delete and convert a bookmark income to conveniently add it into Fine$$e’s incomes list.</p>
+<p>Fine<span>$<span><span>$<span>e’s Bookmark Income feature is used to store incomes that the user receives frequently, such as monthly salary or stipend for being a teaching assistant.
+The user will then be able to edit, delete and convert a bookmark income to conveniently add it into Fine\$\$e’s incomes list.</span></span></span></span></p>
 
 <p><img src="/tp/images/userguide/bookmark/AnnotatedBookmarkIncomeOverview.png" alt="Overview Bookmark Income Panel"></p>
 
@@ -967,6 +999,14 @@ The user will then be able to edit, delete and convert a bookmark income to conv
   <li>
 <code class="highlighter-rouge">CATEGORY</code> is optional. Multiple <code class="highlighter-rouge">c/</code> prefixes can be used to specify multiple categories.</li>
 </ul>
+
+<blockquote>
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Adding of duplicate bookmark incomes is not allowed.
+Bookmark incomes with the same title are considered to be duplicates of each other.
+Contiguous whitespace characters between words in the title will be treated as a single whitespace character.</p>
+
+  <p>For example: <code class="highlighter-rouge">Part Time</code> and <code class="highlighter-rouge">Part  Time</code> are considered to be the same title while <code class="highlighter-rouge">Part Time</code> and <code class="highlighter-rouge">PartTime</code> are not considered to be the same title.</p>
+</blockquote>
 
 <p>Examples:</p>
 <ul>
@@ -1186,7 +1226,7 @@ This ensures that you will always see the latest information about your spending
 Simply press the ↑ or ↓ arrow keys on your keyboard to navigate through your command history.</p>
 
 <ul>
-  <li>The command history keeps track of the latest 50 commands entered.</li>
+  <li>The command history keeps track of the latest 50 commands entered in the current session.</li>
   <li>The command input box must be focused on, i.e. ensure that the text cursor is blinking in the command input box.</li>
   <li>Press the ↑ arrow key to retrieve the previous commands.
     <ul>
