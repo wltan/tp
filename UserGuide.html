@@ -118,7 +118,8 @@
       </li>
       <li><a href="#49-analytics" id="markdown-toc-49-analytics">4.9 Analytics</a></li>
       <li><a href="#410-exiting-the-program-exit" id="markdown-toc-410-exiting-the-program-exit">4.10 Exiting the Program: <code class="highlighter-rouge">exit</code></a></li>
-      <li><a href="#411-saving-the-data" id="markdown-toc-411-saving-the-data">4.11 Saving the data</a></li>
+      <li><a href="#411-command-history" id="markdown-toc-411-command-history">4.11 Command History</a></li>
+      <li><a href="#412-saving-the-data" id="markdown-toc-412-saving-the-data">4.12 Saving the Data</a></li>
     </ul>
   </li>
   <li><a href="#5-command-summary" id="markdown-toc-5-command-summary">5. Command Summary</a></li>
@@ -232,7 +233,7 @@ Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>
 
 <h4 id="221-overview-tab">2.2.1 Overview Tab</h4>
 
-<p>Displays a list of all recent transactions (<a href="#44-income">incomes</a>/<a href="#43-expense">expenses</a>), along with your <a href="#47-expense-limit">expense limit</a>, remaining budget, <a href="#48-savings-goal">savings goal</a> and savings.</p>
+<p>Displays a list of all recent transactions (<a href="#44-income">incomes</a>/<a href="#43-expense">expenses</a>), along with your <a href="#47-expense-limit">expense limit</a>, <a href="#48-savings-goal">savings goal</a>, remaining budget and current savings.</p>
 
 <p><img src="/tp/images/userguide/OverviewTab.png" alt="Overview Tab"></p>
 
@@ -350,6 +351,9 @@ e.g. if the command specifies <code class="highlighter-rouge">t/TITLE a/AMOUNT</
 <p>Expected Outcome:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Opened help window.
 </code></pre></div></div>
+
+<p><img src="/tp/images/userguide/UserGuide.png" alt="User Guide"></p>
+
 <p>The user guide is shown in the application.</p>
 
 <h3 id="42-switch-tabs-tab">4.2 Switch Tabs: <code class="highlighter-rouge">tab</code>
@@ -789,8 +793,12 @@ e.g. <code class="highlighter-rouge">allowance prize</code> will return <code cl
 
 <h3 id="45-bookmark-expense">4.5 Bookmark Expense</h3>
 
-<p>Fine<span>$</span><span>$</span>e’s Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
+<p>Fine$$e’s Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
 The user will be then be able to edit, delete and convert a bookmarked expense to conveniently add it into Fine<span>$</span><span>$</span>e’s expense list.</p>
+
+<p><img src="/tp/images/userguide/bookmark/AnnotatedBookmarkExpenseOverview.png" alt="Bookmark Expense Overview"></p>
+
+<p>Bookmark Expenses List Panel in the Expenses Tab</p>
 
 <h4 id="451-add-bookmark-expense-add-bookmark-expense">4.5.1 Add Bookmark Expense: <code class="highlighter-rouge">add-bookmark-expense</code>
 </h4>
@@ -815,13 +823,16 @@ The user will be then be able to edit, delete and convert a bookmarked expense t
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add-bookmark-expense t/Phone Bill a/65 c/Utilities c/Personal
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add-bookmark-expense t/Netflix Subscription a/11.98 c/Entertainment
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New bookmark expense added: Phone Bill Amount: $60.00 Categories: [Personal][Utilities]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New bookmark expense added: Netflix Subscription Amount: $11.98 Categories: [Entertainment]
 </code></pre></div></div>
-<p>Adds a bookmark expense titled <code class="highlighter-rouge">Phone Bill</code> with amount <code class="highlighter-rouge">$65.00</code> and two categories <code class="highlighter-rouge">Utilities</code> and <code class="highlighter-rouge">Personal</code>.</p>
+
+<p><img src="/tp/images/userguide/bookmark/AnnotatedAddBookmarkExpense.png" alt="Add Bookmark Expense"></p>
+
+<p>Adds a bookmark expense titled <code class="highlighter-rouge">Netflix Subscription</code> with amount <code class="highlighter-rouge">$11.98</code> and one category <code class="highlighter-rouge">Entertainment</code>.</p>
 
 <h4 id="452-edit-bookmark-expense-edit-bookmark">4.5.2 Edit Bookmark Expense: <code class="highlighter-rouge">edit-bookmark</code>
 </h4>
@@ -854,13 +865,16 @@ For parameters that have been omitted, the value will remain unchanged.</li>
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit-bookmark 2 a/70
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit-bookmark 3 a/15 c/Entertainment c/Personal
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edited Bookmark Expense: Phone Bill Amount: $70.00 Categories: [Personal][Utilities]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edited Bookmark Expense: Netflix Subscription Amount: $15.00 Categories: [Entertainment][Personal]
 </code></pre></div></div>
-<p>Edits the second bookmark expense in the bookmark expenses list to have an amount of <code class="highlighter-rouge">$70.00</code>.</p>
+
+<p><img src="/tp/images/userguide/bookmark/AnnotatedEditBookmarkExpense.png" alt="Edit Bookmark Expense"></p>
+
+<p>Edits the third bookmark expense in the bookmark expenses list to have an amount of <code class="highlighter-rouge">$15.00</code> and two categories of <code class="highlighter-rouge">Entertainment</code> and <code class="highlighter-rouge">Personal</code>.</p>
 
 <h4 id="453-delete-bookmark-expense-delete-bookmark">4.5.3 Delete Bookmark Expense: <code class="highlighter-rouge">delete-bookmark</code>
 </h4>
@@ -919,19 +933,26 @@ For parameters that have been omitted, the value will remain unchanged.</li>
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert-bookmark 2 d/10/10/2020
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert-bookmark 3 d/10/08/2020
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bookmark expense has been converted and successfully added to finance tracker: Phone Bill Amount: $65.00 Date: 10/10/2020 Categories: [Utilities][Personal]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bookmark expense has been converted and successfully added to finance tracker: Netflix Subscription Amount: $15.00 Date: 10/08/2020 Categories: [Entertainment][Personal]
 </code></pre></div></div>
-<p>Converts the bookmark expense at index 2 in the bookmark expense list into an expense with the information of the
-specified bookmark expense and date <code class="highlighter-rouge">10/10/2020</code>, and adds it to the finance tracker.</p>
+
+<p><img src="/tp/images/userguide/bookmark/AnnotatedConvertBookmarkExpense.png" alt="Convert Bookmark Expense"></p>
+
+<p>Converts the third bookmark expense in the bookmark expense list into an expense with the information of the
+specified bookmark expense and date <code class="highlighter-rouge">10/08/2020</code>, and adds it to the expenses list in the finance tracker.</p>
 
 <h3 id="46-bookmark-income">4.6 Bookmark Income</h3>
 
 <p>Fine<span>$</span><span>$</span>e’s Bookmark Income feature is used to store incomes that the user receives frequently, such as monthly salary or stipend for being a teaching assistant.
-The user will then be able to edit, delete and convert a bookmark income to conveniently add it into Fine<span>$</span><span>$</span>e’s incomes list.</p>
+The user will then be able to edit, delete and convert a bookmark income to conveniently add it into Fine$$e’s incomes list.</p>
+
+<p><img src="/tp/images/userguide/bookmark/AnnotatedBookmarkIncomeOverview.png" alt="Overview Bookmark Income Panel"></p>
+
+<p>Bookmark Incomes List Panel in the Incomes tab</p>
 
 <h4 id="461-add-bookmark-income-add-bookmark-income">4.6.1 Add Bookmark Income: <code class="highlighter-rouge">add-bookmark-income</code>
 </h4>
@@ -956,13 +977,16 @@ The user will then be able to edit, delete and convert a bookmark income to conv
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add-bookmark-income t/Teaching Assistant a/1920 c/CS1101S c/CS1231S
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>add-bookmark-income t/Part Time a/400 c/Work
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New bookmark income added: Teaching Assistant Amount: $1920.00 Categories: [CS1231S][CS1101S]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New bookmark income added: Part Time Amount: $400.00 Categories: [Work]
 </code></pre></div></div>
-<p>Adds a bookmark income titled <code class="highlighter-rouge">Teaching Assistant</code> with amount <code class="highlighter-rouge">$1920.00</code> and two categories <code class="highlighter-rouge">CS1101S</code> and <code class="highlighter-rouge">CS1231S</code>.</p>
+
+<p><img src="/tp/images/userguide/bookmark/AnnotatedAddBookmarkIncome.png" alt="Add Bookmark Income Outcome"></p>
+
+<p>Adds a bookmark income titled <code class="highlighter-rouge">Part Time</code> with amount <code class="highlighter-rouge">$400.00</code> and one category <code class="highlighter-rouge">Work</code>.</p>
 
 <h4 id="462-edit-bookmark-income-edit-bookmark">4.6.2 Edit Bookmark Income: <code class="highlighter-rouge">edit-bookmark</code>
 </h4>
@@ -995,13 +1019,16 @@ The user will then be able to edit, delete and convert a bookmark income to conv
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit-bookmark 5 a/1800 c/CS1101S c/CS2030
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit-bookmark 3 a/500 c/Work c/Part Time Intern
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edited Bookmark Income: Teaching Assistant Amount: $1800.00 Categories: [CS2030][CS1101S]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edited Bookmark Income: Part Time Amount: $500.00 Categories: [Work][Part Time Intern]
 </code></pre></div></div>
-<p>Edits the fifth bookmark income in the bookmark incomes list to have an amount of <code class="highlighter-rouge">1800</code> and two categories <code class="highlighter-rouge">CS1101s</code> and <code class="highlighter-rouge">CS2030</code>.</p>
+
+<p><img src="/tp/images/userguide/bookmark/AnnotatedEditBookmarkIncome.png" alt="Edit Bookmark Income"></p>
+
+<p>Edits the third bookmark income in the bookmark incomes list to have an amount of <code class="highlighter-rouge">$500.00</code> and two categories <code class="highlighter-rouge">Work</code> and <code class="highlighter-rouge">Part Time Intern</code>.</p>
 
 <h4 id="463-delete-bookmark-income-delete-bookmark">4.6.3 Delete Bookmark Income: <code class="highlighter-rouge">delete-bookmark</code>
 </h4>
@@ -1021,17 +1048,17 @@ The user will then be able to edit, delete and convert a bookmark income to conv
 
 <p>Example:</p>
 <ul>
-  <li><code class="highlighter-rouge">delete-bookmark 2</code></li>
+  <li><code class="highlighter-rouge">delete-bookmark 1</code></li>
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete-bookmark 3
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete-bookmark 2
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Deleted Bookmark Income: Internship Amount: $1200.00 Categories: [Work][Summer]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Deleted Bookmark Income: Teaching Assistant Amount: $1890.00 Categories: [CS1101S][CS1231S]
 </code></pre></div></div>
-<p>Deletes the bookmark income at index 3 in the bookmark incomes list.</p>
+<p>Deletes the bookmark income at index 2 in the bookmark incomes list.</p>
 
 <h4 id="464-convert-bookmark-income-convert-bookmark">4.6.4 Convert Bookmark Income: <code class="highlighter-rouge">convert-bookmark</code>
 </h4>
@@ -1060,14 +1087,17 @@ The user will then be able to edit, delete and convert a bookmark income to conv
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert-bookmark 2 d/10/10/2020
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>convert-bookmark 3 d/03/08/2020
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bookmark income has been converted and successfully added to finance tracker: Teaching Assistant Amount: $1890.00 Date: 10/10/2020 Categories: [CS1231S][CS1101S]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Bookmark income has been converted and successfully added to finance tracker: Part Time Amount: $500.00 Date: 03/08/2020 Categories: [Work][Part Time Intern]
 </code></pre></div></div>
-<p>Converts the bookmark income at index 2 in the bookmark incomes list into an income with the information of the
-specified bookmark income and date <code class="highlighter-rouge">10/10/2020</code>, then adds it to the finance tracker.</p>
+
+<p><img src="/tp/images/userguide/bookmark/AnnotatedConvertBookmarkIncome.png" alt="Convert Bookmark Income"></p>
+
+<p>Converts the third bookmark income in the bookmark incomes list into an income with the information of the
+specified bookmark income and date <code class="highlighter-rouge">03/08/2020</code>, then adds it to the incomes list in the finance tracker.</p>
 
 <h3 id="47-expense-limit">4.7 Expense Limit</h3>
 
@@ -1100,7 +1130,7 @@ Once the expense limit is set, it will be visible on the Overview tab along with
 
 <h3 id="48-savings-goal">4.8 Savings Goal</h3>
 
-<p>Want to save up for the new PS5 but can’t seem to no matter what? Fine$$e has you covered!
+<p>Want to save up for the new PlayStation 5 but can’t seem to no matter what? Fine$$e has you covered!
 The savings goal feature allows you to save consistently by setting a monthly savings goal, so that you can save up bit by bit and build good financial habits.
 Once the savings goal is set, it will be visible on the Overview tab along with your current savings for this month.</p>
 
@@ -1150,7 +1180,33 @@ This ensures that you will always see the latest information about your spending
 
 <p>Format: <code class="highlighter-rouge">exit</code></p>
 
-<h3 id="411-saving-the-data">4.11 Saving the data</h3>
+<h3 id="411-command-history">4.11 Command History</h3>
+
+<p>Accidentally entered the wrong command and wish to modify it without typing it out again fully?
+Simply press the ↑ or ↓ arrow keys on your keyboard to navigate through your command history.</p>
+
+<ul>
+  <li>The command history keeps track of the latest 50 commands entered.</li>
+  <li>The command input box must be focused on, i.e. ensure that the text cursor is blinking in the command input box.</li>
+  <li>Press the ↑ arrow key to retrieve the previous commands.
+    <ul>
+      <li>Each press of the ↑ arrow key retrieves the command immediately preceding the current command.</li>
+      <li>If the current command is the earliest command that is being tracked, then pressing the ↑ arrow key does nothing.</li>
+    </ul>
+  </li>
+  <li>Press the ↓ arrow key to retrieve the next commands.
+    <ul>
+      <li>Each press of the ↓ arrow key retrieves the command immediately succeeding the current command.</li>
+      <li>If the current command is the latest command that has been entered, then the command input box will be cleared upon pressing the ↓ arrow key.</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Pressing either the ↑ or ↓ arrow keys will cause whatever text is currently in the command box to be overwritten.</p>
+</blockquote>
+
+<h3 id="412-saving-the-data">4.12 Saving the Data</h3>
 
 <p>Fine$$e data is saved in the hard disk automatically after any command that changes the data.
 There is no need to save manually.</p>
@@ -1299,12 +1355,13 @@ There is no need to save manually.</p>
 <h2 id="6-glossary">6. Glossary</h2>
 
 <ul>
-  <li>Expense: A one-time transaction that results in a decrease in the amount of money you have.</li>
-  <li>Income: A one-time transaction that results in an increase in the amount of money you have.</li>
   <li>ASCII: Characters that are recognised by a computer.</li>
-  <li>Current date: The system date on the computer on which Fine$$e is set up.</li>
   <li>Bookmark Expense: A template for an expense, which can be used to create expenses and add them to the finance tracker.</li>
   <li>Bookmark Income: A template for an income, which can be used to create incomes and add them to the finance tracker.</li>
+  <li>Current date: The system date on the computer on which Fine$$e is set up.</li>
+  <li>Expense: A one-time transaction that results in a decrease in the amount of money you have.</li>
+  <li>Income: A one-time transaction that results in an increase in the amount of money you have.</li>
+  <li>Text cursor: A blinking vertical line that indicates where text will be placed when entered.</li>
 </ul>
 
 <hr>
