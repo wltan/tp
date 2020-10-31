@@ -16,8 +16,8 @@ import java.time.format.ResolverStyle;
 public class Date implements Comparable<Date> {
 
     public static final String EPOCH_STRING = "01/01/1970";
-    public static final String MESSAGE_CONSTRAINTS = "Dates should be of the format dd/mm/yyyy, "
-            + "cannot be earlier than " + EPOCH_STRING + " and cannot be later than the current date";
+    public static final String MESSAGE_CONSTRAINTS = "Dates should be a valid calendar date of the format dd/mm/yyyy, "
+            + "cannot be earlier than " + EPOCH_STRING + ", and cannot be later than the current date";
     public static final DateTimeFormatter VALIDATION_FORMAT = DateTimeFormatter.ofPattern("dd/MM/uuuu")
             .withResolverStyle(ResolverStyle.STRICT);
     private static final LocalDate EPOCH = LocalDate.parse(EPOCH_STRING, VALIDATION_FORMAT);

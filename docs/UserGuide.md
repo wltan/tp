@@ -168,8 +168,13 @@ This section aims to provide you with in-depth details on Fine\$\$e's unique fea
 The formats of the parameters used in the rest of the document are as follows:
 * `TITLE` and `CATEGORY` should consist of <abbr title="Alphanumeric characters, space, and the special characters !&quot;#$%&'()*+,-./:;&lt;=&gt;?@[\]^_`{\|}~">printable ASCII characters</abbr>, and cannot begin with a space.
 * `AMOUNT`, `AMOUNT_FROM` and `AMOUNT_TO` should be non-negative numbers up to 8 digits with 0 or 2 decimal places, with an optional `$` in front.
-* `DATE`, `DATE_FROM` and `DATE_TO` should be in `dd/mm/yyyy` format, representing date, month, and year respectively.
-  * Single-digit values must be padded with leading zeroes, meaning that a value such as `5` should be written as `05` instead.
+* `DATE`, `DATE_FROM` and `DATE_TO` should be a valid calendar date in `dd/mm/yyyy` format, representing day, month, and year respectively.
+  * Valid ranges for days and months are governed by the rules of the [Gregorian Calendar](https://en.wikipedia.org/wiki/Gregorian_calendar#Description).
+    * Months should only range from 1 to 12 (inclusive), representing the 12 months of a year.
+    * Days should only range from 1 to 28, 29, 30, or 31 (all inclusive),
+    depending on the number of days in the given month and whether the given year is a leap year.
+  * For day and month values, single-digit values must be padded with leading zeroes, meaning that a value of 5 should be written as `05` instead of `5`.
+  * For year values, it must be written in the standard 4-digit format, so 2019 should be written as `2019` and not just `19`.
   * Dates cannot be earlier than 1 January 1970 (`01/01/1970`).
   * Dates cannot be later than the current date.
 * `INDEX` should be a positive integer.
