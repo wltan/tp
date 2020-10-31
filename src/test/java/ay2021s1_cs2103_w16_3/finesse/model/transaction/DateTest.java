@@ -45,6 +45,7 @@ public class DateTest {
         assertFalse(Date.isValidDate("6/10/2020")); // leading zeroes are required
         assertFalse(Date.isValidDate("06/10/20")); // year must be 4 digits
         assertFalse(Date.isValidDate("32/09/2020")); // day is not valid
+        assertFalse(Date.isValidDate("30/02/2019")); // day is not valid
         assertFalse(Date.isValidDate("03/13/2020")); // month is not valid
         assertFalse(Date.isValidDate("01/01/0000")); // year is not valid
 
@@ -54,6 +55,7 @@ public class DateTest {
                 pastDate.atStartOfDay(ZoneId.systemDefault()).toInstant(), ZoneId.systemDefault())));
 
         // valid date
+        assertTrue(Date.isValidDate("01/01/0001")); // earliest allowed date
         assertTrue(Date.isValidDate("06/10/2020")); // 6 October 2020
     }
 
