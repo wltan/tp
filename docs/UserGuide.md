@@ -907,13 +907,64 @@ There are three bar charts that show the following data over the past three mont
 The data in the bar charts is automatically updated to include any recent modifications you have made in the finance tracker every time you switch to the [Analytics Tab](#224-analytics-tab).
 This ensures that you will always see the latest information about your spending and saving trends.
 
-### 4.10 Exiting the Program: `exit`
+### 4.10 Clear Data: `clear`
+
+Ready to start using Fine\\$\\$e?
+This command allows you to clear *all* existing data inside the finance tracker. That includes:
+* Expenses and incomes
+* Bookmark expenses and bookmark incomes
+* Expense limit
+* Savings goal
+
+Format: `clear`
+
+> :warning: &nbsp; This is a powerful command. You might lose your precious data if you are not careful with it.
+
+> :bulb: &nbsp; If there is any data you would like to keep before clearing, write it down somewhere so that you can re-enter it later.
+
+To protect against accidental usage, this command needs to be entered **twice in succession** before it takes effect.
+A single `clear` command is nullified when not followed by another `clear` command.
+
+Here are some example scenarios to illustrate:
+* Scenario A: Enter `clear`.
+  * The finance tracker data is unchanged.
+  * Fine\\$\\$e requests for a second `clear` command as confirmation.
+* Scenario B: Enter `clear`, then enter `clear` again.
+  * The finance tracker data is cleared.
+* Scenario C: Enter `clear`, then enter `lsi`, then enter `clear` again.
+  * The finance tracker data is unchanged.
+  * Since the first `clear` command was nullified, Fine\\$\\$e requests for a second `clear` command as confirmation.
+* Scenario D: Enter `clear`, then enter `lsi`, then enter `clear` again, then enter `clear` again.
+  * The finance tracker data is cleared.
+
+Example Usage:
+```
+clear
+```
+
+Expected Outcome:
+```
+Please enter 'clear' again to confirm your decision.
+```
+
+Example Usage (continued):
+```
+clear
+```
+
+Expected Outcome:
+```
+Finance tracker has been cleared!
+```
+All data in the finance tracker is cleared.
+
+### 4.11 Exiting the Program: `exit`
 
 Exits the program.
 
 Format: `exit`
 
-### 4.11 Command History
+### 4.12 Command History
 
 Accidentally entered the wrong command and wish to modify it without typing it out again fully?
 Simply press the ↑ or ↓ arrow keys on your keyboard to navigate through your command history.
@@ -929,7 +980,7 @@ Simply press the ↑ or ↓ arrow keys on your keyboard to navigate through your
 
 > :warning: &nbsp; Pressing either the ↑ or ↓ arrow keys will cause whatever text is currently in the command box to be overwritten.
 
-### 4.12 Saving the Data
+### 4.13 Saving the Data
 
 Fine$$e data is saved in the hard disk automatically after any command that changes the data.
 There is no need to save manually.
