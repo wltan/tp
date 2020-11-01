@@ -931,10 +931,13 @@ Here are some example scenarios to illustrate:
   * Fine\\$\\$e requests for a second `clear` command as confirmation.
 * Scenario B: Enter `clear`, then enter `clear` again.
   * The finance tracker data is cleared.
-* Scenario C: Enter `clear`, then enter `lsi`, then enter `clear` again.
+* Scenario C: Enter `clear`, then enter `lsi` (a valid command), then enter `clear` again.
   * The finance tracker data is unchanged.
-  * Since the first `clear` command was nullified, Fine\\$\\$e requests for a second `clear` command as confirmation.
-* Scenario D: Enter `clear`, then enter `lsi`, then enter `clear` again, then enter `clear` again.
+  * The first `clear` command has been nullified, so Fine\\$\\$e requests for a second `clear` command as confirmation.
+* Scenario D: Enter `clear`, then enter `foo` (an invalid command), then enter `clear` again.
+  * The finance tracker data is unchanged.
+  * The first `clear` command has been nullified, so Fine\\$\\$e requests for a second `clear` command as confirmation.
+* Scenario E: Enter `clear`, then enter `lsi`, then enter `clear` again, then enter `clear` again.
   * The finance tracker data is cleared.
 
 Example Usage:
