@@ -14,6 +14,7 @@ import ay2021s1_cs2103_w16_3.finesse.commons.core.LogsCenter;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
+import ay2021s1_cs2103_w16_3.finesse.model.command.history.CommandHistory;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
@@ -27,9 +28,11 @@ import javafx.collections.transformation.FilteredList;
  */
 public class ModelManager implements Model {
     private static final Logger logger = LogsCenter.getLogger(ModelManager.class);
+    private static final int COMMAND_HISTORY_SIZE = 50;
 
     private final FinanceTracker financeTracker;
     private final UserPrefs userPrefs;
+    private final CommandHistory commandHistory;
     private final FilteredList<Transaction> filteredTransactions;
     private final FilteredList<Transaction> filteredExpenses;
     private final FilteredList<Transaction> filteredIncomes;
@@ -50,6 +53,7 @@ public class ModelManager implements Model {
 
         this.financeTracker = new FinanceTracker(financeTracker);
         this.userPrefs = new UserPrefs(userPrefs);
+        commandHistory = new CommandHistory(COMMAND_HISTORY_SIZE);
         filteredTransactions = new FilteredList<>(this.financeTracker.getTransactionList());
         filteredExpenses = new FilteredList<>(this.financeTracker.getTransactionList(), PREDICATE_SHOW_ALL_EXPENSES);
         filteredIncomes = new FilteredList<>(this.financeTracker.getTransactionList(), PREDICATE_SHOW_ALL_INCOMES);
@@ -98,6 +102,14 @@ public class ModelManager implements Model {
         requireNonNull(financeTrackerFilePath);
         userPrefs.setFinanceTrackerFilePath(financeTrackerFilePath);
     }
+
+    //=========== Command History ================================================================================
+
+    @Override
+    public CommandHistory getCommandHistory() {
+        return commandHistory;
+    }
+
 
     //=========== FinanceTracker ================================================================================
 
@@ -346,6 +358,7 @@ public class ModelManager implements Model {
         ModelManager other = (ModelManager) obj;
         return financeTracker.equals(other.financeTracker)
                 && userPrefs.equals(other.userPrefs)
+                && commandHistory.equals(other.commandHistory)
                 && filteredTransactions.equals(other.filteredTransactions)
                 && filteredExpenses.equals(other.filteredExpenses)
                 && filteredIncomes.equals(other.filteredIncomes);

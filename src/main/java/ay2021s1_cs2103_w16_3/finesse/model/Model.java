@@ -8,6 +8,7 @@ import ay2021s1_cs2103_w16_3.finesse.commons.core.GuiSettings;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkExpense;
 import ay2021s1_cs2103_w16_3.finesse.model.bookmark.BookmarkIncome;
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
+import ay2021s1_cs2103_w16_3.finesse.model.command.history.CommandHistory;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
@@ -61,6 +62,11 @@ public interface Model {
      * Sets the user prefs' finance tracker file path.
      */
     void setFinanceTrackerFilePath(Path financeTrackerFilePath);
+
+    /**
+     * Returns the command history.
+     */
+    CommandHistory getCommandHistory();
 
     /**
      * Replaces finance tracker data with the data in {@code financeTracker}.

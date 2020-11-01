@@ -6,6 +6,7 @@ import ay2021s1_cs2103_w16_3.finesse.MainApp;
 import ay2021s1_cs2103_w16_3.finesse.commons.core.LogsCenter;
 import ay2021s1_cs2103_w16_3.finesse.commons.util.StringUtil;
 import ay2021s1_cs2103_w16_3.finesse.logic.Logic;
+import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -23,6 +24,7 @@ public class UiManager implements Ui {
     private static final Logger logger = LogsCenter.getLogger(UiManager.class);
     private static final String APPLICATION_ICON = "/images/SavingsImage.png";
 
+    private Model model;
     private Logic logic;
     private MainWindow mainWindow;
     private UiState uiState;
@@ -30,8 +32,9 @@ public class UiManager implements Ui {
     /**
      * Creates a {@code UiManager} with the given {@code Logic}.
      */
-    public UiManager(Logic logic, UiState uiState) {
+    public UiManager(Model model, Logic logic, UiState uiState) {
         super();
+        this.model = model;
         this.logic = logic;
         this.uiState = uiState;
     }
@@ -45,7 +48,7 @@ public class UiManager implements Ui {
 
         try {
             loadCustomFonts();
-            mainWindow = new MainWindow(primaryStage, logic, uiState);
+            mainWindow = new MainWindow(primaryStage, model, logic, uiState);
             mainWindow.show(); // This should be called before creating other UI parts.
             mainWindow.fillInnerParts();
             mainWindow.initializeTabs();

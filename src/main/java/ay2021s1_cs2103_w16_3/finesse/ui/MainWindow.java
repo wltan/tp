@@ -11,6 +11,7 @@ import ay2021s1_cs2103_w16_3.finesse.logic.Logic;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.CommandResult;
 import ay2021s1_cs2103_w16_3.finesse.logic.commands.exceptions.CommandException;
 import ay2021s1_cs2103_w16_3.finesse.logic.parser.exceptions.ParseException;
+import ay2021s1_cs2103_w16_3.finesse.model.Model;
 import ay2021s1_cs2103_w16_3.finesse.ui.tabs.AnalyticsTabPane;
 import ay2021s1_cs2103_w16_3.finesse.ui.tabs.ExpenseTabPane;
 import ay2021s1_cs2103_w16_3.finesse.ui.tabs.IncomeTabPane;
@@ -43,6 +44,7 @@ public class MainWindow extends UiPart<Stage> {
     private final Logger logger = LogsCenter.getLogger(getClass());
 
     private final Stage primaryStage;
+    private final Model model;
     private final Logic logic;
     private final UiState uiState;
 
@@ -81,11 +83,12 @@ public class MainWindow extends UiPart<Stage> {
     /**
      * Creates a {@code MainWindow} with the given {@code Stage}, {@code Logic} and {@code UiState}.
      */
-    public MainWindow(Stage primaryStage, Logic logic, UiState uiState) {
+    public MainWindow(Stage primaryStage, Model model, Logic logic, UiState uiState) {
         super(FXML, primaryStage);
 
         // Set dependencies
         this.primaryStage = primaryStage;
+        this.model = model;
         this.logic = logic;
         this.uiState = uiState;
 
@@ -108,7 +111,7 @@ public class MainWindow extends UiPart<Stage> {
         resultDisplay.setFeedbackToUser(WELCOME_MESSAGE);
         resultDisplayPlaceholder.getChildren().add(resultDisplay.getRoot());
 
-        CommandBox commandBox = new CommandBox(this::executeCommand);
+        CommandBox commandBox = new CommandBox(this::executeCommand, model.getCommandHistory());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
     }
 

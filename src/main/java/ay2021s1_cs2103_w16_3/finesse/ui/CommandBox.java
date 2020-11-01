@@ -17,7 +17,6 @@ import javafx.scene.layout.Region;
  */
 public class CommandBox extends UiPart<Region> {
     private static final String FXML = "CommandBox.fxml";
-    private static final int COMMAND_HISTORY_SIZE = 50;
 
     private final CommandExecutor commandExecutor;
     private final CommandHistory commandHistory;
@@ -34,11 +33,10 @@ public class CommandBox extends UiPart<Region> {
     /**
      * Creates a {@code CommandBox} with the given {@code CommandExecutor}.
      */
-    public CommandBox(CommandExecutor commandExecutor) {
+    public CommandBox(CommandExecutor commandExecutor, CommandHistory commandHistory) {
         super(FXML);
         this.commandExecutor = commandExecutor;
-
-        commandHistory = new CommandHistory(COMMAND_HISTORY_SIZE);
+        this.commandHistory = commandHistory;
 
         // Set up cycling through command history.
         commandTextField.setOnKeyPressed(keyEvent -> {

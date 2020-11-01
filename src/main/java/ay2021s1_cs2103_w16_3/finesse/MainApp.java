@@ -70,7 +70,7 @@ public class MainApp extends Application {
 
         uiState = new UiState();
 
-        ui = new UiManager(logic, uiState);
+        ui = new UiManager(model, logic, uiState);
     }
 
     /**
