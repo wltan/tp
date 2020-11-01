@@ -19,7 +19,11 @@ public class ClearCommandTest {
         Model model = new ModelManager();
         Model expectedModel = new ModelManager();
 
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_PRIMED, expectedModel, false);
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel, true);
     }
 
@@ -29,9 +33,13 @@ public class ClearCommandTest {
         Model expectedModel = new ModelManager(getTypicalFinanceTracker(), new UserPrefs());
 
         // 1st run - command is primed (model is unchanged)
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_PRIMED, expectedModel, false);
         // 2nd run - command clears data
         expectedModel.setFinanceTracker(new FinanceTracker());
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
         assertCommandSuccess(new ClearCommand(), model, ClearCommand.MESSAGE_SUCCESS, expectedModel, true);
     }
 
@@ -48,19 +56,61 @@ public class ClearCommandTest {
         uiState.setCurrentTab(UiState.Tab.INCOME);
 
         // 1st run - command is primed (model is unchanged)
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
         assertCommandSuccess(cmdParser.parseCommand("clear", uiState), model,
                 ClearCommand.MESSAGE_PRIMED, expectedModel, false);
 
         // intermediate command 'lsi' - prime is reset
-        assertCommandSuccess(cmdParser.parseCommand("lsi", uiState), model,
-                new ListIncomeCommand().execute(model), expectedModel);
+        model.getCommandHistory().addCommand("lsi");
+        expectedModel.getCommandHistory().addCommand("lsi");
 
         // 2nd run - command is primed (model is unchanged)
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
         assertCommandSuccess(cmdParser.parseCommand("clear", uiState), model,
                 ClearCommand.MESSAGE_PRIMED, expectedModel, false);
 
         // 3rd run - command clears data
         expectedModel.setFinanceTracker(new FinanceTracker());
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
+        assertCommandSuccess(cmdParser.parseCommand("clear", uiState), model,
+                ClearCommand.MESSAGE_SUCCESS, expectedModel, true);
+    }
+
+    @Test
+    public void execute_nonEmptyFinanceTracker_invalidIntermediateCommand() throws Exception {
+        // test to check if the clear command works across multiple uses,
+        // when another (invalid) command is injected in between
+
+        Model model = new ModelManager(getTypicalFinanceTracker(), new UserPrefs());
+        Model expectedModel = new ModelManager(getTypicalFinanceTracker(), new UserPrefs());
+
+        FinanceTrackerParser cmdParser = new FinanceTrackerParser();
+        UiState uiState = new UiState();
+        uiState.setCurrentTab(UiState.Tab.INCOME);
+
+        // 1st run - command is primed (model is unchanged)
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
+        assertCommandSuccess(cmdParser.parseCommand("clear", uiState), model,
+                ClearCommand.MESSAGE_PRIMED, expectedModel, false);
+
+        // invalid intermediate command 'foo' - prime is reset
+        model.getCommandHistory().addCommand("foo");
+        expectedModel.getCommandHistory().addCommand("foo");
+
+        // 2nd run - command is primed (model is unchanged)
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
+        assertCommandSuccess(cmdParser.parseCommand("clear", uiState), model,
+                ClearCommand.MESSAGE_PRIMED, expectedModel, false);
+
+        // 3rd run - command clears data
+        expectedModel.setFinanceTracker(new FinanceTracker());
+        model.getCommandHistory().addCommand("clear");
+        expectedModel.getCommandHistory().addCommand("clear");
         assertCommandSuccess(cmdParser.parseCommand("clear", uiState), model,
                 ClearCommand.MESSAGE_SUCCESS, expectedModel, true);
     }
