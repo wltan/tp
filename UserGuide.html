@@ -117,9 +117,10 @@
         </ul>
       </li>
       <li><a href="#49-analytics" id="markdown-toc-49-analytics">4.9 Analytics</a></li>
-      <li><a href="#410-exiting-the-program-exit" id="markdown-toc-410-exiting-the-program-exit">4.10 Exiting the Program: <code class="highlighter-rouge">exit</code></a></li>
-      <li><a href="#411-command-history" id="markdown-toc-411-command-history">4.11 Command History</a></li>
-      <li><a href="#412-saving-the-data" id="markdown-toc-412-saving-the-data">4.12 Saving the Data</a></li>
+      <li><a href="#410-clear-data-clear" id="markdown-toc-410-clear-data-clear">4.10 Clear Data: <code class="highlighter-rouge">clear</code></a></li>
+      <li><a href="#411-exiting-the-program-exit" id="markdown-toc-411-exiting-the-program-exit">4.11 Exiting the Program: <code class="highlighter-rouge">exit</code></a></li>
+      <li><a href="#412-command-history" id="markdown-toc-412-command-history">4.12 Command History</a></li>
+      <li><a href="#413-saving-the-data" id="markdown-toc-413-saving-the-data">4.13 Saving the Data</a></li>
     </ul>
   </li>
   <li><a href="#5-command-summary" id="markdown-toc-5-command-summary">5. Command Summary</a></li>
@@ -227,6 +228,13 @@ Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>
       </li>
     </ul>
   </li>
+  <li>
+    <p>Once you are comfortable with the various features of Fine\$\$e, <a href="#410-clear-data-clear">clear the sample data</a> by typing <code class="highlighter-rouge">clear</code>, pressing Enter,
+typing <code class="highlighter-rouge">clear</code> again, and pressing Enter again.</p>
+  </li>
+  <li>
+    <p>Start tracking your own finances with Fine\$\$e!</p>
+  </li>
 </ol>
 
 <h3 id="22-layout-of-finees-interface">2.2 Layout of Fine$$e’s Interface</h3>
@@ -301,7 +309,8 @@ Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>
   <ul>
     <li>
       <p>Words in <code class="highlighter-rouge">UPPER_CASE</code> are the parameters to be supplied by the user.<br>
-e.g. in <code class="highlighter-rouge">add-expense t/TITLE</code>, <code class="highlighter-rouge">TITLE</code> is a parameter which can be used as <code class="highlighter-rouge">add t/Bubble Tea</code>.</p>
+e.g. in <code class="highlighter-rouge">add-expense t/TITLE</code>, <code class="highlighter-rouge">TITLE</code> is a parameter which can be used as <code class="highlighter-rouge">add t/Bubble Tea</code>.
+Any leading/trailing whitespaces will be ignored. e.g. <code class="highlighter-rouge">add t/   Bubble Tea</code> and <code class="highlighter-rouge">add t/Bubble Tea   </code> will be treated as <code class="highlighter-rouge">add t/Bubble Tea</code>.</p>
     </li>
     <li>
       <p>Items in square brackets (<code class="highlighter-rouge">[]</code>) are optional.<br>
@@ -326,7 +335,7 @@ e.g. if the command specifies <code class="highlighter-rouge">t/TITLE a/AMOUNT</
   <p>The formats of the parameters used in the rest of the document are as follows:</p>
   <ul>
     <li>
-<code class="highlighter-rouge">TITLE</code> and <code class="highlighter-rouge">CATEGORY</code> should consist of printable ASCII characters, and cannot begin with a space.
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">TITLE_KEYPHRASE</code> and <code class="highlighter-rouge">CATEGORY</code> should consist of printable ASCII characters.
       <ul>
         <li>The set of printable ASCII characters consists of alphanumeric characters, space, and several special characters.
 Below is an exhaustive list of printable ASCII characters (excluding line breaks):
@@ -555,7 +564,7 @@ This effectively resets any current filtering of the expenses list, such as thos
 <h4 id="435-find-expense-find">4.3.5 Find Expense: <code class="highlighter-rouge">find</code>
 </h4>
 
-<p>Finds expenses that match any of the given parameters, and displays the list of matching expenses.</p>
+<p>Finds expenses that match any of the given search parameters, and displays the list of matching expenses.</p>
 
 <p>Format: (when on the <a href="#223-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">find [t/TITLE_KEYPHRASE...] [a/AMOUNT] [d/DATE] [c/CATEGORY...] [af/AMOUNT_FROM] [at/AMOUNT_TO] [df/DATE_FROM] [dt/DATE_TO]</code></p>
 
@@ -563,22 +572,18 @@ This effectively resets any current filtering of the expenses list, such as thos
   <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  When on the <a href="#221-overview-tab">Overview tab</a>, you can use <code class="highlighter-rouge">find</code> to search for all transactions (expenses and incomes).</p>
 </blockquote>
 
-<p>The available parameters and their uses are as follows:</p>
+<p>The available search parameters and their uses are as follows:</p>
 
 <ul>
   <li>
 <code class="highlighter-rouge">t/TITLE_KEYPHRASE</code>: Searches for all expenses with titles containing the specified <code class="highlighter-rouge">TITLE_KEYPHRASE</code> keyphrase.
     <ul>
-      <li>The search is case-insensitive. e.g <code class="highlighter-rouge">taxi</code> will match <code class="highlighter-rouge">Taxi</code>
-</li>
-      <li>More than one keyphrase can be given.</li>
-      <li>The order of the keyphrases does not matter. e.g. <code class="highlighter-rouge">Bus Train</code> will match <code class="highlighter-rouge">Train Bus</code>
-</li>
-      <li>Only full words will be matched. e.g. <code class="highlighter-rouge">Snack</code> will not match <code class="highlighter-rouge">Snacks</code>
-</li>
+      <li>The search is case-insensitive. e.g <code class="highlighter-rouge">t/taxi</code> will match <code class="highlighter-rouge">Taxi</code>.</li>
+      <li>A keyphrase can contain more than one word. e.g. <code class="highlighter-rouge">t/bubble tea</code> is considered as one keyphrase.</li>
+      <li>The order of the keyphrases does not matter. e.g. <code class="highlighter-rouge">t/Bus t/Train</code> will match <code class="highlighter-rouge">Train Bus</code>.</li>
+      <li>Partial matches are accepted. e.g. <code class="highlighter-rouge">t/Snack</code> will match <code class="highlighter-rouge">Snacks</code>.</li>
       <li>Titles matching at least one keyphrase will be returned (i.e. <code class="highlighter-rouge">OR</code> search).
-e.g. <code class="highlighter-rouge">Tea Coffee</code> will return <code class="highlighter-rouge">Bubble Tea</code>, <code class="highlighter-rouge">Starbucks Coffee</code>
-</li>
+e.g. <code class="highlighter-rouge">t/Tea t/Coffee</code> will return <code class="highlighter-rouge">Bubble Tea</code>, <code class="highlighter-rouge">Starbucks Coffee</code>.</li>
     </ul>
   </li>
   <li>
@@ -588,8 +593,7 @@ e.g. <code class="highlighter-rouge">Tea Coffee</code> will return <code class="
   <li>
 <code class="highlighter-rouge">c/CATEGORY</code>: Searches for all expenses labelled with the specified category.
     <ul>
-      <li>The search is case-insensitive. e.g <code class="highlighter-rouge">taxi</code> will match <code class="highlighter-rouge">Taxi</code>
-</li>
+      <li>The search is case-insensitive. e.g <code class="highlighter-rouge">taxi</code> will match <code class="highlighter-rouge">Taxi</code>.</li>
       <li>More than one category can be given; the search will return expenses with any of the input categories.</li>
     </ul>
   </li>
@@ -603,7 +607,7 @@ e.g. <code class="highlighter-rouge">Tea Coffee</code> will return <code class="
 <code class="highlighter-rouge">dt/DATE_TO</code>: Searches for all expenses that occurred on or before the specified date.</li>
 </ul>
 
-<p>None of the parameters are mandatory, but at least one must be specified.</p>
+<p>None of the search parameters are mandatory, but at least one must be specified.</p>
 
 <p>Examples:</p>
 <ul>
@@ -757,7 +761,7 @@ This effectively resets any current filtering of the incomes list, such as those
 <h4 id="445-find-income-find">4.4.5 Find Income: <code class="highlighter-rouge">find</code>
 </h4>
 
-<p>Finds incomes that match any of the given parameters, and displays the list of matching incomes.</p>
+<p>Finds incomes that match any of the given search parameters, and displays the list of matching incomes.</p>
 
 <p>Format: (when on the <a href="#222-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">find [t/TITLE_KEYPHRASE...] [a/AMOUNT] [d/DATE] [c/CATEGORY...] [af/AMOUNT_FROM] [at/AMOUNT_TO] [df/DATE_FROM] [dt/DATE_TO]</code></p>
 
@@ -765,22 +769,18 @@ This effectively resets any current filtering of the incomes list, such as those
   <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  When on the <a href="#221-overview-tab">Overview tab</a>, you can use <code class="highlighter-rouge">find</code> to search for all transactions (expenses and incomes).</p>
 </blockquote>
 
-<p>The available parameters and their uses are as follows:</p>
+<p>The available search parameters and their uses are as follows:</p>
 
 <ul>
   <li>
 <code class="highlighter-rouge">t/TITLE_KEYPHRASE</code>: Searches for all incomes with titles containing the specified <code class="highlighter-rouge">TITLE_KEYPHRASE</code> keyphrase.
     <ul>
-      <li>The search is case-insensitive. e.g <code class="highlighter-rouge">work</code> will match <code class="highlighter-rouge">Work</code>
-</li>
-      <li>More than one keyphrase can be given.</li>
-      <li>The order of the keyphrases does not matter. e.g. <code class="highlighter-rouge">TA part-time</code> will match <code class="highlighter-rouge">part-time TA</code>
-</li>
-      <li>Only full words will be matched. e.g. <code class="highlighter-rouge">intern</code> will not match <code class="highlighter-rouge">internship</code>
-</li>
+      <li>The search is case-insensitive. e.g <code class="highlighter-rouge">t/work</code> will match <code class="highlighter-rouge">Work</code>.</li>
+      <li>A keyphrase can contain more than one word. e.g. <code class="highlighter-rouge">t/Shopee internship</code> is considered as one keyphrase.</li>
+      <li>The order of the keyphrases does not matter. e.g. <code class="highlighter-rouge">t/TA t/part-time</code> will match <code class="highlighter-rouge">part-time TA</code>.</li>
+      <li>Partial matches are accepted. e.g. <code class="highlighter-rouge">t/intern</code> will match <code class="highlighter-rouge">internship</code>.</li>
       <li>Titles matching at least one keyphrase will be returned (i.e. <code class="highlighter-rouge">OR</code> search).
-e.g. <code class="highlighter-rouge">allowance prize</code> will return <code class="highlighter-rouge">Laptop Allowance</code>, <code class="highlighter-rouge">Hackathon Prize</code>
-</li>
+e.g. <code class="highlighter-rouge">t/allowance t/prize</code> will return <code class="highlighter-rouge">Laptop Allowance</code>, <code class="highlighter-rouge">Hackathon Prize</code>.</li>
     </ul>
   </li>
   <li>
@@ -790,8 +790,7 @@ e.g. <code class="highlighter-rouge">allowance prize</code> will return <code cl
   <li>
 <code class="highlighter-rouge">c/CATEGORY</code>: Searches for all incomes labelled with the specified category.
     <ul>
-      <li>The search is case-insensitive. e.g <code class="highlighter-rouge">work</code> will match <code class="highlighter-rouge">Work</code>
-</li>
+      <li>The search is case-insensitive. e.g <code class="highlighter-rouge">work</code> will match <code class="highlighter-rouge">Work</code>.</li>
       <li>More than one category can be given; the search will return incomes with any of the input categories.</li>
     </ul>
   </li>
@@ -805,7 +804,7 @@ e.g. <code class="highlighter-rouge">allowance prize</code> will return <code cl
 <code class="highlighter-rouge">dt/DATE_TO</code>: Searches for all incomes that occurred on or before the specified date.</li>
 </ul>
 
-<p>None of the keywords are mandatory, but at least one must be specified.</p>
+<p>None of the search parameters are mandatory, but at least one must be specified.</p>
 
 <p>Examples:</p>
 <ul>
@@ -1256,14 +1255,88 @@ These analytics will give you a better overview of your incomes/expenses and hel
 <p>The data in the bar charts is automatically updated to include any recent modifications you have made in the finance tracker every time you switch to the <a href="#224-analytics-tab">Analytics Tab</a>.
 This ensures that you will always see the latest information about your spending and saving trends.</p>
 
-<h3 id="410-exiting-the-program-exit">4.10 Exiting the Program: <code class="highlighter-rouge">exit</code>
+<h3 id="410-clear-data-clear">4.10 Clear Data: <code class="highlighter-rouge">clear</code>
+</h3>
+
+<p>Ready to start using Fine\$\$e?
+This command allows you to clear <em>all</em> existing data inside the finance tracker. That includes:</p>
+<ul>
+  <li>Expenses and incomes</li>
+  <li>Bookmark expenses and bookmark incomes</li>
+  <li>Expense limit</li>
+  <li>Savings goal</li>
+</ul>
+
+<p>Format: <code class="highlighter-rouge">clear</code></p>
+
+<blockquote>
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This is a powerful command. You might lose your precious data if you are not careful with it.</p>
+</blockquote>
+
+<blockquote>
+  <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  If there is any data you would like to keep before clearing, write it down somewhere so that you can re-enter it later.</p>
+</blockquote>
+
+<p>To protect against accidental usage, this command needs to be entered <strong>twice in succession</strong> before it takes effect.
+A single <code class="highlighter-rouge">clear</code> command is nullified when not followed by another <code class="highlighter-rouge">clear</code> command.</p>
+
+<p>Here are some example scenarios to illustrate:</p>
+<ul>
+  <li>Scenario A: Enter <code class="highlighter-rouge">clear</code>.
+    <ul>
+      <li>The finance tracker data is unchanged.</li>
+      <li>Fine\$\$e requests for a second <code class="highlighter-rouge">clear</code> command as confirmation.</li>
+    </ul>
+  </li>
+  <li>Scenario B: Enter <code class="highlighter-rouge">clear</code>, then enter <code class="highlighter-rouge">clear</code> again.
+    <ul>
+      <li>The finance tracker data is cleared.</li>
+    </ul>
+  </li>
+  <li>Scenario C: Enter <code class="highlighter-rouge">clear</code>, then enter <code class="highlighter-rouge">lsi</code> (a valid command), then enter <code class="highlighter-rouge">clear</code> again.
+    <ul>
+      <li>The finance tracker data is unchanged.</li>
+      <li>The first <code class="highlighter-rouge">clear</code> command has been nullified, so Fine\$\$e requests for a second <code class="highlighter-rouge">clear</code> command as confirmation.</li>
+    </ul>
+  </li>
+  <li>Scenario D: Enter <code class="highlighter-rouge">clear</code>, then enter <code class="highlighter-rouge">foo</code> (an invalid command), then enter <code class="highlighter-rouge">clear</code> again.
+    <ul>
+      <li>The finance tracker data is unchanged.</li>
+      <li>The first <code class="highlighter-rouge">clear</code> command has been nullified, so Fine\$\$e requests for a second <code class="highlighter-rouge">clear</code> command as confirmation.</li>
+    </ul>
+  </li>
+  <li>Scenario E: Enter <code class="highlighter-rouge">clear</code>, then enter <code class="highlighter-rouge">lsi</code>, then enter <code class="highlighter-rouge">clear</code> again, then enter <code class="highlighter-rouge">clear</code> again.
+    <ul>
+      <li>The finance tracker data is cleared.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Example Usage:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clear
+</code></pre></div></div>
+
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Please enter 'clear' again to confirm your decision.
+</code></pre></div></div>
+
+<p>Example Usage (continued):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>clear
+</code></pre></div></div>
+
+<p>Expected Outcome:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Finance tracker has been cleared!
+</code></pre></div></div>
+<p>All data in the finance tracker is cleared.</p>
+
+<h3 id="411-exiting-the-program-exit">4.11 Exiting the Program: <code class="highlighter-rouge">exit</code>
 </h3>
 
 <p>Exits the program.</p>
 
 <p>Format: <code class="highlighter-rouge">exit</code></p>
 
-<h3 id="411-command-history">4.11 Command History</h3>
+<h3 id="412-command-history">4.12 Command History</h3>
 
 <p>Accidentally entered the wrong command and wish to modify it without typing it out again fully?
 Simply press the ↑ or ↓ arrow keys on your keyboard to navigate through your command history.</p>
@@ -1289,7 +1362,7 @@ Simply press the ↑ or ↓ arrow keys on your keyboard to navigate through your
   <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Pressing either the ↑ or ↓ arrow keys will cause whatever text is currently in the command box to be overwritten.</p>
 </blockquote>
 
-<h3 id="412-saving-the-data">4.12 Saving the Data</h3>
+<h3 id="413-saving-the-data">4.13 Saving the Data</h3>
 
 <p>Fine$$e data is saved in the hard disk automatically after any command that changes the data.
 There is no need to save manually.</p>
@@ -1341,7 +1414,7 @@ There is no need to save manually.</p>
     </tr>
     <tr>
       <td>Find</td>
-      <td><code class="highlighter-rouge">find KEYWORD [MORE_KEYWORDS...]</code></td>
+      <td><code class="highlighter-rouge">find [t/TITLE_KEYPHRASE...] [a/AMOUNT] [d/DATE] [c/CATEGORY...] [af/AMOUNT_FROM] [at/AMOUNT_TO] [df/DATE_FROM] [dt/DATE_TO]</code></td>
       <td>
 <code class="highlighter-rouge">find c/Food &amp; drink af/10</code> <br> <code class="highlighter-rouge">find t/allowance d/01/10/2020</code>
 </td>
@@ -1445,10 +1518,6 @@ There is no need to save manually.</p>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>ASCII</td>
-      <td>Characters that are recognised by a computer.</td>
-    </tr>
     <tr>
       <td>Bookmark Expense</td>
       <td>A template for an expense, which can be used to create expenses and add them to the finance tracker.</td>

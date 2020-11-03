@@ -47,42 +47,69 @@
   <div class="post-content">
     <h2 id="project-finee">Project: Fine$$e</h2>
 
+<h3 id="overview">Overview</h3>
+
 <p>Fine$$e is a desktop finance tracker that allows tertiary students to better manage their finances, cultivating good financial habits such as saving. It is optimised for CLI users so that expenses and income can be tracked efficiently by typing in commands. It is written in Java, and has a GUI created with JavaFX.</p>
 
-<p>Given below are my contributions to the project.</p>
+<h3 id="summary-of-contributions">Summary of Contributions</h3>
 
 <ul>
   <li>
-<strong>New Feature</strong>:
+<strong>New feature</strong>: Added the monthly budget feature to the finance tracker.
     <ul>
-      <li>What it does:</li>
-      <li>Justification:</li>
-      <li>Highlights:</li>
-      <li>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em>
-</li>
+      <li>What it does: With the addition of the monthly budget, the finance tracker allows the user to set their desired monthly expense limit and monthly savings goal, and calculates the user’s remaining budget and current savings.</li>
+      <li>Justification: This feature significantly enhances the capabilities of the finance tracker by allowing the user to track their progress in their savings, and paves the way for the application’s analytics feature.</li>
+      <li>Highlights: This feature required heavy use of the observer design pattern as all values in the monthly budget have to be observed by the UI so that the values and calculations can be updated immediately upon any changes.</li>
     </ul>
   </li>
   <li>
-    <p><strong>Code contributed</strong>: <a href="">RepoSense link</a></p>
+<strong>New feature</strong>: Revamped the finance tracker’s <code class="highlighter-rouge">find</code> command.
+    <ul>
+      <li>What it does: Instead of only title keywords, the user can now search for transactions in the finance tracker by title keyphrase, amount, date, category, amount range and date range.</li>
+      <li>Justification: This feature significantly increases the user’s ease in finding the transactions they have entered into the finance tracker.</li>
+      <li>Highlights: This feature involved changes in the way the find command is parsed, and different predicates for each of the search scenarios were created.</li>
+    </ul>
   </li>
   <li>
-    <p><strong>Project management</strong>:</p>
+    <p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&amp;search=w16&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-08-14&amp;timeframe=commit&amp;mergegroup=&amp;groupSelect=groupByRepos&amp;checkedFileTypes=docs~functional-code~test-code~other&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=zhaojj2209&amp;tabRepo=AY2021S1-CS2103T-W16-3%2Ftp%5Bmaster%5D&amp;authorshipIsMergeGroup=false&amp;authorshipFileTypes=docs~functional-code~test-code~other">RepoSense link</a></p>
   </li>
   <li>
-    <p><strong>Enhancements to existing features</strong>:</p>
+<strong>Project management</strong>:
+    <ul>
+      <li>Created labels for issues and pull requests on GitHub.</li>
+      <li>Managed release <code class="highlighter-rouge">v1.3</code> (1 release) on GitHub.</li>
+    </ul>
+  </li>
+  <li>
+<strong>Enhancements to existing features</strong>:
+    <ul>
+      <li>Removed duplicate checks to allow duplicate transactions to be added to the finance tracker. (Pull request <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/72">#72</a>)</li>
+      <li>Restricted command inputs to allow for only one title/amount/date input in the finance tracker. (Pull request <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/201">#201</a>)</li>
+    </ul>
   </li>
   <li>
 <strong>Documentation</strong>:
     <ul>
-      <li>User Guide:</li>
-      <li>Developer Guide:</li>
+      <li>User Guide:
+        <ul>
+          <li>Updated user guide to reflect commands for v1.2. (Pull request <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/114">#114</a>)</li>
+          <li>Updated user guide for <code class="highlighter-rouge">find</code>, <code class="highlighter-rouge">set-expense-limit</code> and <code class="highlighter-rouge">set-savings-goal</code> commands for v1.3. (Pull request <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/176">#176</a>)</li>
+        </ul>
+      </li>
+      <li>Developer Guide:
+        <ul>
+          <li>Updated user stories and use cases in the developer guide. (Pull request <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/13">#13</a>)</li>
+          <li>Updated find transactions and monthly budget features in the developer guide. (Pull requests <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/120">#120</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/144">#144</a>)</li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li>
-    <p><strong>Community</strong>:</p>
+<strong>Community</strong>:
+    <ul>
+      <li>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/39">#39</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/48">#48</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/90">#90</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/107">#107</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/132">#132</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/255">#255</a>.</li>
+    </ul>
   </li>
-  <li>
-<strong>Tools</strong>:</li>
 </ul>
 
 

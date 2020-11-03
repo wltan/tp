@@ -47,44 +47,83 @@
   <div class="post-content">
     <h2 id="project-finee">Project: Fine$$e</h2>
 
+<h3 id="overview">Overview</h3>
+
 <p>Fine$$e is a desktop finance tracker that allows tertiary students to better manage their finances, cultivating good financial habits such as saving. It is optimised for CLI users so that expenses and income can be tracked efficiently by typing in commands. It is written in Java, and has a GUI created with JavaFX.</p>
 
-<p>Given below are my contributions to the project.</p>
+<h3 id="summary-of-contributions">Summary of Contributions</h3>
 
 <ul>
   <li>
-<strong>New Feature</strong>:
+<strong>New feature</strong>: Embedded user guide within the application.
     <ul>
-      <li>What it does:</li>
-      <li>Justification:</li>
-      <li>Highlights:</li>
-      <li>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em>
+      <li>What it does: Allows the user to view the <a href="UserGuide.html">user guide</a> from within the application.</li>
+      <li>Justification: The barriers to entry of using Fine$$e are high for new users as they are required to learn the various commands available.
+By embedding the user guide within the application, it allows users to quickly look up Fine$$e’s features and their corresponding commands.
+This leads to a much better user experience.</li>
+      <li>Highlights: JavaFX’s <code class="highlighter-rouge">WebView</code> component was used to display the user guide.
+Unfortunately, it does not adhere too closely to modern browser standards, resulting in certain pages not being rendered correctly.
+In order to ensure that the user experience is smooth, the decision to only allow users to access pages in the domain <code class="highlighter-rouge">https://ay2021s1-cs2103t-w16-3.github.io/tp/</code> was made.
+Should the user attempt to navigate to an external site, the following page is shown instead:
+<img src="/tp/images/ppp/ianyong/NoExternalSite.png" alt="No external site page">
 </li>
     </ul>
   </li>
   <li>
-    <p><strong>Code contributed</strong>: <a href="">RepoSense link</a></p>
+<strong>New feature</strong>: Added command history.
+    <ul>
+      <li>What it does: Allows the user to cycle through their 50 most recent inputs via the ↑ and ↓ arrow keys.</li>
+      <li>Justification: Almost all modern command line interfaces support the scrolling through of previously typed commands.
+The addition of this feature allows users who are experienced with command line interfaces to be more efficent when using Fine$$e.</li>
+      <li>Highlights: This feature necessitated the implementation of a stack with a maximum capacity so as not to run out of memory.
+Once the stack is full, the bottom-most element of the stack is evicted.
+The underlying data structure that backs the stack is a doubly linked list.</li>
+    </ul>
   </li>
   <li>
-    <p><strong>Project management</strong>:</p>
+    <p><strong>Code contributed</strong>: <a href="https://nus-cs2103-ay2021s1.github.io/tp-dashboard/#breakdown=true&amp;search=&amp;sort=groupTitle&amp;sortWithin=title&amp;since=2020-08-14&amp;timeframe=commit&amp;mergegroup=&amp;groupSelect=groupByRepos&amp;checkedFileTypes=docs~functional-code~test-code~other&amp;tabOpen=true&amp;tabType=authorship&amp;tabAuthor=ianyong&amp;tabRepo=AY2021S1-CS2103T-W16-3%2Ftp%5Bmaster%5D&amp;authorshipIsMergeGroup=false&amp;authorshipFileTypes=docs~functional-code~test-code~other">RepoSense link</a></p>
   </li>
   <li>
-    <p><strong>Enhancements to existing features</strong>:</p>
+<strong>Project management</strong>:
+    <ul>
+      <li>Managed release <code class="highlighter-rouge">v1.4</code> (1 release) on GitHub.</li>
+    </ul>
+  </li>
+  <li>
+<strong>Enhancements to existing features</strong>:
+    <ul>
+      <li>Refactored the user interface to be more extensible. (Pull request <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/161">#161</a>)</li>
+      <li>Updated the user interface to be resizable and scalable. (Pull requests <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/174">#174</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/226">#226</a>)</li>
+    </ul>
   </li>
   <li>
 <strong>Documentation</strong>:
     <ul>
-      <li>User Guide:</li>
+      <li>User Guide:
+        <ul>
+          <li>Updated user guide to give an overview of the various tabs in Fine$$e. (Pull request <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/179">#179</a>)</li>
+        </ul>
+      </li>
       <li>Developer Guide:</li>
     </ul>
   </li>
   <li>
-    <p><strong>Community</strong>:</p>
+<strong>Community</strong>:
+    <ul>
+      <li>PRs reviewed (with non-trivial review comments): <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/39">#39</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/75">#75</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/123">#123</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/232">#232</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/264">#264</a>, <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/265">#265</a>
+</li>
+      <li>Helped classmates in forum discussions. (Examples: <a href="https://github.com/nus-cs2103-AY2021S1/forum/issues/14">1</a>, <a href="https://github.com/nus-cs2103-AY2021S1/forum/issues/117">2</a>, <a href="https://github.com/nus-cs2103-AY2021S1/forum/issues/191">3</a>, <a href="https://github.com/nus-cs2103-AY2021S1/forum/issues/200">4</a>, <a href="https://github.com/nus-cs2103-AY2021S1/forum/issues/249">5</a>, <a href="https://github.com/nus-cs2103-AY2021S1/forum/issues/262">6</a>, <a href="https://github.com/nus-cs2103-AY2021S1/forum/issues/269">7</a>, <a href="https://github.com/nus-cs2103-AY2021S1/forum/issues/276">8</a>)</li>
+      <li>Solution for removing bullet points from the table of contents of user guide was <a href="https://github.com/nus-cs2103-AY2021S1/forum/issues/361">adopted by several other classmates</a>.</li>
+    </ul>
   </li>
   <li>
-<strong>Tools</strong>:</li>
+<strong>Tools</strong>:
+    <ul>
+      <li>Added Git pre-push hook to enforce code quality. (Pull request <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/7">#7</a>)</li>
+      <li>Updated GitHub Pages build process to use <code class="highlighter-rouge">jekyll-spaceship</code> for greater control over site formatting. (Pull request <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/18">#18</a>)</li>
+    </ul>
+  </li>
 </ul>
-
 
   </div>
 
