@@ -163,8 +163,6 @@ We have ensured that the information provided is concise, accessible and easily 
 
 <p>If you have any questions regarding Fine$$e, do check out <a href="#7-faq">Section 7. FAQ</a>.</p>
 
-<p>Do take note of the following symbols and formatting used throughout this document:</p>
-
 <div class="alert alert-info">
 
   <p>Do take note of the following symbols and formatting used throughout this document:</p>
@@ -218,7 +216,11 @@ Some example commands you can try:</p>
 Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>, amount <code class="highlighter-rouge">$5.00</code>, date <code class="highlighter-rouge">03/10/2020</code> and category <code class="highlighter-rouge">Food &amp; Beverage</code> to the finance tracker.</p>
       </li>
       <li>
-        <p><code class="highlighter-rouge">delete 3</code>: Deletes the 3rd transaction shown in the current list.</p>
+        <p><code class="highlighter-rouge">tab 3</code>: Switches to the <a href="#223-expenses-tab">Expenses Tab</a>.</p>
+      </li>
+      <li>
+        <p><code class="highlighter-rouge">delete 3</code>: Deletes the 3rd transaction shown in the current list.
+ Note that this command only works in the <a href="#223-expenses-tab">Expenses Tab</a> and the <a href="#222-incomes-tab">Incomes Tab</a>.</p>
       </li>
       <li>
         <p><code class="highlighter-rouge">exit</code>: Exits the app.</p>
@@ -233,7 +235,7 @@ Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>
 
 <h4 id="221-overview-tab">2.2.1 Overview Tab</h4>
 
-<p>Displays a list of all recent transactions (<a href="#44-income">incomes</a>/<a href="#43-expense">expenses</a>), along with your <a href="#47-expense-limit">expense limit</a>, <a href="#48-savings-goal">savings goal</a>, remaining budget and current savings.</p>
+<p>Displays a list of all recent transactions (both <a href="#44-income">incomes</a> and <a href="#43-expense">expenses</a>), along with your <a href="#47-expense-limit">expense limit</a>, <a href="#48-savings-goal">savings goal</a>, remaining budget and current savings.</p>
 
 <p><img src="/tp/images/userguide/OverviewTab.png" alt="Overview Tab"></p>
 
@@ -268,9 +270,9 @@ Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>
       <li>Search for incomes/expenses easily by keywords</li>
     </ul>
   </li>
-  <li>Add bookmarked transactions
+  <li>Add bookmark transactions
     <ul>
-      <li>Save transactions that occur regularly so that frequent expenses/incomes can be added to the finance tracker more conveniently</li>
+      <li>Create templates for transactions that occur regularly so that frequent expenses/incomes can be added to the finance tracker more conveniently</li>
     </ul>
   </li>
   <li>Budgeting
@@ -336,9 +338,10 @@ mnopqrstuvwxyz !"#$%&amp;'()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
       </ul>
     </li>
     <li>
-<code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">AMOUNT_FROM</code> and <code class="highlighter-rouge">AMOUNT_TO</code> should be non-negative numbers up to 8 digits with 0 or 2 decimal places, with an optional <code class="highlighter-rouge">$</code> in front.</li>
+<code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">AMOUNT_FROM</code> and <code class="highlighter-rouge">AMOUNT_TO</code> should each be a non-negative number with up to 8 digits before the decimal point and with 0 or 2 decimal places.
+An optional <code class="highlighter-rouge">$</code> may be included in front as well.</li>
     <li>
-<code class="highlighter-rouge">DATE</code>, <code class="highlighter-rouge">DATE_FROM</code> and <code class="highlighter-rouge">DATE_TO</code> should be a valid calendar date in <code class="highlighter-rouge">dd/mm/yyyy</code> format, representing day, month, and year respectively.
+<code class="highlighter-rouge">DATE</code>, <code class="highlighter-rouge">DATE_FROM</code> and <code class="highlighter-rouge">DATE_TO</code> should each be a valid calendar date in <code class="highlighter-rouge">dd/mm/yyyy</code> format, representing day, month, and year respectively.
       <ul>
         <li>Valid ranges for days and months are governed by the rules of the <a href="https://en.wikipedia.org/wiki/Gregorian_calendar#Description">Gregorian Calendar</a>.
           <ul>
@@ -474,7 +477,9 @@ It could be textbooks for the new semester, that cup of bubble tea you drank the
   <li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which expense to edit by specifying its position in the currently displayed expenses list.</li>
   <li>
-<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the expense information to update. None of them are mandatory, but at least one must be specified.
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the expense information to update.
+None of them are mandatory, but at least one must be specified.
+If any <code class="highlighter-rouge">CATEGORY</code> is specified, it will replace all of the expense’s categories.
 For parameters that have been omitted, the value will remain unchanged.</li>
 </ul>
 
@@ -550,28 +555,28 @@ This effectively resets any current filtering of the expenses list, such as thos
 <h4 id="435-find-expense-find">4.3.5 Find Expense: <code class="highlighter-rouge">find</code>
 </h4>
 
-<p>Finds expenses that match any of the given keywords, and displays the list of matching expenses.</p>
+<p>Finds expenses that match any of the given parameters, and displays the list of matching expenses.</p>
 
-<p>Format: (when on the <a href="#223-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">find KEYWORD [MORE_KEYWORDS...]</code></p>
+<p>Format: (when on the <a href="#223-expenses-tab">Expenses tab</a>) <code class="highlighter-rouge">find [t/TITLE_KEYPHRASE...] [a/AMOUNT] [d/DATE] [c/CATEGORY...] [af/AMOUNT_FROM] [at/AMOUNT_TO] [df/DATE_FROM] [dt/DATE_TO]</code></p>
 
 <blockquote>
   <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  When on the <a href="#221-overview-tab">Overview tab</a>, you can use <code class="highlighter-rouge">find</code> to search for all transactions (expenses and incomes).</p>
 </blockquote>
 
-<p>The available keywords and their uses are as follows:</p>
+<p>The available parameters and their uses are as follows:</p>
 
 <ul>
   <li>
-<code class="highlighter-rouge">t/TITLE</code>: Searches for all expenses with titles containing the specified <code class="highlighter-rouge">TITLE</code> keyword.
+<code class="highlighter-rouge">t/TITLE_KEYPHRASE</code>: Searches for all expenses with titles containing the specified <code class="highlighter-rouge">TITLE_KEYPHRASE</code> keyphrase.
     <ul>
       <li>The search is case-insensitive. e.g <code class="highlighter-rouge">taxi</code> will match <code class="highlighter-rouge">Taxi</code>
 </li>
-      <li>More than one keyword can be given.</li>
-      <li>The order of the keywords does not matter. e.g. <code class="highlighter-rouge">Bus Train</code> will match <code class="highlighter-rouge">Train Bus</code>
+      <li>More than one keyphrase can be given.</li>
+      <li>The order of the keyphrases does not matter. e.g. <code class="highlighter-rouge">Bus Train</code> will match <code class="highlighter-rouge">Train Bus</code>
 </li>
       <li>Only full words will be matched. e.g. <code class="highlighter-rouge">Snack</code> will not match <code class="highlighter-rouge">Snacks</code>
 </li>
-      <li>Titles matching at least one keyword will be returned (i.e. <code class="highlighter-rouge">OR</code> search).
+      <li>Titles matching at least one keyphrase will be returned (i.e. <code class="highlighter-rouge">OR</code> search).
 e.g. <code class="highlighter-rouge">Tea Coffee</code> will return <code class="highlighter-rouge">Bubble Tea</code>, <code class="highlighter-rouge">Starbucks Coffee</code>
 </li>
     </ul>
@@ -598,7 +603,7 @@ e.g. <code class="highlighter-rouge">Tea Coffee</code> will return <code class="
 <code class="highlighter-rouge">dt/DATE_TO</code>: Searches for all expenses that occurred on or before the specified date.</li>
 </ul>
 
-<p>None of the keywords are mandatory, but at least one must be specified.</p>
+<p>None of the parameters are mandatory, but at least one must be specified.</p>
 
 <p>Examples:</p>
 <ul>
@@ -674,7 +679,9 @@ It could be your internship allowance, prize money you won from a pitching compe
   <li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which income to edit by specifying its position in the currently displayed incomes list.</li>
   <li>
-<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated income information. None of them are mandatory, but at least one must be specified.
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated income information.
+None of them are mandatory, but at least one must be specified.
+If any <code class="highlighter-rouge">CATEGORY</code> is specified, it will replace all of the income’s existing categories.
 For parameters that have been omitted, the value will remain unchanged.</li>
 </ul>
 
@@ -750,28 +757,28 @@ This effectively resets any current filtering of the incomes list, such as those
 <h4 id="445-find-income-find">4.4.5 Find Income: <code class="highlighter-rouge">find</code>
 </h4>
 
-<p>Finds incomes that match any of the given keywords, and displays the list of matching incomes.</p>
+<p>Finds incomes that match any of the given parameters, and displays the list of matching incomes.</p>
 
-<p>Format: (when on the <a href="#222-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">find KEYWORD [MORE_KEYWORDS...]</code></p>
+<p>Format: (when on the <a href="#222-incomes-tab">Incomes tab</a>) <code class="highlighter-rouge">find [t/TITLE_KEYPHRASE...] [a/AMOUNT] [d/DATE] [c/CATEGORY...] [af/AMOUNT_FROM] [at/AMOUNT_TO] [df/DATE_FROM] [dt/DATE_TO]</code></p>
 
 <blockquote>
   <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  When on the <a href="#221-overview-tab">Overview tab</a>, you can use <code class="highlighter-rouge">find</code> to search for all transactions (expenses and incomes).</p>
 </blockquote>
 
-<p>The available keywords and their uses are as follows:</p>
+<p>The available parameters and their uses are as follows:</p>
 
 <ul>
   <li>
-<code class="highlighter-rouge">t/TITLE</code>: Searches for all incomes with titles containing the specified <code class="highlighter-rouge">TITLE</code> keyword.
+<code class="highlighter-rouge">t/TITLE_KEYPHRASE</code>: Searches for all incomes with titles containing the specified <code class="highlighter-rouge">TITLE_KEYPHRASE</code> keyphrase.
     <ul>
       <li>The search is case-insensitive. e.g <code class="highlighter-rouge">work</code> will match <code class="highlighter-rouge">Work</code>
 </li>
-      <li>More than one keyword can be given.</li>
-      <li>The order of the keywords does not matter. e.g. <code class="highlighter-rouge">TA part-time</code> will match <code class="highlighter-rouge">part-time TA</code>
+      <li>More than one keyphrase can be given.</li>
+      <li>The order of the keyphrases does not matter. e.g. <code class="highlighter-rouge">TA part-time</code> will match <code class="highlighter-rouge">part-time TA</code>
 </li>
       <li>Only full words will be matched. e.g. <code class="highlighter-rouge">intern</code> will not match <code class="highlighter-rouge">internship</code>
 </li>
-      <li>Titles matching at least one keyword will be returned (i.e. <code class="highlighter-rouge">OR</code> search).
+      <li>Titles matching at least one keyphrase will be returned (i.e. <code class="highlighter-rouge">OR</code> search).
 e.g. <code class="highlighter-rouge">allowance prize</code> will return <code class="highlighter-rouge">Laptop Allowance</code>, <code class="highlighter-rouge">Hackathon Prize</code>
 </li>
     </ul>
@@ -817,12 +824,22 @@ e.g. <code class="highlighter-rouge">allowance prize</code> will return <code cl
 
 <h3 id="45-bookmark-expense">4.5 Bookmark Expense</h3>
 
-<p>Fine\$\$e’s Bookmark Expense feature is used to store frequent expenses that the user makes such as paying of monthly phone bills or buying bubble tea weekly.
-The user will be then be able to edit, delete and convert a bookmarked expense to conveniently add it into Fine<span>$</span><span>$</span>e’s expense list.</p>
+<p>A <strong>bookmark expense</strong> is a template that allows you to create expenses that you make frequently, such as paying phone bills monthly or buying bubble tea weekly.
+You can convert a bookmark expense repeatedly to create as many expenses as you want, and the created expenses will automatically be added to Fine<span>$</span><span>$</span>e’s expenses list.</p>
+
+<p>To help you manage your finances, Fine$$e records the following information about each of your bookmark expenses:</p>
+<ol>
+  <li>
+<strong>Title</strong>: A descriptive title, to remind you what the bookmark expense is about.</li>
+  <li>
+<strong>Amount</strong>: How much money you will spend each time you convert the bookmark expense into an expense.</li>
+  <li>
+<strong>Categories</strong>: Any number of categories, to help you group related incomes together.</li>
+</ol>
 
 <p><img src="/tp/images/userguide/bookmark/AnnotatedBookmarkExpenseOverview.png" alt="Bookmark Expense Overview"></p>
 
-<p>Bookmark Expenses List Panel in the Expenses Tab</p>
+<p class="image-caption">Bookmark Expenses List Panel in the Expenses Tab</p>
 
 <h4 id="451-add-bookmark-expense-add-bookmark-expense">4.5.1 Add Bookmark Expense: <code class="highlighter-rouge">add-bookmark-expense</code>
 </h4>
@@ -875,13 +892,21 @@ Contiguous whitespace characters between words in the title will be treated as a
   <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the <a href="#223-expenses-tab">Expenses tab</a>.</p>
 </blockquote>
 
+<blockquote>
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Bookmark expenses with same titles are considered to be duplicates of each other.
+Therefore, editing the title of a bookmark expense to an already existing title in the bookmark expenses list is not allowed.
+Contiguous whitespace characters between words in the title will be treated as a single whitespace character.</p>
+</blockquote>
+
 <p>Format: <code class="highlighter-rouge">edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORY...]</code></p>
 
 <ul>
   <li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which bookmark expense to edit by specifying its position in the bookmark expenses list.</li>
   <li>
-<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark expense information. None of them are mandatory, but at least one must be specified.
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark expense information.
+None of them are mandatory, but at least one must be specified.
+If any <code class="highlighter-rouge">CAEGORY</code> is specified, it will replace all of the bookmark expense’s existing categories.
 For parameters that have been omitted, the value will remain unchanged.</li>
 </ul>
 
@@ -979,12 +1004,22 @@ specified bookmark expense and date <code class="highlighter-rouge">10/08/2020</
 
 <h3 id="46-bookmark-income">4.6 Bookmark Income</h3>
 
-<p>Fine<span>$<span><span>$<span>e’s Bookmark Income feature is used to store incomes that the user receives frequently, such as monthly salary or stipend for being a teaching assistant.
-The user will then be able to edit, delete and convert a bookmark income to conveniently add it into Fine\$\$e’s incomes list.</span></span></span></span></p>
+<p>A <strong>bookmark income</strong> is a template that allows you to create incomes that you make frequently, such as monthly salary or stipend for being a teaching assistant.
+You can convert a bookmark income repeatedly to create as many incomes as you want, and the created incomes will automatically be added to Fine<span>$</span><span>$</span>e’s incomes list.</p>
+
+<p>To help you manage your finances, Fine$$e records the following information about each of your bookmark incomes:</p>
+<ol>
+  <li>
+<strong>Title</strong>: A descriptive title, to remind you what the bookmark income is about.</li>
+  <li>
+<strong>Amount</strong>: How much money you will receive each time you convert the bookmark income into an income.</li>
+  <li>
+<strong>Categories</strong>: Any number of categories, to help you group related incomes together.</li>
+</ol>
 
 <p><img src="/tp/images/userguide/bookmark/AnnotatedBookmarkIncomeOverview.png" alt="Overview Bookmark Income Panel"></p>
 
-<p>Bookmark Incomes List Panel in the Incomes tab</p>
+<p class="image-caption">Bookmark Incomes List Panel in the Incomes tab</p>
 
 <h4 id="461-add-bookmark-income-add-bookmark-income">4.6.1 Add Bookmark Income: <code class="highlighter-rouge">add-bookmark-income</code>
 </h4>
@@ -1037,13 +1072,21 @@ Contiguous whitespace characters between words in the title will be treated as a
   <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the <a href="#222-incomes-tab">Incomes tab</a>.</p>
 </blockquote>
 
+<blockquote>
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Bookmark incomes with same titles are considered to be duplicates of each other.
+Therefore, editing the title of a bookmark income to an already existing title in the bookmark incomes list is not allowed.
+Contiguous whitespace characters between words in the title will be treated as a single whitespace character.</p>
+</blockquote>
+
 <p>Format: <code class="highlighter-rouge">edit-bookmark INDEX [t/TITLE] [a/AMOUNT] [c/CATEGORY...]</code></p>
 
 <ul>
   <li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which bookmark income to edit by specifying its position in the bookmark incomes list.</li>
   <li>
-<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark income information. None of them are mandatory, but at least one must be specified.
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark income information.
+ None of them are mandatory, but at least one must be specified.
+ If any <code class="highlighter-rouge">CATEGORY</code> is specified, it will replace all of the bookmark income’s existing categories.
  For parameters that have been omitted, the value will remain unchanged.</li>
 </ul>
 
@@ -1394,15 +1437,44 @@ There is no need to save manually.</p>
 
 <h2 id="6-glossary">6. Glossary</h2>
 
-<ul>
-  <li>ASCII: Characters that are recognised by a computer.</li>
-  <li>Bookmark Expense: A template for an expense, which can be used to create expenses and add them to the finance tracker.</li>
-  <li>Bookmark Income: A template for an income, which can be used to create incomes and add them to the finance tracker.</li>
-  <li>Current date: The system date on the computer on which Fine$$e is set up.</li>
-  <li>Expense: A one-time transaction that results in a decrease in the amount of money you have.</li>
-  <li>Income: A one-time transaction that results in an increase in the amount of money you have.</li>
-  <li>Text cursor: A blinking vertical line that indicates where text will be placed when entered.</li>
-</ul>
+<table>
+  <thead>
+    <tr>
+      <th>Term</th>
+      <th>Definition</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>ASCII</td>
+      <td>Characters that are recognised by a computer.</td>
+    </tr>
+    <tr>
+      <td>Bookmark Expense</td>
+      <td>A template for an expense, which can be used to create expenses and add them to the finance tracker.</td>
+    </tr>
+    <tr>
+      <td>Bookmark Income</td>
+      <td>A template for an income, which can be used to create incomes and add them to the finance tracker.</td>
+    </tr>
+    <tr>
+      <td>Current date</td>
+      <td>The system date on the computer on which Fine$$e is set up.</td>
+    </tr>
+    <tr>
+      <td>Expense</td>
+      <td>A one-time transaction that results in a decrease in the amount of money you have.</td>
+    </tr>
+    <tr>
+      <td>Income</td>
+      <td>A one-time transaction that results in an increase in the amount of money you have.</td>
+    </tr>
+    <tr>
+      <td>Text cursor</td>
+      <td>A blinking vertical line that indicates where text will be placed when entered.</td>
+    </tr>
+  </tbody>
+</table>
 
 <hr>
 

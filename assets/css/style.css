@@ -559,6 +559,13 @@ table {
   text-align: center;
   margin-bottom: 0px; }
 
+/**
+ * Image caption
+ */
+.image-caption {
+  text-align: center;
+  font-style: italic; }
+
 h2, h3, h4, h5, h6 {
   color: #e46c0a; }
 
