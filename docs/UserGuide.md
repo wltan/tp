@@ -92,6 +92,11 @@ The Fine$$e GUI should appear in a few seconds, with sample data included, simil
 
    * `exit`: Exits the app.
 
+1. Once you are comfortable with the various features of Fine\\$\\$e, [clear the sample data](#410-clear-data-clear) by typing `clear`, pressing Enter,
+typing `clear` again, and pressing Enter again.
+
+1. Start tracking your own finances with Fine\\$\\$e!
+
 ### 2.2 Layout of Fine$$e's Interface
 
 The user interface of Fine$$e is divided into 4 tabs, each serving a specific purpose.
