@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 import ay2021s1_cs2103_w16_3.finesse.model.budget.MonthlyBudget;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount.CalculatedAmount;
 import ay2021s1_cs2103_w16_3.finesse.ui.UiPart;
 import javafx.collections.ModifiableObservableListBase;
 import javafx.collections.ObservableList;
@@ -94,7 +95,7 @@ public class AnalyticsTabPane extends UiPart<Canvas> {
 
     private MonthlyBudget.ChangeListener populateDataIn(BarChart<String, Number> barChart,
                                                         ObservableList<String> strings,
-                                                        ObservableList<? extends Number> values) {
+                                                        ObservableList<CalculatedAmount> values) {
         assert strings.size() == values.size();
 
         class ZippedData extends ModifiableObservableListBase<XYChart.Data<String, Number>> {
@@ -132,7 +133,7 @@ public class AnalyticsTabPane extends UiPart<Canvas> {
             public void updateList() {
                 this.clear();
                 IntStream.range(0, strings.size())
-                    .mapToObj(i -> new XYChart.Data<String, Number>(strings.get(i), values.get(i)))
+                    .mapToObj(i -> new XYChart.Data<String, Number>(strings.get(i), values.get(i).getValue()))
                     .forEach(this::add);
             }
         }

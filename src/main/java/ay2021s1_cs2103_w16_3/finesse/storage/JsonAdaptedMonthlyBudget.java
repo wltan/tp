@@ -32,8 +32,8 @@ class JsonAdaptedMonthlyBudget {
      * Converts a given {@code MonthlyBudget} into this class for Jackson use.
      */
     public JsonAdaptedMonthlyBudget(MonthlyBudget source) {
-        expenseLimit = source.getMonthlyExpenseLimit().getObservableAmount().get().toString();
-        savingsGoal = source.getMonthlySavingsGoal().getObservableAmount().get().toString();
+        expenseLimit = source.getMonthlyExpenseLimit().get().toString();
+        savingsGoal = source.getMonthlySavingsGoal().get().toString();
     }
 
     /**

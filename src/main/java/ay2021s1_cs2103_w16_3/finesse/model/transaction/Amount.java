@@ -11,6 +11,7 @@ import java.math.BigDecimal;
  */
 public class Amount implements Comparable<Amount> {
 
+    public static final Amount ZERO_AMOUNT = new Amount("0");
     public static final String MESSAGE_CONSTRAINTS = "Amounts should only contain non-negative numbers up to 8 digits,"
             + " with an optional 2 decimal places or '$' prefix";
     public static final String VALIDATION_REGEX = "^\\$?\\d{1,8}(\\.\\d{2})?$";
@@ -29,45 +30,11 @@ public class Amount implements Comparable<Amount> {
     }
 
     /**
-     * Constructs an {@code Amount} from a BigDecimal value.
-     *
-     * @param value A {@code BigDecimal} value
-     */
-    private Amount(BigDecimal value) {
-        assert value.scale() <= 2;
-        this.value = value;
-    }
-
-    /**
-     * Constructs an {@code Amount} from a BigDecimal value.
-     *
-     * @param value A {@code BigDecimal} value
-     * @return {@code Amount} with the specified value
-     */
-    public static Amount of(BigDecimal value) {
-        return new Amount(value);
-    }
-
-    /**
      * Returns true if a given string is a valid amount.
      * A valid amount must only contain numbers, with an optional 2 decimal places or '$' prefix.
      */
     public static boolean isValidAmount(String test) {
         return test.matches(VALIDATION_REGEX);
-    }
-
-    /**
-     * Returns the value of the amount to be used in budget calculations.
-     */
-    public BigDecimal getValue() {
-        return value;
-    }
-
-    /**
-     * Returns true if the {@code Amount} has a non-negative value.
-     */
-    public boolean isNonNegative() {
-        return value.compareTo(BigDecimal.ZERO) >= 0;
     }
 
     /**
@@ -94,6 +61,74 @@ public class Amount implements Comparable<Amount> {
     @Override
     public int hashCode() {
         return value.hashCode();
+    }
+
+    /**
+     * Represents a calculated amount, used for budget calculations.
+     * It supports simple arithmetic such as addition and subtraction.
+     * Note that unlike {@code Amount} which can only contain non-negative values,
+     * {@code CalculatedAmount} can contain negative values due to subtraction.
+     * Guarantees: immutable; has at most 2 decimal places
+     */
+    public static class CalculatedAmount {
+        private final BigDecimal value;
+
+        /**
+         * Creates a new calculated amount with a default value of zero.
+         */
+        public CalculatedAmount() {
+            this(Amount.ZERO_AMOUNT);
+        }
+
+        /**
+         * Wraps an amount into a calculated amount.
+         *
+         * @param amount The amount to be wrapped.
+         */
+        public CalculatedAmount(Amount amount) {
+            this(amount.value);
+        }
+
+        private CalculatedAmount(BigDecimal value) {
+            this.value = value;
+        }
+
+        /**
+         * Adds two calculated amounts.
+         *
+         * @param other The addend.
+         * @return A calculated amount representing the added value.
+         */
+        public CalculatedAmount add(CalculatedAmount other) {
+            return new CalculatedAmount(value.add(other.value));
+        }
+
+        /**
+         * Subtracts two calculated amounts, with this calculated amount as the minuend
+         * and the given argument as the subtrahend.
+         *
+         * @param other The subtrahend.
+         * @return A calculated amount representing the subtracted value.
+         */
+        public CalculatedAmount subtract(CalculatedAmount other) {
+            return new CalculatedAmount(value.subtract(other.value));
+        }
+
+        /**
+         * Returns a number representing the value of this calculated amount.
+         *
+         * @return A number representing the value of this calculated amount.
+         */
+        public Number getValue() {
+            return value;
+        }
+
+        /**
+         * Returns true if the calculated amount has a non-negative value.
+         */
+        public boolean isNonNegative() {
+            return value.compareTo(BigDecimal.ZERO) >= 0;
+        }
     }
 
 }

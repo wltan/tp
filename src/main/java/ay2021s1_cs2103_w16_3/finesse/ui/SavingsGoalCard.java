@@ -45,38 +45,38 @@ public class SavingsGoalCard extends UiPart<Region> {
         StringBinding expenseLimitBinding = Bindings.createStringBinding(() ->
                         String.format(
                                 "Monthly Expense Limit: %s",
-                                monthlyBudget.getMonthlyExpenseLimit().getAmount().toString()),
-                monthlyBudget.getMonthlyExpenseLimit().getObservableAmount());
+                                monthlyBudget.getMonthlyExpenseLimit().get().toString()),
+                monthlyBudget.getMonthlyExpenseLimit());
 
         StringBinding savingsGoalBinding = Bindings.createStringBinding(() ->
                         String.format(
                                 "Monthly Savings Goal: %s",
-                                monthlyBudget.getMonthlySavingsGoal().getAmount().toString()),
-                monthlyBudget.getMonthlySavingsGoal().getObservableAmount());
+                                monthlyBudget.getMonthlySavingsGoal().get().toString()),
+                monthlyBudget.getMonthlySavingsGoal());
 
         StringBinding budgetStatusBinding = Bindings.createStringBinding(() -> {
-            if (monthlyBudget.getRemainingBudget().getAmount().isNonNegative()) {
+            if (monthlyBudget.getRemainingBudget().get().isNonNegative()) {
                 budgetStatus.setStyle("-fx-text-fill: white");
                 return String.format("Remaining Budget: %s",
-                        monthlyBudget.getRemainingBudget().getAmount().toString());
+                        monthlyBudget.getRemainingBudget().get().toString());
             } else {
                 budgetStatus.setStyle("-fx-text-fill: red");
                 return String.format("Budget Deficit: %s",
-                        monthlyBudget.getRemainingBudget().getAmount().toString());
+                        monthlyBudget.getRemainingBudget().get().toString());
             }
-        }, monthlyBudget.getRemainingBudget().getObservableAmount());
+        }, monthlyBudget.getRemainingBudget());
 
         StringBinding savingsStatusBinding = Bindings.createStringBinding(() -> {
-            if (monthlyBudget.getCurrentSavings().getAmount().isNonNegative()) {
+            if (monthlyBudget.getCurrentSavings().get().isNonNegative()) {
                 savingsStatus.setStyle("-fx-text-fill: white");
                 return String.format("Current Savings: %s",
-                        monthlyBudget.getCurrentSavings().getAmount().toString());
+                        monthlyBudget.getCurrentSavings().get().toString());
             } else {
                 savingsStatus.setStyle("-fx-text-fill: red");
                 return String.format("Savings Deficit: %s",
-                        monthlyBudget.getCurrentSavings().getAmount().toString());
+                        monthlyBudget.getCurrentSavings().get().toString());
             }
-        }, monthlyBudget.getCurrentSavings().getObservableAmount());
+        }, monthlyBudget.getCurrentSavings());
 
         monthlyExpenseLimit.textProperty().bind(expenseLimitBinding);
         monthlySavingsGoal.textProperty().bind(savingsGoalBinding);
