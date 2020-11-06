@@ -32,9 +32,9 @@ task coverage(type: JacocoReport) {
     classDirectories.from files(sourceSets.main.output)
     executionData.from files(jacocoTestReport.executionData)
     afterEvaluate {
-        classDirectories.from files(classDirectories.files.collect {
-            fileTree(dir: it, exclude: ['**/*.jar'])
-        })
+        classDirectories.setFrom(files(classDirectories.files.collect {
+            fileTree(dir: it, exclude: ['ay2021s1_cs2103_w16_3/finesse/ui/**/*', '**/*.jar'])
+        }))
     }
     reports {
         html.enabled = true
@@ -46,6 +46,7 @@ pitest {
     targetClasses = ['ay2021s1_cs2103_w16_3.finesse.*']
     junit5PluginVersion = '0.12'
     threads = 4
+    excludedClasses = ['ay2021s1_cs2103_w16_3.finesse.ui.*']
 }
 
 gitHooks {
