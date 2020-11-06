@@ -43,7 +43,7 @@ public class Amount implements Comparable<Amount> {
      */
     @Override
     public String toString() {
-        return String.format("$%.2f", value.abs());
+        return String.format("$%.2f", value);
     }
 
     @Override
@@ -128,6 +128,11 @@ public class Amount implements Comparable<Amount> {
          */
         public boolean isNonNegative() {
             return value.compareTo(BigDecimal.ZERO) >= 0;
+        }
+
+        @Override
+        public String toString() {
+            return String.format("$%.2f", value.abs());
         }
     }
 
