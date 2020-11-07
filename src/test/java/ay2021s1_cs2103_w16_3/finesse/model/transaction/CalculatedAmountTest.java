@@ -20,11 +20,11 @@ public class CalculatedAmountTest {
     @Test
     public void zeroValue() {
         assertEquals(BigDecimal.ZERO, zero.getValue());
-        assertTrue(zero.isNonNegative());
     }
 
     @Test
     public void isNonNegative() {
+        assertTrue(zero.isNonNegative());
         assertTrue(positive.isNonNegative());
         assertFalse(negative.isNonNegative());
     }
