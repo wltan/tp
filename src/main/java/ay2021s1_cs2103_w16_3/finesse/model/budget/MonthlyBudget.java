@@ -137,18 +137,26 @@ public class MonthlyBudget {
         YearMonth today = YearMonth.now();
         int thisMonthValue = today.getMonthValue();
 
+        // function to get the month the transaction was dated, relative to today
         Function<Transaction, Integer> monthsBeforeToday = transaction -> (int) ChronoUnit.MONTHS.between(
                 YearMonth.from(transaction.getDateValue()), today);
 
+        // filter transactions that are outside the desired range, and split according to class (expense vs income)
         Map<Class<? extends Transaction>, List<Transaction>> filteredAndSplit =
                 StreamSupport.stream(transactions.spliterator(), false)
                         .filter(transaction -> monthsBeforeToday.apply(transaction) < numOfMonths)
                         .collect(Collectors.groupingBy(Transaction::getClass));
 
+        // function that takes a list of either expenses or incomes and splits them by month
         Function<Class<? extends Transaction>, Map<Integer, List<Transaction>>> groupByMonth = transactionType ->
                 filteredAndSplit.getOrDefault(transactionType, Collections.emptyList()).stream()
                         .collect(Collectors.groupingBy(monthsBeforeToday));
 
+        Map<Integer, List<Transaction>> expensesByMonth = groupByMonth.apply(Expense.class);
+        Map<Integer, List<Transaction>> incomesByMonth = groupByMonth.apply(Income.class);
+
+        // function that turns a mapping from months to transaction list to a sequence of transaction lists by month,
+        // then reducing the transaction list to a calculated amount total
         Function<Map<Integer, List<Transaction>>, List<CalculatedAmount>> amountSum = transactionsByMonth ->
                 IntStream.range(0, numOfMonths)
                         .mapToObj(month -> transactionsByMonth.getOrDefault(month, Collections.emptyList()))
@@ -157,9 +165,6 @@ public class MonthlyBudget {
                                 .map(CalculatedAmount::new)
                                 .reduce(new CalculatedAmount(), (x, y) -> y.add(x)))
                         .collect(Collectors.toUnmodifiableList());
-
-        Map<Integer, List<Transaction>> expensesByMonth = groupByMonth.apply(Expense.class);
-        Map<Integer, List<Transaction>> incomesByMonth = groupByMonth.apply(Income.class);
 
         List<CalculatedAmount> monthlyExpenses = amountSum.apply(expensesByMonth);
         List<CalculatedAmount> monthlyIncomes = amountSum.apply(incomesByMonth);
