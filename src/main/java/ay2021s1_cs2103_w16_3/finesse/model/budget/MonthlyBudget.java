@@ -4,12 +4,19 @@ import java.text.DateFormatSymbols;
 import java.time.YearMonth;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
+import java.util.stream.StreamSupport;
 
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Amount.CalculatedAmount;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Expense;
+import ay2021s1_cs2103_w16_3.finesse.model.transaction.Income;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.Transaction;
 import ay2021s1_cs2103_w16_3.finesse.model.transaction.TransactionList;
 import javafx.beans.property.ObjectProperty;
@@ -129,33 +136,43 @@ public class MonthlyBudget {
 
         YearMonth today = YearMonth.now();
         int thisMonthValue = today.getMonthValue();
-        CalculatedAmount[] monthlyExpenses = new CalculatedAmount[numOfMonths];
-        CalculatedAmount[] monthlyIncomes = new CalculatedAmount[numOfMonths];
-        Arrays.fill(monthlyExpenses, new CalculatedAmount());
-        Arrays.fill(monthlyIncomes, new CalculatedAmount());
 
-        for (Transaction transaction: transactions) {
-            int monthsBeforeToday = (int) ChronoUnit.MONTHS.between(YearMonth.from(transaction.getDateValue()), today);
-            if (monthsBeforeToday < numOfMonths) {
-                if (transaction instanceof Expense) {
-                    monthlyExpenses[numOfMonths - 1 - monthsBeforeToday] =
-                            monthlyExpenses[numOfMonths - 1 - monthsBeforeToday]
-                                    .add(new CalculatedAmount(transaction.getAmount()));
-                } else {
-                    monthlyIncomes[numOfMonths - 1 - monthsBeforeToday] =
-                            monthlyIncomes[numOfMonths - 1 - monthsBeforeToday]
-                                    .add(new CalculatedAmount(transaction.getAmount()));
-                }
-            }
-        }
+        Function<Transaction, Integer> monthsBeforeToday = transaction -> (int) ChronoUnit.MONTHS.between(
+                YearMonth.from(transaction.getDateValue()), today);
 
-        this.monthlyExpenses.addAll(Arrays.asList(monthlyExpenses));
-        this.monthlyIncomes.addAll(Arrays.asList(monthlyIncomes));
+        Map<Class<? extends Transaction>, List<Transaction>> filteredAndSplit =
+                StreamSupport.stream(transactions.spliterator(), false)
+                        .filter(transaction -> monthsBeforeToday.apply(transaction) < numOfMonths)
+                        .collect(Collectors.groupingBy(Transaction::getClass));
 
-        for (int i = numOfMonths; i > 0; i--) {
-            int monthIndex = thisMonthValue - i < 0 ? NUM_OF_MONTHS - (thisMonthValue - i) : thisMonthValue - i;
-            months.add(MONTHS[monthIndex]);
-        }
+        Function<Class<? extends Transaction>, Map<Integer, List<Transaction>>> groupByMonth = transactionType ->
+                filteredAndSplit.getOrDefault(transactionType, Collections.emptyList()).stream()
+                        .collect(Collectors.groupingBy(monthsBeforeToday));
+
+        Function<Map<Integer, List<Transaction>>, List<CalculatedAmount>> amountSum = transactionsByMonth ->
+                IntStream.range(0, numOfMonths)
+                        .mapToObj(month -> transactionsByMonth.getOrDefault(month, Collections.emptyList()))
+                        .map(transactionsInMonth -> transactionsInMonth.stream()
+                                .map(Transaction::getAmount)
+                                .map(CalculatedAmount::new)
+                                .reduce(new CalculatedAmount(), (x, y) -> y.add(x)))
+                        .collect(Collectors.toUnmodifiableList());
+
+        Map<Integer, List<Transaction>> expensesByMonth = groupByMonth.apply(Expense.class);
+        Map<Integer, List<Transaction>> incomesByMonth = groupByMonth.apply(Income.class);
+
+        List<CalculatedAmount> monthlyExpenses = amountSum.apply(expensesByMonth);
+        List<CalculatedAmount> monthlyIncomes = amountSum.apply(incomesByMonth);
+
+        this.monthlyExpenses.addAll(monthlyExpenses);
+        this.monthlyIncomes.addAll(monthlyIncomes);
+
+        IntStream.range(0, numOfMonths)
+                .map(i -> numOfMonths - i)
+                .map(i -> thisMonthValue - i)
+                .map(i -> i < 0 ? NUM_OF_MONTHS - i : i)
+                .mapToObj(i -> MONTHS[i])
+                .forEach(months::add);
 
         calculateBudget();
         calculateSavings();
