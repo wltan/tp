@@ -170,7 +170,7 @@ public class MonthlyBudget {
         IntStream.range(0, numOfMonths)
                 .map(i -> numOfMonths - i)
                 .map(i -> thisMonthValue - i)
-                .map(i -> i < 0 ? NUM_OF_MONTHS - i : i)
+                .map(i -> i < 0 ? NUM_OF_MONTHS + i : i)
                 .mapToObj(i -> MONTHS[i])
                 .forEach(months::add);
 
