@@ -113,30 +113,52 @@
         </ul>
       </li>
       <li>
-<a href="#bookmark-transactions" id="markdown-toc-bookmark-transactions">Bookmark Transactions</a>        <ul>
-          <li><a href="#proposed-implementation" id="markdown-toc-proposed-implementation">Proposed Implementation</a></li>
-          <li><a href="#convert-frequent-expense-to-expense-feature" id="markdown-toc-convert-frequent-expense-to-expense-feature">Convert Frequent Expense To Expense Feature</a></li>
+<a href="#bookmark-transaction" id="markdown-toc-bookmark-transaction">Bookmark transaction</a>        <ul>
+          <li>
+<a href="#add-bookmark-transactions" id="markdown-toc-add-bookmark-transactions">Add bookmark transactions</a>            <ul>
+              <li><a href="#overview-6" id="markdown-toc-overview-6">Overview</a></li>
+              <li><a href="#implementation-of-feature-6" id="markdown-toc-implementation-of-feature-6">Implementation of feature</a></li>
+            </ul>
+          </li>
+          <li>
+<a href="#edit-bookmark-transaction" id="markdown-toc-edit-bookmark-transaction">Edit bookmark transaction</a>            <ul>
+              <li><a href="#overview-7" id="markdown-toc-overview-7">Overview</a></li>
+              <li><a href="#implementation-of-feature-7" id="markdown-toc-implementation-of-feature-7">Implementation of feature</a></li>
+            </ul>
+          </li>
+          <li>
+<a href="#delete-bookmark-transaction" id="markdown-toc-delete-bookmark-transaction">Delete bookmark transaction</a>            <ul>
+              <li><a href="#overview-8" id="markdown-toc-overview-8">Overview</a></li>
+              <li><a href="#implementation-of-feature-8" id="markdown-toc-implementation-of-feature-8">Implementation of feature</a></li>
+            </ul>
+          </li>
+          <li>
+<a href="#convert-bookmark-transaction" id="markdown-toc-convert-bookmark-transaction">Convert bookmark transaction</a>            <ul>
+              <li><a href="#overview-9" id="markdown-toc-overview-9">Overview</a></li>
+              <li><a href="#implementation-of-feature-9" id="markdown-toc-implementation-of-feature-9">Implementation of feature</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li>
 <a href="#analytics" id="markdown-toc-analytics">Analytics</a>        <ul>
-          <li><a href="#overview-6" id="markdown-toc-overview-6">Overview</a></li>
-          <li><a href="#implementation-of-feature-6" id="markdown-toc-implementation-of-feature-6">Implementation of feature</a></li>
+          <li><a href="#overview-10" id="markdown-toc-overview-10">Overview</a></li>
+          <li><a href="#implementation-of-feature-10" id="markdown-toc-implementation-of-feature-10">Implementation of feature</a></li>
           <li><a href="#design-considerations-4" id="markdown-toc-design-considerations-4">Design considerations</a></li>
         </ul>
       </li>
       <li>
 <a href="#command-history" id="markdown-toc-command-history">Command history</a>        <ul>
-          <li><a href="#overview-7" id="markdown-toc-overview-7">Overview</a></li>
-          <li><a href="#implementation-of-feature-7" id="markdown-toc-implementation-of-feature-7">Implementation of feature</a></li>
+          <li><a href="#overview-11" id="markdown-toc-overview-11">Overview</a></li>
+          <li><a href="#implementation-of-feature-11" id="markdown-toc-implementation-of-feature-11">Implementation of feature</a></li>
           <li><a href="#navigating-the-command-history" id="markdown-toc-navigating-the-command-history">Navigating the command history</a></li>
           <li><a href="#design-considerations-5" id="markdown-toc-design-considerations-5">Design considerations</a></li>
         </ul>
       </li>
       <li>
 <a href="#data-integrity-safeguards" id="markdown-toc-data-integrity-safeguards">Data integrity safeguards</a>        <ul>
-          <li><a href="#overview-8" id="markdown-toc-overview-8">Overview</a></li>
-          <li><a href="#implementation-of-feature-8" id="markdown-toc-implementation-of-feature-8">Implementation of feature</a></li>
+          <li><a href="#overview-12" id="markdown-toc-overview-12">Overview</a></li>
+          <li><a href="#implementation-of-feature-12" id="markdown-toc-implementation-of-feature-12">Implementation of feature</a></li>
           <li><a href="#validating-the-time-whenever-a-command-is-executed" id="markdown-toc-validating-the-time-whenever-a-command-is-executed">Validating the time whenever a command is executed</a></li>
           <li><a href="#design-considerations-6" id="markdown-toc-design-considerations-6">Design considerations</a></li>
         </ul>
@@ -154,7 +176,7 @@
       <li><a href="#help-and-switching-tabs" id="markdown-toc-help-and-switching-tabs">Help and switching tabs</a></li>
       <li><a href="#transactions-1" id="markdown-toc-transactions-1">Transactions</a></li>
       <li><a href="#budgeting-1" id="markdown-toc-budgeting-1">Budgeting</a></li>
-      <li><a href="#bookmark-transactions-1" id="markdown-toc-bookmark-transactions-1">Bookmark transactions</a></li>
+      <li><a href="#bookmark-transactions" id="markdown-toc-bookmark-transactions">Bookmark transactions</a></li>
       <li><a href="#saving-data" id="markdown-toc-saving-data">Saving data</a></li>
     </ul>
   </li>
@@ -800,57 +822,201 @@ Below is the sequence diagram for interactions within the <code class="highlight
   </tbody>
 </table>
 
-<h3 id="bookmark-transactions">Bookmark Transactions</h3>
+<h3 id="bookmark-transaction">Bookmark transaction</h3>
 
-<h4 id="proposed-implementation">Proposed Implementation</h4>
-<p>The Frequent Expense feature consists of <code class="highlighter-rouge">add-frequent-expense</code>, <code class="highlighter-rouge">edit-frequent-expense</code>, <code class="highlighter-rouge">delete-frequent-expense</code>,
-<code class="highlighter-rouge">convert-frequent-expense</code>.</p>
+<p>Bookmark transaction is a transaction that is a template that allows users to create transactions that they make frequently, such as paying phone bills monthly or receiving stipend for being a teaching assistant.
+This feature reduces the hassle of keying in information repeatedly for identical transactions that occur frequently.</p>
 
-<p>Frequent expenses are expenses that the user have identified to be occurring regularly or with high frequency.
-Examples of such expenses can be phone bill, music subscription or buying bubble tea on a weekly basis.</p>
+<p>Bookmark Transaction object is made up of 3 fields. They are mainly: <code class="highlighter-rouge">Title</code>, <code class="highlighter-rouge">Amount</code> and <code class="highlighter-rouge">Category</code>.
+The class diagram below depicts the structure of the <code class="highlighter-rouge">BookmarkTransaction</code>, <code class="highlighter-rouge">BookmarkExpense</code>, <code class="highlighter-rouge">BookmarkIncome</code>, <code class="highlighter-rouge">BookmarkExpenseList</code> and <code class="highlighter-rouge">BookmarkIncomeList</code> in the Model Component.</p>
 
-<p>This feature allows users to add frequent expenses to the finance tracker. The user can then choose to convert a
-frequent expense to an expense that the user wants to add to the transaction list in the finance tracker. This is done by
-calling <code class="highlighter-rouge">Logic#execute</code> which creates an  <code class="highlighter-rouge">AddFrequentExpenseCommand</code>. This command then calls
-<code class="highlighter-rouge">ModelManager#addFrequentExpense</code>, adding the specified frequent expense into the frequent expense list.</p>
+<p>The class diagram below depicts the components involved in the budget feature.</p>
 
-<p>This feature also simplifies the deletion and editing of frequent expenses, and they work in a similar manner.</p>
+<p><img src="/tp/images/BookmarkTransactionClassDiagram.png" alt="Class Diagram for Bookmark Transaction Class"></p>
 
-<h4 id="convert-frequent-expense-to-expense-feature">Convert Frequent Expense To Expense Feature</h4>
+<p class="image-caption">Class diagram for bookmark transaction model component</p>
 
-<p>The purpose of this feature is to allow users to add expenses, that they add to the transaction list in the finance
-tracker on a frequent basis in a convenient manner. After adding a frequent expense into the frequent expense list in
-the finance tracker, the user can call convert-frequent-expense to the respective frequent expense to make the
-conversion.</p>
+<h4 id="add-bookmark-transactions">Add bookmark transactions</h4>
 
-<p>Given below is the proposed UML sequence diagram and explanation of an example usage scenario for
-convert-frequent-expense</p>
+<h5 id="overview-6">Overview</h5>
+
+<p>The add bookmark transactions feature allows users to add bookmark transactions into the FinanceTracker.
+Each new bookmark transaction must have the data fields Title, Amount, and Category.</p>
+
+<p>Below is the class diagram of the components involved in the add transactions feature.</p>
+
+<p><img src="/tp/images/AddBookmarkTransactionClassDiagram.png" alt="AddBookmarkTransaction Class Diagram"></p>
+
+<h5 id="implementation-of-feature-6">Implementation of feature</h5>
+
+<p>The add bookmark transaction feature is implemented via <code class="highlighter-rouge">AddBookmarkExpenseCommand</code> and <code class="highlighter-rouge">AddBookmarkIncomeCommand</code>, which are created from <code class="highlighter-rouge">AddBookmarkExpenseCommandParser</code> and <code class="highlighter-rouge">AddBookmarkIncomeCommandParser</code> respectively.</p>
+
+<ol>
+  <li>
+    <p><code class="highlighter-rouge">AddBookmarkExpenseCommandParser</code> and <code class="highlighter-rouge">AddBookmarkIncomeCommandParser</code> take in the argument string and parses it into an <code class="highlighter-rouge">ArgumentMultiMap</code> that contains all the different data fields mapped (as strings) to their respective prefix.</p>
+  </li>
+  <li>
+    <p>The strings are then parsed to create the data fields within the Model component (dependency arrows omitted in the above diagram for simplicity).</p>
+  </li>
+  <li>
+    <p>The parsers use the data fields to create <code class="highlighter-rouge">BookmarkExpense</code> or <code class="highlighter-rouge">BookmarkIncome</code> objects, which are then used to create <code class="highlighter-rouge">AddBookmarkExpenseCommand</code> or <code class="highlighter-rouge">AddBookmarkIncomeCommand</code> objects.</p>
+  </li>
+</ol>
+
+<p>The following is a detailed elaboration of how <code class="highlighter-rouge">AddBookmarkExpenseCommand</code> operates.</p>
+
+<p><strong>Step 1</strong>. After the successful parsing of user input, the <code class="highlighter-rouge">AddBookmarkExpenseCommand#execute(Model model)</code> method is executed.</p>
+
+<p><strong>Step 2</strong>. <code class="highlighter-rouge">ModelManager#addBookmarkExpense(toAdd)</code> is invoked to add the new bookmark expense.</p>
+
+<p><strong>Step 3</strong>. The new bookmark expense is added into <code class="highlighter-rouge">FinanceTracker#bookmarkExpenses</code>,  via the <code class="highlighter-rouge">FinanceTracker#addBookmarkExpense(BookmarkExpense bookmarkExpense)</code>.</p>
+
+<p><strong>Step 4</strong>. This will then call the <code class="highlighter-rouge">BookmarkExpenseList#add(BookmarkExpense toAdd)</code> method which will check if the title of the new bookmark expense already exists in <code class="highlighter-rouge">BookmarkExpenseList#internalBookmarkExpenseList</code> via <code class="highlighter-rouge">BookmarkExpenseList#contains(BookmarkExpense toCheck)</code> before adding it.
+If the title does exist already, the <code class="highlighter-rouge">DuplicateBookmarkTransactionException</code> will be thrown otherwise the new bookmark expense will be added.</p>
+
+<p><strong>Step 5</strong>. After successfully adding the new bookmark expense, the command box will be reflected with <code class="highlighter-rouge">AddBookmarkExpenseCommand#MESSAGE_SUCCESS</code> constant and a new <code class="highlighter-rouge">CommandResult</code> will be returned with the message.</p>
+
+<p><img src="/tp/images/AddBookmarkExpenseSequenceDiagram.png" alt="Sequence Diagram of AddBookmarkExpenseCommand"></p>
+
+<p class="image-caption">Sequence diagram for adding bookmark expenses</p>
+
+<p><img src="/tp/images/ParsingAddBookmarkExpenseInputSequenceDiagram.png" alt="Sequence Diagram of parsing input to create AddBookmarkExpenseCommand"></p>
+
+<p class="image-caption">Reference frame for sequence diagram</p>
+
+<h4 id="edit-bookmark-transaction">Edit bookmark transaction</h4>
+
+<h5 id="overview-7">Overview</h5>
+
+<p>The edit bookmark transaction feature allows users to edit the details of a specified bookmark transaction in the <code class="highlighter-rouge">FinanceTracker</code>.</p>
+
+<p>Below is the class diagram of the components involved in the edit bookmark transaction feature.</p>
+
+<p><img src="/tp/images/EditBookmarkTransactionClassDiagram.png" alt="Class diagram for edit bookmark transaction"></p>
+
+<p class="image-caption">Class diagram of components involved in edit bookmark transaction feature</p>
+
+<h5 id="implementation-of-feature-7">Implementation of feature</h5>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  <code class="highlighter-rouge">EditBookmarkExpenseCommand</code> and <code class="highlighter-rouge">EditBookmarkIncomeCommand</code> work in similar ways.</p>
+</blockquote>
+
+<p>Following is a detailed elaboration of how <code class="highlighter-rouge">EditBoomarkExpenseCommand</code> operates.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the Expense Tab.</p>
+</blockquote>
+
+<p><strong>Step 1</strong>. After the successful parsing of user input, the <code class="highlighter-rouge">EditBookmarkExpenseCommand#execute(Model model)</code> method is called which checks if the <code class="highlighter-rouge">Index</code> defined as an argument when instantiating <code class="highlighter-rouge">EditBookmarkCommand(Index targetIndex, EditBookmarkTransactionDescriptor editBookmarkTransactionDescriptor)</code> is valid.
+It uses <code class="highlighter-rouge">EditBookmarkTransactionDescriptor</code> to create a new edited bookmark expense.
+Since it is optional for the users to input fields, the fields which are not entered will reuse the existing values that are currently stored and defined in the <code class="highlighter-rouge">BookmarkExpense</code> object.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  The <code class="highlighter-rouge">Index</code> must be within the bounds of the list of bookmark expenses.</p>
+</blockquote>
+
+<p><strong>Step 2</strong>. A new <code class="highlighter-rouge">BookmarkExpense</code> with the newly updated attributes will be created which replaces the existing <code class="highlighter-rouge">BookmarkExpense</code> object using <code class="highlighter-rouge">Model#setBookmarkExpense(BookmarkExpense target, BookmarkExpense editedBookmarkExpense)</code> method.</p>
+
+<p><strong>Step 3</strong>. The filtered bookmark expense list is then updated with the new <code class="highlighter-rouge">BookmarkExpense</code> with the <code class="highlighter-rouge">Model#updateFilteredBookmarkExpenseList(PREDICATE_SHOW_ALL_BOOKMARK_EXPENSES)</code> method.</p>
+
+<p><strong>Step 4</strong>. The command box will be reflected with the <code class="highlighter-rouge">EditBookmarkExpenseCommand#MESSAGE_EDIT_BOOKMARK_EXPENSE_SUCCESS</code> constant and a new <code class="highlighter-rouge">CommandResult</code> will be returned with the success message.</p>
+
+<h4 id="delete-bookmark-transaction">Delete bookmark transaction</h4>
+
+<h5 id="overview-8">Overview</h5>
+
+<p>The delete bookmark transaction feature allows users to delete a specified bookmark transaction in the <code class="highlighter-rouge">FinanceTracker</code>.</p>
+
+<p>Below is the class diagram of the components involved in the delete bookmark transaction feature.</p>
+
+<p><img src="/tp/images/DeleteBookmarkTransactionClassDiagram.png" alt="Class diagram for delete bookmark transaction"></p>
+
+<p class="image-caption">Class diagram of components involved in delete bookmark transaction feature</p>
+
+<h5 id="implementation-of-feature-8">Implementation of feature</h5>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  <code class="highlighter-rouge">DeleteBookmarkExpenseCommand</code> and <code class="highlighter-rouge">DeleteBookmarkIncomeCommand</code> work in similar ways.</p>
+</blockquote>
+
+<p>Following is a detailed elaboration of how <code class="highlighter-rouge">DeleteBoomarkExpenseCommand</code> operates.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the Expense Tab.</p>
+</blockquote>
+
+<p><strong>Step 1</strong>. After the successful parsing of user input, the <code class="highlighter-rouge">DeleteBookmarkExpenseCommand#execute(Model model)</code> method is called which checks if the <code class="highlighter-rouge">Index</code> defined when instantiating the <code class="highlighter-rouge">DeleteBookmarkCommand(Index index)</code> constructor is valid.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  The <code class="highlighter-rouge">Index</code> must be within the bounds of the list of bookmark expenses.</p>
+</blockquote>
+
+<p><strong>Step 2</strong>. The <code class="highlighter-rouge">BookmarkExpense</code> at the specified <code class="highlighter-rouge">Index</code> is then removed from the <code class="highlighter-rouge">BookmarkExpenseList#internalBookmarkExpenseList</code> observable list using the <code class="highlighter-rouge">Model#deleteBookmarkExpense(BookmarkExpense bookmarkExpense)</code> method.</p>
+
+<p><strong>Step 3</strong>. The command box will be reflected with the <code class="highlighter-rouge">DeleteBookmarkExpenseCommand#MESSAGE_DELETE_BOOKMARK_EXPENSE_SUCCESS</code> constant and a new <code class="highlighter-rouge">CommandResult</code> will be returned with the success message.</p>
+
+<p>The following activity diagram summarizes what happens when the user executes any command that deletes a specified bookmark expense:</p>
+
+<p><img src="/tp/images/DeleteBookmarkExpenseActivityDiagram.png" alt="Activity diagram for delete bookmark expense command"></p>
+
+<p class="image-caption">Activity diagram for deleting bookmark expense</p>
+
+<h4 id="convert-bookmark-transaction">Convert bookmark transaction</h4>
+
+<h5 id="overview-9">Overview</h5>
+
+<p>The convert bookmark transaction feature converts a specified bookmark transaction into a transaction and adds it to the <code class="highlighter-rouge">FinanceTracker</code>.</p>
+
+<p>Below is the class diagram of the components involved in the convert bookmark transaction feature.</p>
+
+<p><img src="/tp/images/ConvertBookmarkTransactionClassDiagram.png" alt="Class diagram for convert bookmark transaction command"></p>
+
+<p class="image-caption">Class diagram of components involved in convert bookmark transaction feature</p>
+
+<h5 id="implementation-of-feature-9">Implementation of feature</h5>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  <code class="highlighter-rouge">ConvertBookmarkExpenseCommand</code> and <code class="highlighter-rouge">ConvertBookmarkIncomeCommand</code> work in similar ways.</p>
+</blockquote>
+
+<p>Following is a detailed elaboration of how <code class="highlighter-rouge">ConvertBoomarkExpenseCommand</code> operates.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the Expense Tab.</p>
+</blockquote>
+
+<p><strong>Step 1</strong>. After the successful parsing of user input, the <code class="highlighter-rouge">ConvertBookmarkExpenseCommand#execute(Model model)</code> method is called which checks if the <code class="highlighter-rouge">Index</code> defined when instantiating the <code class="highlighter-rouge">ConvertBookmarkCommand(Index index)</code> constructor is valid.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  The <code class="highlighter-rouge">Index</code> must be within the bounds of the list of bookmark expenses.</p>
+</blockquote>
+
+<p><strong>Step 2</strong>. The list of bookmark expenses will then be retrieved by calling <code class="highlighter-rouge">Model#getFilteredBookmarkExpenseList()</code>.</p>
+
+<p><strong>Step 3</strong>. The program will then retrieve the specified bookmark expense from the list of bookmark expenses. It will
+then call <code class="highlighter-rouge">BookmarkExpense#convert</code> on the bookmark expense together with the date the user has inputted and convert
+it to an <code class="highlighter-rouge">Expense</code> object.</p>
+
+<p><strong>Step 4</strong>. After converting the <code class="highlighter-rouge">BookmarkExpense</code> object to an <code class="highlighter-rouge">Expense</code> object, it will call <code class="highlighter-rouge">Model#addExpense</code> to add the
+<code class="highlighter-rouge">Expense</code> object to the expense list in the finance tracker.</p>
+
+<p><strong>Step 5</strong>. The command box will be reflected with the <code class="highlighter-rouge">ConvertBookmarkExpenseCommand#MESSAGE_CONVERT_BOOKMARK_EXPENSE_SUCCESS</code> constant and a new <code class="highlighter-rouge">CommandResult</code> will be returned with the success message.</p>
 
 <p><img src="/tp/images/ConvertBookmarkExpenseSequenceDiagram.png" alt="Sequence Diagram of the Convert Frequent Expense To Expense Feature"></p>
 
-<ol>
-  <li>User enters the command <code class="highlighter-rouge">convert-frequent-expense 1 d/05/05/2020</code>, where <code class="highlighter-rouge">1</code> is the index of the respective frequent
-expense in the frequent expense list and <code class="highlighter-rouge">d/05/05/20</code> is the date on which the user wants to carry out the conversion,
-to add the selected frequent expense into the expense list. This command is executed by <code class="highlighter-rouge">LogicManager</code>, which will then
-call <code class="highlighter-rouge">FinanceTrackerParser#parseCommand(“convert-frequent-expense 1 d/05/05/2020”)</code>. This will create a
-<code class="highlighter-rouge">ConvertFrequentExpenseCommand</code> object and return it to the <code class="highlighter-rouge">LogicManager</code>.</li>
-  <li>The <code class="highlighter-rouge">LogicManager</code> will then call <code class="highlighter-rouge">ConvertFrequentExpenseCommand#execute</code>, which will call
-<code class="highlighter-rouge">Model#getFilteredFrequentExpenseList()</code> to retrieve the list of frequent expenses in the finance tracker.</li>
-  <li>The program will then retrieve the specified frequent expense from the list of frequent expenses. It will
-then call <code class="highlighter-rouge">FrequentExpense#convert</code> on the frequent expense together with the date the user has inputted and convert
-it to an <code class="highlighter-rouge">Expense</code> object.</li>
-  <li>After converting the <code class="highlighter-rouge">FrequentExpense</code> object to an <code class="highlighter-rouge">Expense</code> object, it will call <code class="highlighter-rouge">Model#addExpense</code> to add the
-<code class="highlighter-rouge">Expense</code> object to the expense list in the finance tracker.</li>
-</ol>
+<p class="image-caption">Sequence diagram for converting bookmark expense to expense</p>
+
+<p><img src="/tp/images/ParsingConvertBookmarkExpenseInputSequenceDiagram.png" alt="Sequence Diagram of parsing input to create ConvertBookmarkExpenseCommand"></p>
 
 <h3 id="analytics">Analytics</h3>
 
-<h5 id="overview-6">Overview</h5>
+<h5 id="overview-10">Overview</h5>
 
 <p>The Analytics feature allows the user to view their spending and saving trends over a period of time.
 Based on the current transaction lists, the total monthly expenses, incomes and savings over the past three months are calculated and displayed in the Analytics Tab in the form of bar charts.</p>
 
-<h5 id="implementation-of-feature-6">Implementation of feature</h5>
+<h5 id="implementation-of-feature-10">Implementation of feature</h5>
 
 <p><img src="/tp/images/AnalyticsTabObjectDiagram.png" alt="Object diagram for Analytics feature"></p>
 
@@ -884,7 +1050,7 @@ The following fields from <code class="highlighter-rouge">MonthlyBudget</code> a
 
 <h3 id="command-history">Command history</h3>
 
-<h5 id="overview-7">Overview</h5>
+<h5 id="overview-11">Overview</h5>
 
 <p>In order to fully replicate the Command Line Interface (CLI) experience, Fine$$e features the ability to navigate through the last 50 commands entered.
 This is done by pressing the ↑ or ↓ arrow keys on the keyboard while focused on the command input box.</p>
@@ -893,7 +1059,7 @@ This is done by pressing the ↑ or ↓ arrow keys on the keyboard while focused
 
 <p><img src="/tp/images/CommandHistoryClassDiagram.png" alt="Class diagram for command history feature"></p>
 
-<h5 id="implementation-of-feature-7">Implementation of feature</h5>
+<h5 id="implementation-of-feature-11">Implementation of feature</h5>
 
 <p>The command history feature is implemented via <code class="highlighter-rouge">CommandHistory</code>.
 Whenever the user inputs a command, the command is added to the <code class="highlighter-rouge">CommandHistory</code> so as to be tracked.
@@ -976,13 +1142,13 @@ This internal navigation state keeps track of the current position while travers
 
 <h3 id="data-integrity-safeguards">Data integrity safeguards</h3>
 
-<h5 id="overview-8">Overview</h5>
+<h5 id="overview-12">Overview</h5>
 
 <p>Since Fine$$e is an offline desktop application, it is reliant on the system time to perform date validations.
 This makes it vulnerable to changes in the system time while it is running.
 In particular, if the system time were to be changed to an earlier time, the existing data might get corrupted.</p>
 
-<h5 id="implementation-of-feature-8">Implementation of feature</h5>
+<h5 id="implementation-of-feature-12">Implementation of feature</h5>
 
 <p>To safeguard against potential loss or corruption of data, Fine$$e tracks the system time across actions via <code class="highlighter-rouge">Timekeeper</code>, which keeps track of the last observed time.
 Upon launching the application, <code class="highlighter-rouge">Timekeeper</code> is instantiated with the current system time.
@@ -1382,6 +1548,400 @@ Upon relaunching the application, the data file is validated by <code class="hig
 
 <p><em>{More to be added}</em></p>
 
+<p><strong>Use case: UC12 - Add Bookmark Expense</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User enters command, together with a title, expense amount and categories related to the bookmark expense.</li>
+  <li>Fine$$e displays the feedback that a new bookmark expense has been added.</li>
+  <li>
+    <p>Fine$$e bookmark expenses list panel will reflect the updated bookmark expenses list.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. Command is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1b. Title of the new bookmark expense already exists in the bookmark expenses list.</p>
+
+    <ul>
+      <li>
+        <p>1b1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC13 - Edit Bookmark Expense</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User enters command, together with an index of the bookmark expense to edit, and fields to update.</li>
+  <li>Fine$$e displays feedback that the specific bookmark expense chosen has been edited.</li>
+  <li>
+    <p>Fine$$e bookmark expenses list will display the updated bookmark expenses list.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. Command is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1b. Index given is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1b1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1c. Title of edited expense already exists in the bookmark expenses list.</p>
+
+    <ul>
+      <li>
+        <p>1c1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC14 - Delete Bookmark Expense</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User enters command, together with index of the bookmark expense to delete.</li>
+  <li>Fine$$e displays the feedback that the specified bookmark expense is deleted.</li>
+  <li>
+    <p>Fine$$e’s bookmark expenses list will display the updated bookmark expenses list.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. Command is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1b. Bookmark expenses list is empty.</p>
+
+    <ul>
+      <li>
+        <p>1b1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1c. Index given is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1c1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC15 - Convert Bookmark Expense</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User enters command, together with the index of the bookmark expense to convert and the date of when the user intends to convert the bookmark expense to an expense.</li>
+  <li>Fine$$e displays the feedback that the specified bookmark expense has been converted and added to the expenses list.</li>
+  <li>
+    <p>Fine$$e’s expense list will display the updated expenses list.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. Command is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1b. Bookmark expenses list is empty.</p>
+
+    <ul>
+      <li>
+        <p>1b1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1c. Index given is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1c1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC16 - Add Bookmark Income</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User enters command, together with a title, income amount and categories related to the bookmark income.</li>
+  <li>Fine$$e displays the feedback that a new bookmark income has been added.</li>
+  <li>
+    <p>Fine$$e bookmark incomes list panel will reflect the updated bookmark incomes list.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. Command is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1b. Title of the new bookmark income already exists in the bookmark incomes list.</p>
+
+    <ul>
+      <li>
+        <p>1b1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC17 - Edit Bookmark Income</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User enters command, together with an index of the bookmark income to edit, and fields to update.</li>
+  <li>Fine$$e displays feedback that the specific bookmark income chosen has been edited.</li>
+  <li>
+    <p>Fine$$e bookmark incomes list will display the updated bookmark incomes list.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. Command is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1b. Index given is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1b1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1c. Title of edited income already exists in the bookmark incomes list.</p>
+
+    <ul>
+      <li>
+        <p>1c1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC18 - Delete Bookmark Income</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User enters command, together with index of the bookmark income to delete.</li>
+  <li>Fine$$e displays the feedback that the specified bookmark income is deleted.</li>
+  <li>
+    <p>Fine$$e’s bookmark incomes list will display the updated bookmark incomes list.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. Command is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1b. Bookmark incomes list is empty.</p>
+
+    <ul>
+      <li>
+        <p>1b1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1c. Index given is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1c1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC19 - Convert Bookmark Income</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User enters command, together with the index of the bookmark income to convert and the date of when the user intends to convert the bookmark income to an income.</li>
+  <li>Fine$$e displays the feedback that the specified bookmark income has been converted and added to the incomes list.</li>
+  <li>
+    <p>Fine$$e’s incomes list will display the updated incomes list.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. Command is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1b. Bookmark incomes list is empty.</p>
+
+    <ul>
+      <li>
+        <p>1b1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>1c. Index given is invalid.</p>
+
+    <ul>
+      <li>
+        <p>1c1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
 <hr>
 
 <h2 id="appendix-d-non-functional-requirements"><strong>Appendix D: Non-Functional Requirements</strong></h2>
@@ -1702,7 +2262,7 @@ Expected: UI does not switch tabs. An error message is shown as the specified ta
   </li>
 </ol>
 
-<h3 id="bookmark-transactions-1">Bookmark transactions</h3>
+<h3 id="bookmark-transactions">Bookmark transactions</h3>
 
 <ol>
   <li>

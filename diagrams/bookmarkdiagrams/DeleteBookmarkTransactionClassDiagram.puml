@@ -1,0 +1,31 @@
+@startuml
+!include ../style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR_T4
+skinparam classBackgroundColor LOGIC_COLOR
+
+package Logic {
+
+package Parser {
+class FinanceTrackerParser
+class DeleteBookmarkCommandParser
+}
+
+package Command {
+class DeleteBookmarkCommand
+class DeleteBookmarkXYZCommand
+}
+}
+
+Class HiddenOutside #FFFFFF
+
+FinanceTrackerParser ..> DeleteBookmarkCommandParser: creates >
+FinanceTrackerParser ..> DeleteBookmarkXYZCommand: creates >
+
+DeleteBookmarkCommandParser ..> DeleteBookmarkCommand: creates >
+
+DeleteBookmarkXYZCommand -up-|> DeleteBookmarkCommand
+
+note left of DeleteBookmarkXYZCommand: DeleteBookmarkXYZCommand = DeleteBookmarkExpenseCommand, \nDeleteBookmarkIncomeCommand
+
+@enduml

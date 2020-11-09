@@ -1,0 +1,75 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class "{abstract}\nCommand" as Command{
++ execute(model: Model): CommandResult
+}
+class AddBookmarkExpenseCommand {
+{static} + COMMAND_WORD: String
+{static} + COMMAND_ALIAS: String
+- toAdd: BookmarkExpense
++ execute(model: Model): CommandResult
+}
+class AddBookmarkIncomeCommand {
+{static} + COMMAND_WORD: String
+{static} + COMMAND_ALIAS: String
+- toAdd: BookmarkIncome
++ execute(model: Model): CommandResult
+}
+class ConvertBookmarkCommand {
+{static} + COMMAND_WORD: String
+{static} + COMMAND_ALIAS: String
+- targetIndex: Index
+- convertedDate: Date
+}
+'class ConvertBookmarkExpenseCommand {
+'{static} + MESSAGE_CONVERT_BOOKMARK_EXPENSE_SUCCESS: String
+'+ execute(model: Model): CommandResult
+'}
+'class ConvertBookmarkIncomeCommand {
+'{static} + MESSAGE_CONVERT_BOOKMARK_INCOME_SUCCESS: String
+'+ execute(model: Model): CommandResult
+'}
+class DeleteBookmarkCommand {
+{static} + COMMAND_WORD: String
+{static} + MESSAGE_USAGE: String
+- targetIndex: Index
+}
+'class DeleteBookmarkExpenseCommand {
+'{static} + MESSAGE_DELETE_BOOKMARK_EXPENSE_SUCCESS: String
+'+ execute(model: Model): CommandResult
+'}
+'class DeleteBookmarkIncomeCommand {
+'{static} + MESSAGE_DELETE_BOOKMARK_INCOME_SUCCESS: String
+'+ execute(model: Model): CommandResult
+'}
+class EditBookmarkCommand {
+{static} + COMMAND_WORD: String
+{static} + MESSAGE_NOT_EDITED: String
+- targetIndex: Index
+- editBookmarkTransactionDescriptor: EditBookmarkTransactionDescriptor
+}
+'class EditBookmarkExpenseCommand {
+'{static} + MESSAGE_EDIT_BOOKMARK_EXPENSE_SUCCESS: String
+'+ execute(model: Model): CommandResult
+'}
+'class EditBookmarkIncomeCommand {
+'{static} + MESSAGE_EDIT_BOOKMARK_INCOME_SUCCESS: String
+'+ execute(model: Model): CommandResult
+'}
+
+
+Command <|-- AddBookmarkExpenseCommand
+Command <|-- AddBookmarkIncomeCommand
+Command <|-- DeleteBookmarkCommand
+Command <|-- ConvertBookmarkCommand
+Command <|-- EditBookmarkCommand
+'DeleteBookmarkCommand <|-- DeleteBookmarkExpenseCommand
+'DeleteBookmarkCommand <|-- DeleteBookmarkIncomeCommand
+'ConvertBookmarkCommand <|-- ConvertBookmarkExpenseCommand
+'ConvertBookmarkCommand <|-- ConvertBookmarkIncomeCommand
+'EditBookmarkCommand <|-- EditBookmarkExpenseCommand
+'EditBookmarkCommand <|-- EditBookmarkIncomeCommand
+
+hide circle
+@enduml

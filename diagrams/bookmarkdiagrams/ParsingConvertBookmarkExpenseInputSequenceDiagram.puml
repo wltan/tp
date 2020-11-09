@@ -1,0 +1,45 @@
+@startuml
+!include ../style.puml
+
+mainframe sd parse user input to create ConvertBookmarkExpenseCommand
+
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":FinanceTrackerParser" as FinanceTrackerParser LOGIC_COLOR
+participant ":ConvertBookmarkCommandParser" as ConvertBookmarkCommandParser LOGIC_COLOR
+participant "cbc:ConvertBookmarkCommand" as ConvertBookmarkCommand LOGIC_COLOR
+participant "cbec:ConvertBookmarkExpenseCommand" as ConvertBookmarkExpenseCommand LOGIC_COLOR
+
+activate LogicManager
+
+LogicManager -> FinanceTrackerParser: parseCommand(command, uiState)
+activate FinanceTrackerParser
+
+create ConvertBookmarkCommandParser
+FinanceTrackerParser -> ConvertBookmarkCommandParser: ConvertBookmarkCommandParser()
+activate ConvertBookmarkCommandParser
+
+create ConvertBookmarkCommand
+ConvertBookmarkCommandParser -> ConvertBookmarkCommand: parse(arguments)
+activate ConvertBookmarkCommand
+deactivate ConvertBookmarkCommandParser
+
+ConvertBookmarkCommand --> FinanceTrackerParser: cbc
+deactivate ConvertBookmarkCommand
+
+ConvertBookmarkCommandParser -[hidden]-> FinanceTrackerParser
+destroy ConvertBookmarkCommandParser
+
+create ConvertBookmarkExpenseCommand
+FinanceTrackerParser -> ConvertBookmarkExpenseCommand: ConvertBookmarkExpenseCommand(convertBookmarkCommand)
+activate ConvertBookmarkExpenseCommand
+
+ConvertBookmarkExpenseCommand --> FinanceTrackerParser: cbec
+deactivate ConvertBookmarkExpenseCommand
+
+ConvertBookmarkCommand -[hidden]-> FinanceTrackerParser
+destroy ConvertBookmarkCommand
+
+FinanceTrackerParser --> LogicManager: cbec
+deactivate FinanceTrackerParser
+
+@enduml

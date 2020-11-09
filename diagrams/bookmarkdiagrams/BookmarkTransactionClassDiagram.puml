@@ -1,0 +1,43 @@
+@startuml
+
+!include ../style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+Package Model{
+Class ModelManager
+Class FinanceTracker
+
+Package BookmarkTransaction {
+Class "{abstract}\nBookmarkTransaction" as BookmarkTransaction
+Class BookmarkExpenseList
+Class BookmarkIncomeList
+Class BookmarkExpense
+Class BookmarkIncome
+}
+
+Package Transaction {
+Class Transaction
+Class Title
+Class Amount
+}
+
+Package Category{
+Class Category
+}
+}
+ModelManager o--> FinanceTracker
+FinanceTracker *--> BookmarkExpenseList
+FinanceTracker *--> BookmarkIncomeList
+BookmarkExpenseList o--> "*" BookmarkExpense
+BookmarkIncomeList o--> "*" BookmarkIncome
+BookmarkExpense --|> BookmarkTransaction
+BookmarkIncome --|> BookmarkTransaction
+
+BookmarkTransaction ..> Transaction
+BookmarkTransaction *--> "1" Title
+BookmarkTransaction *--> "1" Amount
+BookmarkTransaction *--> "*" Category
+
+@enduml

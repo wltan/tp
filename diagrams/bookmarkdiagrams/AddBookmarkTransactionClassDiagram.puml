@@ -1,0 +1,53 @@
+@startuml
+!include ../style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR_T4
+skinparam classBackgroundColor LOGIC_COLOR
+
+package Logic {
+
+package Parser {
+Class FinanceTrackerParser
+Class AddBookmarkExpenseCommandParser
+Class AddBookmarkIncomeCommandParser
+}
+
+package Command {
+Class AddBookmarkExpenseCommand
+Class AddBookmarkIncomeCommand
+}
+}
+
+
+package Model {
+
+package BookmarkTransaction {
+Class BookmarkExpense MODEL_COLOR
+Class BookmarkIncome MODEL_COLOR
+Class "{abstract}\nBookmarkTransaction" as BookmarkTransaction MODEL_COLOR
+Class Title MODEL_COLOR
+Class Amount MODEL_COLOR
+}
+package Category {
+Class Category MODEL_COLOR
+}
+}
+
+FinanceTrackerParser ..> AddBookmarkExpenseCommandParser: creates >
+FinanceTrackerParser ..> AddBookmarkIncomeCommandParser: creates >
+
+AddBookmarkExpenseCommandParser ..> AddBookmarkExpenseCommand: creates >
+AddBookmarkExpenseCommandParser ..> BookmarkExpense: creates >
+AddBookmarkIncomeCommandParser ..> AddBookmarkIncomeCommand: creates >
+AddBookmarkIncomeCommandParser ..> BookmarkIncome: creates >
+
+AddBookmarkExpenseCommand --> "1" BookmarkExpense
+AddBookmarkIncomeCommand --> "1" BookmarkIncome
+
+BookmarkExpense --|> BookmarkTransaction MODEL_COLOR
+BookmarkIncome --|> BookmarkTransaction MODEL_COLOR
+BookmarkTransaction *--> "1" Amount MODEL_COLOR
+BookmarkTransaction *--> "1" Title MODEL_COLOR
+BookmarkTransaction *--> "*" Category MODEL_COLOR
+
+@enduml

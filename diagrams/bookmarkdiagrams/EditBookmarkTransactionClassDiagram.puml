@@ -1,0 +1,31 @@
+@startuml
+!include ../style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR_T4
+skinparam classBackgroundColor LOGIC_COLOR
+
+package Logic {
+
+package Parser {
+class FinanceTrackerParser
+class EditBookmarkCommandParser
+}
+
+package Command {
+class EditBookmarkCommand
+class EditBookmarkXYZCommand
+}
+}
+
+Class HiddenOutside #FFFFFF
+
+FinanceTrackerParser ..> EditBookmarkCommandParser: creates >
+FinanceTrackerParser ..> EditBookmarkXYZCommand: creates >
+
+EditBookmarkCommandParser ..> EditBookmarkCommand: creates >
+
+EditBookmarkXYZCommand -up-|> EditBookmarkCommand
+
+note left of EditBookmarkXYZCommand: EditBookmarkXYZCommand = EditBookmarkExpenseCommand, \nEditBookmarkIncomeCommand
+
+@enduml

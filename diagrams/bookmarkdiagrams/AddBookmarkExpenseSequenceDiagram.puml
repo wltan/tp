@@ -1,0 +1,59 @@
+@startuml
+!include ../style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":AddBookmarkExpenseCommand" as AddBookmarkExpenseCommand LOGIC_COLOR
+participant "e:CommandException" as CommandException LOGIC_COLOR
+participant "result:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":ModelManager" as ModelManager MODEL_COLOR
+end box
+
+[->LogicManager: execute(command)
+activate LogicManager
+
+ref over LogicManager : parse user input to create AddBookmarkExpenseCommand
+
+create AddBookmarkExpenseCommand
+LogicManager -> AddBookmarkExpenseCommand: execute(model)
+activate AddBookmarkExpenseCommand
+
+AddBookmarkExpenseCommand -> ModelManager: addBookmarkExpense(toAdd)
+activate ModelManager
+
+alt #transparent duplicate BookmarkExpense
+
+ModelManager --> AddBookmarkExpenseCommand
+
+create CommandException
+AddBookmarkExpenseCommand -> CommandException
+activate CommandException
+
+CommandException --> LogicManager: e
+
+[<-- LogicManager: e
+deactivate CommandException
+
+else
+
+ModelManager --> AddBookmarkExpenseCommand
+deactivate ModelManager
+
+create CommandResult
+AddBookmarkExpenseCommand -> CommandResult
+activate CommandResult
+
+CommandResult -->  AddBookmarkExpenseCommand: result
+deactivate CommandResult
+
+AddBookmarkExpenseCommand --> LogicManager: result
+deactivate AddBookmarkExpenseCommand
+
+[<-- LogicManager: result
+deactivate LogicManager
+end
+
+@enduml

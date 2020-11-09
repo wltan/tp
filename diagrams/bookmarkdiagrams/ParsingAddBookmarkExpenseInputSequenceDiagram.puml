@@ -1,0 +1,34 @@
+@startuml
+!include ../style.puml
+
+mainframe sd parse user input to create AddBookmarkExpenseCommand
+
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":FinanceTrackerParser" as FinanceTrackerParser LOGIC_COLOR
+participant ":AddBookmarkExpenseCommandParser" as AddBookmarkExpenseCommandParser LOGIC_COLOR
+participant ":AddBookmarkExpenseCommand" as AddBookmarkExpenseCommand LOGIC_COLOR
+
+activate LogicManager
+
+LogicManager -> FinanceTrackerParser: parseCommand(command, uiState)
+activate FinanceTrackerParser
+
+create AddBookmarkExpenseCommandParser
+FinanceTrackerParser -> AddBookmarkExpenseCommandParser: AddBookmarkExpenseCommandParser()
+activate AddBookmarkExpenseCommandParser
+
+AddBookmarkExpenseCommandParser --> FinanceTrackerParser
+deactivate AddBookmarkExpenseCommandParser
+
+create AddBookmarkExpenseCommand
+FinanceTrackerParser -> AddBookmarkExpenseCommand: parse(arguments)
+activate AddBookmarkExpenseCommand
+
+AddBookmarkExpenseCommand --> FinanceTrackerParser: command
+deactivate AddBookmarkExpenseCommand
+
+FinanceTrackerParser --> LogicManager: command
+destroy AddBookmarkExpenseCommandParser
+deactivate FinanceTrackerParser
+
+@enduml

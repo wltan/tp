@@ -1,0 +1,16 @@
+@startuml
+start
+:User executes delete-bookmark on Expense Tab;
+:Command gets parsed by logic component;
+:DeleteBookmarkExpenseCommand gets executed;
+
+if () is ([Valid index provided]) then
+:Deletes specified bookmark expense;
+:Display delete bookmark expense success message;
+
+else ([else])
+:Display invalid index provided message;
+
+endif
+stop
+@enduml

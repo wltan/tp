@@ -3,66 +3,64 @@
 
 box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
-participant ":FinanceTrackerParser" as FinanceTrackerParser LOGIC_COLOR
 participant ":ConvertBookmarkExpenseCommand" as ConvertBookmarkExpenseCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
 participant ":ModelManager" as ModelManager MODEL_COLOR
 end box
 
-box BookmarkExpense UI_COLOR_T1
-participant ":BookmarkExpense" as BookmarkExpense UI_COLOR
+box BookmarkExpense BOOKMARK_TRANSACTION__COLOR_T1
+participant ":BookmarkExpenseList" as BookmarkExpenseList BOOKMARK_TRANSACTION_COLOR
+participant ":BookmarkExpense" as BookmarkExpense BOOKMARK_TRANSACTION_COLOR
 end box
 
-[->LogicManager: execute("convert-bookmark-expense 1 d/20/10/2020")
-activate LogicManager LOGIC_COLOR
+[->LogicManager: execute(command)
+activate LogicManager
 
-LogicManager -> FinanceTrackerParser: parseCommand("convert-bookmark-expense 1 d/20/10/2020")
-activate FinanceTrackerParser LOGIC_COLOR
+ref over LogicManager : parse user input to create ConvertBookmarkExpenseCommand
 
-create ConvertBookmarkExpenseCommand LOGIC_COLOR
-FinanceTrackerParser -> ConvertBookmarkExpenseCommand: ConvertBookmarkExpenseCommand()
-activate ConvertBookmarkExpenseCommand LOGIC_COLOR
-
-ConvertBookmarkExpenseCommand --> FinanceTrackerParser
-deactivate ConvertBookmarkExpenseCommand
-
-FinanceTrackerParser --> LogicManager
-deactivate FinanceTrackerParser
-
-LogicManager -> ConvertBookmarkExpenseCommand: execute()
-activate ConvertBookmarkExpenseCommand LOGIC_COLOR
+create ConvertBookmarkExpenseCommand
+LogicManager -> ConvertBookmarkExpenseCommand: execute(model)
+activate ConvertBookmarkExpenseCommand
 
 ConvertBookmarkExpenseCommand -> ModelManager: getFilteredBookmarkExpenseList()
-activate ModelManager MODEL_COLOR
+activate ModelManager
 
 ModelManager --> ConvertBookmarkExpenseCommand: bookmarkExpenseList
 deactivate ModelManager
 
-ConvertBookmarkExpenseCommand -> BookmarkExpense: bookmarkExpenseList.get(Index)
-activate BookmarkExpense UI_COLOR
+ConvertBookmarkExpenseCommand -> BookmarkExpenseList: bookmarkExpenseList.get()
+activate BookmarkExpenseList
 
-BookmarkExpense --> ConvertBookmarkExpenseCommand: BookmarkExpense
+BookmarkExpenseList --> ConvertBookmarkExpenseCommand: bookmarkExpenseToConvert
+deactivate BookmarkExpenseList
 
-ConvertBookmarkExpenseCommand -> BookmarkExpense: convert(Date)
+ConvertBookmarkExpenseCommand -> BookmarkExpense: bookmarkExpenseToConvert.convert()
+activate BookmarkExpense
 
-BookmarkExpense --> ConvertBookmarkExpenseCommand: Expense
-
+BookmarkExpense --> ConvertBookmarkExpenseCommand: newConvertedExpense
 deactivate BookmarkExpense
-'Hidden arrow to position the destroy marker below the end of the activation bar.
-BookmarkExpense -[hidden]-> ConvertBookmarkExpenseCommand
-destroy BookmarkExpense
 
-ConvertBookmarkExpenseCommand -> ModelManager: addExpense()
-activate ModelManager MODEL_COLOR
+ConvertBookmarkExpenseCommand -> ModelManager: addExpense(newConvertedExpense)
+activate ModelManager
 
 ModelManager --> ConvertBookmarkExpenseCommand
 deactivate ModelManager
+
+create CommandResult
+ConvertBookmarkExpenseCommand -> CommandResult
+activate CommandResult
+
+
+CommandResult --> ConvertBookmarkExpenseCommand
+deactivate CommandResult
 
 ConvertBookmarkExpenseCommand --> LogicManager: result
 deactivate ConvertBookmarkExpenseCommand
 
 [<-- LogicManager: result
 deactivate LogicManager
+
 @enduml
