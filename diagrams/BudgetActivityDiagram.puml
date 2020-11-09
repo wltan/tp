@@ -1,0 +1,11 @@
+@startuml
+start
+:User executes command;
+
+if () then ([amount changes])
+    :Calculates all budget values;
+    :Displays updated budget values;
+else ()
+endif
+stop
+@enduml

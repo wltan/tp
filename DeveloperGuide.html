@@ -46,7 +46,6 @@
 
   <div class="post-content">
     <ul id="markdown-toc">
-  <li><a href="#setting-up-getting-started" id="markdown-toc-setting-up-getting-started"><strong>Setting up, getting started</strong></a></li>
   <li>
 <a href="#design" id="markdown-toc-design"><strong>Design</strong></a>    <ul>
       <li><a href="#architecture" id="markdown-toc-architecture">Architecture</a></li>
@@ -59,42 +58,52 @@
   </li>
   <li>
 <a href="#implementation" id="markdown-toc-implementation"><strong>Implementation</strong></a>    <ul>
-      <li><a href="#find-transactions" id="markdown-toc-find-transactions">Find transactions</a></li>
-      <li><a href="#programmatically-switch-selected-tab" id="markdown-toc-programmatically-switch-selected-tab">Programmatically switch selected tab</a></li>
-      <li><a href="#set-monthly-spending-limit" id="markdown-toc-set-monthly-spending-limit">Set monthly spending limit</a></li>
-      <li><a href="#set-monthly-savings-goal" id="markdown-toc-set-monthly-savings-goal">Set monthly savings goal</a></li>
       <li>
-<a href="#proposed-frequent-expense-feature" id="markdown-toc-proposed-frequent-expense-feature">[Proposed] Frequent Expense Feature</a>        <ul>
+<a href="#transactions" id="markdown-toc-transactions">Transactions</a>        <ul>
+          <li>
+<a href="#find-transactions-feature" id="markdown-toc-find-transactions-feature">Find transactions feature</a>            <ul>
+              <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
+              <li><a href="#implementation-of-feature" id="markdown-toc-implementation-of-feature">Implementation of feature</a></li>
+              <li><a href="#finding-transactions" id="markdown-toc-finding-transactions">Finding transactions</a></li>
+              <li><a href="#design-considerations" id="markdown-toc-design-considerations">Design considerations</a></li>
+            </ul>
+          </li>
+          <li><a href="#programmatically-switch-selected-tab" id="markdown-toc-programmatically-switch-selected-tab">Programmatically switch selected tab</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#budgeting" id="markdown-toc-budgeting">Budgeting</a>        <ul>
+          <li><a href="#overview-1" id="markdown-toc-overview-1">Overview</a></li>
+          <li><a href="#implementation-of-feature-1" id="markdown-toc-implementation-of-feature-1">Implementation of feature</a></li>
+          <li><a href="#set-monthly-spending-limit" id="markdown-toc-set-monthly-spending-limit">Set monthly spending limit</a></li>
+          <li><a href="#design-considerations-1" id="markdown-toc-design-considerations-1">Design considerations</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#bookmark-transactions" id="markdown-toc-bookmark-transactions">Bookmark Transactions</a>        <ul>
           <li><a href="#proposed-implementation" id="markdown-toc-proposed-implementation">Proposed Implementation</a></li>
           <li><a href="#convert-frequent-expense-to-expense-feature" id="markdown-toc-convert-frequent-expense-to-expense-feature">Convert Frequent Expense To Expense Feature</a></li>
         </ul>
       </li>
+      <li><a href="#analytics" id="markdown-toc-analytics">Analytics</a></li>
     </ul>
   </li>
-  <li><a href="#documentation-logging-testing-configuration-dev-ops" id="markdown-toc-documentation-logging-testing-configuration-dev-ops"><strong>Documentation, logging, testing, configuration, dev-ops</strong></a></li>
+  <li><a href="#appendix-a-product-scope" id="markdown-toc-appendix-a-product-scope"><strong>Appendix A: Product scope</strong></a></li>
+  <li><a href="#appendix-b-user-stories" id="markdown-toc-appendix-b-user-stories"><strong>Appendix B: User stories</strong></a></li>
+  <li><a href="#appendix-c-use-cases" id="markdown-toc-appendix-c-use-cases"><strong>Appendix C: Use cases</strong></a></li>
+  <li><a href="#appendix-d-non-functional-requirements" id="markdown-toc-appendix-d-non-functional-requirements"><strong>Appendix D: Non-Functional Requirements</strong></a></li>
+  <li><a href="#appendix-e-glossary" id="markdown-toc-appendix-e-glossary"><strong>Appendix E: Glossary</strong></a></li>
   <li>
-<a href="#appendix-requirements" id="markdown-toc-appendix-requirements"><strong>Appendix: Requirements</strong></a>    <ul>
-      <li><a href="#product-scope" id="markdown-toc-product-scope">Product scope</a></li>
-      <li><a href="#user-stories" id="markdown-toc-user-stories">User stories</a></li>
-      <li><a href="#use-cases" id="markdown-toc-use-cases">Use cases</a></li>
-      <li><a href="#non-functional-requirements" id="markdown-toc-non-functional-requirements">Non-Functional Requirements</a></li>
-      <li><a href="#glossary" id="markdown-toc-glossary">Glossary</a></li>
-    </ul>
-  </li>
-  <li>
-<a href="#appendix-instructions-for-manual-testing" id="markdown-toc-appendix-instructions-for-manual-testing"><strong>Appendix: Instructions for manual testing</strong></a>    <ul>
+<a href="#appendix-f-instructions-for-manual-testing" id="markdown-toc-appendix-f-instructions-for-manual-testing"><strong>Appendix F: Instructions for manual testing</strong></a>    <ul>
       <li><a href="#launch-and-shutdown" id="markdown-toc-launch-and-shutdown">Launch and shutdown</a></li>
-      <li><a href="#deleting-a-transaction" id="markdown-toc-deleting-a-transaction">Deleting a transaction</a></li>
+      <li><a href="#help-and-switching-tabs" id="markdown-toc-help-and-switching-tabs">Help and switching tabs</a></li>
+      <li><a href="#transactions-1" id="markdown-toc-transactions-1">Transactions</a></li>
+      <li><a href="#budgeting-1" id="markdown-toc-budgeting-1">Budgeting</a></li>
+      <li><a href="#bookmark-transactions-1" id="markdown-toc-bookmark-transactions-1">Bookmark transactions</a></li>
       <li><a href="#saving-data" id="markdown-toc-saving-data">Saving data</a></li>
     </ul>
   </li>
 </ul>
-
-<hr>
-
-<h2 id="setting-up-getting-started"><strong>Setting up, getting started</strong></h2>
-
-<p>Refer to the guide <a href="/tp/SettingUp.html"><em>Setting up and getting started</em></a>.</p>
 
 <hr>
 
@@ -198,17 +207,30 @@
 
 <ul>
   <li>stores a <code class="highlighter-rouge">UserPref</code> object that represents the user’s preferences.</li>
-  <li>stores the finance tracker data in a <code class="highlighter-rouge">TransactionList</code> containing <code class="highlighter-rouge">Transaction</code>s.</li>
-  <li>exposes <code class="highlighter-rouge">MonthlySavings</code> and <code class="highlighter-rouge">MonthlyBudget</code>, which can be ‘observed’ e.g. the UI can be bound to the values in these classes so that the UI automatically updates when the values in the classes change.</li>
-  <li>exposes an unmodifiable <code class="highlighter-rouge">ObservableList&lt;Transaction&gt;</code> which can be ‘observed’ e.g. the UI can be bound to this list so that the UI automatically updates when the data in the list changes.</li>
+  <li>stores the finance tracker data in the following components:
+    <ul>
+      <li>a <code class="highlighter-rouge">TransactionList</code> containing <code class="highlighter-rouge">Transaction</code>s.</li>
+      <li>a <code class="highlighter-rouge">BookmarkExpenseList</code> and <code class="highlighter-rouge">BookmarkIncomeList</code>, each containing <code class="highlighter-rouge">BookmarkTransaction</code>s.</li>
+      <li>a <code class="highlighter-rouge">MonthlyBudget</code>.</li>
+    </ul>
+  </li>
+  <li>exposes <code class="highlighter-rouge">MonthlyBudget</code>, which can be ‘observed’ e.g. the UI can be bound to the values in the class so that the UI automatically updates when the values in the class changes.</li>
+  <li>exposes an unmodifiable <code class="highlighter-rouge">ObservableList&lt;Transaction&gt;</code>, <code class="highlighter-rouge">ObservableList&lt;Expense&gt;</code>, <code class="highlighter-rouge">ObservableList&lt;Income&gt;</code>, <code class="highlighter-rouge">ObservableList&lt;BookmarkExpense&gt;</code> and <code class="highlighter-rouge">ObservableList&lt;BookmarkIncome&gt;</code> each, which can be ‘observed’ e.g. the UI can be bound to these lists so that the UI automatically updates when the data in the lists change.</li>
   <li>does not depend on any of the other three components (<code class="highlighter-rouge">UI</code>, <code class="highlighter-rouge">Logic</code>, <code class="highlighter-rouge">Storage</code>).</li>
 </ul>
 
 <p>A <code class="highlighter-rouge">Transaction</code>:</p>
 <ul>
-  <li>represents a unit of user data within the finance tracker.</li>
+  <li>represents a unit of user data of transactions within the finance tracker.</li>
   <li>is either an <code class="highlighter-rouge">Expense</code> or an <code class="highlighter-rouge">Income</code>.</li>
   <li>is composed of a <code class="highlighter-rouge">Title</code>, an <code class="highlighter-rouge">Amount</code>, a <code class="highlighter-rouge">Date</code>, and any number of <code class="highlighter-rouge">Category</code>s. These are known as <em>data fields</em>.</li>
+</ul>
+
+<p>A <code class="highlighter-rouge">BookmarkTransaction</code>:</p>
+<ul>
+  <li>represents a unit of user data of bookmark transactions within the finance tracker.</li>
+  <li>is either a <code class="highlighter-rouge">BookmarkExpense</code> or a <code class="highlighter-rouge">BookmarkIncome</code>.</li>
+  <li>is composed of a <code class="highlighter-rouge">Title</code>, an <code class="highlighter-rouge">Amount</code>, and any number of <code class="highlighter-rouge">Category</code>s.</li>
 </ul>
 
 <p>The <em>data fields</em> <code class="highlighter-rouge">Title</code>, <code class="highlighter-rouge">Amount</code>, <code class="highlighter-rouge">Date</code>, and <code class="highlighter-rouge">Category</code> are encapsulations of an underlying Java data type.</p>
@@ -243,7 +265,8 @@
 <p>The underlying Java data types allow more operations to be done on <code class="highlighter-rouge">Transaction</code> objects, such as filtering <code class="highlighter-rouge">Transaction</code>s by <code class="highlighter-rouge">Date</code>, or aggregating the <code class="highlighter-rouge">Amount</code>s of <code class="highlighter-rouge">Expense</code>s and <code class="highlighter-rouge">Income</code>s.</p>
 
 <div class="alert alert-info">
-<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> All data fields take in a <code class="highlighter-rouge">String</code> in their constructor, regardless of the underlying Java data type.
+<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"> 
+<strong>Note:</strong> All data fields take in a <code class="highlighter-rouge">String</code> in their constructor, regardless of the underlying Java data type.
 Within the constructor, data validation takes place to ensure that the <code class="highlighter-rouge">String</code> correctly represents a valid data field.
 If the <code class="highlighter-rouge">String</code> given is not valid, an <code class="highlighter-rouge">IllegalArgumentException</code> will be thrown.
 Otherwise, the <code class="highlighter-rouge">String</code> is parsed into the underlying Java data type.<br><br>
@@ -253,22 +276,32 @@ This abstraction is maintained so that the implementation of other components (<
 the underlying Java data type choices in the <code class="highlighter-rouge">Model</code> component.
 </div>
 
-<p>The <code class="highlighter-rouge">FinanceTracker</code> has a <code class="highlighter-rouge">TransactionList</code> field which stores all <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code> objects together.</p>
-
-<p>The <code class="highlighter-rouge">ModelManager</code> has three <code class="highlighter-rouge">FilteredList</code> fields which point to the same <code class="highlighter-rouge">ObservableList</code> obtained from <code class="highlighter-rouge">FinanceTracker::getTransactionList</code>.
-The <code class="highlighter-rouge">Predicate</code> fields in the three <code class="highlighter-rouge">FilteredList</code> fields are set such that:</p>
+<p>The <code class="highlighter-rouge">FinanceTracker</code> has the following fields:</p>
 <ul>
-  <li>
-<code class="highlighter-rouge">filteredTransactions</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects</li>
-  <li>
-<code class="highlighter-rouge">filteredExpenses</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects of type <code class="highlighter-rouge">Expense</code>
-</li>
-  <li>
-<code class="highlighter-rouge">filteredIncomes</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects of type <code class="highlighter-rouge">Income</code>
-</li>
+  <li>a <code class="highlighter-rouge">TransactionList</code> field which stores all <code class="highlighter-rouge">Expense</code> and <code class="highlighter-rouge">Income</code> objects together.</li>
+  <li>a <code class="highlighter-rouge">BookmarkExpenseList</code> field which stores all <code class="highlighter-rouge">BookmarkExpense</code> objects.</li>
+  <li>a <code class="highlighter-rouge">BookmarkIncomeList</code> field which stores all <code class="highlighter-rouge">BookmarkIncome</code> objects.</li>
+  <li>a <code class="highlighter-rouge">MonthlyBudget</code> field which stores the user’s set monthly expense limit and monthly savings goal, as well as all calculated values for the user’s statistics.</li>
 </ul>
 
-<p>The motivation behind having three lists is due to the fact that there are three tabs in the user interface, each having its own list while at the same time retrieving data from the same transaction list.</p>
+<p>The <code class="highlighter-rouge">ModelManager</code> has the following fields:</p>
+<ul>
+  <li>three <code class="highlighter-rouge">FilteredList</code> fields which point to the same <code class="highlighter-rouge">ObservableList</code> obtained from <code class="highlighter-rouge">FinanceTracker::getTransactionList</code>. The <code class="highlighter-rouge">Predicate</code> fields in the three <code class="highlighter-rouge">FilteredList</code> fields are set such that:
+    <ul>
+      <li>
+<code class="highlighter-rouge">filteredTransactions</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects.</li>
+      <li>
+<code class="highlighter-rouge">filteredExpenses</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects of type <code class="highlighter-rouge">Expense</code>.</li>
+      <li>
+<code class="highlighter-rouge">filteredIncomes</code> shows a view of all <code class="highlighter-rouge">Transaction</code> objects of type <code class="highlighter-rouge">Income</code>.</li>
+    </ul>
+
+    <p>The motivation behind having three lists is due to the fact that there are three tabs in the user interface which display transactions, each having its own list while at the same time retrieving data from the same transaction list.</p>
+  </li>
+  <li>two <code class="highlighter-rouge">ObservableList</code> fields, <code class="highlighter-rouge">castFilteredExpenses</code> and <code class="highlighter-rouge">castFilteredIncomes</code> that contain the same objects as that in <code class="highlighter-rouge">filteredExpenses</code> and <code class="highlighter-rouge">filteredIncomes</code> respectively. This is so that the UI can automatically update when the values in the two lists change.</li>
+  <li>two <code class="highlighter-rouge">FilteredList</code> fields, <code class="highlighter-rouge">FilteredBookmarkExpenses</code> and <code class="highlighter-rouge">FilteredBookmarkIncomes</code> that point to the <code class="highlighter-rouge">ObservableList</code>s obtained from <code class="highlighter-rouge">FinanceTracker::getBookmarkExpenseList</code> and <code class="highlighter-rouge">FinanceTracker::getBookmarkIncomeList</code> respectively.</li>
+  <li>a <code class="highlighter-rouge">MonthlyBudget</code> field which is the same as the <code class="highlighter-rouge">MonthlyBudget</code> stored in <code class="highlighter-rouge">FinanceTracker</code>.</li>
+</ul>
 
 <h3 id="storage-component">Storage component</h3>
 
@@ -301,36 +334,91 @@ the motivation behind keeping them separately is to ensure that they are separat
 
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 
-<h3 id="find-transactions">Find transactions</h3>
+<h3 id="transactions">Transactions</h3>
+
+<h4 id="find-transactions-feature">Find transactions feature</h4>
+<h5 id="overview">Overview</h5>
+
+<p>The find transactions feature allows users to search for transactions in the <code class="highlighter-rouge">FinanceTracker</code> by various search parameters.
+Each search parameter corresponds to a different predicate which will be used to filter transactions in the various <code class="highlighter-rouge">FilteredList</code>s.</p>
+
+<p>Below is the class diagram of the components involved in the find transactions feature.</p>
+
+<p><img src="/tp/images/FindClassDiagram.png" alt="Class diagram for find transactions feature"></p>
+
+<h5 id="implementation-of-feature">Implementation of feature</h5>
 
 <p>The find transactions feature is implemented via <code class="highlighter-rouge">FindCommandParser</code>, as well as the following commands:</p>
 
 <ul>
   <li>
-<code class="highlighter-rouge">FindCommand</code>, the base command that is returned when the command is parsed</li>
+<code class="highlighter-rouge">FindCommand</code>, the base command that is returned when the command is parsed.</li>
   <li>
-<code class="highlighter-rouge">FindTransactionCommand</code>, to be executed when the user inputs the command on the Overview tab</li>
+<code class="highlighter-rouge">FindTransactionCommand</code>, to be executed when the user inputs the command on the Overview tab.</li>
   <li>
-<code class="highlighter-rouge">FindExpenseCommand</code>, to be executed when the user inputs the command on the Expenses tab</li>
+<code class="highlighter-rouge">FindExpenseCommand</code>, to be executed when the user inputs the command on the Expenses tab.</li>
   <li>
-<code class="highlighter-rouge">FindIncomeCommand</code>, to be executed when the user inputs the command on the Incomes tab</li>
+<code class="highlighter-rouge">FindIncomeCommand</code>, to be executed when the user inputs the command on the Incomes tab.</li>
 </ul>
 
-<p><code class="highlighter-rouge">FindCommandParser</code> takes in the command arguments and parses them to return a <code class="highlighter-rouge">FindCommand</code> containing the correct predicate for finding the transactions.
-Depending on the UI tab the user inputted the command in, a <code class="highlighter-rouge">FindXXXCommand</code> (<code class="highlighter-rouge">FindTransactionCommand</code>, <code class="highlighter-rouge">FindExpenseCommand</code> or <code class="highlighter-rouge">FindIncomeCommand</code>) will be created from the base <code class="highlighter-rouge">FindCommand</code>.
-When executed, the <code class="highlighter-rouge">FindXXXCommand</code> will set the predicate of the respective <code class="highlighter-rouge">FilteredList</code> in <code class="highlighter-rouge">ModelManager</code> so that only the transactions matching the keywords will be displayed in the list.</p>
+<p><code class="highlighter-rouge">FindCommandParser</code> takes in the argument string and parses it into an <code class="highlighter-rouge">ArgumentMultimap</code> that contains all the different search parameters mapped to their respective prefix.</p>
 
-<p>Below is the Sequence Diagram for interactions within the <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Model</code> components when the user inputs the <code class="highlighter-rouge">"find tea"</code> command while on the Overview tab.</p>
+<p>Depending on the parameters present, <code class="highlighter-rouge">FindCommandParser</code> then creates a <code class="highlighter-rouge">List&lt;Predicate&lt;Transaction&gt;&gt;</code> containing the predicates that will be used to filter the transactions.
+It then returns a <code class="highlighter-rouge">FindCommand</code> containing the list of predicates.</p>
 
-<p><img src="/tp/images/FindSequenceDiagram.png" alt="Interactions Inside the Logic Component for the `find tea` Command on the Overview tab"></p>
+<p>Depending on the UI tab the user inputted the command in, a <code class="highlighter-rouge">FindXYZCommand</code> (<code class="highlighter-rouge">FindTransactionCommand</code>, <code class="highlighter-rouge">FindExpenseCommand</code> or <code class="highlighter-rouge">FindIncomeCommand</code>) will be created from the base <code class="highlighter-rouge">FindCommand</code>.
+When executed, the <code class="highlighter-rouge">FindXYZCommand</code> will combine all of the predicates in the list into a <code class="highlighter-rouge">combinedPredicate</code>, then sets the predicate of the respective <code class="highlighter-rouge">FilteredList</code> in <code class="highlighter-rouge">ModelManager</code> so that only the transactions matching the <code class="highlighter-rouge">combinedPredicate</code> will be displayed in the UI.</p>
 
-<p>Alternatives considered:</p>
-
+<p>The list of predicates that can be used to filter the <code class="highlighter-rouge">FilteredList</code>s are as follows:</p>
 <ul>
-  <li>Having separate command parsers for each tab in which the find command can be input, e.g. <code class="highlighter-rouge">FindTransactionCommandParser</code>, <code class="highlighter-rouge">FindExpenseCommandParser</code> and <code class="highlighter-rouge">FindIncomeCommandParser</code>.</li>
+  <li>
+<code class="highlighter-rouge">TitleContainsKeyphrasesPredicate</code> checks if any of the given keyphrases is present in the transaction’s title.</li>
+  <li>
+<code class="highlighter-rouge">HasExactAmountPredicate</code> checks if the transaction’s amount is equal to the given amount.</li>
+  <li>
+<code class="highlighter-rouge">OnExactDatePredicate</code> checks if the transaction’s date is equal to the given date.</li>
+  <li>
+<code class="highlighter-rouge">HasCategoriesPredicate</code> checks if the transaction’s categories contains any of the given categories.</li>
+  <li>
+<code class="highlighter-rouge">InAmountRangePredicate</code> checks if the transaction’s amount is within the given amount range.</li>
+  <li>
+<code class="highlighter-rouge">InDateRangePredicate</code> checks if the transaction’s date is within the given date range.</li>
 </ul>
 
-<h3 id="programmatically-switch-selected-tab">Programmatically switch selected tab</h3>
+<h5 id="finding-transactions">Finding transactions</h5>
+
+<p>Below is the sequence diagram for interactions within the <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Model</code> components when the user inputs the <code class="highlighter-rouge">"find t/tea a/5"</code> command while on the Overview tab.</p>
+
+<p><img src="/tp/images/FindSequenceDiagram.png" alt="Sequence diagram for executing the `find t/tea a/5` command on the Overview tab"></p>
+
+<p>The following activity diagram summarizes what happens when the user executes a new find command:</p>
+
+<p><img src="/tp/images/FindActivityDiagram.png" alt="Activity diagram for executing the find command"></p>
+
+<h5 id="design-considerations">Design considerations</h5>
+
+<p>The alternative implementations considered, as well as the rationale behind our current implementation are as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alternative considered</th>
+      <th>Current implementation and rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Having separate command parsers for each tab in which the find command can be input, e.g. <code class="highlighter-rouge">FindTransactionCommandParser</code>, <code class="highlighter-rouge">FindExpenseCommandParser</code> and <code class="highlighter-rouge">FindIncomeCommandParser</code>, which return a <code class="highlighter-rouge">FindTransactionCommand</code>, a <code class="highlighter-rouge">FindExpenseCommand</code> and a <code class="highlighter-rouge">FindIncomeCommand</code> respectively.</td>
+      <td>Use only one <code class="highlighter-rouge">FindCommandParser</code>, which returns a <code class="highlighter-rouge">FindCommand</code> that is then further split into the respective <code class="highlighter-rouge">FindXYZCommand</code>. This is because the parsing for the input is similar same regardless of the tab the user is on.</td>
+    </tr>
+    <tr>
+      <td>Have <code class="highlighter-rouge">FindCommandParser</code> take in an <code class="highlighter-rouge">Index</code> corresponding to the parameter being searched.</td>
+      <td>Make the input of similar format to that of adding transactions, so that the input can be parsed into an <code class="highlighter-rouge">ArgumentMultimap</code> which is then used generate the relevant <code class="highlighter-rouge">Predicate</code>s. This is so that multiple search parameters can be employed in one command.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="programmatically-switch-selected-tab">Programmatically switch selected tab</h4>
 
 <p>Several of the expense/income-specific commands update the list of transactions displayed in a particular tab.
 Examples of these include the <code class="highlighter-rouge">add-expense</code> and <code class="highlighter-rouge">add-income</code> commands.
@@ -354,19 +442,82 @@ This <code class="highlighter-rouge">CommandResult</code> contains the necessary
 This was decided against as it would result in a much tighter coupling of <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">UI</code> components.</li>
 </ul>
 
-<h3 id="set-monthly-spending-limit">Set monthly spending limit</h3>
+<h3 id="budgeting">Budgeting</h3>
+<h5 id="overview-1">Overview</h5>
 
-<p>The monthly budgeting feature is implemented via <code class="highlighter-rouge">SetExpenseLimitCommand</code> as well as <code class="highlighter-rouge">MonthlyExpenseLimit</code>.</p>
+<p>The budgeting feature allows users to track their remaining budget and current savings based on their set monthly expense limit and monthly savings goal.
+The user sets the monthly expense limit and monthly savings goal, and the remaining budget and current savings will automatically be calculated based on the transactions in the <code class="highlighter-rouge">FinanceTracker</code>.</p>
 
-<p>[Coming soon]</p>
+<p>The class diagram below depicts the components involved in the budget feature.</p>
 
-<h3 id="set-monthly-savings-goal">Set monthly savings goal</h3>
+<p><img src="/tp/images/BudgetClassDiagram.png" alt="Class diagram for budgeting feature"></p>
 
-<p>The monthly budgeting feature is implemented via <code class="highlighter-rouge">SetSavingsGoalCommand</code> as well as <code class="highlighter-rouge">MonthlySavingsGoal</code>.</p>
+<h5 id="implementation-of-feature-1">Implementation of feature</h5>
 
-<p>[Coming soon]</p>
+<p>The find transactions feature is implemented via <code class="highlighter-rouge">MonthlyBudget</code>, which contains the following fields:</p>
 
-<h3 id="proposed-frequent-expense-feature">[Proposed] Frequent Expense Feature</h3>
+<ul>
+  <li>Two <code class="highlighter-rouge">ObjectProperty&lt;Amount&gt;</code> fields for <code class="highlighter-rouge">monthlyExpenseLimit</code> and <code class="highlighter-rouge">monthlySavingsGoal</code>.</li>
+  <li>Two <code class="highlighter-rouge">ObjectProperty&lt;CalculatedAmount&gt;</code> fields for <code class="highlighter-rouge">remainingBudget</code> and <code class="highlighter-rouge">currentSavings</code>.</li>
+  <li>Three <code class="highlighter-rouge">ObservableList&lt;CalculatedAmount&gt;</code> fields for <code class="highlighter-rouge">monthlyExpenses</code>, <code class="highlighter-rouge">monthlyIncomes</code> and <code class="highlighter-rouge">monthlySavings</code>, which are used for the <a href="#analytics">Analytics feature</a>.</li>
+  <li>An <code class="highlighter-rouge">ObservableList&lt;String&gt;</code> of <code class="highlighter-rouge">months</code>, to determine which elements in the <code class="highlighter-rouge">ObservableList&lt;CalculatedAmount&gt;</code> corresponds to which month.</li>
+</ul>
+
+<p><code class="highlighter-rouge">CalculatedAmount</code> differs from <code class="highlighter-rouge">Amount</code> in that a <code class="highlighter-rouge">CalculatedAmount</code> can be negative, and supports addition and subtraction.</p>
+
+<p>The method that is integral to the <code class="highlighter-rouge">MonthlyBudget</code> is the <code class="highlighter-rouge">calculateBudgetInfo</code> method.
+It takes in the current <code class="highlighter-rouge">TransactionList</code> in the <code class="highlighter-rouge">FinanceTracker</code> and an integer <code class="highlighter-rouge">numOfMonths</code>, and recalculates all <code class="highlighter-rouge">CalculatedAmount</code>s in the <code class="highlighter-rouge">MonthlyBudget</code> as follows:</p>
+<ul>
+  <li>Sum the amounts of all <code class="highlighter-rouge">Expense</code>s in the <code class="highlighter-rouge">TransactionList</code> dated in the current month, subtracts it from <code class="highlighter-rouge">monthlyExpenseLimit</code>, and sets it as the <code class="highlighter-rouge">remainingBudget</code>.</li>
+  <li>Sums the amounts of all <code class="highlighter-rouge">Expense</code>s in the <code class="highlighter-rouge">TransactionList</code> dated in the current month, subtracts it from the sum of all <code class="highlighter-rouge">Income</code>s dated in the current month, and sets it as the <code class="highlighter-rouge">currentSavings</code>.</li>
+  <li>For the past number of months indicated by <code class="highlighter-rouge">numOfMonths</code> (including the current month), calculate the total expenses, total incomes and total savings for each month and add them to the corresponding <code class="highlighter-rouge">ObservableList&lt;CalculatedAmount&gt;</code>.</li>
+</ul>
+
+<p>The commands that trigger a call of <code class="highlighter-rouge">calculateBudgetInfo</code> are as follows:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">AddExpenseCommand</code>, <code class="highlighter-rouge">AddIncomeCommand</code>, <code class="highlighter-rouge">DeleteExpenseCommand</code> and <code class="highlighter-rouge">DeleteIncomeCommand</code>, which change the total expenses/incomes of the <code class="highlighter-rouge">Transaction</code>s in the <code class="highlighter-rouge">TransactionList</code>.</li>
+  <li>
+<code class="highlighter-rouge">EditExpenseCommand</code> and <code class="highlighter-rouge">EditIncomeCommand</code>, if the <code class="highlighter-rouge">Amount</code> is edited.</li>
+  <li>
+<code class="highlighter-rouge">SetExpenseLimitCommand</code>, which changes the <code class="highlighter-rouge">Amount</code> in <code class="highlighter-rouge">monthlyExpenseLimit</code>.</li>
+  <li>
+<code class="highlighter-rouge">SetSavingsGoalCommand</code>, which changes the <code class="highlighter-rouge">Amount</code> in <code class="highlighter-rouge">monthlySavingsGoal</code>.</li>
+</ul>
+
+<p><code class="highlighter-rouge">calculateBudgetInfo</code> is also called by <code class="highlighter-rouge">Storage</code> whenever the finance tracker data is loaded upon startup.</p>
+
+<h5 id="set-monthly-spending-limit">Set monthly spending limit</h5>
+
+<p><code class="highlighter-rouge">SetExpenseLimitCommand</code> and <code class="highlighter-rouge">SetSavingsGoalCommand</code> work in similar ways.
+Below is the sequence diagram for interactions within the <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Model</code> components when the user inputs the <code class="highlighter-rouge">"setel a/500"</code> command.</p>
+
+<p><img src="/tp/images/SetExpenseLimitSequenceDiagram.png" alt="Sequence diagram for executing the `setel a/500` command"></p>
+
+<p>The following activity diagram summarizes what happens when the user executes any command that changes the calculated values in <code class="highlighter-rouge">MonthlyBudget</code> (e.g. setting expense limit):</p>
+
+<p><img src="/tp/images/BudgetActivityDiagram.png" alt="Activity diagram for executing any command that changes the budget"></p>
+
+<h5 id="design-considerations-1">Design considerations</h5>
+
+<p>The alternative implementations considered, as well as the rationale behind our current implementation are as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alternative considered</th>
+      <th>Current implementation and rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Use the <code class="highlighter-rouge">Amount</code> class for calculated amounts.</td>
+      <td>Use a separate class <code class="highlighter-rouge">CalculatedAmount</code> for calculated amounts, so as to avoid breaking abstraction and support negative values.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="bookmark-transactions">Bookmark Transactions</h3>
 
 <h4 id="proposed-implementation">Proposed Implementation</h4>
 <p>The Frequent Expense feature consists of <code class="highlighter-rouge">add-frequent-expense</code>, <code class="highlighter-rouge">edit-frequent-expense</code>, <code class="highlighter-rouge">delete-frequent-expense</code>,
@@ -406,25 +557,16 @@ call <code class="highlighter-rouge">FinanceTrackerParser#parseCommand(“conver
 then call <code class="highlighter-rouge">FrequentExpense#convert</code> on the frequent expense together with the date the user has inputted and convert
 it to an <code class="highlighter-rouge">Expense</code> object.</li>
   <li>After converting the <code class="highlighter-rouge">FrequentExpense</code> object to an <code class="highlighter-rouge">Expense</code> object, it will call <code class="highlighter-rouge">Model#addExpense</code> to add the
-<code class="highlighter-rouge">Expense</code> object to the expense list in the finance tracker.
-——————————————————————————————————————–</li>
+<code class="highlighter-rouge">Expense</code> object to the expense list in the finance tracker.</li>
 </ol>
 
-<h2 id="documentation-logging-testing-configuration-dev-ops"><strong>Documentation, logging, testing, configuration, dev-ops</strong></h2>
+<h3 id="analytics">Analytics</h3>
 
-<ul>
-  <li><a href="/tp/Documentation.html">Documentation guide</a></li>
-  <li><a href="/tp/Testing.html">Testing guide</a></li>
-  <li><a href="/tp/Logging.html">Logging guide</a></li>
-  <li><a href="/tp/Configuration.html">Configuration guide</a></li>
-  <li><a href="/tp/DevOps.html">DevOps guide</a></li>
-</ul>
+<p>[Coming soon]</p>
 
 <hr>
 
-<h2 id="appendix-requirements"><strong>Appendix: Requirements</strong></h2>
-
-<h3 id="product-scope">Product scope</h3>
+<h2 id="appendix-a-product-scope"><strong>Appendix A: Product scope</strong></h2>
 
 <p><strong>Target user profile</strong>:</p>
 
@@ -438,7 +580,9 @@ it to an <code class="highlighter-rouge">Expense</code> object.</li>
 
 <p><strong>Value proposition</strong>: Manage finances and cultivate good financial habits (such as saving) efficiently by typing in CLI commands</p>
 
-<h3 id="user-stories">User stories</h3>
+<hr>
+
+<h2 id="appendix-b-user-stories"><strong>Appendix B: User stories</strong></h2>
 
 <p>Priorities: High (must have) - <code class="highlighter-rouge">* * *</code>, Medium (nice to have) - <code class="highlighter-rouge">* *</code>, Low (unlikely to have) - <code class="highlighter-rouge">*</code></p>
 
@@ -501,29 +645,53 @@ it to an <code class="highlighter-rouge">Expense</code> object.</li>
       <td>easily find related expenses/incomes</td>
     </tr>
     <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>bookmark expenses</td>
+      <td>easily add recurring expenses</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* * *</code></td>
+      <td>user</td>
+      <td>bookmark incomes</td>
+      <td>easily add recurring incomes</td>
+    </tr>
+    <tr>
       <td><code class="highlighter-rouge">* *</code></td>
       <td>user</td>
       <td>set a monthly spending limit</td>
-      <td>track how much I have left to spend for the month</td>
+      <td>plan the maximum amount I wish to spend for the month</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">* *</code></td>
       <td>user</td>
       <td>set a monthly saving goal</td>
-      <td>cultivate good saving habits</td>
+      <td>work towards saving consistently and reaching my savings goals</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* *</code></td>
+      <td>user</td>
+      <td>see my remaining monthly budget</td>
+      <td>track how much I have left to spend for the month</td>
+    </tr>
+    <tr>
+      <td><code class="highlighter-rouge">* *</code></td>
+      <td>user</td>
+      <td>set a current monthly savings</td>
+      <td>track how much I have to save to hit my savings goal</td>
     </tr>
     <tr>
       <td><code class="highlighter-rouge">* *</code></td>
       <td>user</td>
       <td>view my saving trends</td>
-      <td>better manage my future expenses</td>
+      <td>better plan my future expenses</td>
     </tr>
   </tbody>
 </table>
 
-<p><em>{More to be added}</em></p>
+<hr>
 
-<h3 id="use-cases">Use cases</h3>
+<h2 id="appendix-c-use-cases"><strong>Appendix C: Use cases</strong></h2>
 
 <p>(For all use cases below, the <strong>System</strong> is <code class="highlighter-rouge">Fine$$e</code> and the <strong>Actor</strong> is the <code class="highlighter-rouge">user</code>, unless specified otherwise)</p>
 
@@ -565,7 +733,9 @@ it to an <code class="highlighter-rouge">Expense</code> object.</li>
 
 <p><em>{More to be added}</em></p>
 
-<h3 id="non-functional-requirements">Non-Functional Requirements</h3>
+<hr>
+
+<h2 id="appendix-d-non-functional-requirements"><strong>Appendix D: Non-Functional Requirements</strong></h2>
 
 <ol>
   <li>Should work on any mainstream OS as long as it has Java <code class="highlighter-rouge">11</code> or above installed.</li>
@@ -579,7 +749,9 @@ it to an <code class="highlighter-rouge">Expense</code> object.</li>
 
 <p><em>{More to be added}</em></p>
 
-<h3 id="glossary">Glossary</h3>
+<hr>
+
+<h2 id="appendix-e-glossary"><strong>Appendix E: Glossary</strong></h2>
 
 <ul>
   <li>
@@ -594,12 +766,12 @@ it to an <code class="highlighter-rouge">Expense</code> object.</li>
 
 <hr>
 
-<h2 id="appendix-instructions-for-manual-testing"><strong>Appendix: Instructions for manual testing</strong></h2>
+<h2 id="appendix-f-instructions-for-manual-testing"><strong>Appendix F: Instructions for manual testing</strong></h2>
 
 <p>Given below are instructions to test the app manually.</p>
 
 <div class="alert alert-info">
-<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))"><strong>Note:</strong> These instructions only provide a starting point for testers to work on;
+<img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  <strong>Note:</strong> These instructions only provide a starting point for testers to work on;
 testers are expected to do more <em>exploratory</em> testing.
 
 </div>
@@ -612,10 +784,11 @@ testers are expected to do more <em>exploratory</em> testing.
 
     <ol>
       <li>
-        <p>Download the jar file and copy into an empty folder</p>
+        <p>Download the jar file and copy into an empty folder.</p>
       </li>
       <li>
-        <p>Double-click the jar file Expected: Shows the GUI with a set of sample contacts. The window size may not be optimum.</p>
+        <p>Double-click the jar file.<br>
+Expected: Shows the GUI with a set of sample data. The window size may not be optimum.</p>
       </li>
     </ol>
   </li>
@@ -628,41 +801,409 @@ testers are expected to do more <em>exploratory</em> testing.
       </li>
       <li>
         <p>Re-launch the app by double-clicking the jar file.<br>
- Expected: The most recent window size and location is retained.</p>
+Expected: The most recent window size and location is retained.</p>
       </li>
     </ol>
-  </li>
-  <li>
-    <p><em>{ more test cases …​ }</em></p>
   </li>
 </ol>
 
-<h3 id="deleting-a-transaction">Deleting a transaction</h3>
+<h3 id="help-and-switching-tabs">Help and switching tabs</h3>
 
 <ol>
   <li>
-    <p>Deleting a transaction while all transactions are being shown</p>
+    <p>View help</p>
 
     <ol>
       <li>
-        <p>Prerequisites: List all transactions using the <code class="highlighter-rouge">list</code> command. Multiple transactions in the list.</p>
+        <p>Test case: <code class="highlighter-rouge">help</code><br>
+Expected: UI switches to the user guide.</p>
       </li>
       <li>
-        <p>Test case: <code class="highlighter-rouge">delete 1</code><br>
-Expected: First transaction is deleted from the list. Details of the deleted transaction shown in the status message. Timestamp in the status bar is updated.</p>
-      </li>
-      <li>
-        <p>Test case: <code class="highlighter-rouge">delete 0</code><br>
-Expected: No transaction is deleted. Error details shown in the status message. Status bar remains the same.</p>
-      </li>
-      <li>
-        <p>Other incorrect delete commands to try: <code class="highlighter-rouge">delete</code>, <code class="highlighter-rouge">delete x</code>, <code class="highlighter-rouge">...</code> (where x is larger than the list size)<br>
-Expected: Similar to previous.</p>
+        <p>Test case: <code class="highlighter-rouge">help me</code><br>
+Expected: There is no change to the UI. An error message is shown as the command cannot have any arguments.</p>
       </li>
     </ol>
   </li>
   <li>
-    <p><em>{ more test cases …​ }</em></p>
+    <p>Switching tabs</p>
+
+    <ol>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">tab 2</code><br>
+Expected: UI switches to the Expenses tab.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">tab overview</code><br>
+Expected: UI does not switch tabs. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">tab 5</code><br>
+Expected: UI does not switch tabs. An error message is shown as the specified tab does not exist.</p>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="transactions-1">Transactions</h3>
+
+<ol>
+  <li>
+    <p>Adding an expense</p>
+
+    <ol>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage</code><br>
+ Expected: An expense titled <code class="highlighter-rouge">Bubble Tea</code> is added with the given details. UI switches to the Expenses tab.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-expense t/Bubble Tea a/5 c/Food c/Beverage</code><br>
+ Expected: An expense titled <code class="highlighter-rouge">Bubble Tea</code> is added with the current date and two categories. UI switches to the Expenses tab.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-expense t/Bubble Tea</code><br>
+ Expected: No expense is added. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-expense t/Bubble Tea a/5.000 d/03/10/2020 c/Food &amp; Beverage</code><br>
+ Expected: No expense is added. An error message is shown as the parameter format is wrong.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-expense t/ a/5.00 d/03/10/2020 c/Food &amp; Beverage</code><br>
+ Expected: No expense is added. An error message is shown as the parameter is empty.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Adding an income</p>
+
+    <ol>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-income t/Internship a/560 d/03/10/2020 c/Work</code><br>
+ Expected: An income titled <code class="highlighter-rouge">Internship</code> is added with the given details. UI switches to the Incomes tab.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-income t/Internship a/560 c/Work c/Internship</code><br>
+ Expected: An expense titled <code class="highlighter-rouge">Internship</code> is added with the current date and two categories. UI switches to the Incomes tab.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-income t/Internship</code><br>
+ Expected: No expense is added. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-income t/Internship a/560 d/03-10-2020 c/Work</code><br>
+ Expected: No expense is added. An error message is shown as the parameter format is wrong.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-income t/Internship a/ d/03/10/2020 c/Work</code><br>
+ Expected: No expense is added. An error message is shown as the parameter is empty.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Editing a transaction</p>
+
+    <ol>
+      <li>
+        <p>Prerequisite: UI is on Expenses or Incomes tab. List displayed contains less than 5 transactions.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit 1 t/Taxi a/10 d/31/10/2020 c/Transport</code><br>
+ Expected: First transaction in the list is edited with all details changed.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit 1 c/</code><br>
+ Expected: First transaction in the list is edited with all categories cleared.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit t/Taxi</code><br>
+ Expected: No transaction is edited. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit 5 a/10</code><br>
+ Expected: No transaction is edited. An error message is shown as the index provided is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit 1 d/10/31/2020</code><br>
+ Expected: No transaction is edited. An error message is shown as the parameter format is wrong.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit 1 d/</code><br>
+ Expected: No transaction is edited. An error message is shown as the parameter is empty.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit 1</code><br>
+ Expected: No transaction is edited. An error message is shown as at least one parameter must be supplied.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Deleting a transaction</p>
+
+    <ol>
+      <li>
+        <p>Prerequisite: UI is on Expenses or Incomes tab. List displayed contains less than 5 transactions.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">delete 1</code><br>
+ Expected: First transaction in the list is deleted.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">delete first</code><br>
+ Expected: No transaction is deleted. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">delete 5</code><br>
+ Expected: No transaction is deleted. An error message is shown as the index provided is invalid.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Listing transactions</p>
+
+    <ol>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">ls-expense</code><br>
+ Expected: UI switches to Expenses tab. All expenses are listed.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">ls-income</code><br>
+ Expected: UI switches to Incomes tab. All incomes are listed.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">ls-income all</code><br>
+ Expected: There is no change in the UI. An error message is shown as the command cannot have any arguments.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Finding transactions</p>
+
+    <ol>
+      <li>
+        <p>Prerequisite: UI is on Overview, Expenses or Incomes tab.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">find t/Bubble Tea</code><br>
+ Expected: All transactions in the displayed list containing the keyphrase <code class="highlighter-rouge">Bubble Tea</code> (case-insensitive) are displayed.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">find af/5 c/Food</code><br>
+ Expected: All transactions in the displayed list with the category <code class="highlighter-rouge">Food</code> and amount greater than or equal to <code class="highlighter-rouge">$5.00</code> are displayed.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">find df/01/09/2020 dt/30/09/2020</code><br>
+ Expected: All transactions in the displayed list in September 2020 are displayed.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">find tea</code><br>
+ Expected: There is no change in the UI. An error message is shown as the command format is wrong.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">find d/</code><br>
+ Expected: There is no change in the UI. An error message is shown as the parameter is empty.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">find af/10 at/5</code><br>
+ Expected: There is no change in the UI. An error message is shown as the range provided is invalid.</p>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="budgeting-1">Budgeting</h3>
+
+<ol>
+  <li>
+    <p>Setting expense limit</p>
+
+    <ol>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">set-expense-limit a/500</code><br>
+ Expected: UI switches to Overview tab. Monthly expense limit is changed to <code class="highlighter-rouge">$500.00</code>. Remaining monthly budget is recalculated.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">set-expense-limit 500</code><br>
+ Expected: Monthly expense limit remains unchanged. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">set-expense-limit a/</code><br>
+ Expected: Monthly expense limit remains unchanged. An error message is shown as the parameter cannot be empty.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Setting savings goal</p>
+
+    <ol>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">set-savings-goal a/500</code><br>
+ Expected: UI switches to Overview tab. Monthly savings goal is changed to <code class="highlighter-rouge">$500.00</code>.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">set-savings-goal 500</code><br>
+ Expected: Monthly savings goal remains unchanged. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">set-savings-goal a/</code><br>
+ Expected: Monthly savings goal remains unchanged. An error message is shown as the parameter cannot be empty.</p>
+      </li>
+    </ol>
+  </li>
+</ol>
+
+<h3 id="bookmark-transactions-1">Bookmark transactions</h3>
+
+<ol>
+  <li>
+    <p>Adding a bookmark expense</p>
+
+    <ol>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-expense t/Phone Bill a/24 c/Utilities</code><br>
+ Expected: A bookmark expense titled <code class="highlighter-rouge">Phone Bill</code> is added with the given details. UI switches to the Expenses tab.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-expense t/Phone Bill</code><br>
+ Expected: No bookmark expense is added. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-expense t/Phone Bill a/24.0 c/Utilities</code><br>
+ Expected: No bookmark expense is added. An error message is shown as the parameter format is wrong.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-expense t/ a/24 c/Utilities</code><br>
+ Expected: No bookmark expense is added. An error message is shown as the parameter is empty.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-expense t/Phone Bill a/24 d/10/10/2020 c/Utilities</code><br>
+ Expected: No bookmark expense is added. An error message is shown as bookmark expenses should not contain dates.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-expense t/Phone Bill a/24 c/Utilities</code> (again) <br>
+ Expected: No bookmark expense is added. An error message is shown as duplicate bookmark expenses cannot be added.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Adding a bookmark income</p>
+
+    <ol>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-income t/Summer Internship a/1000 c/Work</code><br>
+ Expected: A bookmark income titled <code class="highlighter-rouge">Summer Internship</code> is added with the given details. UI switches to the Income tab.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-income a/1000 c/Work</code><br>
+ Expected: No bookmark income is added. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-income t/Summer Internship a/1000.000 c/Work</code><br>
+ Expected: No bookmark income is added. An error message is shown as the parameter format is wrong.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-income t/Summer Internship a/ c/Work</code><br>
+ Expected: No bookmark income is added. An error message is shown as the parameter is empty.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-income t/Summer Internship a/1000 d/10/10/2020 c/Work</code><br>
+ Expected: No bookmark income is added. An error message is shown as bookmark incomes should not contain dates.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">add-bookmark-income t/Summer Internship a/1000 c/Work</code> (again) <br>
+ Expected: No bookmark income is added. An error message is shown as duplicate bookmark incomes cannot be added.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Editing a bookmark transaction</p>
+
+    <ol>
+      <li>
+        <p>Prerequisite: UI is on Expenses or Incomes tab. List displayed contains less than 5 bookmark transactions.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit-bookmark 1 t/Taxi a/10 c/Transport</code><br>
+ Expected: First bookmark transaction in the list is edited with all details changed.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit-bookmark 1 c/</code><br>
+ Expected: First bookmark transaction in the list is edited with all categories cleared.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit-bookmark t/Taxi</code><br>
+ Expected: No bookmark transaction is edited. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit-bookmark 5 a/10</code><br>
+ Expected: No bookmark transaction is edited. An error message is shown as the index provided is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit-bookmark 1 a/12.345</code><br>
+ Expected: No bookmark transaction is edited. An error message is shown as the parameter format is wrong.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit-bookmark 1 d/</code><br>
+ Expected: No bookmark transaction is edited. An error message is shown as the parameter is empty.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">edit 1</code><br>
+ Expected: No bookmark transaction is edited. An error message is shown as at least one parameter must be supplied.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Deleting a bookmark transaction</p>
+
+    <ol>
+      <li>
+        <p>Prerequisite: UI is on Expenses or Incomes tab. List displayed contains less than 5 bookmark transactions.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">delete-bookmark 1</code><br>
+ Expected: First bookmark transaction in the list is deleted.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">delete-bookmark first</code><br>
+ Expected: No bookmark transaction is deleted. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">delete-bookmark 5</code><br>
+ Expected: No bookmark transaction is deleted. An error message is shown as the index provided is invalid.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Converting a bookmark transaction</p>
+
+    <ol>
+      <li>
+        <p>Prerequisite: UI is on Expenses or Incomes tab. List displayed contains less than 5 bookmark transactions.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">convert-bookmark 1 d/10/10/2020</code><br>
+ Expected: First bookmark transaction in the list is converted to a transaction with the given date.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">convert-bookmark 1 c/</code><br>
+ Expected: First bookmark transaction in the list is converted to a transaction with the current date.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">convert-bookmark d/10/10/2020</code><br>
+ Expected: No bookmark transaction is converted. An error message is shown as the command format is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">convert-bookmark 5 d/10/10/2020</code><br>
+ Expected: No bookmark transaction is converted. An error message is shown as the index provided is invalid.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">convert-bookmark 1 d/10/31/2020</code><br>
+ Expected: No bookmark transaction is converted. An error message is shown as the parameter format is wrong.</p>
+      </li>
+      <li>
+        <p>Test case: <code class="highlighter-rouge">convert-bookmark 1 d/</code><br>
+ Expected: No bookmark transaction is converted. An error message is shown as the parameter is empty.</p>
+      </li>
+    </ol>
   </li>
 </ol>
 
@@ -670,16 +1211,49 @@ Expected: Similar to previous.</p>
 
 <ol>
   <li>
-    <p>Dealing with missing/corrupted data files</p>
+    <p>Dealing with missing data files</p>
 
     <ol>
-      <li><em>{explain how to simulate a missing/corrupted file, and the expected behavior}</em></li>
+      <li>
+        <p>Delete the file <code class="highlighter-rouge">fine$$e.json</code> in the <code class="highlighter-rouge">data</code> folder.</p>
+      </li>
+      <li>
+        <p>Launch the app by double-clicking the jar file.
+ Expected: Shows the GUI with a set of sample data.</p>
+      </li>
     </ol>
   </li>
   <li>
-    <p><em>{ more test cases …​ }</em></p>
+    <p>Dealing with corrupted data files</p>
+
+    <ol>
+      <li>
+        <p>Replace the contents of <code class="highlighter-rouge">fine$$e.json</code> in the <code class="highlighter-rouge">data</code> folder with the text <code class="highlighter-rouge">File Corrupted</code>.</p>
+      </li>
+      <li>
+        <p>Launch the app by double-clicking the jar file.
+ Expected: Shows the GUI with no data.</p>
+      </li>
+    </ol>
+  </li>
+  <li>
+    <p>Deleting data file while app is running</p>
+
+    <ol>
+      <li>
+        <p>Launch the app by double-clicking the jar file.</p>
+      </li>
+      <li>
+        <p>While the app is running, delete the file <code class="highlighter-rouge">fine$$e.json</code> in the <code class="highlighter-rouge">data</code> folder.</p>
+      </li>
+      <li>
+        <p>Close the app.
+ Expected: <code class="highlighter-rouge">fine$$e.json</code> is regenerated with the data from the app.</p>
+      </li>
+    </ol>
   </li>
 </ol>
+
 
   </div>
 

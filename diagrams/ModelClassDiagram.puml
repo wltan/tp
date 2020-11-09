@@ -7,12 +7,11 @@ skinparam classBackgroundColor MODEL_COLOR
 Package Model <<Rectangle>>{
 Interface ReadOnlyFinanceTracker <<Interface>>
 Interface Model <<Interface>>
+Interface ReadOnlyUserPrefs <<Interface>>
 Class FinanceTracker
-Class ReadOnlyFinanceTracker
 Class Model
 Class ModelManager
 Class UserPrefs
-Class ReadOnlyUserPrefs
 
 Package Transaction {
 Class "{abstract}\nTransaction" as Transaction
@@ -30,12 +29,11 @@ Class Category
 
 Package Budget {
 Class MonthlyBudget
-Class MonthlyExpenseLimit
 }
 
-Package Savings {
-Class MonthlySavings
-Class MonthlySavingsGoal
+Package Bookmark {
+Class BookmarkExpenseList
+Class BookmarkIncomeList
 }
 }
 
@@ -58,13 +56,17 @@ Transaction *--> "1" Amount
 Transaction *--> "1" Date
 Transaction *--> "*" Category
 
-FinanceTracker *--> "1" MonthlySavings
-MonthlySavings *--> "1" MonthlySavingsGoal
+FinanceTracker *--> "1" BookmarkExpenseList
+FinanceTracker *--> "1" BookmarkIncomeList
+
 FinanceTracker *--> "1" MonthlyBudget
-MonthlyBudget *--> "1" MonthlyExpenseLimit
 
-Title -[hidden]right-> Amount
-Amount -[hidden]right-> Date
+TransactionList -[hidden]right-> BookmarkExpenseList
+BookmarkIncomeList -[hidden]down-> BookmarkExpenseList
+BookmarkExpenseList -[hidden]down-> MonthlyBudget
+ModelManager -[hidden]right-> FinanceTracker
 
-ModelManager -->"*" Transaction : filtered list
+ModelManager --> "*" Transaction : filtered list
+ModelManager o--> "1" MonthlyBudget
+
 @enduml

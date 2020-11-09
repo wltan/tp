@@ -1,0 +1,36 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+Package Model <<Rectangle>>{
+Class FinanceTracker
+Class ModelManager
+
+Package Transaction {
+Class Amount
+Class CalculatedAmount
+Class TransactionList
+}
+
+Package Budget {
+Class MonthlyBudget
+}
+}
+
+ModelManager o--> FinanceTracker
+
+FinanceTracker *--> TransactionList
+
+FinanceTracker *--> MonthlyBudget
+CalculatedAmount ..> Amount
+MonthlyBudget --> CalculatedAmount
+MonthlyBudget --> Amount
+MonthlyBudget ..> TransactionList
+
+ModelManager o--> MonthlyBudget
+
+CalculatedAmount -[hidden]right-> Amount
+
+@enduml

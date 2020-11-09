@@ -14,10 +14,10 @@ box Model MODEL_COLOR_T1
 participant ":ModelManager" as ModelManager MODEL_COLOR
 end box
 
-[-> LogicManager : execute("find tea", uiState)
+[-> LogicManager : execute("find t/tea a/5", uiState)
 activate LogicManager
 
-LogicManager -> FinanceTrackerParser : parseCommand("find tea", uiState)
+LogicManager -> FinanceTrackerParser : parseCommand("find t/tea a/5", uiState)
 activate FinanceTrackerParser
 
 create FindCommandParser
@@ -27,7 +27,7 @@ activate FindCommandParser
 FindCommandParser --> FinanceTrackerParser
 deactivate FindCommandParser
 
-FinanceTrackerParser -> FindCommandParser : parse("tea")
+FinanceTrackerParser -> FindCommandParser : parse(" t/tea a/5")
 activate FindCommandParser
 
 create FindCommand
@@ -57,7 +57,7 @@ deactivate FinanceTrackerParser
 LogicManager -> FindTransactionCommand : execute()
 activate FindTransactionCommand
 
-FindTransactionCommand -> ModelManager : updateFilteredTransactionList(f.getPredicate())
+FindTransactionCommand -> ModelManager : updateFilteredTransactionList(f.getPredicates())
 activate ModelManager
 
 ModelManager --> FindTransactionCommand

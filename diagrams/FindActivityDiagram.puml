@@ -1,0 +1,14 @@
+@startuml
+start
+:User executes find command;
+
+if () then ([user is on Overview tab])
+    :Filters all transactions;
+elseif () then ([user is on Expenses tab])
+    :Filters all expenses;
+else ([user is on Incomes tab])
+    :Filters all incomes;
+endif
+    :Displays filtered list on current tab;
+stop
+@enduml

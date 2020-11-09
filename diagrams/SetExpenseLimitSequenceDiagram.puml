@@ -1,0 +1,69 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":FinanceTrackerParser" as FinanceTrackerParser LOGIC_COLOR
+participant ":SetExpenseLimitCommandParser" as SetExpenseLimitCommandParser LOGIC_COLOR
+participant "s:SetExpenseLimitCommand" as SetExpenseLimitCommand LOGIC_COLOR
+participant ":CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant ":ModelManager" as ModelManager MODEL_COLOR
+end box
+
+[-> LogicManager : execute("setel a/500")
+activate LogicManager
+
+LogicManager -> FinanceTrackerParser : parseCommand("setel a/500")
+activate FinanceTrackerParser
+
+create SetExpenseLimitCommandParser
+FinanceTrackerParser -> SetExpenseLimitCommandParser
+activate SetExpenseLimitCommandParser
+
+SetExpenseLimitCommandParser --> FinanceTrackerParser
+deactivate SetExpenseLimitCommandParser
+
+FinanceTrackerParser -> SetExpenseLimitCommandParser : parse("a/500")
+activate SetExpenseLimitCommandParser
+
+create SetExpenseLimitCommand
+SetExpenseLimitCommandParser -> SetExpenseLimitCommand : SetExpenseLimitCommand(amount)
+activate SetExpenseLimitCommand
+
+SetExpenseLimitCommand --> SetExpenseLimitCommandParser : s
+deactivate SetExpenseLimitCommand
+
+SetExpenseLimitCommandParser --> FinanceTrackerParser : s
+deactivate SetExpenseLimitCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+SetExpenseLimitCommandParser -[hidden]-> FinanceTrackerParser
+destroy SetExpenseLimitCommandParser
+
+FinanceTrackerParser --> LogicManager : s
+deactivate FinanceTrackerParser
+
+LogicManager -> SetExpenseLimitCommand : execute()
+activate SetExpenseLimitCommand
+
+SetExpenseLimitCommand -> ModelManager : setExpenseLimit(amount)
+activate ModelManager
+
+ModelManager --> SetExpenseLimitCommand
+deactivate ModelManager
+
+create CommandResult
+SetExpenseLimitCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> SetExpenseLimitCommand
+deactivate CommandResult
+
+SetExpenseLimitCommand --> LogicManager : result
+deactivate SetExpenseLimitCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
