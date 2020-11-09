@@ -159,6 +159,7 @@ public class MonthlyBudget {
         // then reducing the transaction list to a calculated amount total
         Function<Map<Integer, List<Transaction>>, List<CalculatedAmount>> amountSum = transactionsByMonth ->
                 IntStream.range(0, numOfMonths)
+                        .map(i -> numOfMonths - 1 - i)
                         .mapToObj(month -> transactionsByMonth.getOrDefault(month, Collections.emptyList()))
                         .map(transactionsInMonth -> transactionsInMonth.stream()
                                 .map(Transaction::getAmount)
