@@ -30,7 +30,7 @@ Fine$$e is a desktop finance tracker that allows tertiary students to better man
 * **Project management**:
   * Set up the team [GitHub organization](https://github.com/AY2021S1-CS2103T-W16-3) and forked the tP repository.
   * Checked for code quality infractions in PRs.
-  * Managed release `v1.3.1` (1 release) on GitHub.
+  * Managed release `v1.3.1` and `v1.4` (2 releases) on GitHub.
 
 * **Enhancements to existing features**:
   * Fixed obscure bugs. (Pull requests
@@ -39,6 +39,7 @@ Fine$$e is a desktop finance tracker that allows tertiary students to better man
   [#225](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/225),
   [#260](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/260))
   * Restricted users from using certain commands for Bookmark Transactions. (Pull request [#196](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/196))
+  * Maintained code quality. (Pull requests [#284](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/284), [#304](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/304))
 
 * **Documentation**:
   * User Guide:
@@ -47,6 +48,7 @@ Fine$$e is a desktop finance tracker that allows tertiary students to better man
     * Fixed some user guide bugs between v1.3 and v1.3.1. (Pull request [#206](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/206))
   * Developer Guide:
     * Elaborated on the `Model` component documentation, and added Pitest to the DevOps guide. (Pull request [#140](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/140))
+    * Documented the implementation for add, edit, delete transaction features. (Pull request [#314](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/314))
 
 * **Community**:
   * PRs reviewed (with non-trivial review comments):
@@ -63,4 +65,5 @@ Fine$$e is a desktop finance tracker that allows tertiary students to better man
   * Updated Gradle from `5.2.1` to `6.6.1`. (Pull request [#3](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/3))
   * Set up [PIT mutation testing](http://pitest.org/) as a test coverage tool, as an alternative to JaCoCo and CodeCov.
   (Pull request [#6](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/6))
+  * Automated PIT mutation testing as a CI job that generates artifacts to speed up the PR review process. (Pull request [#296](https://github.com/AY2021S1-CS2103T-W16-3/tp/pull/296))
 
