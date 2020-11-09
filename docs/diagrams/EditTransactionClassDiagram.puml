@@ -46,6 +46,8 @@ EditIncomeCommand --|> EditCommand
 EditCommand *-> "1" EditTransactionDescriptor
 EditCommand *----> "1" Transaction: modifies >
 
+note bottom on link: Reference is stored in\nthe form of an Index
+
 EditTransactionDescriptor --> "0..1" Title
 EditTransactionDescriptor --> "0..1" Amount
 EditTransactionDescriptor --> "0..1" Date

@@ -242,7 +242,7 @@ Below is the class diagram of the components involved in the edit transactions f
 
 The edit transactions feature is implemented via `EditCommandParser`, which returns an `EditCommand` that is then used to create `EditExpenseCommand` or `EditIncomeCommand`.
 
-1. `EditCommandParser` take in the argument string and parses it into an `ArgumentMultimap` that contains all the different data fields mapped (as strings) to their respective prefix.
+1. `EditCommandParser` takes in the argument string and parses it into an `ArgumentMultimap` that contains all the different data fields mapped (as strings) to their respective prefix.
 1. The index is parsed into an `Index`, which is used to locate the transaction to be modified during command execution.
 1. The remaining strings are then parsed to create the data fields within the Model component (dependency arrows omitted in the above diagram for simplicity).
 1. The data fields are used to create an `EditTransactionDescriptor` describing all of the new data fields.
@@ -261,23 +261,42 @@ It is split into two diagrams, one for parsing and one for execution.
 
 ![Sequence diagram for executing the `edit 1 a/5` command on the Expenses tab](images/EditTransactionSequenceDiagram2.png)
 
-*Note: For simplicity, several low-level details have been omitted.*
-
 When `EditExpenseCommand` is used, the sequence diagram is similar, but replace all occurrences of `Expense` with `Income`.
 
 The following activity diagram summarizes what happens within `FinanceTrackerParser` when the user executes a new edit command:
 
-![Activity diagram for executing the add command](images/EditTransactionActivityDiagram.png)
+![Activity diagram for executing the edit command](images/EditTransactionActivityDiagram.png)
 
 #### Delete transactions feature
 ##### Overview
+The delete transactions feature allows users to remove transactions from the `FinanceTracker`.
+
+Below is the class diagram of the components involved in the delete transactions feature.
+
+![Class diagram for delete transactions feature](images/DeleteTransactionClassDiagram.png)
 
 ##### Implementation of feature
 
+The edit transactions feature is implemented via `DeleteCommandParser`, which returns an `DeleteCommand` that is then used to create `DeleteExpenseCommand` or `DeleteIncomeCommand`.
+
+1. `DeleteCommandParser` take in the argument string and parses the index into an `Index`, which is used to locate the transaction to be deleted during command execution.
+1. The `Index` is used to return a `DeleteCommand`.
+
+`FinanceTrackerParser` decides whether `DeleteExpenseCommand` or `DeleteIncomeCommand` is created from the resulting `DeleteCommand`.
+* `DeleteExpenseCommand` is used if the user is currently on the Expenses tab.
+* `DeleteIncomeCommand` is used if the user is currently on the Incomes tab.
+
 ##### Deleting transactions
 
-##### Design considerations
+Below is the sequence diagram for interactions within the `Logic` and `Model` components when the user inputs the `delete 1` command while on the Expenses tab.
 
+![Sequence diagram for parsing the `delete 1` command on the Expenses tab](images/DeleteSequenceDiagram.png)
+
+When `DeleteExpenseCommand` is used, the sequence diagram is similar, but replace all occurrences of `Expense` with `Income`.
+
+The following activity diagram summarizes what happens within `FinanceTrackerParser` when the user executes a new delete command:
+
+![Activity diagram for executing the delete command](images/DeleteTransactionActivityDiagram.png)
 
 #### Find transactions feature
 ##### Overview
