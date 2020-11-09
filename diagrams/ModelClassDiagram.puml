@@ -12,6 +12,7 @@ Class FinanceTracker
 Class Model
 Class ModelManager
 Class UserPrefs
+class CommandHistory
 
 Package Transaction {
 Class "{abstract}\nTransaction" as Transaction
@@ -44,6 +45,7 @@ FinanceTracker .up.|> ReadOnlyFinanceTracker
 
 ModelManager .up.|> Model
 ModelManager o--> "1" FinanceTracker
+ModelManager o-left-> "1" CommandHistory
 ModelManager o-left-> "1" UserPrefs
 UserPrefs .up.|> ReadOnlyUserPrefs
 

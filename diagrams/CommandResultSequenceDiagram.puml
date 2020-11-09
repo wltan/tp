@@ -1,7 +1,7 @@
 @startuml
 !include style.puml
 
-actor User
+actor User USER_COLOR
 
 box Ui UI_COLOR_T1
 participant ":MainWindow" as MainWindow UI_COLOR

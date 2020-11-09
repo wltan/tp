@@ -5,6 +5,7 @@ skinparam arrowColor LOGIC_COLOR_T4
 skinparam classBackgroundColor LOGIC_COLOR
 
 package Logic {
+class Timekeeper
 
 package Parser {
 Interface Parser <<Interface>>
@@ -36,6 +37,7 @@ HiddenOutside ..> Logic
 
 LogicManager .up.|> Logic
 LogicManager -->"1" FinanceTrackerParser
+LogicManager -left-> "1" Timekeeper
 FinanceTrackerParser .left.> XYZCommandParser: creates >
 
 XYZCommandParser ..> XYZCommand : creates >

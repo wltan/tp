@@ -59,24 +59,57 @@
   <li>
 <a href="#implementation" id="markdown-toc-implementation"><strong>Implementation</strong></a>    <ul>
       <li>
-<a href="#transactions" id="markdown-toc-transactions">Transactions</a>        <ul>
+<a href="#tabs" id="markdown-toc-tabs">Tabs</a>        <ul>
           <li>
-<a href="#find-transactions-feature" id="markdown-toc-find-transactions-feature">Find transactions feature</a>            <ul>
+<a href="#programmatically-switch-selected-tab" id="markdown-toc-programmatically-switch-selected-tab">Programmatically switch selected tab</a>            <ul>
               <li><a href="#overview" id="markdown-toc-overview">Overview</a></li>
               <li><a href="#implementation-of-feature" id="markdown-toc-implementation-of-feature">Implementation of feature</a></li>
-              <li><a href="#finding-transactions" id="markdown-toc-finding-transactions">Finding transactions</a></li>
+              <li><a href="#switching-tabs" id="markdown-toc-switching-tabs">Switching tabs</a></li>
               <li><a href="#design-considerations" id="markdown-toc-design-considerations">Design considerations</a></li>
             </ul>
           </li>
-          <li><a href="#programmatically-switch-selected-tab" id="markdown-toc-programmatically-switch-selected-tab">Programmatically switch selected tab</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#transactions" id="markdown-toc-transactions">Transactions</a>        <ul>
+          <li>
+<a href="#add-transactions-feature" id="markdown-toc-add-transactions-feature">Add transactions feature</a>            <ul>
+              <li><a href="#overview-1" id="markdown-toc-overview-1">Overview</a></li>
+              <li><a href="#implementation-of-feature-1" id="markdown-toc-implementation-of-feature-1">Implementation of feature</a></li>
+              <li><a href="#adding-transactions" id="markdown-toc-adding-transactions">Adding transactions</a></li>
+              <li><a href="#design-considerations-1" id="markdown-toc-design-considerations-1">Design considerations</a></li>
+            </ul>
+          </li>
+          <li>
+<a href="#edit-transactions-feature" id="markdown-toc-edit-transactions-feature">Edit transactions feature</a>            <ul>
+              <li><a href="#overview-2" id="markdown-toc-overview-2">Overview</a></li>
+              <li><a href="#implementation-of-feature-2" id="markdown-toc-implementation-of-feature-2">Implementation of feature</a></li>
+              <li><a href="#editing-transactions" id="markdown-toc-editing-transactions">Editing transactions</a></li>
+            </ul>
+          </li>
+          <li>
+<a href="#delete-transactions-feature" id="markdown-toc-delete-transactions-feature">Delete transactions feature</a>            <ul>
+              <li><a href="#overview-3" id="markdown-toc-overview-3">Overview</a></li>
+              <li><a href="#implementation-of-feature-3" id="markdown-toc-implementation-of-feature-3">Implementation of feature</a></li>
+              <li><a href="#deleting-transactions" id="markdown-toc-deleting-transactions">Deleting transactions</a></li>
+            </ul>
+          </li>
+          <li>
+<a href="#find-transactions-feature" id="markdown-toc-find-transactions-feature">Find transactions feature</a>            <ul>
+              <li><a href="#overview-4" id="markdown-toc-overview-4">Overview</a></li>
+              <li><a href="#implementation-of-feature-4" id="markdown-toc-implementation-of-feature-4">Implementation of feature</a></li>
+              <li><a href="#finding-transactions" id="markdown-toc-finding-transactions">Finding transactions</a></li>
+              <li><a href="#design-considerations-2" id="markdown-toc-design-considerations-2">Design considerations</a></li>
+            </ul>
+          </li>
         </ul>
       </li>
       <li>
 <a href="#budgeting" id="markdown-toc-budgeting">Budgeting</a>        <ul>
-          <li><a href="#overview-1" id="markdown-toc-overview-1">Overview</a></li>
-          <li><a href="#implementation-of-feature-1" id="markdown-toc-implementation-of-feature-1">Implementation of feature</a></li>
+          <li><a href="#overview-5" id="markdown-toc-overview-5">Overview</a></li>
+          <li><a href="#implementation-of-feature-5" id="markdown-toc-implementation-of-feature-5">Implementation of feature</a></li>
           <li><a href="#set-monthly-spending-limit" id="markdown-toc-set-monthly-spending-limit">Set monthly spending limit</a></li>
-          <li><a href="#design-considerations-1" id="markdown-toc-design-considerations-1">Design considerations</a></li>
+          <li><a href="#design-considerations-3" id="markdown-toc-design-considerations-3">Design considerations</a></li>
         </ul>
       </li>
       <li>
@@ -85,7 +118,29 @@
           <li><a href="#convert-frequent-expense-to-expense-feature" id="markdown-toc-convert-frequent-expense-to-expense-feature">Convert Frequent Expense To Expense Feature</a></li>
         </ul>
       </li>
-      <li><a href="#analytics" id="markdown-toc-analytics">Analytics</a></li>
+      <li>
+<a href="#analytics" id="markdown-toc-analytics">Analytics</a>        <ul>
+          <li><a href="#overview-6" id="markdown-toc-overview-6">Overview</a></li>
+          <li><a href="#implementation-of-feature-6" id="markdown-toc-implementation-of-feature-6">Implementation of feature</a></li>
+          <li><a href="#design-considerations-4" id="markdown-toc-design-considerations-4">Design considerations</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#command-history" id="markdown-toc-command-history">Command history</a>        <ul>
+          <li><a href="#overview-7" id="markdown-toc-overview-7">Overview</a></li>
+          <li><a href="#implementation-of-feature-7" id="markdown-toc-implementation-of-feature-7">Implementation of feature</a></li>
+          <li><a href="#navigating-the-command-history" id="markdown-toc-navigating-the-command-history">Navigating the command history</a></li>
+          <li><a href="#design-considerations-5" id="markdown-toc-design-considerations-5">Design considerations</a></li>
+        </ul>
+      </li>
+      <li>
+<a href="#data-integrity-safeguards" id="markdown-toc-data-integrity-safeguards">Data integrity safeguards</a>        <ul>
+          <li><a href="#overview-8" id="markdown-toc-overview-8">Overview</a></li>
+          <li><a href="#implementation-of-feature-8" id="markdown-toc-implementation-of-feature-8">Implementation of feature</a></li>
+          <li><a href="#validating-the-time-whenever-a-command-is-executed" id="markdown-toc-validating-the-time-whenever-a-command-is-executed">Validating the time whenever a command is executed</a></li>
+          <li><a href="#design-considerations-6" id="markdown-toc-design-considerations-6">Design considerations</a></li>
+        </ul>
+      </li>
     </ul>
   </li>
   <li><a href="#appendix-a-product-scope" id="markdown-toc-appendix-a-product-scope"><strong>Appendix A: Product scope</strong></a></li>
@@ -162,9 +217,37 @@
 <p><strong>API</strong> :
 <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/ui/Ui.java"><code class="highlighter-rouge">Ui.java</code></a></p>
 
-<p>The UI consists of a <code class="highlighter-rouge">MainWindow</code> that is made up of parts e.g.<code class="highlighter-rouge">CommandBox</code>, <code class="highlighter-rouge">ResultDisplay</code>, <code class="highlighter-rouge">TransactionListPanel</code>, <code class="highlighter-rouge">StatusBarFooter</code> etc. All of these, including <code class="highlighter-rouge">MainWindow</code>, inherit from the abstract <code class="highlighter-rouge">UiPart</code> class.</p>
+<p>The UI consists of a <code class="highlighter-rouge">MainWindow</code> that is made up of parts e.g.<code class="highlighter-rouge">CommandBox</code>, <code class="highlighter-rouge">ResultDisplay</code>, <code class="highlighter-rouge">TransactionListPanel</code>, <code class="highlighter-rouge">OverviewTabPane</code> etc.
+All of these, including <code class="highlighter-rouge">MainWindow</code>, inherit from the abstract <code class="highlighter-rouge">UiPart</code> class.</p>
 
-<p>The <code class="highlighter-rouge">UI</code> component uses the JavaFx UI framework. The layout of these UI parts is defined in matching <code class="highlighter-rouge">.fxml</code> files that are in the <code class="highlighter-rouge">src/main/resources/view</code> folder. For example, the layout of <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/ui/MainWindow.java"><code class="highlighter-rouge">MainWindow</code></a> is specified in <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/resources/view/MainWindow.fxml"><code class="highlighter-rouge">MainWindow.fxml</code></a>.</p>
+<p>There are 5 tab panes which are contained within <code class="highlighter-rouge">MainWindow</code>:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">OverviewTabPane</code> - Displays an overview of the most recent transactions (both incomes and expenses) along with the savings goals.
+    <ul>
+      <li>Contains <code class="highlighter-rouge">TransactionListPanel</code> and <code class="highlighter-rouge">SavingsGoalPanel</code>.</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">IncomeTabPane</code> - Displays a list of incomes along with bookmark incomes.
+    <ul>
+      <li>Contains <code class="highlighter-rouge">IncomePanel</code> and <code class="highlighter-rouge">BookmarkIncomePanel</code>.</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">ExpenseTabPane</code> - Displays a list of expenses along with bookmark expenses.
+    <ul>
+      <li>Contains <code class="highlighter-rouge">ExpensePanel</code> and <code class="highlighter-rouge">BookmarkExpensePanel</code>.</li>
+    </ul>
+  </li>
+  <li>
+<code class="highlighter-rouge">AnalyticsTabPane</code> - Displays statistics.</li>
+  <li>
+<code class="highlighter-rouge">UserGuideTabPane</code> - Displays the user guide.</li>
+</ul>
+
+<p>The <code class="highlighter-rouge">UI</code> component uses the JavaFx UI framework. The layout of these UI parts is defined in matching <code class="highlighter-rouge">.fxml</code> files that are in the <code class="highlighter-rouge">src/main/resources/view</code> folder.
+For example, the layout of <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/java/ay2021s1_cs2103_w16_3/finesse/ui/MainWindow.java"><code class="highlighter-rouge">MainWindow</code></a> is specified in <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/blob/master/src/main/resources/view/MainWindow.fxml"><code class="highlighter-rouge">MainWindow.fxml</code></a>.</p>
 
 <p>The <code class="highlighter-rouge">UI</code> component:</p>
 
@@ -207,6 +290,7 @@
 
 <ul>
   <li>stores a <code class="highlighter-rouge">UserPref</code> object that represents the user’s preferences.</li>
+  <li>stores a <code class="highlighter-rouge">CommandHistory</code> object that keeps track of the 50 most recent commands entered.</li>
   <li>stores the finance tracker data in the following components:
     <ul>
       <li>a <code class="highlighter-rouge">TransactionList</code> containing <code class="highlighter-rouge">Transaction</code>s.</li>
@@ -334,10 +418,233 @@ the motivation behind keeping them separately is to ensure that they are separat
 
 <p>This section describes some noteworthy details on how certain features are implemented.</p>
 
+<h3 id="tabs">Tabs</h3>
+
+<h4 id="programmatically-switch-selected-tab">Programmatically switch selected tab</h4>
+
+<h5 id="overview">Overview</h5>
+
+<p>Fine$$e supports the ability to switch tabs programmatically.
+The following is a list of commands that utilise this ability:</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">help</code> - Opens the <a href="/tp/UserGuide.html">user guide</a>.</li>
+  <li>
+<code class="highlighter-rouge">tab</code> - Switches to the tab corresponding to the index entered by the user.</li>
+  <li>
+<code class="highlighter-rouge">add-expense</code> - Adds an expense to the finance tracker and switches to the Expenses tab.</li>
+  <li>
+<code class="highlighter-rouge">ls-expense</code> - Shows a list of all expenses in the finance tracker by switching to the Expenses tab.</li>
+  <li>
+<code class="highlighter-rouge">add-income</code> - Adds an income to the finance tracker and switches to the Incomes tab.</li>
+  <li>
+<code class="highlighter-rouge">ls-income</code> - Shows a list of all incomes in the finance tracker by switching to the Incomes tab.</li>
+  <li>
+<code class="highlighter-rouge">add-bookmark-expense</code> - Adds a bookmark expense to the finance tracker and switches to the Expenses tab.</li>
+  <li>
+<code class="highlighter-rouge">add-bookmark-income</code> - Adds a bookmark income to the finance tracker and switches to the Incomes tab.</li>
+</ul>
+
+<h5 id="implementation-of-feature">Implementation of feature</h5>
+
+<p>The ability to programmatically update the selected tab is implemented via <code class="highlighter-rouge">CommandResult</code>.
+Upon the successful execution of a command, a <code class="highlighter-rouge">CommandResult</code> is generated and passed back to <code class="highlighter-rouge">MainWindow</code>.
+This <code class="highlighter-rouge">CommandResult</code> contains the necessary information which the <code class="highlighter-rouge">MainWindow</code> needs to update the user interface, such as:</p>
+<ul>
+  <li>The feedback to be displayed to the user;</li>
+  <li>Whether to exit the application; and</li>
+  <li>Whether to programmatically switch to a different tab in the user interface.</li>
+</ul>
+
+<p><code class="highlighter-rouge">MainWindow</code> will then select the tab specified in <code class="highlighter-rouge">CommandResult</code> as the active tab if applicable.</p>
+
+<h5 id="switching-tabs">Switching tabs</h5>
+
+<p>The following sequence diagram shows how the <code class="highlighter-rouge">CommandResult</code> is created and returned upon the execution of any command.
+If the command in question is one of those listed above, the UI will switch to the specified tab.</p>
+
+<p><img src="/tp/images/CommandResultSequenceDiagram.png" alt="Interactions inside the Logic Component when executing commands"></p>
+
+<h5 id="design-considerations">Design considerations</h5>
+
+<p>The alternative implementations considered, as well as the rationale behind our current implementation are as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alternative considered</th>
+      <th>Current implementation and rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Add a method in <code class="highlighter-rouge">MainWindow</code> which can be called to programmatically switch tabs in the user interface upon execution of the command.</td>
+      <td>Encapsulate the tab switching information within <code class="highlighter-rouge">CommandResult</code> to prevent tight coupling of <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">UI</code> components.</td>
+    </tr>
+  </tbody>
+</table>
+
 <h3 id="transactions">Transactions</h3>
 
+<h4 id="add-transactions-feature">Add transactions feature</h4>
+
+<h5 id="overview-1">Overview</h5>
+<p>The add transactions feature allows users to add transactions into the <code class="highlighter-rouge">FinanceTracker</code>.
+Each new transaction must have the data fields <code class="highlighter-rouge">Title</code>, <code class="highlighter-rouge">Amount</code>, <code class="highlighter-rouge">Date</code>, and <code class="highlighter-rouge">Category</code>.</p>
+
+<p>Below is the class diagram of the components involved in the add transactions feature.</p>
+
+<p><img src="/tp/images/AddTransactionClassDiagram.png" alt="Class diagram for add transactions feature"></p>
+
+<h5 id="implementation-of-feature-1">Implementation of feature</h5>
+
+<p>The add transactions feature is implemented via <code class="highlighter-rouge">AddExpenseCommand</code> and <code class="highlighter-rouge">AddIncomeCommand</code>, which are created from <code class="highlighter-rouge">AddExpenseCommandParser</code> and <code class="highlighter-rouge">AddIncomeCommandParser</code> respectively.</p>
+
+<ol>
+  <li>
+<code class="highlighter-rouge">AddExpenseCommandParser</code> and <code class="highlighter-rouge">AddIncomeCommandParser</code> take in the argument string and parses it into an <code class="highlighter-rouge">ArgumentMultimap</code> that contains all the different data fields mapped (as strings) to their respective prefix.</li>
+  <li>The strings are then parsed to create the data fields within the Model component (dependency arrows omitted in the above diagram for simplicity).</li>
+  <li>The parsers use the data fields to create <code class="highlighter-rouge">Expense</code> or <code class="highlighter-rouge">Income</code> objects, which are then used to create <code class="highlighter-rouge">AddExpenseCommand</code> or <code class="highlighter-rouge">AddIncomeCommand</code> objects.</li>
+</ol>
+
+<p><code class="highlighter-rouge">FinanceTrackerParser</code> decides whether <code class="highlighter-rouge">AddExpenseCommandParser</code> or <code class="highlighter-rouge">AddIncomeCommandParser</code> is used.</p>
+<ul>
+  <li>On an <code class="highlighter-rouge">add-expense</code> or <code class="highlighter-rouge">adde</code> command, <code class="highlighter-rouge">AddExpenseCommandParser</code> is used.</li>
+  <li>On an <code class="highlighter-rouge">add-income</code> or <code class="highlighter-rouge">addi</code> command, <code class="highlighter-rouge">AddIncomeCommandParser</code> is used.</li>
+  <li>On an <code class="highlighter-rouge">add</code> command:
+    <ul>
+      <li>
+<code class="highlighter-rouge">AddExpenseCommandParser</code> is used if the user is currently on the Expenses tab.</li>
+      <li>
+<code class="highlighter-rouge">AddIncomeCommandParser</code> is used if the user is currently on the Incomes tab.</li>
+      <li>A <code class="highlighter-rouge">ParseException</code> is thrown if the user is currently on neither of the above tabs.</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="adding-transactions">Adding transactions</h5>
+
+<p>Below is the sequence diagram for interactions within the <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Model</code> components when the user inputs the <code class="highlighter-rouge">adde t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage</code> command while on the Expenses tab.
+Note that the arguments in the full command string have been abbreviated to <code class="highlighter-rouge">...</code>.</p>
+
+<p><img src="/tp/images/AddTransactionSequenceDiagram.png" alt="Sequence diagram for executing the `add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage` command on the Expenses tab"></p>
+
+<p>When <code class="highlighter-rouge">AddIncomeCommandParser</code> is used, the sequence diagram is similar, but replace all occurrences of <code class="highlighter-rouge">Expense</code> with <code class="highlighter-rouge">Income</code>.</p>
+
+<p>The following activity diagram summarizes what happens within <code class="highlighter-rouge">FinanceTrackerParser</code> when the user executes a new add command:</p>
+
+<p><img src="/tp/images/AddTransactionActivityDiagram.png" alt="Activity diagram for executing the add command"></p>
+
+<p><em>Note: The diagram contains many repetitive processes. However, it cannot be simplified due to the limitations of PlantUML.</em></p>
+
+<h5 id="design-considerations-1">Design considerations</h5>
+
+<p>The alternative implementations considered, as well as the rationale behind our current implementation are as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alternative considered</th>
+      <th>Current implementation and rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Collapse both <code class="highlighter-rouge">AddExpenseCommandParser</code> and <code class="highlighter-rouge">AddIncomeCommandParser</code> into a single <code class="highlighter-rouge">AddTransactionCommandParser</code> whose result can then be used to create <code class="highlighter-rouge">AddExpenseCommand</code> or <code class="highlighter-rouge">AddIncomeCommand</code>.</td>
+      <td>Keep two separate parsers <code class="highlighter-rouge">AddExpenseCommandParser</code> and <code class="highlighter-rouge">AddIncomeCommandParser</code>.<br>Although the <code class="highlighter-rouge">add</code> command can result in either <code class="highlighter-rouge">AddExpenseCommand</code> or <code class="highlighter-rouge">AddIncomeCommand</code>, <code class="highlighter-rouge">adde</code> will always create <code class="highlighter-rouge">AddExpenseCommand</code> while <code class="highlighter-rouge">addi</code> will always create <code class="highlighter-rouge">AddIncomeCommand</code>. It is more apt to use a specific parser in the latter cases.</td>
+    </tr>
+    <tr>
+      <td>Implement either <code class="highlighter-rouge">add</code> or <code class="highlighter-rouge">adde</code> + <code class="highlighter-rouge">addi</code> but not both. This reduces the amount of development work needed.</td>
+      <td>Both options are implemented to provide the user with a choice for whichever command they feel is most convenient. <code class="highlighter-rouge">add</code> can be used to add to the currently active tab, while <code class="highlighter-rouge">adde</code> and <code class="highlighter-rouge">addi</code> can be used on any tab.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="edit-transactions-feature">Edit transactions feature</h4>
+<h5 id="overview-2">Overview</h5>
+<p>The edit transactions feature allows users to edit existing transactions in the <code class="highlighter-rouge">FinanceTracker</code>.
+At least one of the data fields <code class="highlighter-rouge">Title</code>, <code class="highlighter-rouge">Amount</code>, <code class="highlighter-rouge">Date</code>, and <code class="highlighter-rouge">Category</code> must be modified.</p>
+
+<p>Below is the class diagram of the components involved in the edit transactions feature.</p>
+
+<p><img src="/tp/images/EditTransactionClassDiagram.png" alt="Class diagram for edit transactions feature"></p>
+
+<h5 id="implementation-of-feature-2">Implementation of feature</h5>
+
+<p>The edit transactions feature is implemented via <code class="highlighter-rouge">EditCommandParser</code>, which returns an <code class="highlighter-rouge">EditCommand</code> that is then used to create <code class="highlighter-rouge">EditExpenseCommand</code> or <code class="highlighter-rouge">EditIncomeCommand</code>.</p>
+
+<ol>
+  <li>
+<code class="highlighter-rouge">EditCommandParser</code> takes in the argument string and parses it into an <code class="highlighter-rouge">ArgumentMultimap</code> that contains all the different data fields mapped (as strings) to their respective prefix.</li>
+  <li>The index is parsed into an <code class="highlighter-rouge">Index</code>, which is used to locate the transaction to be modified during command execution.</li>
+  <li>The remaining strings are then parsed to create the data fields within the Model component (dependency arrows omitted in the above diagram for simplicity).</li>
+  <li>The data fields are used to create an <code class="highlighter-rouge">EditTransactionDescriptor</code> describing all of the new data fields.</li>
+  <li>The <code class="highlighter-rouge">Index</code> is combined with the <code class="highlighter-rouge">EditTransactionDescriptor</code> to return an <code class="highlighter-rouge">EditCommand</code>.</li>
+</ol>
+
+<p><code class="highlighter-rouge">FinanceTrackerParser</code> decides whether <code class="highlighter-rouge">EditExpenseCommand</code> or <code class="highlighter-rouge">EditIncomeCommand</code> is created from the resulting <code class="highlighter-rouge">EditCommand</code>.</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">EditExpenseCommand</code> is used if the user is currently on the Expenses tab.</li>
+  <li>
+<code class="highlighter-rouge">EditIncomeCommand</code> is used if the user is currently on the Incomes tab.</li>
+</ul>
+
+<h5 id="editing-transactions">Editing transactions</h5>
+
+<p>Below is the sequence diagram for interactions within the <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Model</code> components when the user inputs the <code class="highlighter-rouge">edit 1 a/5</code> command while on the Expenses tab.
+It is split into two diagrams, one for parsing and one for execution.</p>
+
+<p><img src="/tp/images/EditTransactionSequenceDiagram.png" alt="Sequence diagram for parsing the `edit 1 a/5` command on the Expenses tab"></p>
+
+<p><img src="/tp/images/EditTransactionSequenceDiagram2.png" alt="Sequence diagram for executing the `edit 1 a/5` command on the Expenses tab"></p>
+
+<p>When <code class="highlighter-rouge">EditExpenseCommand</code> is used, the sequence diagram is similar, but replace all occurrences of <code class="highlighter-rouge">Expense</code> with <code class="highlighter-rouge">Income</code>.</p>
+
+<p>The following activity diagram summarizes what happens within <code class="highlighter-rouge">FinanceTrackerParser</code> when the user executes a new edit command:</p>
+
+<p><img src="/tp/images/EditTransactionActivityDiagram.png" alt="Activity diagram for executing the edit command"></p>
+
+<h4 id="delete-transactions-feature">Delete transactions feature</h4>
+<h5 id="overview-3">Overview</h5>
+<p>The delete transactions feature allows users to remove transactions from the <code class="highlighter-rouge">FinanceTracker</code>.</p>
+
+<p>Below is the class diagram of the components involved in the delete transactions feature.</p>
+
+<p><img src="/tp/images/DeleteTransactionClassDiagram.png" alt="Class diagram for delete transactions feature"></p>
+
+<h5 id="implementation-of-feature-3">Implementation of feature</h5>
+
+<p>The edit transactions feature is implemented via <code class="highlighter-rouge">DeleteCommandParser</code>, which returns an <code class="highlighter-rouge">DeleteCommand</code> that is then used to create <code class="highlighter-rouge">DeleteExpenseCommand</code> or <code class="highlighter-rouge">DeleteIncomeCommand</code>.</p>
+
+<ol>
+  <li>
+<code class="highlighter-rouge">DeleteCommandParser</code> take in the argument string and parses the index into an <code class="highlighter-rouge">Index</code>, which is used to locate the transaction to be deleted during command execution.</li>
+  <li>The <code class="highlighter-rouge">Index</code> is used to return a <code class="highlighter-rouge">DeleteCommand</code>.</li>
+</ol>
+
+<p><code class="highlighter-rouge">FinanceTrackerParser</code> decides whether <code class="highlighter-rouge">DeleteExpenseCommand</code> or <code class="highlighter-rouge">DeleteIncomeCommand</code> is created from the resulting <code class="highlighter-rouge">DeleteCommand</code>.</p>
+<ul>
+  <li>
+<code class="highlighter-rouge">DeleteExpenseCommand</code> is used if the user is currently on the Expenses tab.</li>
+  <li>
+<code class="highlighter-rouge">DeleteIncomeCommand</code> is used if the user is currently on the Incomes tab.</li>
+</ul>
+
+<h5 id="deleting-transactions">Deleting transactions</h5>
+
+<p>Below is the sequence diagram for interactions within the <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">Model</code> components when the user inputs the <code class="highlighter-rouge">delete 1</code> command while on the Expenses tab.</p>
+
+<p><img src="/tp/images/DeleteSequenceDiagram.png" alt="Sequence diagram for parsing the `delete 1` command on the Expenses tab"></p>
+
+<p>When <code class="highlighter-rouge">DeleteExpenseCommand</code> is used, the sequence diagram is similar, but replace all occurrences of <code class="highlighter-rouge">Expense</code> with <code class="highlighter-rouge">Income</code>.</p>
+
+<p>The following activity diagram summarizes what happens within <code class="highlighter-rouge">FinanceTrackerParser</code> when the user executes a new delete command:</p>
+
+<p><img src="/tp/images/DeleteTransactionActivityDiagram.png" alt="Activity diagram for executing the delete command"></p>
+
 <h4 id="find-transactions-feature">Find transactions feature</h4>
-<h5 id="overview">Overview</h5>
+<h5 id="overview-4">Overview</h5>
 
 <p>The find transactions feature allows users to search for transactions in the <code class="highlighter-rouge">FinanceTracker</code> by various search parameters.
 Each search parameter corresponds to a different predicate which will be used to filter transactions in the various <code class="highlighter-rouge">FilteredList</code>s.</p>
@@ -346,7 +653,7 @@ Each search parameter corresponds to a different predicate which will be used to
 
 <p><img src="/tp/images/FindClassDiagram.png" alt="Class diagram for find transactions feature"></p>
 
-<h5 id="implementation-of-feature">Implementation of feature</h5>
+<h5 id="implementation-of-feature-4">Implementation of feature</h5>
 
 <p>The find transactions feature is implemented via <code class="highlighter-rouge">FindCommandParser</code>, as well as the following commands:</p>
 
@@ -395,7 +702,7 @@ When executed, the <code class="highlighter-rouge">FindXYZCommand</code> will co
 
 <p><img src="/tp/images/FindActivityDiagram.png" alt="Activity diagram for executing the find command"></p>
 
-<h5 id="design-considerations">Design considerations</h5>
+<h5 id="design-considerations-2">Design considerations</h5>
 
 <p>The alternative implementations considered, as well as the rationale behind our current implementation are as follows:</p>
 
@@ -418,32 +725,8 @@ When executed, the <code class="highlighter-rouge">FindXYZCommand</code> will co
   </tbody>
 </table>
 
-<h4 id="programmatically-switch-selected-tab">Programmatically switch selected tab</h4>
-
-<p>Several of the expense/income-specific commands update the list of transactions displayed in a particular tab.
-Examples of these include the <code class="highlighter-rouge">add-expense</code> and <code class="highlighter-rouge">add-income</code> commands.
-As such, on the execution of such commands, the UI has to switch to the affected tab to display the result of the command execution.</p>
-
-<p>The ability to programmatically update the selected tab is implemented via <code class="highlighter-rouge">CommandResult</code>.
-Upon the successful execution of a command, a <code class="highlighter-rouge">CommandResult</code> is generated and passed back to <code class="highlighter-rouge">MainWindow</code>.
-This <code class="highlighter-rouge">CommandResult</code> contains the necessary information which the <code class="highlighter-rouge">MainWindow</code> needs to update the user interface, such as:</p>
-<ul>
-  <li>The feedback to be displayed to the user;</li>
-  <li>Whether to exit the application; and</li>
-  <li>Whether to programmatically switch to a different tab in the user interface.</li>
-</ul>
-
-<p><img src="/tp/images/CommandResultSequenceDiagram.png" alt="Interactions inside the Logic Component when executing commands"></p>
-
-<p>Alternatives considered:</p>
-
-<ul>
-  <li>Add a method in <code class="highlighter-rouge">MainWindow</code> which can be called to programmatically switch tabs in the user interface upon execution of the command.
-This was decided against as it would result in a much tighter coupling of <code class="highlighter-rouge">Logic</code> and <code class="highlighter-rouge">UI</code> components.</li>
-</ul>
-
 <h3 id="budgeting">Budgeting</h3>
-<h5 id="overview-1">Overview</h5>
+<h5 id="overview-5">Overview</h5>
 
 <p>The budgeting feature allows users to track their remaining budget and current savings based on their set monthly expense limit and monthly savings goal.
 The user sets the monthly expense limit and monthly savings goal, and the remaining budget and current savings will automatically be calculated based on the transactions in the <code class="highlighter-rouge">FinanceTracker</code>.</p>
@@ -452,9 +735,9 @@ The user sets the monthly expense limit and monthly savings goal, and the remain
 
 <p><img src="/tp/images/BudgetClassDiagram.png" alt="Class diagram for budgeting feature"></p>
 
-<h5 id="implementation-of-feature-1">Implementation of feature</h5>
+<h5 id="implementation-of-feature-5">Implementation of feature</h5>
 
-<p>The find transactions feature is implemented via <code class="highlighter-rouge">MonthlyBudget</code>, which contains the following fields:</p>
+<p>The budgeting feature is implemented via <code class="highlighter-rouge">MonthlyBudget</code>, which contains the following fields:</p>
 
 <ul>
   <li>Two <code class="highlighter-rouge">ObjectProperty&lt;Amount&gt;</code> fields for <code class="highlighter-rouge">monthlyExpenseLimit</code> and <code class="highlighter-rouge">monthlySavingsGoal</code>.</li>
@@ -498,7 +781,7 @@ Below is the sequence diagram for interactions within the <code class="highlight
 
 <p><img src="/tp/images/BudgetActivityDiagram.png" alt="Activity diagram for executing any command that changes the budget"></p>
 
-<h5 id="design-considerations-1">Design considerations</h5>
+<h5 id="design-considerations-3">Design considerations</h5>
 
 <p>The alternative implementations considered, as well as the rationale behind our current implementation are as follows:</p>
 
@@ -562,7 +845,179 @@ it to an <code class="highlighter-rouge">Expense</code> object.</li>
 
 <h3 id="analytics">Analytics</h3>
 
-<p>[Coming soon]</p>
+<h5 id="overview-6">Overview</h5>
+
+<p>The Analytics feature allows the user to view their spending and saving trends over a period of time.
+Based on the current transaction lists, the total monthly expenses, incomes and savings over the past three months are calculated and displayed in the Analytics Tab in the form of bar charts.</p>
+
+<h5 id="implementation-of-feature-6">Implementation of feature</h5>
+
+<p><img src="/tp/images/AnalyticsTabObjectDiagram.png" alt="Object diagram for Analytics feature"></p>
+
+<p>When the constructor for <code class="highlighter-rouge">AnalyticsTabPane</code> is called:</p>
+<ol>
+  <li>
+<code class="highlighter-rouge">AnalyticsTabPane</code> constructor takes in a <code class="highlighter-rouge">MonthlyBudget</code> object from <code class="highlighter-rouge">Model</code>.</li>
+  <li>The <code class="highlighter-rouge">BarChart</code> objects (<code class="highlighter-rouge">expenseAnalyticsBarChart</code>, <code class="highlighter-rouge">incomeAnalyticsBarChart</code> and <code class="highlighter-rouge">savingsAnalyticsBarChart</code>) are constructed and <code class="highlighter-rouge">Axis</code> objects are added to them.</li>
+  <li>The method <code class="highlighter-rouge">AnalyticsTabPane#populateData</code> is called and takes in the <code class="highlighter-rouge">MonthlyBudget</code> object.
+The following fields from <code class="highlighter-rouge">MonthlyBudget</code> are accessed:
+    <ul>
+      <li>
+<code class="highlighter-rouge">ObservableList&lt;CalculatedAmount&gt;</code> fields: <code class="highlighter-rouge">monthlyExpenses</code>, <code class="highlighter-rouge">monthlyIncomes</code> and <code class="highlighter-rouge">monthlySavings</code>
+</li>
+      <li>
+<code class="highlighter-rouge">ObservableList&lt;String&gt;</code> field: <code class="highlighter-rouge">months</code>
+</li>
+    </ul>
+
+    <p>The method <code class="highlighter-rouge">AnalyticsTabPane#populateDataIn</code> is called for each <code class="highlighter-rouge">BarChart</code> object.</p>
+  </li>
+  <li>In the method <code class="highlighter-rouge">AnalyticsTabPane#populateDataIn</code>, the values from the above fields in <em>step 3</em> are accessed to construct <code class="highlighter-rouge">XY.Data</code> objects.</li>
+  <li>The <code class="highlighter-rouge">XY.Data</code> objects are added to the <code class="highlighter-rouge">BarChart</code> objects.</li>
+</ol>
+
+<h5 id="design-considerations-4">Design considerations</h5>
+
+<ul>
+  <li>An external library, <a href="https://data2viz.io/">Data2Viz</a>, was considered, rather than <em>JavaFX Charts</em>, but the former was rejected due to difficulty in implementation.</li>
+</ul>
+
+<h3 id="command-history">Command history</h3>
+
+<h5 id="overview-7">Overview</h5>
+
+<p>In order to fully replicate the Command Line Interface (CLI) experience, Fine$$e features the ability to navigate through the last 50 commands entered.
+This is done by pressing the ↑ or ↓ arrow keys on the keyboard while focused on the command input box.</p>
+
+<p>The class diagram below depicts the components involved in the command history feature.</p>
+
+<p><img src="/tp/images/CommandHistoryClassDiagram.png" alt="Class diagram for command history feature"></p>
+
+<h5 id="implementation-of-feature-7">Implementation of feature</h5>
+
+<p>The command history feature is implemented via <code class="highlighter-rouge">CommandHistory</code>.
+Whenever the user inputs a command, the command is added to the <code class="highlighter-rouge">CommandHistory</code> so as to be tracked.
+Note that for this section on the command history, all mentions of ‘command’ refer to the user input, and not the various <code class="highlighter-rouge">Command</code>s present in the codebase.</p>
+
+<p><code class="highlighter-rouge">CommandHistory</code> is backed by an <code class="highlighter-rouge">EvictingStack</code>, a data structure that works similarly to a normal Last In First Out (LIFO) stack.
+However, when the <code class="highlighter-rouge">EvictingStack</code> is full, the bottom-most element of the stack is removed (or in other words, evicted).
+This behaviour is achieved by maintaining a doubly-linked list made out of <code class="highlighter-rouge">Node</code>s.</p>
+
+<p>Each <code class="highlighter-rouge">Node</code> keeps track of the following information:</p>
+<ul>
+  <li>Its value, which corresponds to a command in this context.</li>
+  <li>A reference to the next <code class="highlighter-rouge">Node</code> in the linked list.</li>
+  <li>A reference to the previous <code class="highlighter-rouge">Node</code> in the linked list.</li>
+</ul>
+
+<p>For the <code class="highlighter-rouge">EvictingStack</code>, it keeps track of not only the <code class="highlighter-rouge">Node</code> at the top of the stack, but also the <code class="highlighter-rouge">Node</code> at the bottom.
+This is so that the bottom-most element can be removed in Θ(1) time.
+Due to the linked list being doubly-linked, we can then also find the next bottom-most element of the <code class="highlighter-rouge">EvictingStack</code> in constant time.</p>
+
+<p>In addition, <code class="highlighter-rouge">CommandHistory</code> maintains an internal navigation state that gets reset whenever a new command is entered.
+This internal navigation state keeps track of the current position while traversing the command history using the ↑ and ↓ arrow keys, much like a typical CLI.</p>
+
+<h5 id="navigating-the-command-history">Navigating the command history</h5>
+
+<p>When the ↑ arrow key is pressed, there are two possible scenarios:</p>
+<ol>
+  <li>The current command in the navigation state is the earliest tracked command.
+    <ul>
+      <li>Nothing happens.</li>
+    </ul>
+  </li>
+  <li>The current command in the navigation state is not the earliest tracked command.
+    <ul>
+      <li>The command immediately preceding the current command is retrieved.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The following activity diagram summarizes what happens when the user presses the ↑ arrow key.</p>
+
+<p><img src="/tp/images/CommandHistoryUpActivityDiagram.png" alt="Activity diagram for pressing the ↑ arrow key"></p>
+
+<p>Similarly, when the ↓ arrow key is pressed, there are two possible scenarios:</p>
+<ol>
+  <li>The current command in the navigation state is the latest tracked command.
+    <ul>
+      <li>The command input box is cleared.</li>
+    </ul>
+  </li>
+  <li>The current command in the navigation state is not the latest tracked command.
+    <ul>
+      <li>The command immediately succeeding the current command is retrieved.</li>
+    </ul>
+  </li>
+</ol>
+
+<p>The following activity diagram summarizes what happens when the user presses the ↓ arrow key.</p>
+
+<p><img src="/tp/images/CommandHistoryDownActivityDiagram.png" alt="Activity diagram for pressing the ↓ arrow key"></p>
+
+<h5 id="design-considerations-5">Design considerations</h5>
+
+<p>The alternative implementations considered, as well as the rationale behind our current implementation are as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alternative considered</th>
+      <th>Current implementation and rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Use Java’s in-built <code class="highlighter-rouge">Stack</code> class in <code class="highlighter-rouge">CommandHistory</code>.</td>
+      <td>Use a custom <code class="highlighter-rouge">EvictingStack</code> instead, so as to prevent potentially running out of memory if an extremely large number of commands are entered.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="data-integrity-safeguards">Data integrity safeguards</h3>
+
+<h5 id="overview-8">Overview</h5>
+
+<p>Since Fine$$e is an offline desktop application, it is reliant on the system time to perform date validations.
+This makes it vulnerable to changes in the system time while it is running.
+In particular, if the system time were to be changed to an earlier time, the existing data might get corrupted.</p>
+
+<h5 id="implementation-of-feature-8">Implementation of feature</h5>
+
+<p>To safeguard against potential loss or corruption of data, Fine$$e tracks the system time across actions via <code class="highlighter-rouge">Timekeeper</code>, which keeps track of the last observed time.
+Upon launching the application, <code class="highlighter-rouge">Timekeeper</code> is instantiated with the current system time.
+Subsequently, every time a command is entered by the user, the last observed time in <code class="highlighter-rouge">Timekeeper</code> is validated against the current system time.</p>
+
+<p>If the current system time is earlier than the last observed time, Fine$$e disables itself to prevent data loss.
+A prompt is shown to the user to ensure that their system time is correct before restarting Fine$$e in order to continue using the application.
+Upon relaunching the application, the data file is validated by <code class="highlighter-rouge">JsonFinanceTrackerParser</code>.</p>
+
+<p>Should the current system time be later than or equals to the last observed time, the last observed time in <code class="highlighter-rouge">Timekeeper</code> is updated to the current system time.</p>
+
+<h5 id="validating-the-time-whenever-a-command-is-executed">Validating the time whenever a command is executed</h5>
+
+<p>The following sequence diagram shows what happens when a command is entered by the user.</p>
+
+<p><img src="/tp/images/TimekeeperSequenceDiagram.png" alt="Sequence diagram for Timekeeper"></p>
+
+<h5 id="design-considerations-6">Design considerations</h5>
+
+<p>The alternative implementations considered, as well as the rationale behind our current implementation are as follows:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Alternative considered</th>
+      <th>Current implementation and rationale</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Query and use the time from some remote server rather than the system time.</td>
+      <td>Keep track of the last observed system time so that there is no need for an internet connection to use the application.</td>
+    </tr>
+  </tbody>
+</table>
 
 <hr>
 
@@ -695,16 +1150,210 @@ it to an <code class="highlighter-rouge">Expense</code> object.</li>
 
 <p>(For all use cases below, the <strong>System</strong> is <code class="highlighter-rouge">Fine$$e</code> and the <strong>Actor</strong> is the <code class="highlighter-rouge">user</code>, unless specified otherwise)</p>
 
-<p><strong>Use case: Delete an expense</strong></p>
+<p><strong>Use case: Add an expense</strong></p>
 
 <p><strong>MSS</strong></p>
 
 <ol>
-  <li>User requests to list expenses</li>
-  <li>Fine$$e shows a list of expenses</li>
-  <li>User requests to delete a specific expense</li>
+  <li>User requests to add an expense</li>
   <li>
-    <p>Fine$$e deletes the expense</p>
+    <p>Fine$$e adds the expense</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. The given data fields are invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: Edit an expense</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to list expenses.</li>
+  <li>Fine$$e shows a list of expenses.</li>
+  <li>User requests to edit a specific expense.</li>
+  <li>
+    <p>Fine$$e edits the expense.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. User filters the list first.</p>
+
+    <ul>
+      <li>
+        <p>1a1. User filters the list using <u>Find an expense</u>.</p>
+
+        <p>Use case resumes at step 3.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>2a. The list is empty.</p>
+
+    <p>Use case ends.</p>
+  </li>
+  <li>
+    <p>3a. The given index is invalid.</p>
+
+    <ul>
+      <li>
+        <p>3a1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>3b. No data fields are specified.</p>
+
+    <ul>
+      <li>
+        <p>3b1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>3c. The given data fields are invalid.</p>
+
+    <ul>
+      <li>
+        <p>3c1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: Add an income</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to add an income</li>
+  <li>
+    <p>Fine$$e adds the income</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. The given data fields are invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: Edit an income</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to list incomes.</li>
+  <li>Fine$$e shows a list of incomes.</li>
+  <li>User requests to edit a specific income.</li>
+  <li>
+    <p>Fine$$e edits the income.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. User filters the list first.</p>
+
+    <ul>
+      <li>
+        <p>1a1. User filters the list using <u>Find an income</u>.</p>
+
+        <p>Use case resumes at step 3.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>2a. The list is empty.</p>
+
+    <p>Use case ends.</p>
+  </li>
+  <li>
+    <p>3a. The given index is invalid.</p>
+
+    <ul>
+      <li>
+        <p>3a1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>3b. No data fields are specified.</p>
+
+    <ul>
+      <li>
+        <p>3b1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>3c. The given data fields are invalid.</p>
+
+    <ul>
+      <li>
+        <p>3c1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to list expenses.</li>
+  <li>Fine$$e shows a list of expenses.</li>
+  <li>User requests to delete a specific expense.</li>
+  <li>
+    <p>Fine$$e deletes the expense.</p>
 
     <p>Use case ends.</p>
   </li>
@@ -762,6 +1411,8 @@ it to an <code class="highlighter-rouge">Expense</code> object.</li>
 <strong>Mainstream OS</strong>: Windows, Linux, Unix, OS-X</li>
   <li>
 <strong>Savings</strong>: Net gain (positive) or loss (negative) in cash over a set period of time</li>
+  <li>
+<strong>Data Fields</strong>: The title, amount, date, and categories that make up an Expense or Income.</li>
 </ul>
 
 <hr>

@@ -1,0 +1,48 @@
+@startuml
+!include style.puml
+
+actor User USER_COLOR
+
+box Ui UI_COLOR_T1
+participant ":MainWindow" as MainWindow UI_COLOR
+end box
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":Timekeeper" as Timekeeper LOGIC_COLOR
+participant "c:XYZCommand" as XYZCommand LOGIC_COLOR
+end box
+
+note right of XYZCommand : XYZCommand =\nAddExpenseCommand,\nFindCommand, etc
+
+User -> MainWindow : input command string
+activate MainWindow
+
+MainWindow -> LogicManager : execute()
+activate LogicManager
+
+LogicManager -> Timekeeper : checkIn()
+activate Timekeeper
+
+alt current system time is later or equals to the last observed time
+    ref over LogicManager, XYZCommand : Parse and execute user input
+
+    Timekeeper --> LogicManager : result
+
+    LogicManager --> MainWindow : result
+else else
+    Timekeeper --> LogicManager : TemporalException()
+    deactivate Timekeeper
+
+    LogicManager --> MainWindow : TemporalException()
+    deactivate Timekeeper
+
+    MainWindow -> MainWindow : disableApplication()
+    activate MainWindow
+
+    MainWindow --> MainWindow
+    deactivate MainWindow
+end
+MainWindow --> User
+deactivate MainWindow
+@enduml

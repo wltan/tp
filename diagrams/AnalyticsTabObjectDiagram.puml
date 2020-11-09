@@ -1,0 +1,56 @@
+@startuml
+left to right direction
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor UI_COLOR_T4
+skinparam classBackgroundColor UI_COLOR
+
+Package UI <<Rectangle>>{
+Object ":AnalyticsTabPane" as atp
+Object "expenseAnalyticsBarChart:BarChart" as eabc
+Object "incomeAnalyticsBarChart:BarChart" as iabc
+Object "savingsAnalyticsBarChart:BarChart" as sabc
+Object ":XYChart.Data" as edata
+Object ":XYChart.Data" as idata
+Object ":XYChart.Data" as sdata
+}
+
+Package Budget <<Rectangle>>{
+Object ":MonthlyBudget" as mb
+Object "monthlyExpenses:ObservableList<CalculatedAmount>" as me
+Object "monthlyIncomes:ObservableList<CalculatedAmount>" as mi
+Object "monthlySavings:ObservableList<CalculatedAmount>" as ms
+Object "months:ObservableList<String>" as mths
+Object ":CalculatedAmount" as meca
+Object ":CalculatedAmount" as mica
+Object ":CalculatedAmount" as msca
+Object ":String" as mth
+}
+
+atp *-left-> eabc
+atp *-left-> iabc
+atp *-left-> sabc
+
+eabc --> edata
+iabc --> idata
+sabc --> sdata
+
+mb *--> me
+mb *--> mi
+mb *--> ms
+mb *--> mths
+
+me -up-> meca
+mi -up-> mica
+ms -up-> msca
+mths -up-> mth
+
+edata ..> meca
+edata ..> mth
+idata ..> mica
+idata ..> mth
+sdata ..> msca
+sdata ..> mth
+atp ..> mb
+
+@enduml

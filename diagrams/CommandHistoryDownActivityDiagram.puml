@@ -1,0 +1,10 @@
+@startuml
+start
+:User presses the ↓ arrow key;
+If () then ([current command is the latest tracked command])
+    :Clear command input box;
+else ([else])
+    :Retrieve the command succeeding the current command;
+endif
+stop
+@enduml

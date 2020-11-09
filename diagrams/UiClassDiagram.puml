@@ -12,18 +12,33 @@ Class MainWindow
 Class ResultDisplay
 Class TransactionListPanel
 Class TransactionCard
-Class StatusBarFooter
 Class CommandBox
 Class SavingsGoalPanel
 Class UiState
+Class DisabledWindow
+
+package Tabs {
+Class TwoColumnTabPane
+Class OverviewTabPane
+Class IncomeTabPane
+Class ExpenseTabPane
+Class AnalyticsTabPane
+Class UserGuideTabPane
+}
 
 package Expense {
 Class ExpensePanel
 }
+
 package Income {
 Class IncomePanel
 }
 
+package Bookmark {
+Class BookmarkIncomePanel
+Class BookmarkExpensePanel
+Class BookmarkTransactionCard
+}
 }
 
 package Model <<Rectangle>> {
@@ -43,13 +58,29 @@ UiManager --> UiState
 MainWindow --> UiState
 MainWindow *-down-> CommandBox
 MainWindow *-down-> ResultDisplay
-MainWindow *-down-> TransactionListPanel
-MainWindow *-down-> StatusBarFooter
-MainWindow *-down-> ExpensePanel
-MainWindow *-down-> IncomePanel
-MainWindow *-down-> SavingsGoalPanel
+MainWindow *-up-> DisabledWindow
+
+MainWindow *-down-> OverviewTabPane
+MainWindow *-down-> IncomeTabPane
+MainWindow *-down-> ExpenseTabPane
+MainWindow *-down-> AnalyticsTabPane
+MainWindow *-down-> UserGuideTabPane
+
+OverviewTabPane *-down-> TransactionListPanel
+OverviewTabPane *-down-> SavingsGoalPanel
+
+IncomeTabPane *-down-> IncomePanel
+IncomeTabPane *-down-> BookmarkIncomePanel
+
+ExpenseTabPane *-down-> ExpensePanel
+ExpenseTabPane *-down-> BookmarkExpensePanel
 
 TransactionListPanel -down-> TransactionCard
+ExpensePanel -down-> TransactionCard
+IncomePanel -down-> TransactionCard
+
+BookmarkExpensePanel -down-> BookmarkTransactionCard
+BookmarkIncomePanel -down-> BookmarkTransactionCard
 
 MainWindow -left-|> UiPart
 
@@ -57,19 +88,34 @@ ResultDisplay --|> UiPart
 CommandBox --|> UiPart
 TransactionListPanel --|> UiPart
 TransactionCard --|> UiPart
-StatusBarFooter --|> UiPart
 ExpensePanel --|> UiPart
 IncomePanel --|> UiPart
 SavingsGoalPanel --|> UiPart
+BookmarkExpensePanel --|> UiPart
+BookmarkIncomePanel --|> UiPart
+BookmarkTransactionCard --|> UiPart
+
+TwoColumnTabPane --|> UiPart
+OverviewTabPane --|> TwoColumnTabPane
+IncomeTabPane --|> TwoColumnTabPane
+ExpenseTabPane --|> TwoColumnTabPane
+
+AnalyticsTabPane --|> UiPart
+UserGuideTabPane --|> UiPart
 
 TransactionCard ..> Model
-UiManager -right-> Logic
-MainWindow -left-> Logic
+UiManager -up-> Logic
+MainWindow -up-> Logic
 
 CommandBox -[hidden]left- ResultDisplay
-ResultDisplay -[hidden]left- StatusBarFooter
 ExpensePanel -[hidden]left- TransactionListPanel
 IncomePanel -[hidden]left- SavingsGoalPanel
 
 MainWindow -[hidden]-|> UiPart
+AnalyticsTabPane -[hidden]-|> OverviewTabPane
+UserGuideTabPane -[hidden]-|> OverviewTabPane
+TwoColumnTabPane -[hidden]down-|> SavingsGoalPanel
+UiPart -[hidden]down-|> Model
+Logic -[hidden]down-|> UiManager
+TwoColumnTabPane -[hidden]down-|> TransactionListPanel
 @enduml

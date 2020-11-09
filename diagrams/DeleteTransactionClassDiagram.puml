@@ -1,0 +1,45 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR_T4
+skinparam classBackgroundColor LOGIC_COLOR
+
+package Logic {
+
+package Parser {
+Class FinanceTrackerParser
+Class DeleteCommandParser
+}
+
+package Command {
+Class DeleteCommand
+Class DeleteExpenseCommand
+Class DeleteIncomeCommand
+}
+}
+
+
+package Model {
+
+package Transaction {
+Class Expense MODEL_COLOR
+Class Income MODEL_COLOR
+Class "{abstract}\nTransaction" as Transaction MODEL_COLOR
+}
+}
+
+FinanceTrackerParser .> DeleteCommandParser: creates >
+DeleteCommandParser .> DeleteCommand: creates >
+
+FinanceTrackerParser ..> DeleteExpenseCommand: creates >
+FinanceTrackerParser ..> DeleteIncomeCommand: creates >
+
+DeleteExpenseCommand --|> DeleteCommand
+DeleteIncomeCommand --|> DeleteCommand
+DeleteCommand *----> "1" Transaction: deletes >
+note bottom on link: Reference is stored in\nthe form of an Index
+
+Expense -up-|> Transaction MODEL_COLOR
+Income -up-|> Transaction MODEL_COLOR
+
+@enduml

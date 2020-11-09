@@ -1,0 +1,24 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor MODEL_COLOR
+skinparam classBackgroundColor MODEL_COLOR
+
+Package Model <<Rectangle>>{
+    Class ModelManager
+
+    Package CommandHistory {
+        Class CommandHistory
+        Class EvictingStack
+        Class Node
+    }
+}
+
+ModelManager o--> "1" CommandHistory
+CommandHistory o--> "1" EvictingStack
+EvictingStack --> "0..1" Node : Top node
+EvictingStack --> "0..1" Node : Bottom node
+Node --> "0..1" Node : Next node
+Node --> "0..1" Node : Previous node
+
+@enduml

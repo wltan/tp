@@ -245,6 +245,12 @@ typing <code class="highlighter-rouge">clear</code> again, and pressing Enter ag
 
 <p>Displays a list of all recent transactions (both <a href="#44-income">incomes</a> and <a href="#43-expense">expenses</a>), along with your <a href="#47-expense-limit">expense limit</a>, <a href="#48-savings-goal">savings goal</a>, remaining budget and current savings.</p>
 
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Transaction amounts are prepended with either <code class="highlighter-rouge">+</code> or <code class="highlighter-rouge">-</code> so as to distinguish between <a href="#44-income">incomes</a> and <a href="#43-expense">expenses</a> respectively.
+In the case of the latter, the amount is also highlighted in red.
+This applies only to the Overview tab.</p>
+</blockquote>
+
 <p><img src="/tp/images/userguide/OverviewTab.png" alt="Overview Tab"></p>
 
 <h4 id="222-incomes-tab">2.2.2 Incomes Tab</h4>
@@ -374,6 +380,9 @@ depending on the number of days in the given month and whether the given year is
 
   <p>Unless stated otherwise, only one input per parameter is allowed for each command.</p>
 
+  <p>Furthermore, within each command, any other parameters, other than the ones listed in each command format, are considered invalid.
+The command will not be executed, and an error message will be displayed, if any invalid parameters are present.</p>
+
 </div>
 
 <h3 id="41-viewing-help-help">4.1 Viewing Help: <code class="highlighter-rouge">help</code>
@@ -452,6 +461,10 @@ It could be textbooks for the new semester, that cup of bubble tea you drank the
 
 <p>Adds an expense to the finance tracker.</p>
 
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#223-expenses-tab">Expenses tab</a>.</p>
+</blockquote>
+
 <p>Format: <code class="highlighter-rouge">add-expense t/TITLE a/AMOUNT [d/DATE] [c/CATEGORY...]</code></p>
 
 <ul>
@@ -477,10 +490,6 @@ It could be textbooks for the new semester, that cup of bubble tea you drank the
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New expense added: Bubble Tea Amount: $5.00 Date: 03/10/2020 Categories: [Food &amp; Beverage]
 </code></pre></div></div>
 <p>Adds a new expense titled <code class="highlighter-rouge">Bubble Tea</code>, with amount <code class="highlighter-rouge">$5.00</code>, date <code class="highlighter-rouge">03/10/2020</code>, and a single category <code class="highlighter-rouge">Food &amp; Beverage</code>.</p>
-
-<blockquote>
-  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#223-expenses-tab">Expenses tab</a>.</p>
-</blockquote>
 
 <h4 id="432-edit-expense-edit">4.3.2 Edit Expense: <code class="highlighter-rouge">edit</code>
 </h4>
@@ -550,6 +559,10 @@ The rest of the expense information remains unchanged.</p>
 
 <p>Shows a list of all expenses in the finance tracker.
 This effectively resets any current filtering of the expenses list, such as those made by <code class="highlighter-rouge">find</code>.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#223-expenses-tab">Expenses tab</a>.</p>
+</blockquote>
 
 <p>Format: <code class="highlighter-rouge">ls-expense</code></p>
 
@@ -653,6 +666,10 @@ It could be your internship allowance, prize money you won from a pitching compe
 
 <p>Adds an income to the finance tracker.</p>
 
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#222-incomes-tab">Incomes tab</a>.</p>
+</blockquote>
+
 <p>Format: <code class="highlighter-rouge">add-income t/TITLE a/AMOUNT d/DATE [c/CATEGORY...]</code></p>
 
 <ul>
@@ -678,10 +695,6 @@ It could be your internship allowance, prize money you won from a pitching compe
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New income added: Shopee Internship Amount: $560.00 Date: 03/10/2020 Categories: [Internship]
 </code></pre></div></div>
 <p>Adds a new income titled <code class="highlighter-rouge">Shopee Internship</code>, with amount <code class="highlighter-rouge">$560.00</code>, date <code class="highlighter-rouge">03/10/2020</code>, and a single category <code class="highlighter-rouge">Internship</code>.</p>
-
-<blockquote>
-  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#222-incomes-tab">Incomes tab</a>.</p>
-</blockquote>
 
 <h4 id="442-edit-income-edit">4.4.2 Edit Income: <code class="highlighter-rouge">edit</code>
 </h4>
@@ -751,6 +764,10 @@ The rest of the income information remains unchanged.</p>
 
 <p>Shows a list of all the incomes in the finance tracker.
 This effectively resets any current filtering of the incomes list, such as those made by <code class="highlighter-rouge">find</code>.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#222-incomes-tab">Incomes tab</a>.</p>
+</blockquote>
 
 <p>Format: <code class="highlighter-rouge">ls-income</code></p>
 
@@ -855,6 +872,10 @@ You can convert a bookmark expense repeatedly to create as many expenses as you 
 </h4>
 
 <p>Adds a bookmark expense to the finance tracker.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#223-expenses-tab">Expenses tab</a>.</p>
+</blockquote>
 
 <p>Format: <code class="highlighter-rouge">add-bookmark-expense t/TITLE a/AMOUNT [c/CATEGORY...]</code></p>
 
@@ -1036,6 +1057,10 @@ You can convert a bookmark income repeatedly to create as many incomes as you wa
 
 <p>Adds a bookmark income to the finance tracker.</p>
 
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#222-incomes-tab">Incomes tab</a>.</p>
+</blockquote>
+
 <p>Format: <code class="highlighter-rouge">add-bookmark-income t/TITLE a/AMOUNT [c/CATEGORY...]</code></p>
 
 <p>Shortcut: <code class="highlighter-rouge">addbi t/TITLE a/AMOUNT [c/CATEGORY...]</code></p>
@@ -1203,6 +1228,10 @@ Once the expense limit is set, it will be visible on the Overview tab along with
 
 <p>Sets the monthly expense limit in the finance tracker.</p>
 
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#221-overview-tab">Overview tab</a>.</p>
+</blockquote>
+
 <p>Format: <code class="highlighter-rouge">set-expense-limit a/AMOUNT</code></p>
 
 <p>Shortcut: <code class="highlighter-rouge">setel a/AMOUNT</code></p>
@@ -1221,10 +1250,6 @@ Once the expense limit is set, it will be visible on the Overview tab along with
 </code></pre></div></div>
 <p>Sets the monthly expense limit in the finance tracker to be <code class="highlighter-rouge">$400.00</code>.</p>
 
-<blockquote>
-  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#221-overview-tab">Overview tab</a>.</p>
-</blockquote>
-
 <h3 id="48-savings-goal">4.8 Savings Goal</h3>
 
 <p>Want to save up for the new PlayStation 5 but can’t seem to no matter what? Fine$$e has you covered!
@@ -1235,6 +1260,10 @@ Once the savings goal is set, it will be visible on the Overview tab along with 
 </h4>
 
 <p>Sets the monthly savings goal in the finance tracker.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#221-overview-tab">Overview tab</a>.</p>
+</blockquote>
 
 <p>Format: <code class="highlighter-rouge">set-savings-goal a/AMOUNT</code></p>
 
@@ -1253,10 +1282,6 @@ Once the savings goal is set, it will be visible on the Overview tab along with 
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New monthly savings goal set: $50.00
 </code></pre></div></div>
 <p>Sets the monthly savings goal in the finance tracker to be <code class="highlighter-rouge">$50.00</code>.</p>
-
-<blockquote>
-  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, the UI will automatically switch to the <a href="#221-overview-tab">Overview tab</a>.</p>
-</blockquote>
 
 <h3 id="49-analytics">4.9 Analytics</h3>
 

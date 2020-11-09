@@ -5,12 +5,13 @@ box Logic LOGIC_COLOR_T1
 participant ":LogicManager" as LogicManager LOGIC_COLOR
 participant ":FinanceTrackerParser" as FinanceTrackerParser LOGIC_COLOR
 participant ":DeleteCommandParser" as DeleteCommandParser LOGIC_COLOR
-participant "d:DeleteCommand" as DeleteCommand LOGIC_COLOR
+participant ":DeleteCommand" as DeleteCommand LOGIC_COLOR
+participant "cmd:DeleteExpenseCommand" as DeleteExpenseCommand LOGIC_COLOR
 participant ":CommandResult" as CommandResult LOGIC_COLOR
 end box
 
 box Model MODEL_COLOR_T1
-participant ":Model" as Model MODEL_COLOR
+participant ":ModelManager" as ModelManager MODEL_COLOR
 end box
 
 [-> LogicManager : execute("delete 1")
@@ -33,36 +34,52 @@ create DeleteCommand
 DeleteCommandParser -> DeleteCommand
 activate DeleteCommand
 
-DeleteCommand --> DeleteCommandParser : d
+DeleteCommand --> DeleteCommandParser
 deactivate DeleteCommand
 
-DeleteCommandParser --> FinanceTrackerParser : d
+DeleteCommandParser --> FinanceTrackerParser
 deactivate DeleteCommandParser
 'Hidden arrow to position the destroy marker below the end of the activation bar.
 DeleteCommandParser -[hidden]-> FinanceTrackerParser
 destroy DeleteCommandParser
 
-FinanceTrackerParser --> LogicManager : d
-deactivate FinanceTrackerParser
+create DeleteExpenseCommand
+FinanceTrackerParser -> DeleteExpenseCommand
+activate DeleteExpenseCommand
 
-LogicManager -> DeleteCommand : execute()
+DeleteExpenseCommand -> DeleteCommand : getTargetIndex()
 activate DeleteCommand
 
-DeleteCommand -> Model : deleteTransaction(1)
-activate Model
+DeleteCommand --> DeleteExpenseCommand
+deactivate DeleteCommand
 
-Model --> DeleteCommand
-deactivate Model
+DeleteCommand -[hidden]-> FinanceTrackerParser
+destroy DeleteCommand
+
+DeleteExpenseCommand --> FinanceTrackerParser : cmd
+deactivate DeleteExpenseCommand
+
+FinanceTrackerParser --> LogicManager : cmd
+deactivate FinanceTrackerParser
+
+LogicManager -> DeleteExpenseCommand : execute()
+activate DeleteExpenseCommand
+
+DeleteExpenseCommand -> ModelManager : getFilteredExpenseList()
+activate ModelManager
+
+ModelManager --> DeleteExpenseCommand
+deactivate ModelManager
 
 create CommandResult
-DeleteCommand -> CommandResult
+DeleteExpenseCommand -> CommandResult
 activate CommandResult
 
-CommandResult --> DeleteCommand
+CommandResult --> DeleteExpenseCommand
 deactivate CommandResult
 
-DeleteCommand --> LogicManager : result
-deactivate DeleteCommand
+DeleteExpenseCommand --> LogicManager : result
+deactivate DeleteExpenseCommand
 
 [<--LogicManager
 deactivate LogicManager

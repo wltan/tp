@@ -1,0 +1,10 @@
+@startuml
+start
+:User presses the ↑ arrow key;
+If () then ([current command is the earliest tracked command])
+    :Do nothing;
+else ([else])
+    :Retrieve the command preceding the current command;
+endif
+stop
+@enduml
