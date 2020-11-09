@@ -1,0 +1,55 @@
+@startuml
+!include style.puml
+skinparam arrowThickness 1.1
+skinparam arrowColor LOGIC_COLOR_T4
+skinparam classBackgroundColor LOGIC_COLOR
+
+package Logic {
+
+package Parser {
+Class FinanceTrackerParser
+Class AddExpenseCommandParser
+Class AddIncomeCommandParser
+}
+
+package Command {
+Class AddExpenseCommand
+Class AddIncomeCommand
+}
+}
+
+
+package Model {
+
+package Transaction {
+Class Expense MODEL_COLOR
+Class Income MODEL_COLOR
+Class "{abstract}\nTransaction" as Transaction MODEL_COLOR
+Class Title MODEL_COLOR
+Class Amount MODEL_COLOR
+Class Date MODEL_COLOR
+}
+package Category {
+Class Category MODEL_COLOR
+}
+}
+
+FinanceTrackerParser ..> AddExpenseCommandParser: creates >
+FinanceTrackerParser ..> AddIncomeCommandParser: creates >
+
+AddExpenseCommandParser ..> AddExpenseCommand: creates >
+AddExpenseCommandParser ..> Expense: creates >
+AddIncomeCommandParser ..> AddIncomeCommand: creates >
+AddIncomeCommandParser ..> Income: creates >
+
+AddExpenseCommand --> "1" Expense
+AddIncomeCommand --> "1" Income
+
+Expense --|> Transaction MODEL_COLOR
+Income --|> Transaction MODEL_COLOR
+Transaction *--> "1" Amount MODEL_COLOR
+Transaction *--> "1" Title MODEL_COLOR
+Transaction *--> "1" Date MODEL_COLOR
+Transaction *--> "*" Category MODEL_COLOR
+
+@enduml

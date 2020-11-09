@@ -1,0 +1,42 @@
+@startuml
+start
+:User executes add command;
+
+if () then ([add])
+    if () then ([user is not on Expenses or Incomes tab])
+        :Throw a ParseException;
+        stop
+    else ([else])
+        if () then ([user is on Expenses tab])
+            :Use AddExpenseCommandParser;
+            :Add new expense to model;
+            :Display updated expenses list;
+        else ([user is on Incomes tab])
+            :Use AddIncomeCommandParser;
+            :Add new income to model;
+            :Display updated incomes list;
+        endif
+    endif
+
+else ([add-expense or add-income])
+    if () then ([add-expense])
+        :Use AddExpenseCommandParser;
+        :Add new expense to model;
+        if () then ([user is on Expenses tab])
+        else ([else])
+            :Switch to Expenses tab;
+        endif
+        :Display updated expenses list;
+    else ([add-income])
+        :Use AddIncomeCommandParser;
+        :Add new income to model;
+        if () then ([user is on Incomes tab])
+        else ([else])
+            :Switch to Incomes tab;
+        endif
+        :Display updated incomes list;
+    endif
+endif
+
+stop
+@enduml

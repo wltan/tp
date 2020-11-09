@@ -1,0 +1,87 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":EditTransactionDescriptor" as EditTransactionDescriptor LOGIC_COLOR
+participant "cmd:EditExpenseCommand" as EditExpenseCommand LOGIC_COLOR
+participant "result:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "edited:Expense" as Expense MODEL_COLOR
+participant ":ModelManager" as ModelManager MODEL_COLOR
+end box
+
+[-> LogicManager : execute("edit 1 a/5", uiState)
+activate LogicManager
+
+ref over LogicManager, EditTransactionDescriptor, EditExpenseCommand: Parse command
+
+
+LogicManager -> EditExpenseCommand : execute(model)
+activate EditExpenseCommand
+
+EditExpenseCommand -> ModelManager : getFilteredExpenseList()
+activate ModelManager
+
+ModelManager --> EditExpenseCommand
+deactivate ModelManager
+
+EditExpenseCommand -> EditExpenseCommand: createEditedExpense(descriptor)
+activate EditExpenseCommand
+
+EditExpenseCommand -> EditTransactionDescriptor: descriptor.getTitle()
+activate EditTransactionDescriptor
+
+EditTransactionDescriptor --> EditExpenseCommand: title
+deactivate EditTransactionDescriptor
+
+EditExpenseCommand -> EditTransactionDescriptor: descriptor.getAmount()
+activate EditTransactionDescriptor
+
+EditTransactionDescriptor --> EditExpenseCommand: amount
+deactivate EditTransactionDescriptor
+
+EditExpenseCommand -> EditTransactionDescriptor: descriptor.getDate()
+activate EditTransactionDescriptor
+
+EditTransactionDescriptor --> EditExpenseCommand: date
+deactivate EditTransactionDescriptor
+
+EditExpenseCommand -> EditTransactionDescriptor: descriptor.getCategories()
+activate EditTransactionDescriptor
+
+EditTransactionDescriptor --> EditExpenseCommand: categories
+deactivate EditTransactionDescriptor
+
+
+create Expense
+EditExpenseCommand -> Expense
+activate Expense
+
+Expense --> EditExpenseCommand
+deactivate Expense
+
+EditExpenseCommand --> EditExpenseCommand: edited
+deactivate EditExpenseCommand
+
+EditExpenseCommand -> ModelManager : setTransaction(toEdit, edited)
+activate ModelManager
+
+ModelManager --> EditExpenseCommand
+deactivate ModelManager
+
+create CommandResult
+EditExpenseCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> EditExpenseCommand
+deactivate CommandResult
+
+EditExpenseCommand --> LogicManager : result
+deactivate EditExpenseCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

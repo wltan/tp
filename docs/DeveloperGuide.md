@@ -178,6 +178,107 @@ This section describes some noteworthy details on how certain features are imple
 
 ### Transactions
 
+#### Add transactions feature
+
+##### Overview
+The add transactions feature allows users to add transactions into the `FinanceTracker`.
+Each new transaction must have the data fields `Title`, `Amount`, `Date`, and `Category`.
+
+Below is the class diagram of the components involved in the add transactions feature.
+
+![Class diagram for add transactions feature](images/AddTransactionClassDiagram.png)
+
+##### Implementation of feature
+
+The add transactions feature is implemented via `AddExpenseCommand` and `AddIncomeCommand`, which are created from `AddExpenseCommandParser` and `AddIncomeCommandParser` respectively.
+
+1. `AddExpenseCommandParser` and `AddIncomeCommandParser` take in the argument string and parses it into an `ArgumentMultimap` that contains all the different data fields mapped (as strings) to their respective prefix.
+1. The strings are then parsed to create the data fields within the Model component (dependency arrows omitted in the above diagram for simplicity).
+1. The parsers use the data fields to create `Expense` or `Income` objects, which are then used to create `AddExpenseCommand` or `AddIncomeCommand` objects.
+
+`FinanceTrackerParser` decides whether `AddExpenseCommandParser` or `AddIncomeCommandParser` is used.
+* On an `add-expense` or `adde` command, `AddExpenseCommandParser` is used.
+* On an `add-income` or `addi` command, `AddIncomeCommandParser` is used.
+* On an `add` command:
+  * `AddExpenseCommandParser` is used if the user is currently on the Expenses tab.
+  * `AddIncomeCommandParser` is used if the user is currently on the Incomes tab.
+  * A `ParseException` is thrown if the user is currently on neither of the above tabs.
+
+##### Adding transactions
+
+Below is the sequence diagram for interactions within the `Logic` and `Model` components when the user inputs the `adde t/Bubble Tea a/5 d/03/10/2020 c/Food & Beverage` command while on the Expenses tab.
+Note that the arguments in the full command string have been abbreviated to `...`.
+
+![Sequence diagram for executing the `add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food & Beverage` command on the Expenses tab](images/AddTransactionSequenceDiagram.png)
+
+When `AddIncomeCommandParser` is used, the sequence diagram is similar, but replace all occurrences of `Expense` with `Income`.
+
+The following activity diagram summarizes what happens within `FinanceTrackerParser` when the user executes a new add command:
+
+![Activity diagram for executing the add command](images/AddTransactionActivityDiagram.png)
+
+*Note: The diagram contains many repetitive processes. However, it cannot be simplified due to the limitations of PlantUML.*
+
+##### Design considerations
+
+The alternative implementations considered, as well as the rationale behind our current implementation are as follows:
+
+| Alternative considered  | Current implementation and rationale   |
+| ----------- | -------------------------   |
+| Collapse both `AddExpenseCommandParser` and `AddIncomeCommandParser` into a single `AddTransactionCommandParser` whose result can then be used to create `AddExpenseCommand` or `AddIncomeCommand`. | Keep two separate parsers `AddExpenseCommandParser` and `AddIncomeCommandParser`.<br>Although the `add` command can result in either `AddExpenseCommand` or `AddIncomeCommand`, `adde` will always create `AddExpenseCommand` while `addi` will always create `AddIncomeCommand`. It is more apt to use a specific parser in the latter cases. |
+| Implement either `add` or `adde` + `addi` but not both. This reduces the amount of development work needed. | Both options are implemented to provide the user with a choice for whichever command they feel is most convenient. `add` can be used to add to the currently active tab, while `adde` and `addi` can be used on any tab. |
+
+
+#### Edit transactions feature
+##### Overview
+The edit transactions feature allows users to edit existing transactions in the `FinanceTracker`.
+At least one of the data fields `Title`, `Amount`, `Date`, and `Category` must be modified.
+
+Below is the class diagram of the components involved in the edit transactions feature.
+
+![Class diagram for edit transactions feature](images/EditTransactionClassDiagram.png)
+
+##### Implementation of feature
+
+The edit transactions feature is implemented via `EditCommandParser`, which returns an `EditCommand` that is then used to create `EditExpenseCommand` or `EditIncomeCommand`.
+
+1. `EditCommandParser` take in the argument string and parses it into an `ArgumentMultimap` that contains all the different data fields mapped (as strings) to their respective prefix.
+1. The index is parsed into an `Index`, which is used to locate the transaction to be modified during command execution.
+1. The remaining strings are then parsed to create the data fields within the Model component (dependency arrows omitted in the above diagram for simplicity).
+1. The data fields are used to create an `EditTransactionDescriptor` describing all of the new data fields.
+1. The `Index` is combined with the `EditTransactionDescriptor` to return an `EditCommand`.
+
+`FinanceTrackerParser` decides whether `EditExpenseCommand` or `EditIncomeCommand` is created from the resulting `EditCommand`.
+* `EditExpenseCommand` is used if the user is currently on the Expenses tab.
+* `EditIncomeCommand` is used if the user is currently on the Incomes tab.
+
+##### Editing transactions
+
+Below is the sequence diagram for interactions within the `Logic` and `Model` components when the user inputs the `edit 1 a/5` command while on the Expenses tab.
+It is split into two diagrams, one for parsing and one for execution.
+
+![Sequence diagram for parsing the `edit 1 a/5` command on the Expenses tab](images/EditTransactionSequenceDiagram.png)
+
+![Sequence diagram for executing the `edit 1 a/5` command on the Expenses tab](images/EditTransactionSequenceDiagram2.png)
+
+*Note: For simplicity, several low-level details have been omitted.*
+
+When `EditExpenseCommand` is used, the sequence diagram is similar, but replace all occurrences of `Expense` with `Income`.
+
+The following activity diagram summarizes what happens within `FinanceTrackerParser` when the user executes a new edit command:
+
+![Activity diagram for executing the add command](images/EditTransactionActivityDiagram.png)
+
+#### Delete transactions feature
+##### Overview
+
+##### Implementation of feature
+
+##### Deleting transactions
+
+##### Design considerations
+
+
 #### Find transactions feature
 ##### Overview
 
@@ -395,14 +496,70 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is `Fine$$e` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete an expense**
+**Use case: Add an expense**
 
 **MSS**
 
-1.  User requests to list expenses
-2.  Fine$$e shows a list of expenses
-3.  User requests to delete a specific expense
-4.  Fine$$e deletes the expense
+1.  User requests to add an expense
+2.  Fine$$e adds the expense
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given data fields are invalid.
+
+    * 1a1. Fine$$e shows an error message.
+
+      Use case ends.
+
+**Use case: Edit an expense**
+
+**MSS**
+
+1.  User requests to list expenses.
+2.  Fine$$e shows a list of expenses.
+3.  User requests to edit a specific expense.
+4.  Fine$$e edits the expense.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. User filters the list first.
+
+    * 1a1. User filters the list using <u>Find an expense</u>.
+
+      Use case resumes at step 3.
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. Fine$$e shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. No data fields are specified.
+
+    * 3b1. Fine$$e shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given data fields are invalid.
+
+    * 3c1. Fine$$e shows an error message.
+
+      Use case resumes at step 2.
+
+**MSS**
+
+1.  User requests to list expenses.
+2.  Fine$$e shows a list of expenses.
+3.  User requests to delete a specific expense.
+4.  Fine$$e deletes the expense.
 
     Use case ends.
 
@@ -442,6 +599,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Income**: A single transaction that results in an increase in cash
 * **Mainstream OS**: Windows, Linux, Unix, OS-X
 * **Savings**: Net gain (positive) or loss (negative) in cash over a set period of time
+* **Data Fields**: The title, amount, date, and categories that make up an Expense or Income.
 
 --------------------------------------------------------------------------------------------------------------------
 

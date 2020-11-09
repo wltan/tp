@@ -1,0 +1,21 @@
+@startuml
+start
+:User executes edit command;
+
+if () then ([user is not on Expenses or Incomes tab])
+    :Throw a ParseException;
+    stop
+else ([else])
+    if () then ([user is on Expenses tab])
+        :Use EditExpenseCommand;
+        :Edit target expense;
+        :Display updated expenses list;
+    else ([user is on Incomes tab])
+        :Use EditIncomeCommand;
+        :Edit target income;
+        :Display updated incomes list;
+    endif
+endif
+
+stop
+@enduml

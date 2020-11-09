@@ -1,0 +1,80 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":FinanceTrackerParser" as FinanceTrackerParser LOGIC_COLOR
+participant ":EditCommandParser" as EditCommandParser LOGIC_COLOR
+participant ":EditTransactionDescriptor" as EditTransactionDescriptor LOGIC_COLOR
+participant ":EditCommand" as EditCommand LOGIC_COLOR
+participant "cmd:EditExpenseCommand" as EditExpenseCommand LOGIC_COLOR
+end box
+
+[-> LogicManager : execute("edit 1 a/5", uiState)
+activate LogicManager
+
+LogicManager -> FinanceTrackerParser : parseCommand("edit 1 a/5", uiState)
+activate FinanceTrackerParser
+
+create EditCommandParser
+FinanceTrackerParser -> EditCommandParser
+activate EditCommandParser
+
+EditCommandParser --> FinanceTrackerParser
+deactivate EditCommandParser
+
+FinanceTrackerParser -> EditCommandParser : parse("...")
+activate EditCommandParser
+
+ref over EditCommandParser: Parse user input
+
+' TODO parsing data fields takes place here
+
+create EditTransactionDescriptor
+EditCommandParser -> EditTransactionDescriptor
+activate EditTransactionDescriptor
+EditTransactionDescriptor --> EditCommandParser
+deactivate EditTransactionDescriptor
+
+create EditCommand
+EditCommandParser -> EditCommand
+activate EditCommand
+
+EditCommand --> EditCommandParser
+deactivate EditCommand
+
+EditCommandParser --> FinanceTrackerParser
+
+deactivate EditCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+EditCommandParser -[hidden]-> FinanceTrackerParser
+destroy EditCommandParser
+
+create EditExpenseCommand
+FinanceTrackerParser -> EditExpenseCommand
+activate EditExpenseCommand
+
+EditExpenseCommand -> EditCommand: getTargetIndex()
+activate EditCommand
+EditCommand --> EditExpenseCommand
+deactivate EditCommand
+
+EditExpenseCommand -> EditCommand: getEditTransactionDescriptor()
+activate EditCommand
+EditCommand --> EditExpenseCommand
+deactivate EditCommand
+
+EditCommand -[hidden]-> FinanceTrackerParser
+destroy EditCommand
+
+EditExpenseCommand --> FinanceTrackerParser
+deactivate EditExpenseCommand
+
+FinanceTrackerParser --> LogicManager : cmd
+deactivate FinanceTrackerParser
+
+ref over LogicManager: Execute edit command
+
+[<--LogicManager
+deactivate LogicManager
+@enduml

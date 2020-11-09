@@ -1,0 +1,81 @@
+@startuml
+!include style.puml
+
+box Logic LOGIC_COLOR_T1
+participant ":LogicManager" as LogicManager LOGIC_COLOR
+participant ":FinanceTrackerParser" as FinanceTrackerParser LOGIC_COLOR
+participant ":AddExpenseCommandParser" as AddExpenseCommandParser LOGIC_COLOR
+participant "cmd:AddExpenseCommand" as AddExpenseCommand LOGIC_COLOR
+participant "result:CommandResult" as CommandResult LOGIC_COLOR
+end box
+
+box Model MODEL_COLOR_T1
+participant "e:Expense" as Expense MODEL_COLOR
+participant ":ModelManager" as ModelManager MODEL_COLOR
+end box
+
+[-> LogicManager : execute("adde ...", uiState)
+activate LogicManager
+
+LogicManager -> FinanceTrackerParser : parseCommand("adde ...", uiState)
+activate FinanceTrackerParser
+
+create AddExpenseCommandParser
+FinanceTrackerParser -> AddExpenseCommandParser
+activate AddExpenseCommandParser
+
+AddExpenseCommandParser --> FinanceTrackerParser
+deactivate AddExpenseCommandParser
+
+FinanceTrackerParser -> AddExpenseCommandParser : parse("...")
+activate AddExpenseCommandParser
+
+ref over AddExpenseCommandParser: Parse user input
+
+' TODO parsing data fields takes place here
+
+create Expense
+AddExpenseCommandParser -> Expense
+activate Expense
+Expense --> AddExpenseCommandParser
+deactivate Expense
+
+create AddExpenseCommand
+AddExpenseCommandParser -> AddExpenseCommand
+activate AddExpenseCommand
+
+AddExpenseCommand --> AddExpenseCommandParser
+deactivate AddExpenseCommand
+
+AddExpenseCommandParser --> FinanceTrackerParser: cmd
+
+deactivate AddExpenseCommandParser
+'Hidden arrow to position the destroy marker below the end of the activation bar.
+AddExpenseCommandParser -[hidden]-> FinanceTrackerParser
+destroy AddExpenseCommandParser
+
+FinanceTrackerParser --> LogicManager : cmd
+deactivate FinanceTrackerParser
+
+LogicManager -> AddExpenseCommand : execute(model)
+activate AddExpenseCommand
+
+AddExpenseCommand -> ModelManager : addExpense(e)
+activate ModelManager
+
+ModelManager --> AddExpenseCommand
+deactivate ModelManager
+
+create CommandResult
+AddExpenseCommand -> CommandResult
+activate CommandResult
+
+CommandResult --> AddExpenseCommand
+deactivate CommandResult
+
+AddExpenseCommand --> LogicManager : result
+deactivate AddExpenseCommand
+
+[<--LogicManager
+deactivate LogicManager
+@enduml
