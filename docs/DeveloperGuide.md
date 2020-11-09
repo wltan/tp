@@ -573,6 +573,64 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+**Use case: Add an income**
+
+**MSS**
+
+1.  User requests to add an income
+2.  Fine$$e adds the income
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The given data fields are invalid.
+
+    * 1a1. Fine$$e shows an error message.
+
+      Use case ends.
+
+**Use case: Edit an income**
+
+**MSS**
+
+1.  User requests to list incomes.
+2.  Fine$$e shows a list of incomes.
+3.  User requests to edit a specific income.
+4.  Fine$$e edits the income.
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. User filters the list first.
+
+    * 1a1. User filters the list using <u>Find an income</u>.
+
+      Use case resumes at step 3.
+
+* 2a. The list is empty.
+
+  Use case ends.
+
+* 3a. The given index is invalid.
+
+    * 3a1. Fine$$e shows an error message.
+
+      Use case resumes at step 2.
+
+* 3b. No data fields are specified.
+
+    * 3b1. Fine$$e shows an error message.
+
+      Use case resumes at step 2.
+
+* 3c. The given data fields are invalid.
+
+    * 3c1. Fine$$e shows an error message.
+
+      Use case resumes at step 2.
+
 **MSS**
 
 1.  User requests to list expenses.
