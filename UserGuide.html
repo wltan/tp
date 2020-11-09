@@ -70,7 +70,7 @@
   <li><a href="#3-overview-of-features" id="markdown-toc-3-overview-of-features">3. Overview of Features</a></li>
   <li>
 <a href="#4-features" id="markdown-toc-4-features">4. Features</a>    <ul>
-      <li><a href="#41-viewing-help-help" id="markdown-toc-41-viewing-help-help">4.1 Viewing Help: <code class="highlighter-rouge">help</code></a></li>
+      <li><a href="#41-view-help-help" id="markdown-toc-41-view-help-help">4.1 View Help: <code class="highlighter-rouge">help</code></a></li>
       <li><a href="#42-switch-tabs-tab" id="markdown-toc-42-switch-tabs-tab">4.2 Switch Tabs: <code class="highlighter-rouge">tab</code></a></li>
       <li>
 <a href="#43-expense" id="markdown-toc-43-expense">4.3 Expense</a>        <ul>
@@ -118,7 +118,7 @@
       </li>
       <li><a href="#49-analytics" id="markdown-toc-49-analytics">4.9 Analytics</a></li>
       <li><a href="#410-clear-data-clear" id="markdown-toc-410-clear-data-clear">4.10 Clear Data: <code class="highlighter-rouge">clear</code></a></li>
-      <li><a href="#411-exiting-the-program-exit" id="markdown-toc-411-exiting-the-program-exit">4.11 Exiting the Program: <code class="highlighter-rouge">exit</code></a></li>
+      <li><a href="#411-exit-the-program-exit" id="markdown-toc-411-exit-the-program-exit">4.11 Exit the Program: <code class="highlighter-rouge">exit</code></a></li>
       <li><a href="#412-command-history" id="markdown-toc-412-command-history">4.12 Command History</a></li>
       <li><a href="#413-saving-the-data" id="markdown-toc-413-saving-the-data">4.13 Saving the Data</a></li>
     </ul>
@@ -190,7 +190,7 @@ It also shows the various components that make up Fine\$\$e’s user interface.<
 
 <ol>
   <li>
-    <p>Ensure you have Java 11 or above installed in your Computer.</p>
+    <p>Ensure you have Java 11 or above installed in your computer.</p>
   </li>
   <li>
     <p>Download the latest version of <code class="highlighter-rouge">finesse.jar</code> from <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp/releases">here</a>.</p>
@@ -205,23 +205,24 @@ The Fine$$e GUI should appear in a few seconds, with sample data included, simil
     <p><img src="/tp/images/Ui.png" alt="Ui"></p>
   </li>
   <li>
-    <p>Type a command in the command box and press Enter to execute it. e.g. typing <code class="highlighter-rouge">help</code> and pressing Enter will bring up this user guide.
+    <p>Type a command in the command box and press Enter to execute it.<br>
+e.g. typing <code class="highlighter-rouge">help</code> and pressing Enter will bring up this user guide in the finance tracker.<br>
 Some example commands you can try:</p>
 
     <ul>
       <li>
-        <p><code class="highlighter-rouge">list</code>: Lists all transactions on the current list.</p>
+        <p><code class="highlighter-rouge">list</code>: Lists all transactions in the current list.</p>
       </li>
       <li>
         <p><code class="highlighter-rouge">add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage</code>:
-Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>, amount <code class="highlighter-rouge">$5.00</code>, date <code class="highlighter-rouge">03/10/2020</code> and category <code class="highlighter-rouge">Food &amp; Beverage</code> to the finance tracker.</p>
+Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>, amount <code class="highlighter-rouge">$5.00</code>, date <code class="highlighter-rouge">03/10/2020</code> and category <code class="highlighter-rouge">Food &amp; Beverage</code> to the finance tracker. The UI switches to the <a href="#223-expenses-tab">Expenses tab</a>.</p>
       </li>
       <li>
-        <p><code class="highlighter-rouge">tab 3</code>: Switches to the <a href="#223-expenses-tab">Expenses Tab</a>.</p>
+        <p><code class="highlighter-rouge">tab 3</code>: Switches to the <a href="#223-expenses-tab">Expenses tab</a>.</p>
       </li>
       <li>
         <p><code class="highlighter-rouge">delete 3</code>: Deletes the 3rd transaction shown in the current list.
- Note that this command only works in the <a href="#223-expenses-tab">Expenses Tab</a> and the <a href="#222-incomes-tab">Incomes Tab</a>.</p>
+ Note that this command only works in the <a href="#223-expenses-tab">Expenses tab</a> and the <a href="#222-incomes-tab">Incomes tab</a>.</p>
       </li>
       <li>
         <p><code class="highlighter-rouge">exit</code>: Exits the app.</p>
@@ -229,7 +230,7 @@ Adds an expense with the title <code class="highlighter-rouge">Bubble Tea</code>
     </ul>
   </li>
   <li>
-    <p>Once you are comfortable with the various features of Fine\$\$e, <a href="#410-clear-data-clear">clear the sample data</a> by typing <code class="highlighter-rouge">clear</code>, pressing Enter,
+    <p>Once you are comfortable with the various features in Fine\$\$e, <a href="#410-clear-data-clear">clear the sample data</a> by typing <code class="highlighter-rouge">clear</code>, pressing Enter,
 typing <code class="highlighter-rouge">clear</code> again, and pressing Enter again.</p>
   </li>
   <li>
@@ -292,7 +293,7 @@ This applies only to the Overview tab.</p>
   <li>Budgeting
     <ul>
       <li>Set a monthly expense limit to track your remaining budget for the month</li>
-      <li>Set a monthly savings goal to cultivate good saving habits</li>
+      <li>Set a monthly savings goal to help you cultivate good saving habits</li>
     </ul>
   </li>
   <li>Analytics
@@ -306,7 +307,7 @@ This applies only to the Overview tab.</p>
 
 <h2 id="4-features">4. Features</h2>
 
-<p>This section aims to provide you with in-depth details on Fine$$e’s unique features, with relevant examples.</p>
+<p>This section aims to provide you with in-depth details of Fine$$e’s unique features, with relevant examples.</p>
 
 <div class="alert alert-info">
 
@@ -315,8 +316,7 @@ This applies only to the Overview tab.</p>
   <ul>
     <li>
       <p>Words in <code class="highlighter-rouge">UPPER_CASE</code> are the parameters to be supplied by the user.<br>
-e.g. in <code class="highlighter-rouge">add-expense t/TITLE</code>, <code class="highlighter-rouge">TITLE</code> is a parameter which can be used as <code class="highlighter-rouge">add t/Bubble Tea</code>.
-Any leading/trailing whitespaces will be ignored. e.g. <code class="highlighter-rouge">add t/   Bubble Tea</code> and <code class="highlighter-rouge">add t/Bubble Tea   </code> will be treated as <code class="highlighter-rouge">add t/Bubble Tea</code>.</p>
+e.g. in <code class="highlighter-rouge">add-expense t/TITLE</code>, <code class="highlighter-rouge">TITLE</code> is a parameter which can be used as <code class="highlighter-rouge">add t/Bubble Tea</code>.</p>
     </li>
     <li>
       <p>Items in square brackets (<code class="highlighter-rouge">[]</code>) are optional.<br>
@@ -331,7 +331,8 @@ e.g. <code class="highlighter-rouge">[c/CATEGORY...]</code> can be used as <code
 e.g. if the command specifies <code class="highlighter-rouge">t/TITLE a/AMOUNT</code>, <code class="highlighter-rouge">a/AMOUNT t/TITLE</code> is also acceptable.</p>
     </li>
     <li>
-      <p>Any leading/trailing whitespaces for the user input as a whole will be ignored. e.g. <code class="highlighter-rouge">   find t/Bubble Tea   </code> will be treated as <code class="highlighter-rouge">find t/Bubble Tea</code>.</p>
+      <p>Any leading/trailing whitespaces for the parameters or the user input as a whole will be ignored.<br>
+e.g. <code class="highlighter-rouge">   find t/Bubble Tea</code>, <code class="highlighter-rouge">find t/    Bubble Tea</code> and <code class="highlighter-rouge">find t/Bubble Tea   </code> will be treated as <code class="highlighter-rouge">find t/Bubble Tea</code>.</p>
     </li>
   </ul>
 
@@ -363,7 +364,7 @@ An optional <code class="highlighter-rouge">$</code> may be included in front as
       <ul>
         <li>Valid ranges for days and months are governed by the rules of the <a href="https://en.wikipedia.org/wiki/Gregorian_calendar#Description">Gregorian Calendar</a>.
           <ul>
-            <li>Months should only range from 1 to 12 (inclusive), representing the 12 months of a year.</li>
+            <li>Months should only range from 1 to 12 (inclusive), representing the 12 months in a year.</li>
             <li>Days should only range from 1 to 28, 29, 30, or 31 (all inclusive),
 depending on the number of days in the given month and whether the given year is a leap year.</li>
           </ul>
@@ -380,12 +381,12 @@ depending on the number of days in the given month and whether the given year is
 
   <p>Unless stated otherwise, only one input per parameter is allowed for each command.</p>
 
-  <p>Furthermore, within each command, any other parameters, other than the ones listed in each command format, are considered invalid.
+  <p>Furthermore, within each command, any other parameters other than the ones listed in each command format are considered invalid.
 The command will not be executed, and an error message will be displayed, if any invalid parameters are present.</p>
 
 </div>
 
-<h3 id="41-viewing-help-help">4.1 Viewing Help: <code class="highlighter-rouge">help</code>
+<h3 id="41-view-help-help">4.1 View Help: <code class="highlighter-rouge">help</code>
 </h3>
 
 <p>Brings up the user guide.</p>
@@ -413,14 +414,10 @@ The command will not be executed, and an error message will be displayed, if any
 <ul>
   <li>Switches to the tab corresponding to the specified <code class="highlighter-rouge">INDEX</code>. For the <code class="highlighter-rouge">tab</code> command, <code class="highlighter-rouge">INDEX</code> <strong>must be 1, 2, 3 or 4</strong>.
     <ul>
-      <li>Index 1 switches to the <a href="#221-overview-tab">Overview Tab</a>
-</li>
-      <li>Index 2 switches to the <a href="#222-incomes-tab">Incomes Tab</a>
-</li>
-      <li>Index 3 switches to the <a href="#223-expenses-tab">Expenses Tab</a>
-</li>
-      <li>Index 4 switches to the <a href="#224-analytics-tab">Analytics Tab</a>
-</li>
+      <li>Index 1 switches to the <a href="#221-overview-tab">Overview tab</a>.</li>
+      <li>Index 2 switches to the <a href="#222-incomes-tab">Incomes tab</a>.</li>
+      <li>Index 3 switches to the <a href="#223-expenses-tab">Expenses tab</a>.</li>
+      <li>Index 4 switches to the <a href="#224-analytics-tab">Analytics tab</a>.</li>
     </ul>
   </li>
 </ul>
@@ -489,6 +486,9 @@ It could be textbooks for the new semester, that cup of bubble tea you drank the
 <p>Expected Outcome:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New expense added: Bubble Tea Amount: $5.00 Date: 03/10/2020 Categories: [Food &amp; Beverage]
 </code></pre></div></div>
+
+<p><img src="/tp/images/userguide/AddExpense.png" alt="Add Expense"></p>
+
 <p>Adds a new expense titled <code class="highlighter-rouge">Bubble Tea</code>, with amount <code class="highlighter-rouge">$5.00</code>, date <code class="highlighter-rouge">03/10/2020</code>, and a single category <code class="highlighter-rouge">Food &amp; Beverage</code>.</p>
 
 <h4 id="432-edit-expense-edit">4.3.2 Edit Expense: <code class="highlighter-rouge">edit</code>
@@ -502,9 +502,9 @@ It could be textbooks for the new semester, that cup of bubble tea you drank the
   <li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which expense to edit by specifying its position in the currently displayed expenses list.</li>
   <li>
-<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the expense information to update.
-None of them are mandatory, but at least one must be specified.
-If any <code class="highlighter-rouge">CATEGORY</code> is specified, it will replace all of the expense’s categories.
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the expense information to update.<br>
+None of them are mandatory, but at least one must be specified.<br>
+If any <code class="highlighter-rouge">CATEGORY</code> is specified, it will replace all of the expense’s categories.<br>
 For parameters that have been omitted, the value will remain unchanged.</li>
 </ul>
 
@@ -514,19 +514,26 @@ For parameters that have been omitted, the value will remain unchanged.</li>
 
 <p>Examples:</p>
 <ul>
-  <li><code class="highlighter-rouge">edit 2 t/Shopee Internship d/24/10/2020</code></li>
+  <li><code class="highlighter-rouge">edit 1 t/Shopee Internship d/24/10/2020</code></li>
   <li><code class="highlighter-rouge">edit 3 a/$2000 c/</code></li>
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit 1 a/5 d/22/09/2020
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>edit 2 a/5 d/22/09/2020
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edited Expense: Artificial Intelligence: A Modern Approach Amount: $5.00 Date: 22/09/2020 Categories: [Textbook]
 </code></pre></div></div>
-<p>Edits the first expense in the currently displayed expenses list to have amount <code class="highlighter-rouge">$5.00</code> and date <code class="highlighter-rouge">22/09/2020</code>.
+
+<p><img src="/tp/images/userguide/EditExpense.png" alt="Edit Expense"></p>
+
+<p>Edits the second expense in the currently displayed expenses list to have amount <code class="highlighter-rouge">$5.00</code> and date <code class="highlighter-rouge">22/09/2020</code>.
 The rest of the expense information remains unchanged.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, any filtering done on the expenses list via the <code class="highlighter-rouge">find</code> command will be reset, and the expenses list will display all expenses.</p>
+</blockquote>
 
 <h4 id="433-delete-expense-delete">4.3.3 Delete Expense: <code class="highlighter-rouge">delete</code>
 </h4>
@@ -542,17 +549,17 @@ The rest of the expense information remains unchanged.</p>
 
 <p>Example:</p>
 <ul>
-  <li><code class="highlighter-rouge">delete 1</code></li>
+  <li><code class="highlighter-rouge">delete 3</code></li>
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete 3
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete 1
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Deleted Expense: Bubble Tea Amount: $4.80 Date: 14/10/2020 Categories: [Food &amp; Beverage]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Deleted Expense: Bubble Tea Amount: $5.00 Date: 22/09/2020 Categories: [Food &amp; Beverage]
 </code></pre></div></div>
-<p>Deletes the third expense in the currently displayed expenses list.</p>
+<p>Deletes the first expense in the currently displayed expenses list.</p>
 
 <h4 id="434-list-expense-ls-expense">4.3.4 List Expense: <code class="highlighter-rouge">ls-expense</code>
 </h4>
@@ -646,8 +653,8 @@ e.g. <code class="highlighter-rouge">t/Tea t/Coffee</code> will return <code cla
 
 <h3 id="44-income">4.4 Income</h3>
 
-<p>An <strong>income</strong> represents <em>you receiving money for something</em>.
-It could be your internship allowance, prize money you won from a pitching competition, or even red packets that you receive over Chinese New Year.</p>
+<p>An <strong>income</strong> represents you <em>receiving money for something</em>.
+It could be your internship allowance, prize money you won from a pitch competition, or even red packets that you received over Chinese New Year.</p>
 
 <p>To help you manage your finances, Fine$$e records the following information about each of your incomes:</p>
 <ol>
@@ -692,9 +699,12 @@ It could be your internship allowance, prize money you won from a pitching compe
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New income added: Shopee Internship Amount: $560.00 Date: 03/10/2020 Categories: [Internship]
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New income added: Shopee Internship Amount: $560.00 Date: 03/10/2020 Categories: [Work]
 </code></pre></div></div>
-<p>Adds a new income titled <code class="highlighter-rouge">Shopee Internship</code>, with amount <code class="highlighter-rouge">$560.00</code>, date <code class="highlighter-rouge">03/10/2020</code>, and a single category <code class="highlighter-rouge">Internship</code>.</p>
+
+<p><img src="/tp/images/userguide/AddIncome.png" alt="Add Income"></p>
+
+<p>Adds a new income titled <code class="highlighter-rouge">Shopee Internship</code>, with amount <code class="highlighter-rouge">$560.00</code>, date <code class="highlighter-rouge">03/10/2020</code>, and a single category <code class="highlighter-rouge">Work</code>.</p>
 
 <h4 id="442-edit-income-edit">4.4.2 Edit Income: <code class="highlighter-rouge">edit</code>
 </h4>
@@ -707,9 +717,9 @@ It could be your internship allowance, prize money you won from a pitching compe
   <li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which income to edit by specifying its position in the currently displayed incomes list.</li>
   <li>
-<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated income information.
-None of them are mandatory, but at least one must be specified.
-If any <code class="highlighter-rouge">CATEGORY</code> is specified, it will replace all of the income’s existing categories.
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code>, <code class="highlighter-rouge">DATE</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated income information.<br>
+None of them are mandatory, but at least one must be specified.<br>
+If any <code class="highlighter-rouge">CATEGORY</code> is specified, it will replace all of the income’s existing categories.<br>
 For parameters that have been omitted, the value will remain unchanged.</li>
 </ul>
 
@@ -728,10 +738,17 @@ For parameters that have been omitted, the value will remain unchanged.</li>
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edited Income: Teaching Assistant Amount: $2000.00 Date: 18/10/2020 Categories:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Edited Income: Start-up Funding Amount: $2000.00 Date: 01/10/2020 Categories:
 </code></pre></div></div>
+
+<p><img src="/tp/images/userguide/EditIncome.png" alt="Edit Income"></p>
+
 <p>Edits the third income in the currently displayed incomes list to have amount <code class="highlighter-rouge">$2000.00</code> and no categories.
 The rest of the income information remains unchanged.</p>
+
+<blockquote>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  After executing this command, any filtering done on the incomes list via the <code class="highlighter-rouge">find</code> command will be reset, and the incomes list will display all incomes.</p>
+</blockquote>
 
 <h4 id="443-delete-income-delete">4.4.3 Delete Income: <code class="highlighter-rouge">delete</code>
 </h4>
@@ -751,7 +768,7 @@ The rest of the income information remains unchanged.</p>
 </ul>
 
 <p>Example Usage:</p>
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete 2
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>delete 1
 </code></pre></div></div>
 
 <p>Expected Outcome:</p>
@@ -887,11 +904,10 @@ You can convert a bookmark expense repeatedly to create as many expenses as you 
 </ul>
 
 <blockquote>
-  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Adding of duplicate bookmark expenses is not allowed.
-Bookmark expenses with the same title are considered to be duplicates of each other.
-Contiguous whitespace characters between words in the title will be treated as a single whitespace character.</p>
-
-  <p>For example: <code class="highlighter-rouge">Phone Bill</code> and <code class="highlighter-rouge">Phone  Bill</code> are considered to be the same title while <code class="highlighter-rouge">Phone Bill</code> and <code class="highlighter-rouge">PhoneBill</code> are not considered to be the same title.</p>
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Adding of duplicate bookmark expenses is not allowed.<br>
+Bookmark expenses with the same titles are considered to be duplicates of each other.<br>
+Contiguous whitespace characters between words in the title will be treated as a single whitespace character.<br>
+e.g. <code class="highlighter-rouge">Phone Bill</code> and <code class="highlighter-rouge">Phone  Bill</code> are considered to be the same title, while <code class="highlighter-rouge">Phone Bill</code> and <code class="highlighter-rouge">PhoneBill</code> are not considered to be the same title.</p>
 </blockquote>
 
 <p>Examples:</p>
@@ -924,8 +940,8 @@ Contiguous whitespace characters between words in the title will be treated as a
 </blockquote>
 
 <blockquote>
-  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Bookmark expenses with same titles are considered to be duplicates of each other.
-Therefore, editing the title of a bookmark expense to an already existing title in the bookmark expenses list is not allowed.
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Bookmark expenses with the same titles are considered to be duplicates of each other.<br>
+Therefore, editing the title of a bookmark expense to an already existing title in the bookmark expenses list is not allowed.<br>
 Contiguous whitespace characters between words in the title will be treated as a single whitespace character.</p>
 </blockquote>
 
@@ -935,9 +951,9 @@ Contiguous whitespace characters between words in the title will be treated as a
   <li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which bookmark expense to edit by specifying its position in the bookmark expenses list.</li>
   <li>
-<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark expense information.
-None of them are mandatory, but at least one must be specified.
-If any <code class="highlighter-rouge">CAEGORY</code> is specified, it will replace all of the bookmark expense’s existing categories.
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark expense information.<br>
+None of them are mandatory, but at least one must be specified.<br>
+If any <code class="highlighter-rouge">CAEGORY</code> is specified, it will replace all of the bookmark expense’s existing categories.<br>
 For parameters that have been omitted, the value will remain unchanged.</li>
 </ul>
 
@@ -962,7 +978,7 @@ For parameters that have been omitted, the value will remain unchanged.</li>
 
 <p><img src="/tp/images/userguide/bookmark/AnnotatedEditBookmarkExpense.png" alt="Edit Bookmark Expense"></p>
 
-<p>Edits the third bookmark expense in the bookmark expenses list to have an amount of <code class="highlighter-rouge">$15.00</code> and two categories of <code class="highlighter-rouge">Entertainment</code> and <code class="highlighter-rouge">Personal</code>.</p>
+<p>Edits the third bookmark expense in the bookmark expenses list to have an amount of <code class="highlighter-rouge">$15.00</code> and two categories <code class="highlighter-rouge">Entertainment</code> and <code class="highlighter-rouge">Personal</code>.</p>
 
 <h4 id="453-delete-bookmark-expense-delete-bookmark">4.5.3 Delete Bookmark Expense: <code class="highlighter-rouge">delete-bookmark</code>
 </h4>
@@ -992,12 +1008,12 @@ For parameters that have been omitted, the value will remain unchanged.</li>
 <p>Expected Outcome:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Deleted Bookmark Expense: Phone Bill Amount: $60.00 Categories: [Utilities]
 </code></pre></div></div>
-<p>Deletes the bookmark expense at index 3 in the bookmark expenses list.</p>
+<p>Deletes the third bookmark expense in the bookmark expenses list.</p>
 
 <h4 id="454-convert-bookmark-expense-convert-bookmark">4.5.4 Convert Bookmark Expense: <code class="highlighter-rouge">convert-bookmark</code>
 </h4>
 
-<p>Converts a bookmark expense into an expense, and adds it to the finance tracker.</p>
+<p>Converts a bookmark expense into an expense, and adds it to the expenses list.</p>
 
 <blockquote>
   <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the <a href="#223-expenses-tab">Expense tab</a>.</p>
@@ -1030,7 +1046,7 @@ For parameters that have been omitted, the value will remain unchanged.</li>
 
 <p><img src="/tp/images/userguide/bookmark/AnnotatedConvertBookmarkExpense.png" alt="Convert Bookmark Expense"></p>
 
-<p>Converts the third bookmark expense in the bookmark expense list into an expense with the information of the
+<p>Converts the third bookmark expense in the bookmark expenses list into an expense with the information of the
 specified bookmark expense and date <code class="highlighter-rouge">10/08/2020</code>, and adds it to the expenses list in the finance tracker.</p>
 
 <h3 id="46-bookmark-income">4.6 Bookmark Income</h3>
@@ -1050,7 +1066,7 @@ You can convert a bookmark income repeatedly to create as many incomes as you wa
 
 <p><img src="/tp/images/userguide/bookmark/AnnotatedBookmarkIncomeOverview.png" alt="Overview Bookmark Income Panel"></p>
 
-<p class="image-caption">Bookmark Incomes List Panel in the Incomes tab</p>
+<p class="image-caption">Bookmark Incomes List Panel in the Incomes Tab</p>
 
 <h4 id="461-add-bookmark-income-add-bookmark-income">4.6.1 Add Bookmark Income: <code class="highlighter-rouge">add-bookmark-income</code>
 </h4>
@@ -1071,11 +1087,10 @@ You can convert a bookmark income repeatedly to create as many incomes as you wa
 </ul>
 
 <blockquote>
-  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Adding of duplicate bookmark incomes is not allowed.
-Bookmark incomes with the same title are considered to be duplicates of each other.
-Contiguous whitespace characters between words in the title will be treated as a single whitespace character.</p>
-
-  <p>For example: <code class="highlighter-rouge">Part Time</code> and <code class="highlighter-rouge">Part  Time</code> are considered to be the same title while <code class="highlighter-rouge">Part Time</code> and <code class="highlighter-rouge">PartTime</code> are not considered to be the same title.</p>
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Adding of duplicate bookmark incomes is not allowed.<br>
+Bookmark incomes with the same titles are considered to be duplicates of each other.<br>
+Contiguous whitespace characters between words in the title will be treated as a single whitespace character.<br>
+e.g. <code class="highlighter-rouge">Part Time</code> and <code class="highlighter-rouge">Part  Time</code> are considered to be the same title, while <code class="highlighter-rouge">Part Time</code> and <code class="highlighter-rouge">PartTime</code> are not considered to be the same title.</p>
 </blockquote>
 
 <p>Examples:</p>
@@ -1108,8 +1123,8 @@ Contiguous whitespace characters between words in the title will be treated as a
 </blockquote>
 
 <blockquote>
-  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Bookmark incomes with same titles are considered to be duplicates of each other.
-Therefore, editing the title of a bookmark income to an already existing title in the bookmark incomes list is not allowed.
+  <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  Bookmark incomes with the same titles are considered to be duplicates of each other.<br>
+Therefore, editing the title of a bookmark income to an already existing title in the bookmark incomes list is not allowed.<br>
 Contiguous whitespace characters between words in the title will be treated as a single whitespace character.</p>
 </blockquote>
 
@@ -1119,10 +1134,11 @@ Contiguous whitespace characters between words in the title will be treated as a
   <li>
 <code class="highlighter-rouge">INDEX</code> allows you to choose which bookmark income to edit by specifying its position in the bookmark incomes list.</li>
   <li>
-<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark income information.
- None of them are mandatory, but at least one must be specified.
- If any <code class="highlighter-rouge">CATEGORY</code> is specified, it will replace all of the bookmark income’s existing categories.
- For parameters that have been omitted, the value will remain unchanged.</li>
+<code class="highlighter-rouge">TITLE</code>, <code class="highlighter-rouge">AMOUNT</code> and <code class="highlighter-rouge">CATEGORY</code> allow you to specify the updated bookmark income information.<br>
+ None of them are mandatory, but at least one must be specified.<br>
+ If any <code class="highlighter-rouge">CATEGORY</code> is specified, it will replace all of the bookmark income’s existing categories.<br>
+ For parameters that have been omitted, the value will remain unchanged.<br>
+</li>
 </ul>
 
 <blockquote>
@@ -1176,12 +1192,12 @@ Contiguous whitespace characters between words in the title will be treated as a
 <p>Expected Outcome:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Deleted Bookmark Income: Teaching Assistant Amount: $1890.00 Categories: [CS1101S][CS1231S]
 </code></pre></div></div>
-<p>Deletes the bookmark income at index 2 in the bookmark incomes list.</p>
+<p>Deletes the second bookmark expense in the bookmark incomes list.</p>
 
 <h4 id="464-convert-bookmark-income-convert-bookmark">4.6.4 Convert Bookmark Income: <code class="highlighter-rouge">convert-bookmark</code>
 </h4>
 
-<p>Converts a bookmark income into an income, and adds it to the finance tracker.</p>
+<p>Converts a bookmark income into an income, and adds it to the incomes list.</p>
 
 <blockquote>
   <p><img class="emoji" title=":warning:" alt=":warning:" raw="⚠️" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the <a href="#222-incomes-tab">Incomes tab</a>.</p>
@@ -1221,7 +1237,7 @@ specified bookmark income and date <code class="highlighter-rouge">03/08/2020</c
 
 <p>Ever feel like your wallet just won’t stop bleeding? Try setting a monthly expense limit!
 The expense limit feature allows you to limit your spending by setting a budget for the month.
-Once the expense limit is set, it will be visible on the Overview tab along with your remaining budget for this month.</p>
+The monthly expense limit is visible on the Overview tab along with your remaining budget for this month, which is automatically calculated based on the expenses in the finance tracker.</p>
 
 <h4 id="471-set-expense-limit-set-expense-limit">4.7.1 Set Expense Limit: <code class="highlighter-rouge">set-expense-limit</code>
 </h4>
@@ -1248,13 +1264,16 @@ Once the expense limit is set, it will be visible on the Overview tab along with
 <p>Expected Outcome:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New monthly expense limit set: $400.00
 </code></pre></div></div>
+
+<p><img src="/tp/images/userguide/SetExpenseLimit.png" alt="Set Monthly Expense Limit"></p>
+
 <p>Sets the monthly expense limit in the finance tracker to be <code class="highlighter-rouge">$400.00</code>.</p>
 
 <h3 id="48-savings-goal">4.8 Savings Goal</h3>
 
 <p>Want to save up for the new PlayStation 5 but can’t seem to no matter what? Fine$$e has you covered!
 The savings goal feature allows you to save consistently by setting a monthly savings goal, so that you can save up bit by bit and build good financial habits.
-Once the savings goal is set, it will be visible on the Overview tab along with your current savings for this month.</p>
+The monthly savings goal visible on the Overview tab along with your current savings for this month, which is automatically calculated based on the expenses and incomes in the finance tracker.</p>
 
 <h4 id="481-set-savings-goal-set-savings-goal">4.8.1 Set Savings Goal: <code class="highlighter-rouge">set-savings-goal</code>
 </h4>
@@ -1281,6 +1300,9 @@ Once the savings goal is set, it will be visible on the Overview tab along with 
 <p>Expected Outcome:</p>
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>New monthly savings goal set: $50.00
 </code></pre></div></div>
+
+<p><img src="/tp/images/userguide/SetSavingsGoal.png" alt="Set Savings Goal"></p>
+
 <p>Sets the monthly savings goal in the finance tracker to be <code class="highlighter-rouge">$50.00</code>.</p>
 
 <h3 id="49-analytics">4.9 Analytics</h3>
@@ -1296,19 +1318,19 @@ These analytics will give you a better overview of your incomes/expenses and hel
   <li>Total monthly savings</li>
 </ul>
 
-<p>The data in the bar charts is automatically updated to include any recent modifications you have made in the finance tracker every time you switch to the <a href="#224-analytics-tab">Analytics Tab</a>.
+<p>Whenever you switch to the <a href="#224-analytics-tab">Analytics tab</a>, the data in the bar charts is automatically updated to include any recent modifications you have made in the finance tracker.
 This ensures that you will always see the latest information about your spending and saving trends.</p>
 
 <h3 id="410-clear-data-clear">4.10 Clear Data: <code class="highlighter-rouge">clear</code>
 </h3>
 
-<p>Ready to start using Fine\$\$e?
+<p>Ready to start using Fine\$\$e after fiddling with the sample data? Want to start over your finance tracking journey on a clean slate?
 This command allows you to clear <em>all</em> existing data inside the finance tracker. That includes:</p>
 <ul>
   <li>Expenses and incomes</li>
   <li>Bookmark expenses and bookmark incomes</li>
-  <li>Expense limit</li>
-  <li>Savings goal</li>
+  <li>Monthly expense limit</li>
+  <li>Monthly savings goal</li>
 </ul>
 
 <p>Format: <code class="highlighter-rouge">clear</code></p>
@@ -1318,7 +1340,7 @@ This command allows you to clear <em>all</em> existing data inside the finance t
 </blockquote>
 
 <blockquote>
-  <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  If there is any data you would like to keep before clearing, write it down somewhere so that you can re-enter it later.</p>
+  <p><img class="emoji" title=":bulb:" alt=":bulb:" raw="💡" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4a1.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  If there is any data you would like to keep before clearing, save it somewhere so that you can re-enter it later.</p>
 </blockquote>
 
 <p>To protect against accidental usage, this command needs to be entered <strong>twice in succession</strong> before it takes effect.
@@ -1373,7 +1395,7 @@ A single <code class="highlighter-rouge">clear</code> command is nullified when 
 </code></pre></div></div>
 <p>All data in the finance tracker is cleared.</p>
 
-<h3 id="411-exiting-the-program-exit">4.11 Exiting the Program: <code class="highlighter-rouge">exit</code>
+<h3 id="411-exit-the-program-exit">4.11 Exit the Program: <code class="highlighter-rouge">exit</code>
 </h3>
 
 <p>Exits the program.</p>
@@ -1564,14 +1586,14 @@ There is no need to save manually.</p>
   <tbody>
     <tr>
       <td>Bookmark Expense</td>
-      <td>A template for an expense, which can be used to create expenses and add them to the finance tracker.</td>
+      <td>A template for an expense, which can be used to create expenses that are added to the finance tracker.</td>
     </tr>
     <tr>
       <td>Bookmark Income</td>
-      <td>A template for an income, which can be used to create incomes and add them to the finance tracker.</td>
+      <td>A template for an income, which can be used to create incomes that are added to the finance tracker.</td>
     </tr>
     <tr>
-      <td>Current date</td>
+      <td>Current Date</td>
       <td>The system date on the computer on which Fine$$e is set up.</td>
     </tr>
     <tr>
@@ -1583,7 +1605,7 @@ There is no need to save manually.</p>
       <td>A one-time transaction that results in an increase in the amount of money you have.</td>
     </tr>
     <tr>
-      <td>Text cursor</td>
+      <td>Text Cursor</td>
       <td>A blinking vertical line that indicates where text will be placed when entered.</td>
     </tr>
   </tbody>

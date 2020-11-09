@@ -216,7 +216,7 @@
 <p>Each of the four components:</p>
 
 <ul>
-  <li>defines its <em>API</em> in an <code class="highlighter-rouge">interface</code> with the same name as the Component.</li>
+  <li>defines its <em>API</em> in an <code class="highlighter-rouge">interface</code> with the same name as the component.</li>
   <li>exposes its functionality using a concrete <code class="highlighter-rouge">{Component Name}Manager</code> class (which implements the corresponding API <code class="highlighter-rouge">interface</code> mentioned in the previous point.</li>
 </ul>
 
@@ -226,7 +226,7 @@
 
 <p><strong>How the architecture components interact with each other</strong></p>
 
-<p>The <em>Sequence Diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code class="highlighter-rouge">delete 1</code>.</p>
+<p>The <em>sequence diagram</em> below shows how the components interact with each other for the scenario where the user issues the command <code class="highlighter-rouge">delete 1</code>.</p>
 
 <p><img src="images/ArchitectureSequenceDiagram.png" width="574"></p>
 
@@ -294,7 +294,7 @@ For example, the layout of <a href="https://github.com/AY2021S1-CS2103T-W16-3/tp
   <li>In addition, the <code class="highlighter-rouge">CommandResult</code> object can also instruct <code class="highlighter-rouge">Ui</code> to perform certain actions, such as displaying the help message to the user.</li>
 </ol>
 
-<p>Below is the Sequence Diagram for interactions within the <code class="highlighter-rouge">Logic</code> component for the <code class="highlighter-rouge">execute("delete 1")</code> API call.</p>
+<p>Below is the sequence diagram for interactions within the <code class="highlighter-rouge">Logic</code> component for the <code class="highlighter-rouge">execute("delete 1")</code> API call.</p>
 
 <p><img src="/tp/images/DeleteSequenceDiagram.png" alt="Interactions Inside the Logic Component for the `delete 1` Command"></p>
 
@@ -551,7 +551,7 @@ Note that the arguments in the full command string have been abbreviated to <cod
 
 <p><img src="/tp/images/AddTransactionSequenceDiagram.png" alt="Sequence diagram for executing the `add-expense t/Bubble Tea a/5 d/03/10/2020 c/Food &amp; Beverage` command on the Expenses tab"></p>
 
-<p>When <code class="highlighter-rouge">AddIncomeCommandParser</code> is used, the sequence diagram is similar, but replace all occurrences of <code class="highlighter-rouge">Expense</code> with <code class="highlighter-rouge">Income</code>.</p>
+<p>When <code class="highlighter-rouge">AddIncomeCommandParser</code> is used, the sequence diagram is similar, but all occurrences of <code class="highlighter-rouge">Expense</code> are replaced with <code class="highlighter-rouge">Income</code>.</p>
 
 <p>The following activity diagram summarizes what happens within <code class="highlighter-rouge">FinanceTrackerParser</code> when the user executes a new add command:</p>
 
@@ -621,7 +621,7 @@ It is split into two diagrams, one for parsing and one for execution.</p>
 
 <p><img src="/tp/images/EditTransactionSequenceDiagram2.png" alt="Sequence diagram for executing the `edit 1 a/5` command on the Expenses tab"></p>
 
-<p>When <code class="highlighter-rouge">EditExpenseCommand</code> is used, the sequence diagram is similar, but replace all occurrences of <code class="highlighter-rouge">Expense</code> with <code class="highlighter-rouge">Income</code>.</p>
+<p>When <code class="highlighter-rouge">EditExpenseCommand</code> is used, the sequence diagram is similar, but all occurrences of <code class="highlighter-rouge">Expense</code> are replaced with <code class="highlighter-rouge">Income</code>.</p>
 
 <p>The following activity diagram summarizes what happens within <code class="highlighter-rouge">FinanceTrackerParser</code> when the user executes a new edit command:</p>
 
@@ -659,7 +659,7 @@ It is split into two diagrams, one for parsing and one for execution.</p>
 
 <p><img src="/tp/images/DeleteSequenceDiagram.png" alt="Sequence diagram for parsing the `delete 1` command on the Expenses tab"></p>
 
-<p>When <code class="highlighter-rouge">DeleteExpenseCommand</code> is used, the sequence diagram is similar, but replace all occurrences of <code class="highlighter-rouge">Expense</code> with <code class="highlighter-rouge">Income</code>.</p>
+<p>When <code class="highlighter-rouge">DeleteExpenseCommand</code> is used, the sequence diagram is similar, but all occurrences of <code class="highlighter-rouge">Expense</code> are replaced with <code class="highlighter-rouge">Income</code>.</p>
 
 <p>The following activity diagram summarizes what happens within <code class="highlighter-rouge">FinanceTrackerParser</code> when the user executes a new delete command:</p>
 
@@ -824,13 +824,11 @@ Below is the sequence diagram for interactions within the <code class="highlight
 
 <h3 id="bookmark-transaction">Bookmark transaction</h3>
 
-<p>Bookmark transaction is a transaction that is a template that allows users to create transactions that they make frequently, such as paying phone bills monthly or receiving stipend for being a teaching assistant.
+<p>A bookmark transaction is a template that allows users to create transactions that they make frequently, such as paying phone bills monthly or receiving stipend for being a teaching assistant.
 This feature reduces the hassle of keying in information repeatedly for identical transactions that occur frequently.</p>
 
-<p>Bookmark Transaction object is made up of 3 fields. They are mainly: <code class="highlighter-rouge">Title</code>, <code class="highlighter-rouge">Amount</code> and <code class="highlighter-rouge">Category</code>.
-The class diagram below depicts the structure of the <code class="highlighter-rouge">BookmarkTransaction</code>, <code class="highlighter-rouge">BookmarkExpense</code>, <code class="highlighter-rouge">BookmarkIncome</code>, <code class="highlighter-rouge">BookmarkExpenseList</code> and <code class="highlighter-rouge">BookmarkIncomeList</code> in the Model Component.</p>
-
-<p>The class diagram below depicts the components involved in the budget feature.</p>
+<p>A <code class="highlighter-rouge">BookmarkTransaction</code> is made up of 3 fields: <code class="highlighter-rouge">Title</code>, <code class="highlighter-rouge">Amount</code> and <code class="highlighter-rouge">Category</code>.
+The class diagram below depicts the structure of the <code class="highlighter-rouge">BookmarkTransaction</code>, <code class="highlighter-rouge">BookmarkExpense</code>, <code class="highlighter-rouge">BookmarkIncome</code>, <code class="highlighter-rouge">BookmarkExpenseList</code> and <code class="highlighter-rouge">BookmarkIncomeList</code> in the Model component.</p>
 
 <p><img src="/tp/images/BookmarkTransactionClassDiagram.png" alt="Class Diagram for Bookmark Transaction Class"></p>
 
@@ -840,8 +838,8 @@ The class diagram below depicts the structure of the <code class="highlighter-ro
 
 <h5 id="overview-6">Overview</h5>
 
-<p>The add bookmark transactions feature allows users to add bookmark transactions into the FinanceTracker.
-Each new bookmark transaction must have the data fields Title, Amount, and Category.</p>
+<p>The add bookmark transactions feature allows users to add bookmark transactions into the <code class="highlighter-rouge">FinanceTracker</code>.
+Each new bookmark transaction must have the data fields <code class="highlighter-rouge">Title</code>, <code class="highlighter-rouge">Amount</code>, and <code class="highlighter-rouge">Category</code>.</p>
 
 <p>Below is the class diagram of the components involved in the add transactions feature.</p>
 
@@ -905,7 +903,7 @@ If the title does exist already, the <code class="highlighter-rouge">DuplicateBo
 <p>Following is a detailed elaboration of how <code class="highlighter-rouge">EditBoomarkExpenseCommand</code> operates.</p>
 
 <blockquote>
-  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the Expense Tab.</p>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the Expenses tab.</p>
 </blockquote>
 
 <p><strong>Step 1</strong>. After the successful parsing of user input, the <code class="highlighter-rouge">EditBookmarkExpenseCommand#execute(Model model)</code> method is called which checks if the <code class="highlighter-rouge">Index</code> defined as an argument when instantiating <code class="highlighter-rouge">EditBookmarkCommand(Index targetIndex, EditBookmarkTransactionDescriptor editBookmarkTransactionDescriptor)</code> is valid.
@@ -943,10 +941,10 @@ Since it is optional for the users to input fields, the fields which are not ent
 <p>Following is a detailed elaboration of how <code class="highlighter-rouge">DeleteBoomarkExpenseCommand</code> operates.</p>
 
 <blockquote>
-  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the Expense Tab.</p>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the Expenses tab.</p>
 </blockquote>
 
-<p><strong>Step 1</strong>. After the successful parsing of user input, the <code class="highlighter-rouge">DeleteBookmarkExpenseCommand#execute(Model model)</code> method is called which checks if the <code class="highlighter-rouge">Index</code> defined when instantiating the <code class="highlighter-rouge">DeleteBookmarkCommand(Index index)</code> constructor is valid.</p>
+<p><strong>Step 1</strong>. After the successful parsing of user input, the <code class="highlighter-rouge">DeleteBookmarkExpenseCommand#execute(Model model)</code> method is called which checks if the <code class="highlighter-rouge">Index</code> is defined when instantiating the <code class="highlighter-rouge">DeleteBookmarkCommand(Index index)</code> constructor is valid.</p>
 
 <blockquote>
   <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  The <code class="highlighter-rouge">Index</code> must be within the bounds of the list of bookmark expenses.</p>
@@ -983,10 +981,10 @@ Since it is optional for the users to input fields, the fields which are not ent
 <p>Following is a detailed elaboration of how <code class="highlighter-rouge">ConvertBoomarkExpenseCommand</code> operates.</p>
 
 <blockquote>
-  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the Expense Tab.</p>
+  <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  This command can only be executed on the Expenses tab.</p>
 </blockquote>
 
-<p><strong>Step 1</strong>. After the successful parsing of user input, the <code class="highlighter-rouge">ConvertBookmarkExpenseCommand#execute(Model model)</code> method is called which checks if the <code class="highlighter-rouge">Index</code> defined when instantiating the <code class="highlighter-rouge">ConvertBookmarkCommand(Index index)</code> constructor is valid.</p>
+<p><strong>Step 1</strong>. After the successful parsing of user input, the <code class="highlighter-rouge">ConvertBookmarkExpenseCommand#execute(Model model)</code> method is called which checks if the <code class="highlighter-rouge">Index</code> is defined when instantiating the <code class="highlighter-rouge">ConvertBookmarkCommand(Index index)</code> constructor is valid.</p>
 
 <blockquote>
   <p><img class="emoji" title=":information_source:" alt=":information_source:" raw="ℹ️" src="https://github.githubassets.com/images/icons/emoji/unicode/2139.png" style="vertical-align: middle; display: inline; max-width: 1em; visibility: hidden;" onload="this.style.visibility='visible'" onerror="this.replaceWith(this.getAttribute('raw'))">  The <code class="highlighter-rouge">Index</code> must be within the bounds of the list of bookmark expenses.</p>
@@ -1316,14 +1314,14 @@ Upon relaunching the application, the data file is validated by <code class="hig
 
 <p>(For all use cases below, the <strong>System</strong> is <code class="highlighter-rouge">Fine$$e</code> and the <strong>Actor</strong> is the <code class="highlighter-rouge">user</code>, unless specified otherwise)</p>
 
-<p><strong>Use case: Add an expense</strong></p>
+<p><strong>Use case: UC01 - Add an expense</strong></p>
 
 <p><strong>MSS</strong></p>
 
 <ol>
-  <li>User requests to add an expense</li>
+  <li>User requests to add an expense.</li>
   <li>
-    <p>Fine$$e adds the expense</p>
+    <p>Fine$$e adds the expense.</p>
 
     <p>Use case ends.</p>
   </li>
@@ -1345,7 +1343,7 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><strong>Use case: Edit an expense</strong></p>
+<p><strong>Use case: UC02 - Edit an expense</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1364,17 +1362,6 @@ Upon relaunching the application, the data file is validated by <code class="hig
 
 <ul>
   <li>
-    <p>1a. User filters the list first.</p>
-
-    <ul>
-      <li>
-        <p>1a1. User filters the list using <u>Find an expense</u>.</p>
-
-        <p>Use case resumes at step 3.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
     <p>2a. The list is empty.</p>
 
     <p>Use case ends.</p>
@@ -1414,103 +1401,7 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><strong>Use case: Add an income</strong></p>
-
-<p><strong>MSS</strong></p>
-
-<ol>
-  <li>User requests to add an income</li>
-  <li>
-    <p>Fine$$e adds the income</p>
-
-    <p>Use case ends.</p>
-  </li>
-</ol>
-
-<p><strong>Extensions</strong></p>
-
-<ul>
-  <li>
-    <p>1a. The given data fields are invalid.</p>
-
-    <ul>
-      <li>
-        <p>1a1. Fine$$e shows an error message.</p>
-
-        <p>Use case ends.</p>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p><strong>Use case: Edit an income</strong></p>
-
-<p><strong>MSS</strong></p>
-
-<ol>
-  <li>User requests to list incomes.</li>
-  <li>Fine$$e shows a list of incomes.</li>
-  <li>User requests to edit a specific income.</li>
-  <li>
-    <p>Fine$$e edits the income.</p>
-
-    <p>Use case ends.</p>
-  </li>
-</ol>
-
-<p><strong>Extensions</strong></p>
-
-<ul>
-  <li>
-    <p>1a. User filters the list first.</p>
-
-    <ul>
-      <li>
-        <p>1a1. User filters the list using <u>Find an income</u>.</p>
-
-        <p>Use case resumes at step 3.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>2a. The list is empty.</p>
-
-    <p>Use case ends.</p>
-  </li>
-  <li>
-    <p>3a. The given index is invalid.</p>
-
-    <ul>
-      <li>
-        <p>3a1. Fine$$e shows an error message.</p>
-
-        <p>Use case resumes at step 2.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>3b. No data fields are specified.</p>
-
-    <ul>
-      <li>
-        <p>3b1. Fine$$e shows an error message.</p>
-
-        <p>Use case resumes at step 2.</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>3c. The given data fields are invalid.</p>
-
-    <ul>
-      <li>
-        <p>3c1. Fine$$e shows an error message.</p>
-
-        <p>Use case resumes at step 2.</p>
-      </li>
-    </ul>
-  </li>
-</ul>
+<p><strong>Use case: UC03 - Delete an expense</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1546,9 +1437,190 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><em>{More to be added}</em></p>
+<p><strong>Use case: UC04 - Add an income</strong></p>
 
-<p><strong>Use case: UC12 - Add Bookmark Expense</strong></p>
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to add an income</li>
+  <li>
+    <p>Fine$$e adds the income</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>1a. The given data fields are invalid.</p>
+
+    <ul>
+      <li>
+        <p>1a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC05 - Edit an income</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to list incomes.</li>
+  <li>Fine$$e shows a list of incomes.</li>
+  <li>User requests to edit a specific income.</li>
+  <li>
+    <p>Fine$$e edits the income.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>2a. The list is empty.</p>
+
+    <p>Use case ends.</p>
+  </li>
+  <li>
+    <p>3a. The given index is invalid.</p>
+
+    <ul>
+      <li>
+        <p>3a1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>3b. No data fields are specified.</p>
+
+    <ul>
+      <li>
+        <p>3b1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>3c. The given data fields are invalid.</p>
+
+    <ul>
+      <li>
+        <p>3c1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC06 - Delete an income</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to list incomes.</li>
+  <li>Fine$$e shows a list of incomes.</li>
+  <li>User requests to delete a specific income.</li>
+  <li>
+    <p>Fine$$e deletes the income.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>2a. The list is empty.</p>
+
+    <p>Use case ends.</p>
+  </li>
+  <li>
+    <p>3a. The given index is invalid.</p>
+
+    <ul>
+      <li>
+        <p>3a1. Fine$$e shows an error message.</p>
+
+        <p>Use case resumes at step 2.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC07 - Set the expense limit</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to set the expense limit to a specific amount.</li>
+  <li>Fine$$e sets the expense limit.</li>
+  <li>
+    <p>Fine$$e recalculates budget information.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>2a. The given data field is invalid.</p>
+
+    <ul>
+      <li>
+        <p>2a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC08 - Set the savings goal</strong></p>
+
+<p><strong>MSS</strong></p>
+
+<ol>
+  <li>User requests to set the savings goal to a specific amount.</li>
+  <li>Fine$$e sets the savings goal.</li>
+  <li>
+    <p>Fine$$e recalculates budget information.</p>
+
+    <p>Use case ends.</p>
+  </li>
+</ol>
+
+<p><strong>Extensions</strong></p>
+
+<ul>
+  <li>
+    <p>2a. The given data field is invalid.</p>
+
+    <ul>
+      <li>
+        <p>2a1. Fine$$e shows an error message.</p>
+
+        <p>Use case ends.</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><strong>Use case: UC09 - Add Bookmark Expense</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1589,7 +1661,7 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><strong>Use case: UC13 - Edit Bookmark Expense</strong></p>
+<p><strong>Use case: UC10 - Edit Bookmark Expense</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1641,7 +1713,7 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><strong>Use case: UC14 - Delete Bookmark Expense</strong></p>
+<p><strong>Use case: UC11 - Delete Bookmark Expense</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1693,7 +1765,7 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><strong>Use case: UC15 - Convert Bookmark Expense</strong></p>
+<p><strong>Use case: UC12 - Convert Bookmark Expense</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1745,7 +1817,7 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><strong>Use case: UC16 - Add Bookmark Income</strong></p>
+<p><strong>Use case: UC13 - Add Bookmark Income</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1786,7 +1858,7 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><strong>Use case: UC17 - Edit Bookmark Income</strong></p>
+<p><strong>Use case: UC14 - Edit Bookmark Income</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1838,7 +1910,7 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><strong>Use case: UC18 - Delete Bookmark Income</strong></p>
+<p><strong>Use case: UC15 - Delete Bookmark Income</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1890,7 +1962,7 @@ Upon relaunching the application, the data file is validated by <code class="hig
   </li>
 </ul>
 
-<p><strong>Use case: UC19 - Convert Bookmark Income</strong></p>
+<p><strong>Use case: UC16 - Convert Bookmark Income</strong></p>
 
 <p><strong>MSS</strong></p>
 
@@ -1955,8 +2027,6 @@ Upon relaunching the application, the data file is validated by <code class="hig
   <li>Should not require an installer.</li>
   <li>Should not depend on any remote server.</li>
 </ol>
-
-<p><em>{More to be added}</em></p>
 
 <hr>
 
